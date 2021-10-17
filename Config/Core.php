@@ -4,7 +4,7 @@
 
 define ("NOMBRE_APLICATION", "EZ AUTO TRANSPORTATION");
 define ("SYSTEM_NAME", "EZ AUTO TRANSPORTATION");
-define ("VERSION", "v2.3");
+define ("VERSION", "v2.5");
 define ("DEBUG", true);
 define("COLOR","text-warning");
 define ("MODE", "Test mode");

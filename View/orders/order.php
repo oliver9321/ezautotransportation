@@ -1456,7 +1456,7 @@ function GetListVehicles() {
         var optionDefault2 = new Option("Select model", "", true, true);
         $('.ModelVehicle').append(optionDefault2);
 
-        $(".toast-success").html("Vehicles list ready");
+        $(".toast-success").html("System ready");
         var myAlert = document.getElementById('toastSuccess');
         var bsAlert = new bootstrap.Toast(myAlert);
         bsAlert.show(); 

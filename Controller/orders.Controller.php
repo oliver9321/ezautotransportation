@@ -390,18 +390,18 @@ class OrdersController
                             $Orders->DestinationState         = $params['DestinationState'];
                             $Orders->DestinationZip           = $params['DestinationZip'];
                             $Orders->DestinationNote          = $params['DestinationNote'];
-                            $Orders->Total                    = $params['Total'];
-                            $Orders->Deposit                  = $params['Deposit'];
-                            $Orders->ExtraTrukerFee           = $params['ExtraTrukerFee'];
-                            $Orders->TrukerOwesUs             = $params['TrukerOwesUs'];
-                            $Orders->Earnings                 = $params['Earnings'];
-                            $Orders->Cod                      = $params['Cod'];
-                            $Orders->TrukerRate               = $params['TrukerRate'];
+                            $Orders->Total                    = str_replace(',','',$params['Total']);
+                            $Orders->Deposit                  = str_replace(',','',$params['Deposit']);
+                            $Orders->ExtraTrukerFee           = str_replace(',','',$params['ExtraTrukerFee']);
+                            $Orders->TrukerOwesUs             = str_replace(',','',$params['TrukerOwesUs']);
+                            $Orders->Earnings                 = str_replace(',','',$params['Earnings']);
+                            $Orders->Cod                      = str_replace(',','',$params['Cod']);
+                            $Orders->TrukerRate               = str_replace(',','',$params['TrukerRate']);
                             $Orders->IsActive                = 1;
                             $Orders->CancelledNote           = "";
                             $Orders->IdCompanyService        = $params['IdCompanyService'];
                             $Orders->IdDriver                = $params['IdDriver'];
-                            
+
                             $Orders->Update($Orders);
                             
                         

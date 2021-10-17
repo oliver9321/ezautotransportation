@@ -57,7 +57,7 @@
                             <th></th>
                             <th></th>                           
                             <th></th>
-                            <th class=" font-weight-bold">Totals:</th>  
+                            <th class=" font-weight-bold"><b>Totals:</b></th>  
                             <th class=""></th>  
                             <th class=""></th>  
                             <th class="text-warning font-weight-bold"></th>  
@@ -124,15 +124,20 @@ $(document).ready(function() {
         api.columns('.sum', {
             page: 'current'
         }).every(function() {
-            var sum = this
-            .data()
-            .reduce(function(a, b) {
-                var x = parseFloat(a) || 0;
-                var y = parseFloat(b) || 0;
-                return x + y;
-            }, 0);
-          
-            $(this.footer()).html(sum);
+
+            var sum = this.data().reduce(function(a, b) {
+               
+               a1 = a.toString().replace(',',''); 
+               b2 = b.toString().replace(',',''); 
+     
+               var x = parseFloat(a1) || 0;
+               var y = parseFloat(b2) || 0;
+               return x + y;
+
+           }, 0);
+
+           $(this.footer()).html(sum.toLocaleString('en-US', {maximumFractionDigits:2, style: 'currency', currency: 'USD' }));
+
         });
         },
         "language": {

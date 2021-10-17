@@ -60,7 +60,11 @@ class PaymentsController
           $Payment = new Payments();
 
         if(isset($_REQUEST['Id'])){
-            $Payment =  $this->model->Edit($_REQUEST['Id']);
+            $Payment                   = $this->model->Edit($_REQUEST['Id']);
+            $Payment->CardHolderName   = $this->decryptIt(trim($Payment->CardHolderName), KEY);
+            $Payment->CreditCard       = $this->decryptIt(trim($Payment->CreditCard),KEY);
+            $Payment->ExpDate          = $this->decryptIt(trim($Payment->ExpDate),KEY);
+            $Payment->Cvv              = $this->decryptIt(trim($Payment->Cvv),KEY);
         }
 
        GetRouteView(null, "header");
@@ -81,11 +85,12 @@ class PaymentsController
             $Payments = new Payments();
             
             //Campos unicos por tabla
+            
             $Payments->Id               = $_REQUEST['Id'];
-            $Payments->CardHolderName   = $_REQUEST['CardHolderName'];
-            $Payments->CreditCard       = $_REQUEST['CreditCard'];
-            $Payments->ExpDate          = $_REQUEST['ExpDate'];
-            $Payments->Cvv              = $_REQUEST['Cvv'];
+            $Payments->CardHolderName   = $this->encryptIt(trim($_REQUEST['CardHolderName']), KEY);
+            $Payments->CreditCard       = $this->encryptIt(trim($_REQUEST['CreditCard']),KEY);
+            $Payments->ExpDate          = $this->encryptIt(trim($_REQUEST['ExpDate']),KEY);
+            $Payments->Cvv              = $this->encryptIt(trim($_REQUEST['Cvv']),KEY);
             $Payments->BillingAddress   = $_REQUEST['BillingAddress'];
             $Payments->Reference        = $_REQUEST['Reference'];
             $Payments->Tel1             = $_REQUEST['Tel1'];
@@ -121,5 +126,32 @@ class PaymentsController
             header('Location:index.php?c=payments&a=Edit');
         }
     }
+
+    function encryptIt($string, $key) {
+
+        $result = '';
+        for($i=0; $i<strlen($string)*5; $i++) {
+           $char = substr($string, $i, 1);
+           $keychar = substr($key, ($i % strlen($key))-1, 1);
+           $char = chr(ord($char)+ord($keychar));
+           $result.=$char;
+        }
+
+        return base64_encode($result);
+}
+
+function decryptIt($string, $key) {
+
+    $result = '';
+    $string = base64_decode($string);
+    for($i=0; $i<strlen($string); $i++) {
+       $char = substr($string, $i, 1);
+       $keychar = substr($key, ($i % strlen($key))-1, 1);
+       $char = chr(ord($char)-ord($keychar));
+       $result.=$char;
+    }
+    return $result;
+ }
+
 
 }

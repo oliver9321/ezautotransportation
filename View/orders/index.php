@@ -91,25 +91,23 @@
                             <table id="OrderList" class="table table-bordered table-hover" style="width:100%" >
                             <thead>
                                <tr class="bg-light ">
-                               <th class="text-center">Order #</th>
+                               <th class="text-center"><b>Order #</b></th>
                                     <th class="text-center">Options</th>
                                     <th class="text-center">Status</th>
-                                    <th class="text-center">Debemos</th>
-                                    <th class="text-center">Nos deben</th>
-                                    <th class="text-center">Customer Origin</th>
+                                    <th class="text-center"><b>Customer Origin</b></th>
                                     <th class="text-center">Origin Phone1</th>
-                                    <th class="text-center">Customer Destination</th>
+                                    <th class="text-center"><b>Customer Destination</b></th>
                                     <th class="text-center">Destination Phone1</th>
-                                    <th class="text-center">Order Date</th>
+                                    <th class="text-center"><b>Order Date</b></th>
                                     <th class="text-center">PickUp Date</th>
                                     <th class="text-center">Delivery Date</th>
                                     <th class="text-center">Origin City</th>
                                     <th class="text-center">Destination City</th>
-                                    <th class="text-center">Total</th>
-                                    <th class="text-center">Deposit</th>
-                                    <th class="text-center">Extra Truker Fee</th>
-                                    <th class="text-center">Truker Owes Us</th>
-                                    <th class="text-center">Earnings</th>
+                                    <th class="text-center"><b>Total</b></th>
+                                    <th class="text-center"><b>Deposit</b></th>
+                                    <th class="text-center text-warning"><b>Extra Truker Fee</b></th>
+                                    <th class="text-center text-danger"><b>Truker Owes Us</b></th>
+                                    <th class="text-center text-success"><b>Earnings</b></th>
                                     <th class="text-center">Cod</th>
                                     <th class="text-center">Trucker Rate</th>
                             </tfoot>
@@ -119,8 +117,6 @@
                                      <th class="text-center">Order #</th>
                                     <th class="text-center">Options</th>
                                     <th class="text-center">Status</th>
-                                    <th class="text-center">Debemos</th>
-                                    <th class="text-center">Nos deben</th>
                                     <th class="text-center">Customer Origin</th>
                                     <th class="text-center">Origin Phone1</th>
                                     <th class="text-center">Destination</th>
@@ -208,10 +204,6 @@ $(document).ready(function() {
    
 datatable = $('#OrderList').DataTable({
     "order": [[ 0, "desc" ]],
-    "language": {
-            "decimal": ",",
-            "thousands": "."
-        },
     initComplete: function () {
             // Apply the search
             this.api().columns().every( function () {
@@ -247,8 +239,6 @@ datatable = $('#OrderList').DataTable({
             {data: "Id"},
             {data: "Id"},
             {data: "Status"},
-            {data: "Debemos"},
-            {data: "NosDeben"},
             {data: "CustomerOrigin"},
             {data: "CustomerOriginPhone1"},
             {data: "CustomerDestination"},
@@ -300,17 +290,7 @@ datatable = $('#OrderList').DataTable({
                     }
 
                     return data;
-                }}, {
-                "targets": 3,
-                "render": function (data, type, row) {
-                    return (data == "Yes" ?  '<center><span class="badge badge-soft-danger px-2">'+data+'</span></center>'  : '<center><span class="badge badge-soft-success px-2">'+data+'</span></center>')
-         
-                }},{
-                "targets": 4,
-                "render": function (data, type, row) {
-                    return (data == "Yes" ?  '<center><span class="badge badge-soft-danger px-2">'+data+'</span></center>'  : '<center><span class="badge badge-soft-success px-2">'+data+'</span></center>')
-         
-                }} 
+                }}
             ]
     });
 

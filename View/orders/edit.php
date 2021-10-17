@@ -1435,7 +1435,11 @@ $(document).ready(function($){
     $('.phone, #DriverPhone1, #DriverPhone2').mask('(000) 000-0000');
     $("#Cvv").mask('0000');
     $("#CreditCard").mask("0000 0000 0000 0000");
-    $('.inputNumber').mask('000,000,000,000,000.00', {reverse: true});
+    //
+    $('.inputNumber').keyup(function(){
+        $('.inputNumber'). mask("#,##0.00", {reverse: true});
+    });
+
 
     $('#ExpDate').mask("AB/CD", {
       translation: {
@@ -1601,6 +1605,7 @@ $("#form-horizontal").steps({
                  
                     break;
                case 3:
+
                 $("#ManualUpdateButton").show();
                 let continueCase3 = true;
                    
@@ -1667,10 +1672,11 @@ $("#form-horizontal").steps({
                }
 
                 case 4:
+
                     $("#ManualUpdateButton").show();
                     if(SumNumber($("#Cod").val(),$("#Deposit").val()) > ConvertNumber($("#Total").val())){
 
-                        $(".toast-error").html("(!) Cod + Deposit isn't equal to Total [Step 4]");
+                        $(".toast-error").html("(!) Cod + Deposit isn't equal to Total [Step 4,5]");
                         var myAlert = document.getElementById('toastError');
                         var bsAlert = new bootstrap.Toast(myAlert);
                         bsAlert.show();
@@ -1692,7 +1698,8 @@ $("#form-horizontal").steps({
                             $("#DepositOrder").val($("#Deposit").val());
                             $("#Earnings").val(RestNumber($("#Deposit").val(), $("#ExtraTrukerFee").val()));
                             $("#Cod").val(RestNumber($("#Total").val(),$("#Deposit").val()));
-                            $("#TrukerRate").val(SumNumber($("#ExtraTrukerFee").val(),$("#Cod").val())); 
+                            var sum1 = SumNumber($("#ExtraTrukerFee").val(), $("#Cod").val());
+                            $("#TrukerRate").val(RestNumber(sum1,$("#TrukerOwesUs").val())); 
 
                              return true;
                         }
@@ -1700,6 +1707,7 @@ $("#form-horizontal").steps({
                break;
 
                case 5:
+
                   $("#ManualUpdateButton").hide();
                    if($("#Cod").val() == "" ){
 
@@ -1786,7 +1794,9 @@ $(document).ready(function() {
         $("#DepositOrder").val($("#Deposit").val());
         $("#Earnings").val(SumNumber(RestNumber($("#Deposit").val(), $("#ExtraTrukerFee").val()),$("#TrukerOwesUs").val()));
         $("#Cod").val(RestNumber($("#Total").val(),$("#Deposit").val()));
-        $("#TrukerRate").val(RestNumber(SumNumber($("#ExtraTrukerFee").val(),$("#Cod").val()),$("#TrukerOwesUs").val())); 
+
+        var sum1 = SumNumber($("#ExtraTrukerFee").val(), $("#Cod").val());
+        $("#TrukerRate").val(RestNumber(sum1,$("#TrukerOwesUs").val())); 
 
     });
 
@@ -1840,7 +1850,7 @@ function GetListVehicles() {
         var optionDefault2 = new Option("Select model", "", true, true);
         $('.ModelVehicle').append(optionDefault2);
 
-        $(".toast-success").html("Vehicles list ready");
+        $(".toast-success").html("System ready");
         var myAlert = document.getElementById('toastSuccess');
         var bsAlert = new bootstrap.Toast(myAlert);
         bsAlert.show();
@@ -2450,13 +2460,13 @@ var x1, x2 = 0;
     if(!number1 || number1 == undefined || number1 == "" || number1.length == 0){
         x1 = 0;
     }else{
-        x1 = parseFloat(number1);
+        x1 = parseFloat(number1.toString().replace(',',''));
     }
 
     if(!number2 || number2 == undefined || number2 == "" || number2.length == 0){
         x2 = 0;
     }else{
-        x2 = parseFloat(number2);
+        x2 = parseFloat(number2.toString().replace(',',''));
     }
 
     return x1 + x2;
@@ -2469,7 +2479,7 @@ var x1 = 0;
     if(!number1 || number1 == undefined || number1 == "" || number1.length == 0){
         x1 = 0;
     }else{
-        x1 = parseFloat(number1);
+        x1 = parseFloat(number1.toString().replace(',',''));
     }
 
     return x1;
@@ -2482,13 +2492,13 @@ var x1, x2 = 0;
 if(!number1 || number1 == undefined || number1 == "" || number1.length == 0){
     x1 = 0;
 }else{
-    x1 = parseFloat(number1);
+    x1 = parseFloat(number1.toString().replace(',',''));
 }
 
 if(!number2 || number2 == undefined || number2 == "" || number2.length == 0){
     x2 = 0;
 }else{
-    x2 = parseFloat(number2);
+    x2 = parseFloat(number2.toString().replace(',',''));
 }
 
 return x1- x2;
