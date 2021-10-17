@@ -1267,34 +1267,41 @@
                                                         <!--end tr-->
                                                     </tbody>
                                                     <tfoot>
-                                                    <tr>
+                                                        <tr>
                                                             <td colspan="2" class="border-0"></td>
                                                             <th colspan="2" class="border-0"></th>
                                                             <td class="border-0 font-14 text-dark"><b></b></td>
-                                                            <td class="border-0 font-14 text-dark"><b></b>
-                                                            </td>
+                                                            <td class="border-0 font-14 text-dark"><b></b></td>
                                                         </tr>
                                                         <!--end tr-->
                                                         <!--end tr-->
 
-                                                        <tr class="bg-light text-secondary" id="TruckerFeeFormTR">
+                                                        <tr class="bg-light text-secondary" id="TrukerFeeFormTR">
                                                             <th colspan="2" class="border-0"></th>
                                                             <th colspan="2" class="border-0"></th>
-                                                            <td class="border-0 font-14" style="text-align:right !important"><b>Extra truker Fee</b></td>
-                                                            <td class="border-0 font-14"><b id="TruckerFeeForm">$00.00</b></td>
-                                                        </tr>                                                  
+                                                            <td class="border-0 font-14" style="text-align:right !important"><b>Extra Truker Fee</b></td>
+                                                            <td class="border-0 font-14"><b id="TrukerFeeForm">$00.00</b></td>
+                                                        </tr>    
+                                                        
+                                                        <tr class="bg-soft-danger text-secondary" id="TrukerOwesUsFormTR">
+                                                            <th colspan="2" class="border-0"></th>
+                                                            <th colspan="2" class="border-0"></th>
+                                                            <td class="border-0 font-14" style="text-align:right !important"><b>Truker Owes Us</b></td>
+                                                            <td class="border-0 font-14"><b id="TrukerOwesUsForm">$00.00</b></td>
+                                                        </tr>  
+
                                                         <tr class="bg-secondary text-white">
                                                             <th colspan="2" class="border-0"></th>
                                                             <th colspan="2" class="border-0"></th>
                                                             <td class="border-0 font-14" style="text-align:right !important"><b>Truker COD</b></td>
-                                                            <td class="border-0 font-14"><b id="TruckerCODForm">$00.00</b></td>
+                                                            <td class="border-0 font-14"><b id="TrukerCODForm">$00.00</b></td>
                                                         </tr>
 
                                                         <tr class="bg-black text-white">
                                                             <th colspan="2" class="border-0"></th>
                                                             <th colspan="2" class="border-0"></th>
-                                                            <td class="border-0 font-14" style="text-align:right !important"><b>Total rate</b></td>
-                                                            <td class="border-0 font-14"><b id="TruckerRateForm">$00.00</b></td>
+                                                            <td class="border-0 font-14" style="text-align:right !important"><b>Total Rate</b></td>
+                                                            <td class="border-0 font-14"><b id="TrukerRateForm">$00.00</b></td>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
@@ -2003,10 +2010,23 @@ function loadInfoPDF1(){
 function loadInfoPDF2(){
 
   //Payment info
-  $("#TruckerCODForm").html($("#Cod").val() != "" ? "US$ "+$("#Cod").val() :  "<span class='text-danger'>Check Cod field</span>");
-  $("#TruckerFeeForm").html($("#ExtraTrukerFee").val() != "" ? "US$ "+$("#ExtraTrukerFee").val() :  "");
-  $("#TruckerRateForm").html($("#TrukerRate").val() != "" ? "US$ "+$("#TrukerRate").val() :  "");
-
+  $("#TrukerCODForm").html($("#Cod").val() != "" ? "US$ "+$("#Cod").val() :  "<span class='text-danger'>Check Cod field</span>");
+ 
+  if($("#ExtraTrukerFee").val() != ""){
+    $("#TrukerFeeFormTR").show();
+    $("#TrukerFeeForm").html($("#ExtraTrukerFee").val());
+  }else{
+    $("#TrukerFeeFormTR").hide();
+  }
+  
+  if($("#TrukerOwesUs").val() != ""){
+    $("#TrukerOwesUsFormTR").show();
+    $("#TrukerOwesUsForm").html($("#TrukerOwesUs").val());
+  }else{
+    $("#TrukerOwesUsFormTR").hide();
+  }
+ 
+  $("#TrukerRateForm").html($("#TrukerRate").val() != "" ? "US$ "+$("#TrukerRate").val() :  "");
   $(".IdCompanyServiceForm").html($("#IdCompanyService :selected").text() != "" ? $("#IdCompanyService :selected").text() : "<span class='text-danger'>Check company name</span>");
   $(".CompanyPhone1Form").html($("#CompanyPhone1").val() != "" ? $("#CompanyPhone1").val() :  "");
   $(".CompanyEmailForm").html($("#CompanyEmail").val() != "" ? $("#CompanyEmail").val() :  "");

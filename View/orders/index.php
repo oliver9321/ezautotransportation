@@ -91,48 +91,48 @@
                             <table id="OrderList" class="table table-bordered table-hover" style="width:100%" >
                             <thead>
                                <tr class="bg-light ">
-                               <th class="text-center"><b>Order #</b></th>
+                                    <th class="text-center"><b>Order ID</b></th>
+                                    <th class="text-center"><b>Options</b></th>
+                                    <th class="text-center"><b>Status</b></th>
+                                    <th class="text-center"><b>Customer Origin</b></th>
+                                    <th class="text-center"><b>Origin Phone</b></th>
+                                    <th class="text-center"><b>Customer Destination</b></th>
+                                    <th class="text-center"><b>Destination Phone</b></th>
+                                    <th class="text-center"><b>Order Date</b></th>
+                                    <th class="text-center"><b>PickUp Date</b></th>
+                                    <th class="text-center"><b>Delivery Date</b></th>
+                                    <th class="text-center"><b>Origin City</b></th>
+                                    <th class="text-center"><b>Destination City</b></th>
+                                    <th class="text-center"><b>Truker Company</b></th>
+                                    <th class="text-center"><b>Truker Phone</b></th>
+                                    <th class="text-center"><b>Driver</b></th>
+                                    <th class="text-center"><b>Driver Phone</b></th>
+                                    <th class="text-center"><b>Origin Note</b></th>
+                                    <th class="text-center"><b>Destination Note</b></th>
+                                    <th class="text-center"><b>Cancelled Note</b></th>
+                            </tfoot>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                            <th class="text-center"><b>Order ID</b></th>
                                     <th class="text-center">Options</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center"><b>Customer Origin</b></th>
-                                    <th class="text-center">Origin Phone1</th>
+                                    <th class="text-center">Origin Phone</th>
                                     <th class="text-center"><b>Customer Destination</b></th>
-                                    <th class="text-center">Destination Phone1</th>
+                                    <th class="text-center">Destination Phone</th>
                                     <th class="text-center"><b>Order Date</b></th>
                                     <th class="text-center">PickUp Date</th>
                                     <th class="text-center">Delivery Date</th>
                                     <th class="text-center">Origin City</th>
                                     <th class="text-center">Destination City</th>
-                                    <th class="text-center"><b>Total</b></th>
-                                    <th class="text-center"><b>Deposit</b></th>
-                                    <th class="text-center text-warning"><b>Extra Truker Fee</b></th>
-                                    <th class="text-center text-danger"><b>Truker Owes Us</b></th>
-                                    <th class="text-center text-success"><b>Earnings</b></th>
-                                    <th class="text-center">Cod</th>
-                                    <th class="text-center">Trucker Rate</th>
-                            </tfoot>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                     <th class="text-center">Order #</th>
-                                    <th class="text-center">Options</th>
-                                    <th class="text-center">Status</th>
-                                    <th class="text-center">Customer Origin</th>
-                                    <th class="text-center">Origin Phone1</th>
-                                    <th class="text-center">Destination</th>
-                                    <th class="text-center">Destination Phone1</th>
-                                    <th class="text-center">Order Date</th>
-                                    <th class="text-center">PickUp Date</th>
-                                    <th class="text-center">Delivery Date</th>
-                                    <th class="text-center">Origin City</th>
-                                    <th class="text-center">Destination City</th>
-                                    <th class="text-center">Total</th>
-                                    <th class="text-center">Deposit</th>
-                                    <th class="text-center">Extra Truker Fee</th>
-                                    <th class="text-center">Truker Owes Us</th>
-                                    <th class="text-center">Earnings</th>
-                                    <th class="text-center">Cod</th>
-                                    <th class="text-center">Trucker Rate</th>
+                                    <th class="text-center"><b>Truker Company</b></th>
+                                    <th class="text-center"><b>Truker Phone</b></th>
+                                    <th class="text-center"><b>Driver</b></th>
+                                    <th class="text-center"><b>Driver Phone</b></th>
+                                    <th class="text-center"><b>Origin Note</b></th>
+                                    <th class="text-center"><b>Destination Note</b></th>
+                                    <th class="text-center"><b>Cancelled Note</b></th>
                             </tfoot>
                         </table>
                         </div>
@@ -169,6 +169,12 @@
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
+                                        <br>
+
+                                        <div class="col-md-12" id="formCancelledNote">
+                                            <label class="mb-1 text-danger"><b>Reason for cancellation*</b></label>
+                                            <textarea id="CancelledNote" name="CancelledNote" class="form-control" placeholder="Enter the reason for cancelation" rows="3"></textarea>
+                                        </div><br>
                                  </div>
                     </div>
                     <!--end col-->
@@ -190,7 +196,8 @@
 <script>
 
  let datatable = "";
-  
+$("#formCancelledNote").hide();
+
 $(document).ready(function() {
 
     $("body").addClass("enlarge-menu");
@@ -248,20 +255,20 @@ datatable = $('#OrderList').DataTable({
             {data: "DeliveryDate"},
             {data: "OriginCity"},
             {data: "DestinationCity"},
-            {data: "Total"},
-            {data: "Deposit"},
-            {data: "ExtraTrukerFee"},
-            {data: "TrukerOwesUs"},
-            {data: "Earnings"},
-            {data: "Cod"},
-            {data: "TrukerRate"},
+            {data: "CompanyServices"},
+            {data: "CompanyPhone1"},
+            {data: "DriverName"},
+            {data: "DriverPhone1"},
+            {data: "OriginNote"},
+            {data: "DestinationNote"},
+            {data: "CancelledNote"}
             
         ],"columnDefs": [
             {
             "targets":1,
             "data": "Editar",
-            "render": function ( data) {
-                return '<center><a class="btn btn-primary btn-sm" title="View order" href="index.php?c=Orders&a=View&Id='+data+'"> <i class="ti-file"></i></a><a class="btn btn-warning btn-sm" href="index.php?c=Orders&a=Edit&Id='+data+'" title="Edit order"> <i class="ti-pencil"></i></a><button class="btn btn-dark btn-sm" onclick="ChangeStatus('+data+')"  title="Change status"> <i class="ti-new-window"></i></button></center>';
+            "render": function (data, type, row) {
+                return '<center><a class="btn btn-primary btn-sm" title="View order" href="index.php?c=Orders&a=View&Id='+data+'"> <i class="ti-file"></i></a><a class="btn btn-warning btn-sm" href="index.php?c=Orders&a=Edit&Id='+data+'" title="Edit order"> <i class="ti-pencil"></i></a><button class="btn btn-info btn-sm" onclick="ChangeStatus('+data+')"  title="Change status"> <i class="ti-loop"></i></button><a class="btn btn-success btn-sm" title="View payment info" href="index.php?c=Payments&a=Index"> <i class="ti-money"></i></a></center>';
             }}, {
                 "targets": 2,
                 "render": function (data, type, row) {
@@ -302,6 +309,16 @@ function ChangeStatus(OrderID){
     $("#ModalChangeStatus").modal('show'); 
 }
 
+$("#OrderStatusID").change(function(){
+
+    if($("#OrderStatusID").val() == 4){
+        $("#formCancelledNote").show();
+    }else{
+        $("#formCancelledNote").hide();
+    }
+
+});
+
 function UpdateStatusOrder(){
 
     if($("#Id").val() != '' && $("#OrderStatusID").val() != ''){
@@ -309,7 +326,7 @@ function UpdateStatusOrder(){
     $.ajax({
         type: 'POST',
         url: "index.php?c=Orders&a=UpdateStatusOrder",
-        data:{ Id: $("#Id").val(), "OrderStatusID": $("#OrderStatusID").val()}
+        data:{ Id: $("#Id").val(), "OrderStatusID": $("#OrderStatusID").val(), "CancelledNote": $("#CancelledNote").val()}
      }).then(function(response) {
 
         if(response == 'true'){

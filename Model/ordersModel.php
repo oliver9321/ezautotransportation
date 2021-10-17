@@ -51,7 +51,7 @@ class Orders {
     {
         try
         {
-                $stm = $this->pdo->prepare("SELECT Id, Status, Debemos, NosDeben, CustomerOrigin, CustomerOriginPhone1, CustomerOriginEmail, CustomerDestination, CustomerDestinationPhone1, CustomerDestinationEmail, OrderDate, PickUpDate, DeliveryDate, OriginCity, DestinationCity, Total, Deposit, ExtraTrukerFee, TrukerOwesUs, Earnings, Cod, TrukerRate FROM vw_orders where IsActive = 1");
+                $stm = $this->pdo->prepare("SELECT Id, IdPayment, Status, CustomerOrigin, CustomerOriginPhone1, CustomerDestination, CustomerDestinationPhone1, OrderDate, PickUpDate, DeliveryDate, OriginCity, DestinationCity, Deposit, CompanyServices, CompanyPhone1, DriverName, DriverPhone1, OriginNote, DestinationNote, CancelledNote FROM vw_orders where IsActive = 1");
                 $stm->execute();
 
                 $row = $stm->fetchAll();
@@ -436,13 +436,13 @@ $result = $this->pdo->prepare($sql)->execute(
         try{
             if($data->OrderStatusID == 4){
 
-                $sql = "UPDATE tbl_orders SET OrderStatusID  = ?, TrukerOwesUs = 0, Deposit = 0, ExtraTrukerFee = 0, Earnings = 0 , Cod = 0, Total = 0, TrukerRate = 0 WHERE Id = ?";
-                return $this->pdo->prepare($sql)->execute(array($data->OrderStatusID,$data->Id));
+                $sql = "UPDATE tbl_orders SET OrderStatusID  = ?, CancelledNote = ?, TrukerOwesUs = 0, Deposit = 0, ExtraTrukerFee = 0, Earnings = 0 , Cod = 0, Total = 0, TrukerRate = 0 WHERE Id = ?";
+                return $this->pdo->prepare($sql)->execute(array($data->OrderStatusID,$data->CancelledNote, $data->Id));
 
             }else{
 
-                $sql = "UPDATE tbl_orders SET OrderStatusID  = ? WHERE Id = ?";
-                return $this->pdo->prepare($sql)->execute(array($data->OrderStatusID,$data->Id));
+                $sql = "UPDATE tbl_orders SET OrderStatusID  = ? , CancelledNote = ? WHERE Id = ?";
+                return $this->pdo->prepare($sql)->execute(array($data->OrderStatusID,$data->CancelledNote, $data->Id ));
             }
             
 

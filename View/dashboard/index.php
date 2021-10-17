@@ -157,7 +157,7 @@
                                     <div class="earning-data text-center">
                                         <img src="assets/images/money-beg.png" alt="" class="money-bag my-3" height="60">
                                         <h5 class="earn-money mb-1">$<?=$SumTotalToday?></h5>
-                                        <p class="text-muted font-15 mb-4">Total in orders</p>
+                                        <p class="text-muted font-15 mb-4">Total depos</p>
                                     </div>                                                                                                          
                                 </div><!--end card-body-->
                                 <div class="card-body my-1">
@@ -201,7 +201,7 @@
                                     <div class="earning-data text-center">
                                         <img src="assets/images/money-beg.png" alt="" class="money-bag my-3" height="60">
                                         <h5 class="earn-money mb-1">$<?=$SumTotal?></h5>
-                                        <p class="text-muted font-15 mb-4">Total <?=date('M')?></p>
+                                        <p class="text-muted font-15 mb-4"><?=date('M')?> month</p>
                                     </div>                                                                                                          
                                 </div><!--end card-body-->
                                 <div class="card-body my-1">

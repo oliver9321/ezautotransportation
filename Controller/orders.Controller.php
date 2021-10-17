@@ -580,6 +580,7 @@ class OrdersController
             $Orders = new Orders();
             $Orders->Id             = $_POST['Id'];
             $Orders->OrderStatusID  = $_POST['OrderStatusID'];
+            $Orders->CancelledNote  = $_POST['CancelledNote'];
             $result = $Orders->UpdateStatusOrder($Orders);
 
             echo json_encode($result, true);
