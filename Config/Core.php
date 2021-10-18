@@ -4,6 +4,11 @@
 
 define ("NOMBRE_APLICATION", "EZ AUTO TRANSPORTATION");
 define ("SYSTEM_NAME", "EZ AUTO TRANSPORTATION");
+
+define("TELEFONO", "(305) 381-5252");
+define("URL_WEBSITE", "www.ezautotransportationusa.com");
+define("DIRECCION", "5951 NW 151ST ST MIAMI LAKES FL 33014 SUITE#207");
+
 define ("VERSION", "v2.5");
 define ("DEBUG", true);
 define("COLOR","text-warning");

@@ -2,7 +2,8 @@
 <style>
     .modal-body {
     padding: 0.2rem !important;
-}
+    }
+
 </style>
 <div class="modal fade" id="ModalNewCustomer" role="dialog" aria-labelledby="ModalNewCustomerLabel" >
     <div class="modal-dialog" role="document">
@@ -115,8 +116,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info">
-                <h6 class="modal-title m-0" id="ModalNewCompanyServiceLabel"> <i class="fas fa-user-plus me-2"></i> New
-                    Company</h6>
+            <h6 class="modal-title m-0" id="ModalNewCompanyServiceLabel"> <i class="fa fa-truck me-2"></i> New Truker Company</h6>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!--end modal-header-->
@@ -127,14 +127,29 @@
 
                             <div class="mb-1">
                                 <label class="form-label text-danger" for="CompanyNameNewCompany">*Company name:</label>
-                                <input class="form-control" type="text" id="CompanyNameNewCompany"
-                                    name="CompanyNameNewCompany">
+                                <input class="form-control" type="text" id="CompanyNameNewCompany" name="CompanyNameNewCompany">
                             </div>
 
                             <div class="mb-1">
                                 <label class="form-label text-danger" for="CompanyAddressNewCompany">*Address:</label>
                                 <input class="form-control" type="text" id="CompanyAddressNewCompany"
                                     name="CompanyAddressNewCompany">
+                            </div>
+
+                            
+                            <div class="mb-1">
+                                <label class="form-label text-danger" for="CompanyCityNewCompany">*City:</label>
+                                <input class="form-control" type="text" id="CompanyCityNewCompany" name="CompanyCityNewCompany">
+                            </div>
+
+                            <div class="mb-1">
+                                <label class="form-label text-danger" for="CompanyStateNewCompany">*State:</label>
+                                <input class="form-control" type="text" id="CompanyStateNewCompany" name="CompanyStateNewCompany">
+                            </div>
+
+                            <div class="mb-1">
+                                <label class="form-label text-danger" for="CompanyZipCodeNewCompany">*Zip Code:</label>
+                                <input class="form-control" type="text" id="CompanyZipCodeNewCompany" name="CompanyZipCodeNewCompany">
                             </div>
 
                             <div class="mb-1">
@@ -162,7 +177,7 @@
                                 <div class="input-group"> <span class="input-group-text"><i
                                             class="las la-at"></i></span>
                                     <input type="email" class="form-control" id="CompanyEmailNewCompany"
-                                        name="CompanyEmailNewCompany" placeholder="customer@domain.com"
+                                        name="CompanyEmailNewCompany" placeholder="company@domain.com"
                                         aria-describedby="basic-addon1">
                                 </div>
                             </div>
@@ -188,7 +203,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info">
-                <h6 class="modal-title m-0" id="ModalNewDriverLabel"> <i class="fa fa-address-card me-2"></i> New driver
+            <h6 class="modal-title m-0" id="ModalNewDriverLabel"> <i class="fa fa-bus me-2"></i> New driver
                 </h6>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -271,21 +286,16 @@
 <div class="modal-body bg-dark d-print-non">
     <div class="card">
         <div class="card-header d-print-none">
-            <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal"
-                data-bs-target="#ModalNewCustomer"><i class="fas fa-user-plus me-2"></i>New customer</button>
-            <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal"
-                data-bs-target="#ModalNewVehicle"><i class="fas fa-car me-2"></i>New vehicle</button>
-            <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal"
-                data-bs-target="#ModalNewCompanyService"><i class="fas fa-building me-2"></i>New company</button>
-            <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal"
-                data-bs-target="#ModalNewDriver"><i class="fa fa-address-card me-2"></i>New driver</button>
-            <button type="button" class="btn btn-soft-danger btn-sm"
-                onclick="$('input, textarea, select').val('');">Clear all fields</button>
-                <button type="button" id="LoadingButton" class="btn btn-soft-light btn-sm"> <div class="spinner-border spinner-border-sm" role="status"></div></button>
+            <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal" data-bs-target="#ModalNewCustomer"><i class="fas fa-user-plus me-2"></i>New customer</button>
+            <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal" data-bs-target="#ModalNewVehicle"><i class="fas fa-car me-2"></i>New vehicle</button>
+            <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal" data-bs-target="#ModalNewCompanyService"><i class="fa fa-truck me-2"></i>New company</button>
+            <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal" data-bs-target="#ModalNewDriver"><i class="fa fa-bus me-2"></i>New driver</button>
+            <button type="button" class="btn btn-soft-danger btn-sm" onclick="$('input, textarea, select').val('');">Clear all fields</button>
+             <button type="button" id="LoadingButton" class="btn btn-soft-light btn-sm"> <div class="spinner-border spinner-border-sm text-danger" role="status"></div></button>
         </div>
         <!--end card-header-->
         <div class="card-body">
-            <form id="form-horizontal" class="form-horizontal form-wizard-wrapper">
+            <form id="form-horizontal" class="form-horizontal form-wizard-wrapper" autocomplete="off">
             <input type="text" name="Id" id="Id" value="" hidden>
                 <h3>Basic info</h3>
                 <fieldset>
@@ -296,24 +306,33 @@
                                 <div class="col-md-12" >
                                 <label class="mb-1"><i class="fa fa-user"></i> Origin customer name<b class="text-danger">*</b></label>
                                     <div class="input-group">
-                                        <select style="width: 90%;" id="IdCustomerOrigin" name="IdCustomerOrigin" class="select2 form-control mb-3 custom-select originInput"> </select>
-                                        <button class="btn btn-dark" type="button" id="SearchCustomerName"><i class="ti ti-reload"></i></button>
+                                        <select style="width: 90%;" id="IdCustomerOrigin" name="IdCustomerOrigin" class="select2 form-control mb-3 custom-select originInput" onchange="onchangeOriginCustomer()">
+                                                <option value="" selected>Select a origin customer</option>
+                                                <?php foreach($CustomerList  as $key => $value): ?>
+                                                    <option value="<?= $value['Id']; ?>"> <?= $value['Customer']; ?> </option>
+                                            <?php endforeach; ?>
+                                            </select>
+                                            <button class="btn btn-dark" type="button" id="SearchCustomerName"><i class="ti ti-reload"></i></button>
                                     </div>
                                 </div>
                             </div><!-- end row -->
                             <br>
                         </div>
                         <!--end col-->
-                        <div class="col-md-6"> <span class="text-dark"><b><i data-feather="arrow-right-circle"></i>
-                                    Destination
-                                    information</b></span>
+                        <div class="col-md-6"> <span class="text-dark"><b><i data-feather="arrow-right-circle"></i> Destination information</b></span>
+
                             <hr>
                             <div class="row">
 
                                 <div class="col-md-12" >
                                 <label class="mb-1"><i class="fa fa-user"></i> Destination customer name<b class="text-danger">*</b></label>
                                     <div class="input-group">
-                                        <select style="width: 90%;" id="IdCustomerDestination" name="IdCustomerDestination" class="select2 form-control mb-3 custom-select DestinationInput"> </select>
+                                        <select style="width: 90%;" id="IdCustomerDestination" name="IdCustomerDestination" class="select2 form-control mb-3 custom-select DestinationInput" onchange="onchangeDestinationCustomer()">
+                                                <option value="" selected>Select a destination customer</option>
+                                                <?php foreach($CustomerList  as $key => $value): ?>
+                                                    <option value="<?= $value['Id']; ?>"> <?= $value['Customer']; ?> </option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         <button class="btn btn-dark" type="button" id="SearchDestinationCustomer"><i  class="ti ti-reload"></i></button>
                                     </div>
                                 </div>
@@ -339,97 +358,20 @@
                                         <div class="row">
                                             <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
-                                                <input style="display:none;" />
-                                                <input autocomplete="off" id="OriginCity" name="OriginCity" type="text"
-                                                    class="form-control originInput" placeholder="City">
+                                                <input type="text" style="display:none;" />
+                                                <input id="OriginCity" name="OriginCity" type="search"  class="form-control originInput pac-target-input" placeholder="City">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> State<b class="text-danger">*</b></label>
                                                 <input style="display:none;" />
-                                                <input autocomplete="off" id="OriginState" name="OriginState" type="text"
-                                                    class="form-control originInput" placeholder="State">
+                                                <input autocomplete="off" id="OriginState" name="OriginState" type="text"  class="form-control originInput" placeholder="State">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Zip Code</label>
                                                 <input style="display:none;" />
-                                                <input autocomplete="off" id="OriginZip" name="OriginZip" type="text"
-                                                    class="form-control originInput" placeholder="00000">
-                                            </div>
-                                            <!-- end row -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-md-4" >
-                                                <label class="mb-1"><i class="fa fa-mobile"></i> Phone
-                                                    #1<b class="text-danger">*</b></label>
-                                                <input id="OriginPhone1" name="OriginPhone1" type="tel"
-                                                    class="form-control originInput phone" placeholder="(555) 555-5555">
-                                            </div>
-                                            <!-- end row -->
-                                            <div class="col-md-4" >
-                                                <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone #2</label>
-                                                    <input style="display:none;" />
-                                                <input autocomplete="off" id="OriginPhone2" name="OriginPhone2" type="tel"
-                                                    class="form-control originInput phone" placeholder="(555) 555-5555">
-                                            </div>
-                                            <!-- end row -->
-                                            <div class="col-md-4" >
-                                                <label class="mb-1"><i class="fa fa-envelope"></i> Email</label>
-                                                <input style="display:none;" />
-                                                <input autocomplete="off" id="OriginEmail" name="OriginEmail" type="email"
-                                                    class="form-control originInput" placeholder="cus@domain.com">
-                                            </div>
-                                            <!-- end row -->
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-12" >
-                                        <label class="mb-1"><i class="fa fa-sticky-note"></i> Note</label>
-                                        <textarea id="OriginNote" name="OriginNote" class="form-control originInput"
-                                            placeholder="Opcional information" rows="3"></textarea>
-                                    </div>
-                                    <!-- end row -->
-                                </div>
-                                <br>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-12" >
-                                        <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Destination
-                                            address<b class="text-danger">*</b></label>
-                                            <input style="display:none;" />
-                                        <input id="DestinationAddress" name="DestinationAddress" type="text" class="form-control DestinationInput" placeholder="Ex. 1600 Pennsylvania...">
-                                    </div>
-                                    <!-- end row -->
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-md-4" >
-                                            <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
-                                                <input id="DestinationCity" name="DestinationCity" type="text"
-                                                    class="form-control DestinationInput" placeholder="City">
-                                            </div>
-                                            <!-- end row -->
-                                            <div class="col-md-4" >
-                                            <label class="mb-1"><i class="fa fa-map-marker-alt"></i> State<b class="text-danger">*</b></label>
-                                                <input id="DestinationState" name="DestinationState" type="text"
-                                                    class="form-control DestinationInput" placeholder="State">
-                                            </div>
-                                            <!-- end row -->
-                                            <div class="col-md-4" >
-                                            <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Zip Code</label>
-                                                <input id="DestinationZip" name="DestinationZip" type="text"
-                                                    class="form-control DestinationInput" placeholder="00000">
+                                                <input autocomplete="off" id="OriginZip" name="OriginZip" type="text"  class="form-control originInput" placeholder="00000">
                                             </div>
                                             <!-- end row -->
                                         </div>
@@ -441,22 +383,19 @@
                                         <div class="row">
                                             <div class="col-md-4" >
                                                 <label class="mb-1"><i class="fa fa-mobile"></i> Phone #1<b class="text-danger">*</b></label>
-                                                <input id="DestinationPhone1" name="DestinationPhone1" type="tel"
-                                                    class="form-control DestinationInput phone"
-                                                    placeholder="(555) 555-5555">
+                                                <input id="OriginPhone1" name="OriginPhone1" type="text" class="form-control originInput phone" placeholder="(555) 555-5555">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
                                                 <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone #2</label>
-                                                <input id="DestinationPhone2" name="DestinationPhone2" type="tel"
-                                                    class="form-control DestinationInput phone"
-                                                    placeholder="(555) 555-5555">
+                                                    <input style="display:none;" />
+                                                <input autocomplete="off" id="OriginPhone2" name="OriginPhone2" type="text" class="form-control originInput phone" placeholder="(555) 555-5555">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
                                                 <label class="mb-1"><i class="fa fa-envelope"></i> Email</label>
-                                                <input id="DestinationEmail" name="DestinationEmail" type="email"
-                                                    class="form-control DestinationInput" placeholder="cus@domain.com">
+                                                <input style="display:none;" />
+                                                <input autocomplete="off" id="OriginEmail" name="OriginEmail" type="email" class="form-control originInput" placeholder="cus@domain.com">
                                             </div>
                                             <!-- end row -->
                                         </div>
@@ -466,9 +405,70 @@
                                 <div class="row">
                                     <div class="col-md-12" >
                                         <label class="mb-1"><i class="fa fa-sticky-note"></i> Note</label>
-                                        <textarea id="DestinationNote" name="DestinationNote"
-                                            class="form-control DestinationInput"
-                                            placeholder="Opcional information" rows="3"></textarea>
+                                        <textarea id="OriginNote" name="OriginNote" class="form-control originInput" placeholder="Opcional information" rows="3"></textarea>
+                                    </div>
+                                    <!-- end row -->
+                                </div>
+                                <br>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-12" >
+                                        <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Destination address<b class="text-danger">*</b></label>
+                                            <input style="display:none;" />
+                                            <input id="DestinationAddress" name="DestinationAddress" type="text" class="form-control DestinationInput" placeholder="Ex. 1600 Pennsylvania...">
+                                    </div>
+                                    <!-- end row -->
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-4" >
+                                            <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
+                                                <input id="DestinationCity" name="DestinationCity" type="text" class="form-control DestinationInput" placeholder="City">
+                                            </div>
+                                            <!-- end row -->
+                                            <div class="col-md-4" >
+                                            <label class="mb-1"><i class="fa fa-map-marker-alt"></i> State<b class="text-danger">*</b></label>
+                                                <input id="DestinationState" name="DestinationState" type="text"  class="form-control DestinationInput" placeholder="State">
+                                            </div>
+                                            <!-- end row -->
+                                            <div class="col-md-4" >
+                                            <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Zip Code</label>
+                                                <input id="DestinationZip" name="DestinationZip" type="text" class="form-control DestinationInput" placeholder="00000">
+                                            </div>
+                                            <!-- end row -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-4" >
+                                                <label class="mb-1"><i class="fa fa-mobile"></i> Phone #1<b class="text-danger">*</b></label>
+                                                <input id="DestinationPhone1" name="DestinationPhone1" type="text"  class="form-control DestinationInput phone" placeholder="(555) 555-5555">
+                                            </div>
+                                            <!-- end row -->
+                                            <div class="col-md-4" >
+                                                <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone #2</label>
+                                                <input id="DestinationPhone2" name="DestinationPhone2" type="text" class="form-control DestinationInput phone" placeholder="(555) 555-5555">
+                                            </div>
+                                            <!-- end row -->
+                                            <div class="col-md-4" >
+                                                <label class="mb-1"><i class="fa fa-envelope"></i> Email</label>
+                                                <input id="DestinationEmail" name="DestinationEmail" type="email" class="form-control DestinationInput" placeholder="cus@domain.com">
+                                            </div>
+                                            <!-- end row -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12" >
+                                        <label class="mb-1"><i class="fa fa-sticky-note"></i> Note</label>
+                                        <textarea id="DestinationNote" name="DestinationNote" class="form-control DestinationInput" placeholder="Opcional information" rows="3"></textarea>
                                     </div>
                                     <!-- end row -->
                                 </div>
@@ -495,8 +495,7 @@
                                         <!-- end row -->
                                         <div class="col-md-6" >
                                             <label class="mb-1"><b>Delivery date</b><b class="text-danger">*</b></label>
-                                            <input id="DeliveryDate" name="DeliveryDate" type="date"
-                                                class="form-control">
+                                            <input id="DeliveryDate" name="DeliveryDate" type="date" class="form-control">
                                         </div>
                                         <!-- end row -->
                                     </div>
@@ -511,14 +510,12 @@
 
                                         <div class="col-md-6" >
                                             <label class="mb-1"><b>Order date (Today)</b></label>
-                                            <input id="PickUpOrderDateDate" name="OrderDate" type="date"
-                                                class="form-control" value="<?php echo date('Y-m-d'); ?>" readonly>
+                                            <input id="PickUpOrderDateDate" name="OrderDate" type="date"  class="form-control" value="<?= date('Y-m-d'); ?>" readonly>
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-6" >
                                             <label class="mb-1"><b>Order status</b><b class="text-danger">*</b></label>
-                                            <select style="width: 100%;" id="OrderStatusID" name="OrderStatusID"
-                                                class="form-control">
+                                            <select style="width: 100%;" id="OrderStatusID" name="OrderStatusID" class="form-control" readonly>
                                                 <?php foreach($OrderStatusList  as $key => $value): ?>
                                                 <option value="<?= $value['Id']; ?>"> <?= $value['Status']; ?> </option>
                                                 <?php endforeach; ?>
@@ -627,6 +624,8 @@
                                                         <hr>
                                                         <p class="text-secondary"><i class="fa fa-trash text-danger"></i>
                                                             Don't delete the first row.</p>
+                                                            <p class="text-secondary"><i class="fa fa-info text-warning"></i>
+                                                            When you refresh the list of cars, the selected ones are cleared.</p>
                                                     </div>
                                                     <!--end col-->
                                                 </div>
@@ -674,13 +673,11 @@
         <div class="row">
             <div class="col-md-6" >
                 <label class="mb-1"><b>Total</b><b class="text-danger">*</b></label>
-                <input type="text" class="form-control inputNumber" name="Total" id="Total"
-                placeholder="$0000" value="0">
+                <input type="text" class="form-control inputNumber" name="Total" id="Total"  placeholder="$0000" value="0">
             </div>
             <div class="col-md-6" >
                 <label class="mb-1"><b>Deposit</b><b class="text-danger">*</b></label>
-                <input id="Deposit" name="Deposit" type="text" class="form-control inputNumber"
-                placeholder="$0000" value="0">
+                <input id="Deposit" name="Deposit" type="text" class="form-control inputNumber" placeholder="$0000" value="0">
             </div>
             <!-- end row -->
         </div>
@@ -698,20 +695,17 @@
                 <div class="row">
                     <div class="col-md-5" >
                         <label class="mb-1"><i class="fa fa-credit-card"></i> Credit card number<b class="text-danger">*</b></label>
-                        <input id="CreditCard" name="CreditCard" type="text" class="form-control"
-                            placeholder="#### #### #### ####">
+                        <input id="CreditCard" name="CreditCard" type="text" class="form-control" placeholder="#### #### #### ####">
                     </div>
                     <!-- end row -->
                     <div class="col-md-3" >
                         <label class="mb-1">Expiration date<b class="text-danger">*</b></label>
-                        <input id="ExpDate" name="ExpDate" type="text" class="form-control"
-                        placeholder="00/00">
+                        <input id="ExpDate" name="ExpDate" type="text" class="form-control" placeholder="00/00">
                     </div>
                     <!-- end row -->
                     <div class="col-md-4" >
                         <label class="mb-1">CVV<b class="text-danger">*</b></label>
-                        <input id="Cvv" name="Cvv" type="text" class="form-control"
-                            placeholder="">
+                        <input id="Cvv" name="Cvv" type="text" class="form-control"  placeholder="">
                     </div>
                     <!-- end row -->
                 </div>
@@ -735,20 +729,17 @@
                     <div class="row">
                         <div class="col-md-4" >
                         <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
-                            <input id="BillingCity" name="BillingCity" type="text"
-                                class="form-control BillingInput" placeholder="City">
+                            <input id="BillingCity" name="BillingCity" type="text" class="form-control BillingInput" placeholder="City">
                         </div>
                         <!-- end row -->
                         <div class="col-md-4" >
                         <label class="mb-1"><i class="fa fa-map-marker-alt"></i> State<b class="text-danger">*</b></label>
-                            <input id="BillingState" name="BillingState" type="text"
-                                class="form-control BillingInput" placeholder="State">
+                            <input id="BillingState" name="BillingState" type="text"  class="form-control BillingInput" placeholder="State">
                         </div>
                         <!-- end row -->
                         <div class="col-md-4" >
                         <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Zip Code</label>
-                            <input id="BillingZipCode" name="BillingZipCode" type="text"
-                                class="form-control BillingInput" placeholder="00000">
+                            <input id="BillingZipCode" name="BillingZipCode" type="text" class="form-control BillingInput" placeholder="00000">
                         </div>
                         <!-- end row -->
                     </div>
@@ -760,20 +751,17 @@
                 <div class="row">
                     <div class="col-md-4" >
                         <label class="mb-1"><i class="fa fa-mobile"></i> Phone number #1<b class="text-danger">*</b></label>
-                        <input id="Tel1" name="Tel1" type="tel" class="form-control phone"
-                            placeholder="(555) 555-5555">
+                        <input id="Tel1" name="Tel1" type="text" class="form-control phone" placeholder="(555) 555-5555">
                     </div>
                     <!-- end row -->
                     <div class="col-md-4" >
                         <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone number #2</label>
-                        <input id="Tel2" name="Tel2" type="tel" class="form-control phone"
-                            placeholder="(555) 555-5555">
+                        <input id="Tel2" name="Tel2" type="text" class="form-control phone" placeholder="(555) 555-5555">
                     </div>
                     <!-- end row -->
                     <div class="col-md-4" >
                         <label class="mb-1"><i class="fa fa-envelope"></i> Email</label>
-                        <input id="PaymentEmail" name="PaymentEmail" type="email"
-                            class="form-control" placeholder="us@domain.com">
+                        <input id="PaymentEmail" name="PaymentEmail" type="email"  class="form-control" placeholder="us@domain.com">
                     </div>
                     <!-- end row -->
                 </div>
@@ -786,8 +774,7 @@
     <div class="row">
             <div class="col-md-12" >
                 <label class="mb-1"><i class="fa fa-sticky-note"></i> Payment note</label>
-                <textarea id="PaymentNote" name="PaymentNote" class="form-control"
-                    placeholder="Opcional information" rows="5"></textarea>
+                <textarea id="PaymentNote" name="PaymentNote" class="form-control" placeholder="Opcional information" rows="5"></textarea>
             </div>
             <!-- end row -->
         </div>
@@ -814,9 +801,9 @@
 
                                                     <div class="col-md-4 ms-auto align-self-center">
                                                         <div class="card-body">
-                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-web text-dark"></i> www.ezautotransportationusa.com</p>
-                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-phone text-dark"></i> +1-888-888-8888</p>
-                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-map-marker text-dark"></i> 2821 Kensington Road, Avondale Estates, GA 30002 USA.</p>
+                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-web text-dark"></i> <?=URL_WEBSITE?></p>
+                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-phone text-dark"></i> <?=TELEFONO?></p>
+                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-map-marker text-dark"></i> <?=DIRECCION?></p>
                                                         </div>
                                                     </div><!--end col-->
 
@@ -1000,7 +987,7 @@
                                         <!--end col-->
                                         <div class="col-lg-12 col-xl-4">
                                             <div class="float-end d-print-none"> 
-                                            <a href="index.php?c=Orders&a=Index" class="btn btn-danger btn-sm" id="ButtonExit"><i class="fa fa-document"></i> Go to Order List</a> 
+                                            <a href="index.php?c=Orders&a=Index" class="btn btn-success btn-sm" id="ButtonExit"><i class="fa fa-document"></i> Go to Order List</a> 
                                             <a href="javascript:window.print()" class="btn btn-info btn-sm"><i class="fa fa-print"></i> Print</a> 
                                         </div>
                                         <!--end col-->
@@ -1039,64 +1026,19 @@
 <script type="text/javascript"> 
   $("#LoadingButton").hide();
   $("#ButtonExit").hide();
-function SumNumber(number1, number2){
 
-var x1, x2 = 0;
-
-    if(!number1 || number1 == undefined || number1 == "" || number1.length == 0){
-        x1 = 0;
-    }else{
-        x1 = parseFloat(number1);
-    }
-
-    if(!number2 || number2 == undefined || number2 == "" || number2.length == 0){
-        x2 = 0;
-    }else{
-        x2 = parseFloat(number2);
-    }
-
-    return x1 + x2;
-}
-
-function ConvertNumber(number1){
-
-var x1 = 0;
-
-    if(!number1 || number1 == undefined || number1 == "" || number1.length == 0){
-        x1 = 0;
-    }else{
-        x1 = parseFloat(number1);
-    }
-
-    return x1;
-}
-
-function RestNumber(number1, number2){
-
-var x1, x2 = 0;
-
-if(!number1 || number1 == undefined || number1 == "" || number1.length == 0){
-    x1 = 0;
-}else{
-    x1 = parseFloat(number1);
-}
-
-if(!number2 || number2 == undefined || number2 == "" || number2.length == 0){
-    x2 = 0;
-}else{
-    x2 = parseFloat(number2);
-}
-
-return x1- x2;
-
-}
 
 $(document).ready(function($){
 
     $('.phone').mask('(000) 000-0000');
     $("#Cvv").mask('0000');
     $("#CreditCard").mask("0000 0000 0000 0000");
-    $('.inputNumber').mask('000,000,000,000,000.00', {reverse: true});
+    $('.inputNumber').keyup(function(){
+        $('.inputNumber'). mask("#,##0.00", {reverse: true});
+    });
+    $('.inputNumber').click(function(){
+        $('.inputNumber'). mask("#,##0.00", {reverse: true});
+    });
 
     $('#ExpDate').mask("AB/CD", {
       translation: {
@@ -1334,7 +1276,7 @@ $("#form-horizontal").steps({
 
     }, onContentLoaded: function() {},
             onInit: function() {},
-            labels: { cancel: "Cancel", current: "current step:", pagination: "Pagination", finish: "Save order", next: "Next", previous: "Previous", loading: "Loading ..." },         
+            labels: { cancel: "Cancel", current: "current step:", pagination: "Pagination", finish: "Save order", next: "Next Step", previous: "Previous Step", loading: "Loading ..." },         
             onFinishing: function(event, currentIndex) {
                 saveOrder();
                 return true;
@@ -1342,7 +1284,7 @@ $("#form-horizontal").steps({
 });
 
 //Execute select2 functions 
-GetListCustomer();
+//GetListCustomer();
 GetListVehicles();
 
 function AddVehicleList() {
@@ -1370,47 +1312,17 @@ function EliminarVehiculo(e) {
 $(document).ready(function() {
    
     $('.select2').select2();
+    $("body").addClass("enlarge-menu");
+    $(".steps, .actions").addClass("d-print-none");
+    $(".ListVehiclesPDF").html("");    $('.select2').select2();
    
     $(".originInput, .DestinationInput").change(function() {
         $(this).css("border-color", "#A6A6A6");
     });
 
-    $("body").addClass("enlarge-menu");
-    AddVehicleList();
-    
-    $(".steps").addClass("d-print-none");
-    $(".actions").addClass("d-print-none");
-    $(".ListVehiclesPDF").html("");
 
-    $("#DeliveryDate").change(function(){
 
-        const PickUpOrderDateDate = new Date($("#PickUpOrderDateDate").val());
-        const DeliveryDate = new Date($("#DeliveryDate").val());
 
-        if(+DeliveryDate < +PickUpOrderDateDate){
-
-            $(".toast-error").html("(!) The delivery date cannot be less than today");
-            var myAlert2 = document.getElementById('toastError');
-            var bsAlert2 = new bootstrap.Toast(myAlert2);
-            bsAlert2.show();
-        }
-
-        });
-
-        $("#PickUpDate").change(function(){
-
-        const PickUpDate = new Date($("#PickUpDate").val());
-        const PickUpOrderDateDate = new Date($("#PickUpOrderDateDate").val());
-
-        if(+PickUpDate < +PickUpOrderDateDate){
-
-            $(".toast-error").html("(!) The pick-up date cannot be less than today");
-            var myAlert1 = document.getElementById('toastError');
-            var bsAlert1 = new bootstrap.Toast(myAlert1);
-            bsAlert1.show();
-        }
-
-    });
 });
 
 $("#SearchVehicles").click(function() {
@@ -1473,49 +1385,53 @@ $("#SearchDestinationCustomer, #SearchCustomerName").click(function() {
 
 function GetListCustomer() {
 
+    var IdCustomerOriginTemp = $("#IdCustomerOrigin").val();
+    var IdCustomerDestinationTemp = $("#IdCustomerDestination").val();
+
     $.ajax({
         type: 'POST',
         url: "index.php?c=customers&a=GetListCustomers",
         beforeSend: function() {
             $("#LoadingButton").show();
-    }
-    }).then(function(response) {
+   
+       }}).then(function(response) {
 
+        $("#LoadingButton").hide();
         var data = JSON.parse(response);
 
-        var optionDefault = new Option("Select origin customer", "", true, true);
-        $('#IdCustomerOrigin').append(optionDefault);
+        if (data.length > 0) {
 
-        var optionDefault2 = new Option("Select destination customer", "", true, true);
-        $('#IdCustomerDestination').append(optionDefault2);
+            $('#IdCustomerOrigin, #IdCustomerDestination').empty();
 
-        if (data.OriginList.length > 0) {
-
-            data.OriginList.forEach(element => {
+            var optionDefault = new Option("Select origin customer", "", true, true);
+            $('#IdCustomerOrigin, #IdCustomerDestination').append(optionDefault); 
+      
+            data.forEach(element => {
                 var optionBucle = new Option(element.Customer, element.Id, true, true);
-                $('#IdCustomerOrigin').append(optionBucle); //.trigger('change');
+                $('#IdCustomerOrigin, #IdCustomerDestination').append(optionBucle); 
             });
+                 
+                 $(".toast-success").html("(!) Customer lists updated");
+                var myAlert = document.getElementById('toastSuccess');
+                var bsAlert = new bootstrap.Toast(myAlert);
+                bsAlert.show();
+
+                $('#IdCustomerOrigin').val(IdCustomerOriginTemp).trigger('change');
+                $("#IdCustomerDestination").val(IdCustomerDestinationTemp).trigger("change");
+               
+        }else{
+
+                $(".toast-error").html("(x) Error to load customer list");
+                var myAlert = document.getElementById('toastError');
+                var bsAlert = new bootstrap.Toast(myAlert);
+                bsAlert.show();
+
+                $('#IdCustomerOrigin').val("").trigger('change');
+                $("#IdCustomerDestination").val("").trigger("change");
         }
 
-        if (data.DestinationList.length > 0) {
-
-            data.DestinationList.forEach(element => {
-                var optionBucle2 = new Option(element.Customer, element.Id, true, true);
-                $('#IdCustomerDestination').append(optionBucle2); //.trigger('change');
-            });
-
-        }
-
-        $('#IdCustomerOrigin').val("").trigger('change');
-        $('#IdCustomerDestination').val("").trigger('change');
-       
-        $(".toast-success").html("Customer list ready");
-        var myAlert = document.getElementById('toastSuccess');
-        var bsAlert = new bootstrap.Toast(myAlert);
-        bsAlert.show();
-        $("#LoadingButton").hide();
-
-        });
+      
+        })
 }
 
 function loadInfoPDF1(){
@@ -1524,8 +1440,7 @@ function loadInfoPDF1(){
     $(".ListVehiclesPDF").html("");
 
     //Origin Info
-    $(".OriginNameForm").html($("#IdCustomerOrigin :selected").text().substr(0, $("#IdCustomerOrigin :selected").text().indexOf("-")) != "" ? $("#IdCustomerOrigin :selected").text().substr(0, $("#IdCustomerOrigin :selected").text().indexOf("-")) : "<span class='text-danger'>Check origin customer name</span>");
-    
+    $(".OriginNameForm").html($("#IdCustomerOrigin :selected").text() != "" ? $("#IdCustomerOrigin :selected").text() : "<span class='text-danger'>Check origin customer name</span>");
     $(".OriginAddressForm").html($("#OriginAddress").val() != "" ? $("#OriginAddress").val() :  "<span class='text-danger'>Check origin address</span>");
 
     $(".PickUpDateForm").html($("#PickUpDate").val() != "" ? $("#PickUpDate").val() :  "<span class='text-danger'>Check pick up date</span>");
@@ -1538,9 +1453,8 @@ function loadInfoPDF1(){
     $(".OriginPhone1Form").html($("#OriginPhone1").val() != "" ? $("#OriginPhone1").val() :  "<span class='text-danger'>Check origin phone1</span>");
     $(".OriginPhone2Form").html($("#OriginPhone2").val() != "" ? "/ "+$("#OriginPhone2").val() :  "");
 
-    
-    //Destination Info
-    $(".DestinationNameForm").html($("#IdCustomerDestination :selected").text().substr(0, $("#IdCustomerDestination :selected").text().indexOf("-")) != "" ? $("#IdCustomerDestination :selected").text().substr(0, $("#IdCustomerDestination :selected").text().indexOf("-")) : "<span class='text-danger'>Check destination customer name</span>");
+     //Destination Info
+    $(".DestinationNameForm").html($("#IdCustomerDestination :selected").text() != "" ? $("#IdCustomerDestination :selected").text() : "<span class='text-danger'>Check destination customer name</span>");
     
     $(".DestinationAddressForm").html($("#DestinationAddress").val() != "" ? $("#DestinationAddress").val() :  "<span class='text-danger'>Check destination address</span>");
 
@@ -1601,11 +1515,11 @@ function loadInfoPDF1(){
     var OriginDestinationNote = "";
 
     if($("#OriginNote").val() != ""){
-        OriginNote ="<b>Origin notes:</b><br> "+$("#OriginNote").val()+"<br>";
+        OriginNote ="<b class='font-14'>Origin notes:</b><br> "+$("#OriginNote").val()+"<br>";
     }
 
     if($("#DestinationNote").val() != ""){
-        DestinationNote ="<b>Destination notes:</b></br> "+$("#DestinationNote").val();
+        DestinationNote ="<b class='font-14'>Destination notes:</b></br> "+$("#DestinationNote").val();
     }
 
     OriginDestinationNote = OriginNote + "<br>" + DestinationNote;
@@ -1663,14 +1577,155 @@ function saveOrder(){
                         var bsAlert = new bootstrap.Toast(myAlert);
                         bsAlert.show();
 
-                    }
-                    $("#LoadingButton").hide();
+                    }   
                     $("#ButtonExit").show();
+                    $("#LoadingButton").hide();
+                 
                 }else{
-                    console.log(data);
+                   // console.log(data);
                 }
             }
         })
+    }
+
+function onchangeOriginCustomer(){
+
+var CustomerOrigin = $("#IdCustomerOrigin").val();
+
+if (CustomerOrigin != '') {
+
+    $("#OriginPhone1, #OriginEmail,#OriginPhone2 ").css("border-color", "#e3ebf6");
+    $("#OriginPhone2, #OriginPhone1, #OriginEmail").val("");
+
+    $.ajax({
+        url: "index.php?c=customers&a=GetInfoCustomerById",
+        type: "POST",
+        data: {
+            Id: CustomerOrigin
+        },
+        success: function(data) {
+
+            $("#OriginPhone1, #OriginEmail,#OriginPhone2 ").css("border-color", "orange");
+
+            var value = JSON.parse(data);
+
+            if (value.Email != '' && value.Email != null) {
+                $("#OriginEmail").val(value.Email);
+                $("#OriginEmail").css("border-color", "green");
+            }
+            if (value.Phone1 != '' && value.Phone1 != null) {
+                $("#OriginPhone1").val(value.Phone1);
+                $("#OriginPhone1").css("border-color", "green");
+            }
+
+            if (value.Phone2 != '' && value.Phone2 != null) {
+                $("#OriginPhone2").val(value.Phone2);
+                $("#OriginPhone2").css("border-color", "green");
+            }
+
+
+        }
+    });
+
+}else{
+    $("#OriginPhone1, #OriginEmail,#OriginPhone2 ").css("border-color", "#e3ebf6");
+    $("#OriginPhone2, #OriginPhone1, #OriginEmail").val("");
+}
+}
+
+function onchangeDestinationCustomer(){
+
+var CustomerDestination = $("#IdCustomerDestination").val();
+
+if (CustomerDestination != '') {
+
+    $("#DestinationPhone1, #DestinationEmail,#DestinationPhone2").css("border-color", "#e3ebf6");
+    $("#DestinationPhone2, #DestinationPhone1, #DestinationEmail").val("");
+
+    $.ajax({
+        url: "index.php?c=customers&a=GetInfoCustomerById",
+        type: "POST",
+        data: {
+            Id: CustomerDestination
+        },
+        success: function(data) {
+
+            $("#DestinationPhone2, #DestinationPhone1, #DestinationEmail").css("border-color", "orange");
+
+            var value = JSON.parse(data);
+
+            if (value.Email != '' && value.Email != null) {
+                $("#DestinationEmail").val(value.Email);
+                $("#DestinationEmail").css("border-color", "green");
+            }
+
+            if (value.Phone1 != '' && value.Phone1 != null) {
+                $("#DestinationPhone1").val(value.Phone1);
+                $("#DestinationPhone1").css("border-color", "green");
+            }
+
+            if (value.Phone2 != '' && value.Phone2 != null) {
+                $("#DestinationPhone2").val(value.Phone2);
+                $("#DestinationPhone2").css("border-color", "green");
+            }
+
+        }
+    });
+}else{
+    $("#DestinationPhone1, #DestinationEmail,#DestinationPhone2").css("border-color", "#e3ebf6");
+    $("#DestinationPhone2, #DestinationPhone1, #DestinationEmail").val("");
+}
+
+}
+function SumNumber(number1, number2){
+
+var x1, x2 = 0;
+
+    if(!number1 || number1 == undefined || number1 == "" || number1.length == 0){
+        x1 = 0;
+    }else{
+        x1 = parseFloat(number1.toString().replace(',',''));
+    }
+
+    if(!number2 || number2 == undefined || number2 == "" || number2.length == 0){
+        x2 = 0;
+    }else{
+        x2 = parseFloat(number2.toString().replace(',',''));
+    }
+
+    return x1 + x2;
+}
+
+function ConvertNumber(number1){
+
+var x1 = 0;
+
+    if(!number1 || number1 == undefined || number1 == "" || number1.length == 0){
+        x1 = 0;
+    }else{
+        x1 = parseFloat(number1.toString().replace(',',''));
+    }
+
+    return x1;
+}
+
+function RestNumber(number1, number2){
+
+var x1, x2 = 0;
+
+if(!number1 || number1 == undefined || number1 == "" || number1.length == 0){
+    x1 = 0;
+}else{
+    x1 = parseFloat(number1.toString().replace(',',''));
+}
+
+if(!number2 || number2 == undefined || number2 == "" || number2.length == 0){
+    x2 = 0;
+}else{
+    x2 = parseFloat(number2.toString().replace(',',''));
+}
+
+return x1- x2;
 
 }
 

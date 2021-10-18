@@ -124,8 +124,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info">
-                <h6 class="modal-title m-0" id="ModalNewCompanyServiceLabel"> <i class="fas fa-building me-2"></i> New
-                    Company</h6>
+                <h6 class="modal-title m-0" id="ModalNewCompanyServiceLabel"> <i class="fa fa-truck me-2"></i> New Truker Company</h6>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!--end modal-header-->
@@ -212,7 +211,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info">
-                <h6 class="modal-title m-0" id="ModalNewDriverLabel"> <i class="fa fa-address-card me-2"></i> New driver
+                <h6 class="modal-title m-0" id="ModalNewDriverLabel"> <i class="fa fa-bus me-2"></i> New driver
                 </h6>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -297,10 +296,10 @@
         <div class="card-header d-print-none">
             <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal" data-bs-target="#ModalNewCustomer"><i class="fas fa-user-plus me-2"></i>New customer</button>
             <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal" data-bs-target="#ModalNewVehicle"><i class="fas fa-car me-2"></i>New vehicle</button>
-            <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal" data-bs-target="#ModalNewCompanyService"><i class="fas fa-building me-2"></i>New company</button>
-            <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal" data-bs-target="#ModalNewDriver"><i class="fa fa-address-card me-2"></i>New driver</button>
+            <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal" data-bs-target="#ModalNewCompanyService"><i class="fa fa-truck me-2"></i>New company</button>
+            <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal" data-bs-target="#ModalNewDriver"><i class="fa fa-bus me-2"></i>New driver</button>
             <button type="button" class="btn btn-soft-danger btn-sm" onclick="$('input, textarea, select').val('');">Clear all fields</button>
-            <button type="button" id="LoadingButton" class="btn btn-soft-light btn-sm"> <div class="spinner-border spinner-border-sm" role="status"></div></button>
+            <button type="button" id="LoadingButton" class="btn btn-soft-light btn-sm"> <div class="spinner-border spinner-border-sm text-danger" role="status"></div></button>
         </div>
         <!--end card-header-->
         <div class="card-body">
@@ -317,7 +316,6 @@
                                 <label class="mb-1"><i class="fa fa-user"></i> Origin customer name<b class="text-danger">*</b></label>
                                     <div class="input-group">
                                              <select style="width: 90%;" id="IdCustomerOrigin" name="IdCustomerOrigin" class="select2 form-control mb-3 custom-select originInput" onchange="onchangeOriginCustomer()">
-                                            <option value="" selected>Select a origin customer</option>
                                              <?php foreach($CustomerList  as $key => $value): ?>
                                             <option value="<?= $value['Id']; ?>"<?php if($value['Id'] == $Order->IdCustomerOrigin): ?> selected="selected"<?php endif; ?>><?= $value['Customer']; ?></option>
                                             <?php endforeach; ?>
@@ -338,12 +336,10 @@
                                 <label class="mb-1"><i class="fa fa-user"></i> Destination customer name<b class="text-danger">*</b></label>
                                     <div class="input-group">
                                         <select style="width: 90%;" id="IdCustomerDestination" name="IdCustomerDestination" class="select2 form-control mb-3 custom-select DestinationInput" onchange="onchangeDestinationCustomer()">
-                                                <option value="" selected>Select a destination customer</option>
                                                 <?php foreach($CustomerList  as $key => $value): ?>
                                                 <option value="<?= $value['Id']; ?>"<?php if($value['Id'] == $Order->IdCustomerDestination): ?> selected="selected"<?php endif; ?>><?= $value['Customer']; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
-                                       
                                         <button class="btn btn-dark" type="button" id="SearchDestinationCustomer"><i  class="ti ti-reload"></i></button>
                                         <input type="text" id="IdCustomerDestinationCopy" hidden value="<?= $Order->IdCustomerDestination; ?>">
                                     </div>
@@ -372,8 +368,7 @@
                                             <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
                                                 <input style="display:none;" />
-                                                <input autocomplete="off" id="OriginCity" name="OriginCity" type="text"
-                                                    class="form-control originInput" placeholder="City" value="<?= $Order->OriginCity; ?>">
+                                                <input autocomplete="off" id="OriginCity" name="OriginCity" type="text"  class="form-control originInput" placeholder="City" value="<?= $Order->OriginCity; ?>">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
@@ -430,7 +425,7 @@
                                     <div class="col-md-12" >
                                         <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Destination address<b class="text-danger">*</b></label>
                                             <input style="display:none;" />
-                                        <input id="DestinationAddress" name="DestinationAddress" type="text" class="form-control DestinationInput" placeholder="Ex. 1600 Pennsylvania..." value="<?= $Order->DestinationAddress; ?>">
+                                            <input id="DestinationAddress" name="DestinationAddress" type="text" class="form-control DestinationInput" placeholder="Ex. 1600 Pennsylvania..." value="<?= $Order->DestinationAddress; ?>">
                                     </div>
                                     <!-- end row -->
                                 </div>
@@ -441,20 +436,17 @@
                                         <div class="row">
                                             <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
-                                                <input id="DestinationCity" name="DestinationCity" type="text"
-                                                    class="form-control DestinationInput" placeholder="City" value="<?= $Order->DestinationCity; ?>">
+                                                <input id="DestinationCity" name="DestinationCity" type="text" class="form-control DestinationInput" placeholder="City" value="<?= $Order->DestinationCity; ?>">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> State<b class="text-danger">*</b></label>
-                                                <input id="DestinationState" name="DestinationState" type="text"
-                                                    class="form-control DestinationInput" placeholder="State" value="<?= $Order->DestinationState; ?>">
+                                                <input id="DestinationState" name="DestinationState" type="text" class="form-control DestinationInput" placeholder="State" value="<?= $Order->DestinationState; ?>">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Zip Code</label>
-                                                <input id="DestinationZip" name="DestinationZip" type="text"
-                                                    class="form-control DestinationInput" placeholder="00000" value="<?= $Order->DestinationZip; ?>">
+                                                <input id="DestinationZip" name="DestinationZip" type="text" class="form-control DestinationInput" placeholder="00000" value="<?= $Order->DestinationZip; ?>">
                                             </div>
                                             <!-- end row -->
                                         </div>
@@ -644,7 +636,9 @@
                                                         <hr>
                                                         <p class="text-secondary"><i class="fa fa-trash text-danger"></i>
                                                             Don't delete the first row.</p>
-                                                    </div>
+                                                            <p class="text-secondary"><i class="fa fa-info text-warning"></i>
+                                                            When you refresh the list of cars, the selected ones are cleared.</p>                                                    
+                                                           </div>
                                                     <!--end col-->
                                                 </div>
                                                 <!--end row-->
@@ -770,12 +764,12 @@
                                     <div class="row">
                                         <div class="col-md-4" >
                                         <label class="mb-1"><i class="fa fa-mobile"></i> Phone number #1<b class="text-danger">*</b></label>
-                                            <input id="Tel1" name="Tel1" type="tel" class="form-control phone" placeholder="(555) 555-5555" value="<?= $Payment->Tel1; ?>">
+                                            <input id="Tel1" name="Tel1" type="text" class="form-control phone" placeholder="(555) 555-5555" value="<?= $Payment->Tel1; ?>">
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone number #2</label>
-                                            <input id="Tel2" name="Tel2" type="tel" class="form-control phone" placeholder="(555) 555-5555" value="<?= $Payment->Tel2; ?>">
+                                            <input id="Tel2" name="Tel2" type="text" class="form-control phone" placeholder="(555) 555-5555" value="<?= $Payment->Tel2; ?>">
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-4" >
@@ -821,9 +815,9 @@
 
                                                     <div class="col-md-4 ms-auto align-self-center">
                                                         <div class="card-body">
-                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-web text-dark"></i> www.ezautotransportationusa.com</p>
-                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-phone text-dark"></i> +1-888-888-8888</p>
-                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-map-marker text-dark"></i> 2821 Kensington Road, Avondale Estates, GA 30002 USA.</p>
+                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-web text-dark"></i> <?=URL_WEBSITE?></p>
+                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-phone text-dark"></i> <?=TELEFONO?></p>
+                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-map-marker text-dark"></i> <?=DIRECCION?></p>
                                                         </div>
                                                     </div><!--end col-->
 
@@ -1002,7 +996,7 @@
                                         <!--end col-->
                                         <div class="col-lg-12 col-xl-4">
                                             <div class="float-end d-print-none"> 
-                                            <a href="index.php?c=Orders&a=Index" class="btn btn-danger btn-sm" id="ButtonExit"><i class="fa fa-document"></i> Go to Order List</a> 
+                                            <a href="index.php?c=Orders&a=Index" class="btn btn-success btn-sm" id="ButtonExit"><i class="fa fa-document"></i> Go to Order List</a> 
                                             <a href="javascript:window.print()" class="btn btn-info btn-sm"><i class="fa fa-print"></i> Print</a> 
                                         </div>
                                         <!--end col-->
@@ -1131,17 +1125,17 @@
                                                 
                                                 <div class="col-md-6" >
                                                     <label class="mb-1"><i class="fa fa-lock text-secondary" ></i> <b>Total</b></label>
-                                                    <input type="text" class="form-control inputNumber" name="TotalOrder" id="TotalOrder" placeholder="$0000" readonly value="0">
+                                                    <input type="text" class="form-control inputNumber" name="TotalOrder" id="TotalOrder" placeholder="$0000" readonly value="<?=$Order->Total?>">
                                                 </div>
 
                                                 <div class="col-md-3" >
                                                     <label class="mb-1"><i class="fa fa-lock text-secondary" ></i> <b>Deposit</b></label>
-                                                    <input id="DepositOrder" name="DepositOrder" type="text" class="form-control inputNumber" placeholder="$0000" readonly value="0">
+                                                    <input id="DepositOrder" name="DepositOrder" type="text" class="form-control inputNumber" placeholder="$0000" readonly value="<?=$Order->Deposit?>">
                                                 </div>
 
                                                 <div class="col-md-3" >
                                                   <label class="mb-1"><i class="fa fa-money-bill"></i><b class="text-success"> Earnings</b></label>
-                                                  <input id="Earnings" name="Earnings" type="text" class="form-control inputNumber" placeholder="$0000" readonly value="0">
+                                                  <input id="Earnings" name="Earnings" type="text" class="form-control inputNumber" placeholder="$0000" readonly value="<?=$Order->Earnings?>">
                                                  </div>
 
                                             </div><br>
@@ -1150,24 +1144,24 @@
                                                 <div class="row">
                                                     <div class="col-md-6" >
                                                         <label class="mb-1"><i class="fa fa-lock text-secondary" ></i> Cod</label>
-                                                        <input id="Cod" name="Cod" type="text" class="form-control inputNumber" placeholder="$0000" readonly value="0">
+                                                        <input id="Cod" name="Cod" type="text" class="form-control inputNumber" placeholder="$0000" readonly value="<?=$Order->Cod?>">
                                                     </div>
 
                                                     <div class="col-md-6" >
                                                         <label class="mb-1"><i class="fa fa-lock text-secondary" ></i> Truker rate</label>
-                                                        <input id="TrukerRate" name="TrukerRate" type="text" class="form-control inputNumber" placeholder="$0000" value="0" readonly>
+                                                        <input id="TrukerRate" name="TrukerRate" type="text" class="form-control inputNumber" placeholder="$0000" readonly value="<?=$Order->TrukerRate?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="row inputpadding">
                                                     <div class="col-md-6">
                                                         <label class="mb-1"><i class="fa fa-dollar-sign"></i><b class="text-dark"> Extra truker Fee</b></label>
-                                                        <input id="ExtraTrukerFee" name="ExtraTrukerFee" type="text" class="form-control inputNumber" placeholder="$0000" value="0">
+                                                        <input id="ExtraTrukerFee" name="ExtraTrukerFee" type="text" class="form-control inputNumber" placeholder="$0000" value="<?=$Order->ExtraTrukerFee?>">
                                                     </div>
 
                                                     <div class="col-md-6">
                                                         <label class="mb-1"><i class="fa fa-truck"></i> <b class="text-danger">Truker owes us</b></label>
-                                                        <input id="TrukerOwesUs" name="TrukerOwesUs" type="text" class="form-control inputNumber"  placeholder="$0000" value="0">
+                                                        <input id="TrukerOwesUs" name="TrukerOwesUs" type="text" class="form-control inputNumber"  placeholder="$0000" value="<?=$Order->TrukerOwesUs?>">
                                                     </div>
                                                 </div>
 
@@ -1198,9 +1192,9 @@
 
                                                     <div class="col-md-4 ms-auto align-self-center">
                                                         <div class="card-body">
-                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-web text-dark"></i> www.ezautotransportationusa.com</p>
-                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-phone text-dark"></i> +1-888-888-8888</p>
-                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-map-marker text-dark"></i> 2821 Kensington Road, Avondale Estates, GA 30002 USA.</p>
+                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-web text-dark"></i> <?=URL_WEBSITE?></p>
+                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-phone text-dark"></i> <?=TELEFONO?></p>
+                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-map-marker text-dark"></i> <?=DIRECCION?></p>
                                                         </div>
                                                     </div><!--end col-->
 
@@ -1430,10 +1424,10 @@
 <script src="plugins/select2/select2.min.js"></script>
 <script src="plugins/jquery-steps/jquery.steps.min.js"></script>
 
-<script src="assets/js/orders.js"></script>
+<script src="assets/js/ordersEdit.js"></script>
 <script src="assets/js/jquery.mask.js"></script>
 <script type="text/javascript">
-  
+
   $("#LoadingButton").hide();
    $("#ButtonExit").hide();
 
@@ -1442,11 +1436,13 @@ $(document).ready(function($){
     $('.phone, #DriverPhone1, #DriverPhone2').mask('(000) 000-0000');
     $("#Cvv").mask('0000');
     $("#CreditCard").mask("0000 0000 0000 0000");
-    //
     $('.inputNumber').keyup(function(){
         $('.inputNumber'). mask("#,##0.00", {reverse: true});
     });
 
+    $('.inputNumber').click(function(){
+        $('.inputNumber'). mask("#,##0.00", {reverse: true});
+    });
 
     $('#ExpDate').mask("AB/CD", {
       translation: {
@@ -1504,7 +1500,6 @@ $("#PickUpDate").change(function(){
         }
 
         });
-
 });
 
 function GetModelsByBrand(e){
@@ -1554,7 +1549,6 @@ $("#form-horizontal").steps({
     transitionEffect: "slide",
     onStepChanging: function (event, currentIndex, newIndex)
     {
-      
         switch (newIndex) {
 
             case 1:
@@ -1703,10 +1697,14 @@ $("#form-horizontal").steps({
 
                             $("#TotalOrder").val($("#Total").val());
                             $("#DepositOrder").val($("#Deposit").val());
-                            $("#Earnings").val(RestNumber($("#Deposit").val(), $("#ExtraTrukerFee").val()));
+                           
+                           /* var Earning1 =  RestNumber($("#Deposit").val(), $("#ExtraTrukerFee").val());
+                            $("#Earnings").val(SumNumber(Earning1,$("#TrukerOwesUs").val()));
+                            
                             $("#Cod").val(RestNumber($("#Total").val(),$("#Deposit").val()));
+                           
                             var sum1 = SumNumber($("#ExtraTrukerFee").val(), $("#Cod").val());
-                            $("#TrukerRate").val(RestNumber(sum1,$("#TrukerOwesUs").val())); 
+                            $("#TrukerRate").val(RestNumber(sum1,$("#TrukerOwesUs").val())); */
 
                              return true;
                         }
@@ -1784,9 +1782,7 @@ function EliminarVehiculo(e) {
 //Input Search Select2
 $(document).ready(function() {
 
-    $("body").addClass("enlarge-menu");
-    $(".steps, .actions").addClass("d-print-none");
-    $(".ListVehiclesPDF").html("");
+   
     $('.select2').select2();
    
     $(".originInput, .DestinationInput").change(function() {
@@ -1795,11 +1791,12 @@ $(document).ready(function() {
 
     $("#Deposit, #ExtraTrukerFee, #Total, #TrukerOwesUs").keyup(function() {
 
-      // console.log($("#Total").unmask().val()); OLIVER
-
         $("#TotalOrder").val($("#Total").val());
         $("#DepositOrder").val($("#Deposit").val());
-        $("#Earnings").val(SumNumber(RestNumber($("#Deposit").val(), $("#ExtraTrukerFee").val()),$("#TrukerOwesUs").val()));
+       
+       var Earning1 =  RestNumber($("#Deposit").val(), $("#ExtraTrukerFee").val());
+        $("#Earnings").val(SumNumber(Earning1,$("#TrukerOwesUs").val()));
+
         $("#Cod").val(RestNumber($("#Total").val(),$("#Deposit").val()));
 
         var sum1 = SumNumber($("#ExtraTrukerFee").val(), $("#Cod").val());
@@ -1873,42 +1870,53 @@ $("#SearchDestinationCustomer, #SearchCustomerName").click(function() {
 
 
 function GetListCustomer() {
+    var IdCustomerOriginTemp = $("#IdCustomerOrigin").val();
+    var IdCustomerDestinationTemp = $("#IdCustomerDestination").val();
 
     $.ajax({
         type: 'POST',
         url: "index.php?c=customers&a=GetListCustomers",
         beforeSend: function() {
             $("#LoadingButton").show();
-    }
-    }).then(function(response) {
+   
+       }}).then(function(response) {
 
+        $("#LoadingButton").hide();
         var data = JSON.parse(response);
- 
-        var optionDefault = new Option("Select origin customer", "", true, true);
-        $('#IdCustomerOrigin').append(optionDefault); 
-      
-        var optionDefault2 = new Option("Select destination customer", "", true, true);
-        $('#IdCustomerDestination').append(optionDefault2);
 
         if (data.length > 0) {
 
+            $('#IdCustomerOrigin, #IdCustomerDestination').empty();
+
+            var optionDefault = new Option("Select origin customer", "", true, true);
+            $('#IdCustomerOrigin, #IdCustomerDestination').append(optionDefault); 
+      
             data.forEach(element => {
                 var optionBucle = new Option(element.Customer, element.Id, true, true);
-                $('#IdCustomerOrigin').append(optionBucle); 
-                $('#IdCustomerDestination').append(optionBucle); 
+                $('#IdCustomerOrigin, #IdCustomerDestination').append(optionBucle); 
             });
+                 
+                 $(".toast-success").html("(!) Customer lists updated");
+                var myAlert = document.getElementById('toastSuccess');
+                var bsAlert = new bootstrap.Toast(myAlert);
+                bsAlert.show();
+
+                $('#IdCustomerOrigin').val(IdCustomerOriginTemp).trigger('change');
+                $("#IdCustomerDestination").val(IdCustomerDestinationTemp).trigger("change");
+               
+        }else{
+
+                $(".toast-error").html("(x) Error to load customer list");
+                var myAlert = document.getElementById('toastError');
+                var bsAlert = new bootstrap.Toast(myAlert);
+                bsAlert.show();
+
+                $('#IdCustomerOrigin').val("").trigger('change');
+                $("#IdCustomerDestination").val("").trigger("change");
         }
 
-        $('#IdCustomerOrigin').val("").trigger('change');
-        $('#IdCustomerDestination').val("").trigger('change');
-       
-        $(".toast-success").html("Customer list ready");
-        var myAlert = document.getElementById('toastSuccess');
-        var bsAlert = new bootstrap.Toast(myAlert);
-        bsAlert.show();
-        $("#LoadingButton").hide();
-
-        });
+      
+        })
 }
 
 function loadInfoPDF1(){
@@ -1918,7 +1926,6 @@ function loadInfoPDF1(){
 
     //Origin Info
     $(".OriginNameForm").html($("#IdCustomerOrigin :selected").text() != "" ? $("#IdCustomerOrigin :selected").text() : "<span class='text-danger'>Check origin customer name</span>");
-    
     $(".OriginAddressForm").html($("#OriginAddress").val() != "" ? $("#OriginAddress").val() :  "<span class='text-danger'>Check origin address</span>");
 
     $(".PickUpDateForm").html($("#PickUpDate").val() != "" ? $("#PickUpDate").val() :  "<span class='text-danger'>Check pick up date</span>");
@@ -1931,7 +1938,6 @@ function loadInfoPDF1(){
     $(".OriginPhone1Form").html($("#OriginPhone1").val() != "" ? $("#OriginPhone1").val() :  "<span class='text-danger'>Check origin phone1</span>");
     $(".OriginPhone2Form").html($("#OriginPhone2").val() != "" ? "/ "+$("#OriginPhone2").val() :  "");
 
-    
     //Destination Info
     $(".DestinationNameForm").html($("#IdCustomerDestination :selected").text() != "" ? $("#IdCustomerDestination :selected").text() : "<span class='text-danger'>Check destination customer name</span>");
     
@@ -1994,11 +2000,11 @@ function loadInfoPDF1(){
     var OriginDestinationNote = "";
 
     if($("#OriginNote").val() != ""){
-        OriginNote ="<b>Origin notes:</b><br> "+$("#OriginNote").val()+"<br>";
+        OriginNote ="<b class='font-14'>Origin notes:</b><br> "+$("#OriginNote").val()+"<br>";
     }
 
     if($("#DestinationNote").val() != ""){
-        DestinationNote ="<b>Destination notes:</b></br> "+$("#DestinationNote").val();
+        DestinationNote ="<b class='font-14'>Destination notes:</b></br> "+$("#DestinationNote").val();
     }
 
     OriginDestinationNote = OriginNote + "<br>" + DestinationNote;
@@ -2012,16 +2018,16 @@ function loadInfoPDF2(){
   //Payment info
   $("#TrukerCODForm").html($("#Cod").val() != "" ? "US$ "+$("#Cod").val() :  "<span class='text-danger'>Check Cod field</span>");
  
-  if($("#ExtraTrukerFee").val() != ""){
+  if(ConvertNumber($("#ExtraTrukerFee").val()) >0.1){
     $("#TrukerFeeFormTR").show();
-    $("#TrukerFeeForm").html($("#ExtraTrukerFee").val());
+    $("#TrukerFeeForm").html("US$ "+$("#ExtraTrukerFee").val());
   }else{
     $("#TrukerFeeFormTR").hide();
   }
   
-  if($("#TrukerOwesUs").val() != ""){
+  if(ConvertNumber($("#TrukerOwesUs").val()) >0.1){
     $("#TrukerOwesUsFormTR").show();
-    $("#TrukerOwesUsForm").html($("#TrukerOwesUs").val());
+    $("#TrukerOwesUsForm").html("US$ "+$("#TrukerOwesUs").val());
   }else{
     $("#TrukerOwesUsFormTR").hide();
   }
@@ -2093,7 +2099,10 @@ function saveAndUpdateOrder(){
                     $("#LoadingButton").hide();
 
                 }else{
-                  //  console.log(data);
+                    $(".toast-error").html("(!) Error to update the order");
+                    var myAlert = document.getElementById('toastError');
+                    var bsAlert = new bootstrap.Toast(myAlert);
+                    bsAlert.show();
                 }
             }
         });
@@ -2108,104 +2117,100 @@ function saveAndUpdateOrder(){
 }
 
 
-function GetListDrivers() {
+function SearchDriverName() {
+
+var  IdDriverTemp = $('#IdDriver').val();
 
 $.ajax({
     type: 'POST',
     url: "index.php?c=drivers&a=GetListDrivers",
     beforeSend: function() {
             $("#LoadingButton").show();
-    },
-}).then(function(response) {
+    }}).then(function(response) {
+
+        $("#LoadingButton").hide();
 
     var data = JSON.parse(response);
 
     if (data.length > 0) {
 
-        data.forEach(element => {
-            var optionBucle = new Option(element.Driver, element.Id, true, true);
-            $('#IdDriver').append(optionBucle); //.trigger('change');
-        });
-    }
+        $('#IdDriver').empty();
 
-    var optionDefault = new Option("Select driver ", "", true, true);
-    $('#IdDriver').append(optionDefault);
-    $('#IdDriver').val("").trigger('change');
-
-    $(".toast-success").html("Driver's list ready");
-    var myAlert = document.getElementById('toastSuccess');
-    var bsAlert = new bootstrap.Toast(myAlert);
-    bsAlert.show();
-    $("#LoadingButton").hide();
-
-
-    });
-}
-
-function SearchDriverName(){
-
-    $.ajax({
-    type: 'POST',
-    url: "index.php?c=drivers&a=GetListDrivers",
-    beforeSend: function() {
-            $("#LoadingButton").show();
-    },
-}).then(function(response) {
-
-    var data = JSON.parse(response);
-
-    if (data.length > 0) {
+        var optionDefault = new Option("Select driver ", "", true, true);
+        $('#IdDriver').append(optionDefault);
 
         data.forEach(element => {
             var optionBucle = new Option(element.Driver, element.Id, true, true);
             $('#IdDriver').append(optionBucle); //.trigger('change');
         });
+
+
+        $(".toast-success").html("(!) Driver's list updated");
+        var myAlert = document.getElementById('toastSuccess');
+        var bsAlert = new bootstrap.Toast(myAlert);
+        bsAlert.show();
+
+        $('#IdDriver').val(IdDriverTemp).trigger('change');
+
+    }else{
+        $('#IdDriver').val("").trigger('change');
+        $(".toast-error").html("(x) Error to load driver list");
+        var myAlert = document.getElementById('toastError');
+       var bsAlert = new bootstrap.Toast(myAlert);
+        bsAlert.show();
     }
 
-    var optionDefault = new Option("Select driver ", "", true, true);
-    $('#IdDriver').append(optionDefault);
-    $('#IdDriver').val("").trigger('change');
-
-    $(".toast-success").html("Driver's list ready");
-    var myAlert = document.getElementById('toastSuccess');
-    var bsAlert = new bootstrap.Toast(myAlert);
-    bsAlert.show();
-    $("#LoadingButton").hidden();
-
     });
-
 }
 
 
 function GetListCompanyServices() {
 
+    var IdCompanyServiceTemp = $('#IdCompanyService').val();
+
 $.ajax({
     type: 'POST',
     url: "index.php?c=companyServices&a=GetListCompanyServices",
     beforeSend: function() {
-            $("#LoadingButton").show();
-    }
-}).then(function(response) {
+    
+        $("#LoadingButton").show();
+    
+    }}).then(function(response) {
 
+    $("#LoadingButton").hide();
     var data = JSON.parse(response);
 
     if (data.length > 0) {
+
+        $('#IdCompanyService').empty();
+
+        var optionDefault = new Option("Select truker company", "", true, true);
+        $('#IdCompanyService').append(optionDefault);
 
         data.forEach(element => {
             var optionBucle = new Option(element.CompanyName, element.Id, true, true);
             $('#IdCompanyService').append(optionBucle); //.trigger('change');
         });
+
+        $(".toast-success").html("Truker list ready");
+        var myAlert = document.getElementById('toastSuccess');
+        var bsAlert = new bootstrap.Toast(myAlert);
+        bsAlert.show();
+  
+        $('#IdCompanyService').val(IdCompanyServiceTemp).trigger('change');
+    
+    }else{
+
+        $(".toast-error").html("(x) Error to load Truker list");
+        var myAlert = document.getElementById('toastError');
+        var bsAlert = new bootstrap.Toast(myAlert);
+         bsAlert.show();
+
+        $('#IdCompanyService').val("").trigger('change');
+
     }
 
-    var optionDefault = new Option("Select truker company", "", true, true);
-    $('#IdCompanyService').append(optionDefault);
-    $('#IdCompanyService').val("").trigger('change');
-
-    $(".toast-success").html("Truker list ready");
-    var myAlert = document.getElementById('toastSuccess');
-    var bsAlert = new bootstrap.Toast(myAlert);
-    bsAlert.show();
-    $("#LoadingButton").hide();
+  
     });
 }
 
@@ -2469,10 +2474,6 @@ $(clonado).find(".select2").select2();
 }
 
 
-$(document).ready(function($){
-setTimeout(() => {LoadEditFields();}, 2500);
-});
-
 function SumNumber(number1, number2){
 
 var x1, x2 = 0;
@@ -2524,5 +2525,10 @@ if(!number2 || number2 == undefined || number2 == "" || number2.length == 0){
 return x1- x2;
 
 }
+
+
+$(document).ready(function($){
+setTimeout(() => {LoadEditFields();}, 2500);
+});
 
 </script>

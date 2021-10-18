@@ -22,6 +22,8 @@ class OrdersController
 
         if($_SESSION['UserOnline']->Profile == "admin") {
 
+          
+
             $rsOrders1              = $this->model->getCountOrdersPending();
             $CountOrdersPending     = $rsOrders1['CountOrders'];
 
@@ -51,8 +53,15 @@ class OrdersController
 
          if(isset($_SESSION['UserOnline']) && $_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager"){
                 
-                 $this->orderStatus    = new OrderStatus();
+                    $this->orderStatus    = new OrderStatus();
+                    $this->customer       = new Customers();
+                    $this->companies      = new CompanyServices();
+                    $this->drivers        = new Drivers();
+                    
                  $OrderStatusList  =  $this->orderStatus->GetListOrderStatus();
+                 $CustomerList     =  $this->customer->GetListCustomers();
+                 $Companies        =  $this->companies->GetListCompanyServices();
+                 $DriverList       =  $this->drivers->GetListDrivers();
 
                 GetRouteView(null, "header");
                 require_once 'View/orders/order.php';
@@ -79,16 +88,25 @@ class OrdersController
         if(isset($_REQUEST['Id'])){
 
             $this->orderStatus    = new OrderStatus();
-
+            $this->customer       = new Customers();
+            $this->companies      = new CompanyServices();
+            $this->drivers        = new Drivers();
+            
             $OrderStatusList  =  $this->orderStatus->GetListOrderStatus();
+            $CustomerList     =  $this->customer->GetListCustomers();
+            $Companies        =  $this->companies->GetListCompanyServices();
+            $DriverList       =  $this->drivers->GetListDrivers();
 
             $OrderArray           = $this->model->Edit($_REQUEST['Id']);
+
             $Order                = $OrderArray['order'];
-            $OrderDetail          = $OrderArray['order_details'];
-            $OrderDetail          = json_encode($OrderDetail,true);
-            $Payment              = $OrderArray['payments'];
             $CustomerOrigin       = $OrderArray['CustomerOrigin']; // OLIVER
             $CustomerDestination  = $OrderArray['CustomerDestination'];
+            $CompanyService       = $OrderArray['CompanyService'];
+            $Payment              = $OrderArray['payments'];
+
+            $OrderDetail          = $OrderArray['order_details'];
+            $OrderDetail          = json_encode($OrderDetail,true);
 
             GetRouteView(null, "header");
             require_once 'View/orders/view.php';
@@ -213,11 +231,10 @@ class OrdersController
 
                     $Payment = new Payments();
                     $IdPayment = "";
-    
-                    $Payment->CardHolderName   = $params['CardHolderName'];
-                    $Payment->CreditCard       = $params['CreditCard'];
-                    $Payment->ExpDate          = $params['ExpDate'];
-                    $Payment->Cvv              = $params['Cvv'];
+                    $Payment->CardHolderName   = $this->encryptIt(trim($params['CardHolderName']), KEY);
+                    $Payment->CreditCard       = $this->encryptIt(trim($params['CreditCard']), KEY);
+                    $Payment->ExpDate          = $this->encryptIt(trim($params['ExpDate']), KEY);
+                    $Payment->Cvv              = $this->encryptIt(trim($params['Cvv']), KEY);
                     $Payment->BillingAddress   = $params['BillingAddress'];
                     $Payment->BillingCity      = $params['BillingCity'];
                     $Payment->BillingState     = $params['BillingState'];
@@ -240,6 +257,7 @@ class OrdersController
                         $Orders->IdCustomerOrigin         = $params['IdCustomerOrigin'];
                         $Orders->IdCustomerDestination    = $params['IdCustomerDestination'];
                         $Orders->OrderStatusID            = $params['OrderStatusID'];
+                       
                         $Orders->IdPayment                = $IdPayment;
                         $Orders->OrderDate                = $params['OrderDate'];
                         $Orders->PickUpDate               = $params['PickUpDate'];
@@ -254,8 +272,8 @@ class OrdersController
                         $Orders->DestinationState         = $params['DestinationState'];
                         $Orders->DestinationZip           = $params['DestinationZip'];
                         $Orders->DestinationNote          = $params['DestinationNote'];
-                        $Orders->Total                    = $params['Total'];
-                        $Orders->Deposit                  = $params['Deposit'];
+                        $Orders->Total                    = str_replace(',','',$params['Total']);
+                        $Orders->Deposit                  = str_replace(',','',$params['Deposit']);
                         $Orders->IsActive                = 1;
     
                         $IdOrder = $Orders->Create($Orders);
@@ -277,6 +295,7 @@ class OrdersController
                                     $OrderDetails->Vin               = $value['Vin'];
                                     $OrderDetails->ConditionVehicle  = $value['ConditionVehicle'];
                                     $OrderDetails->CarrierType       = $value['CarrierType'];
+                                    $OrderDetails->IsActive          = 1;
                                     $OrderDetailsID                  = $OrderDetails->Create($OrderDetails);
                                    
                                     if($OrderDetailsID){
@@ -332,20 +351,6 @@ class OrdersController
                 echo json_encode($responseOrder, true);
             }
 
-
-            //Update regist
-            }else{
-
-                
-          //Campos unicos por tabla
-          //$Orders->IdCompanyService         = $params['IdCompanyService'];
-          // $Orders->IdDriver                 = $params['IdDriver'];           // $Orders->ExtraTrukerFee           = $params['ExtraTrukerFee'];
-          //  $Orders->TrukerOwesUs             = $params['TrukerOwesUs'];
-           // $Orders->Earnings                 = $params['Earnings'];
-           // $Orders->Cod                      = $params['Cod'];
-           // $Orders->TrukerRate               = $params['TrukerRate'];
-           // $Orders->RequestStatus            = $params['RequestStatus'];
-                
             }
     }
 
@@ -397,11 +402,10 @@ class OrdersController
                             $Orders->Earnings                 = str_replace(',','',$params['Earnings']);
                             $Orders->Cod                      = str_replace(',','',$params['Cod']);
                             $Orders->TrukerRate               = str_replace(',','',$params['TrukerRate']);
-                            $Orders->IsActive                = 1;
                             $Orders->CancelledNote           = "";
                             $Orders->IdCompanyService        = $params['IdCompanyService'];
                             $Orders->IdDriver                = $params['IdDriver'];
-
+                            $Orders->IsActive                = 1;
                             $Orders->Update($Orders);
                             
                         
@@ -506,7 +510,8 @@ class OrdersController
         $customer->Phone1 =  $params['OriginPhone1'];
         $customer->Phone2 =  $params['OriginPhone2'];
         $customer->Email  =  $params['OriginEmail'];
-        
+        $customer->IsActive = 1;
+
         return $customer->Update2($customer);
 
     }
@@ -518,6 +523,7 @@ class OrdersController
         $customer->Phone1 =  $params['DestinationPhone1'];
         $customer->Phone2 =  $params['DestinationPhone2'];
         $customer->Email  =  $params['DestinationEmail'];
+        $customer->IsActive = 1;
         
         return $customer->Update2($customer);
 
@@ -529,6 +535,7 @@ class OrdersController
         $Drivers->Id                      = $params['IdDriver'];
         $Drivers->DriverPhone1            = $params['DriverPhone1'];
         $Drivers->DriverPhone2            = $params['DriverPhone2'];
+        $Drivers->IsActive = 1;
 
         return $Drivers->Update2($Drivers);
     }
@@ -536,7 +543,7 @@ class OrdersController
     public function updateCompanyServices($params){
 
         $Company = new CompanyServices();
-        $Company->Id                       = $params['IdCompanyService'];
+        $Company->Id                       =  $params['IdCompanyService'];
         $Company->CompanyAddress           =  $params['CompanyAddress'];
         $Company->CompanyCity              =  $params['CompanyCity'];
         $Company->CompanyState             =  $params['CompanyState'];
@@ -544,6 +551,7 @@ class OrdersController
         $Company->CompanyPhone1            =  $params['CompanyPhone1'];
         $Company->CompanyPhone2            =  $params['CompanyPhone2'];
         $Company->CompanyEmail             =  $params['CompanyEmail'];
+        $Company->IsActive = 1;
 
         return $Company->Update2($Company);
     }
@@ -581,6 +589,7 @@ class OrdersController
             $Orders->Id             = $_POST['Id'];
             $Orders->OrderStatusID  = $_POST['OrderStatusID'];
             $Orders->CancelledNote  = $_POST['CancelledNote'];
+            $Orders->IsActive = 1;
             $result = $Orders->UpdateStatusOrder($Orders);
 
             echo json_encode($result, true);

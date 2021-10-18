@@ -73,9 +73,7 @@ class CustomersController
             $Customers->Phone1          = $_REQUEST['Phone1'];
             $Customers->Phone2          = $_REQUEST['Phone2'];
             $Customers->Email           = $_REQUEST['Email'];
-
-            //Campos genericos
-            $Customers->IsActive                = $_REQUEST['IsActive'];
+            $Customers->IsActive       = $_REQUEST['IsActive'];
 
             //Si viene un Id, es porque quieres hacer un Update, de lo contrario INSERT
             if ($Customers->Id > 0) {

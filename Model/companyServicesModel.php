@@ -33,7 +33,7 @@ class CompanyServices {
         try
         {
 
-                $stm = $this->pdo->prepare("SELECT Id,  CompanyName,  CompanyAddress,  CompanyCity, CompanyPhone1, CompanyPhone2, CompanyEmail, DateCreation, UserIdCreation, LastModificationDate, UserIdLastModification, IsActive FROM tbl_company_services");
+                $stm = $this->pdo->prepare("SELECT Id,  CompanyName,  CompanyAddress,  CompanyCity, CompanyState, CompanyZipCode, CompanyPhone1, CompanyPhone2, CompanyEmail, DateCreation, UserIdCreation, LastModificationDate, UserIdLastModification, IsActive FROM tbl_company_services");
                 $stm->execute();
 
                 $row = $stm->fetchAll();
@@ -55,7 +55,7 @@ class CompanyServices {
     {
         try
         {
-            $stm = $this->pdo->prepare("SELECT Id,  CompanyName,  CompanyAddress,  CompanyCity, CompanyPhone1, CompanyPhone2, CompanyEmail, DateCreation, UserIdCreation, LastModificationDate, UserIdLastModification, IsActive FROM tbl_company_services WHERE Id = ?");
+            $stm = $this->pdo->prepare("SELECT Id,  CompanyName, CompanyAddress,  CompanyCity, CompanyState, CompanyZipCode,  CompanyPhone1, CompanyPhone2, CompanyEmail, DateCreation, UserIdCreation, LastModificationDate, UserIdLastModification, IsActive FROM tbl_company_services WHERE Id = ?");
             $stm->execute(array($id));
 
             return $stm->fetch(PDO::FETCH_OBJ);
@@ -137,7 +137,7 @@ class CompanyServices {
                         $data->CompanyEmail,
                         date("Y-m-d H:i:s") ,
                         (int)$_SESSION['UserOnline']->Id,
-                        (int)$data->IsActive,
+                        $data->IsActive,
                         intval($data->Id)
                     )
                 );

@@ -27,11 +27,11 @@
       <div class="card">
           <div class="card-header bg-dark">
               <h4 class="card-title text-white">Payments List</h4>
-               <p class="text-muted mb-0">General report</p>
+               <p class="text-muted mb-0">GENERAL REPORT</p>
             </div><!--end card-header-->
             
             <div class="card-body">  
-                <table id="PaymentsList" width="100%" class="table table-bordered table-hover">
+            <table id="PaymentsList" width="100%" class="table table-bordered table-hover">
                     <thead>
                         <tr class="bg-light"><th class="text-center">Options</th>
                              <th><b>Payment ID</b></th>
@@ -213,12 +213,12 @@ $(document).ready(function() {
                 }}, {
                 "targets": 4,
                 "render": function (data, type, row) {
-                    return (data == "Yes" ?  '<center><span class="badge badge-soft-danger px-2">'+data+'</span></center>'  : '<center><span class="badge badge-soft-success px-2">'+data+'</span></center>')
+                    return (data == "Pending" ?  '<center><span class="badge badge-soft-danger px-2">'+data+'</span></center>'  : '<center><span class="badge badge-soft-success px-2">'+data+'</span></center>')
          
                 }},{
                 "targets": 5,
                 "render": function (data, type, row) {
-                    return (data == "Yes" ?  '<center><span class="badge badge-soft-danger px-2">'+data+'</span></center>'  : '<center><span class="badge badge-soft-success px-2">'+data+'</span></center>')
+                    return (data == "Pending" ?  '<center><span class="badge badge-soft-danger px-2">'+data+'</span></center>'  : '<center><span class="badge badge-soft-success px-2">'+data+'</span></center>')
          
                 }} ]
     });
@@ -239,8 +239,6 @@ function PayOrder(){
         url: "index.php?c=Orders&a=PayOrder",
         data:{ Id: $("#Id").val(), "FieldSelected": $("#FieldSelected").val()}
      }).then(function(response) {
-
-        console.log(response);
 
         if(response == 'true' || response == true){
             

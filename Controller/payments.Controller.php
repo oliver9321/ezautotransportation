@@ -114,8 +114,8 @@ class PaymentsController
 
                 $Message = $this->model->Create($Payments);
 
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "../index.php"; }, 100);</script>';
+                if ($Message) {
+                    echo '<script>setTimeout(function(){ window.location.href = "index.php?c=payments&a=index"; }, 100);</script>';
                 } else {
                     header('Location:index.php?c=payments&a=index');
                 }

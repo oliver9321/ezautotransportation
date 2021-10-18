@@ -1,3 +1,13 @@
+<div id="toastWarning" class="toast align-items-center text-white bg-warning border-0" role="alert"
+        aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body toast-warning">
+                <!-- Message from js -->
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+    </div>
 
             <div class="row">
                     <div class="col-sm-12">
@@ -17,14 +27,15 @@
                 </div>
 
 <br>
+
 <div class="row">
     
    <div class="col-sm-12">
      
    <form id="frm-Customers" action="?c=Customers&a=Save" method="post" enctype="multipart/form-data">
 
-            <input type="hidden" name="Id" id="Id" value="<?php echo $Customer->Id; ?>" />
-            <input type="hidden" name="IsActive" id="IsActive" value="<?= ($Customer->Id != null) ? $Customer->IsActive : 1 ?>"/>
+            <input type="hidden" name="Id" id="Id" value="<?=$Customer->Id; ?>" />
+            <input type="text" name="IsActive" id="IsActive" value="<?=$Customer->IsActive?>">
 
                 <div class="row">
                     <div class="col-sm-8 offset-sm-2">
@@ -64,7 +75,14 @@
 
                                     <?php if($Customer->Id != null){?>
                                         <button type="submit" class="btn btn-warning">Update <i class="fa fa-refresh"></i> </button>
-                                        <input type="checkbox"  data-toggle="toggle" id="IsActiveToogle" data-on="IsActive" data-off="Inactivo" data-onstyle="success" data-offstyle="danger" data-onstyle="danger" data-style="ios">
+                                        <div class="mb-3">
+                                            <br>
+                                            <div class="form-check form-switch form-switch-danger">
+                                            <input class="form-check-input" type="checkbox" id="IsActiveChange" checked="">
+                                                <label class="form-check-label text-da" for="IsActive"><b> <i class="fa fa-trash"></i> Click for delete</b></label> 
+                                            </div>
+                                            </div>
+                                       
                                     <?php }else {?>
                                         <button type="submit"  class="btn btn-success">Submit <i class="fa fa-save"></i> </button>
                                     <?php }?>
@@ -78,35 +96,38 @@
 </div>
 </div>
 
+
 <script src="assets/js/jquery.min.js"></script>
 
 <script type="text/javascript">
 
     $(document).ready(function(){
 
-        $("#frm-Customers").submit(function(){
-            return $(this).validate();
-        });
-
-        if($("#IsActive").val() > 0){
-         //   $('#IsActiveToogle').bootstrapToggle('on');
+        var IsActive = "<?=$Customer->IsActive?>";
+     
+        if(IsActive == 1){
+            $("#IsActiveChange").prop("checked", false);
         }else{
-            //$('#IsActiveToogle').bootstrapToggle('off');
+            $("#IsActiveChange").prop("checked", true);
         }
+        
+        $('#IsActiveChange').change(function() {
 
-        $('#IsActiveToogle').change(function() {
+            if($(this).prop('checked') == true){
 
-            if($(this).prop('checked') == false){
+                $(".toast-warning").html("(x) This record will be deleted.");
+                var myAlert2 = document.getElementById('toastWarning');
+                var bsAlert2 = new bootstrap.Toast(myAlert2);
+                bsAlert2.show();
 
-                swal({
-                    title: 'Registro Eliminado',
-                    text: 'Presione Actualizar para eliminar el registro',
-                    type: 'error',
-                    timer: 5000,
-                    buttonsStyling: true
-                });
+                 $("#IsActive").val(0);
+                 setTimeout(function(){  $("#frm-Customers").submit();}, 2000)
+                
+            }else{
+                $("#IsActive").val(1);
             }
-            $("#IsActive").val(($(this).prop('checked')) == false ? 0 : 1);
+
+         
         });
 
     });

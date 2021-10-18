@@ -167,6 +167,10 @@ $(document).ready(function() {
     let address1Field3;
     let postalField3;
 
+    let autocomplete4;
+    let address1Field4;
+    let postalField4;
+
     let autocomplete5;
     let address1Field5;
     let postalField5;
@@ -181,6 +185,9 @@ $(document).ready(function() {
 
         address1Field3 = document.querySelector("#BillingAddress");
         postalField3 = document.querySelector("#BillingZipCode");
+
+        address1Field4 = document.querySelector("#CompanyAddress");
+        postalField4 = document.querySelector("#CompanyZipCode");
 
         address1Field5 = document.querySelector("#CompanyAddressNewCompany");
         postalField5 = document.querySelector("#CompanyZipCodeNewCompany");
@@ -204,6 +211,12 @@ $(document).ready(function() {
             types: ["address"],
         });
 
+        autocomplete4 = new google.maps.places.Autocomplete(address1Field4, {
+            componentRestrictions: { country: ["us", "ca"] },
+            fields: ["address_components", "geometry"],
+            types: ["address"],
+        });
+
         autocomplete5 = new google.maps.places.Autocomplete(address1Field5, {
             componentRestrictions: { country: ["us", "ca"] },
             fields: ["address_components", "geometry"],
@@ -213,6 +226,7 @@ $(document).ready(function() {
         autocomplete.addListener("place_changed", fillInAddress);
         autocomplete2.addListener("place_changed", fillInAddress2);
         autocomplete3.addListener("place_changed", fillInAddress3);
+        autocomplete4.addListener("place_changed", fillInAddress4);
         autocomplete5.addListener("place_changed", fillInAddress5);
     }
 
@@ -450,6 +464,82 @@ $(document).ready(function() {
         }
     }
 
+
+    function fillInAddress4() {
+        // Get the place details from the autocomplete object.
+        const place4 = autocomplete4.getPlace();
+        let address14 = "";
+        let postcode4 = "";
+      
+        $("#CompanyState, #CompanyCity, #CompanyZipCode").css("border-color", "#e3ebf6;");
+
+        for (const component4 of place4.address_components) {
+
+            const componentType4 = component4.types[0];
+
+            switch (componentType4) {
+                case "street_number":
+                    {
+                        address14 = `${component4.long_name} ${address14}`;
+                        break;
+                    }
+
+                case "route":
+                    {
+                        address14 += component4.short_name;
+                        break;
+                    }
+
+                case "postal_code":
+                    {
+                        postcode4 = `${component4.long_name}${postcode4}`;
+                        break;
+                    }
+
+                case "postal_code_suffix":
+                    {
+                        postcode4 = `${postcode4}-${component4.long_name}`;
+                        break;
+                    }
+                case "locality":
+
+                    if (component4.long_name != '') {
+                        document.querySelector("#CompanyCity").value = component4.long_name;
+                        $("#CompanyCity").css("border-color", "green");
+                    } else {
+                        $("#CompanyCity").css("border-color", "orange");
+                        document.querySelector("#CompanyCity").value = "";
+                    }
+
+                    break;
+                case "administrative_area_level_1":
+                    {
+
+                        if (component4.short_name != '') {
+                            document.querySelector("#CompanyState").value = component4.short_name;
+                            $("#CompanyState").css("border-color", "green");
+                        } else {
+                            $("#CompanyState").css("border-color", "orange");
+                            document.querySelector("#CompanyState").value = "";
+                        }
+
+                        break;
+
+                    }
+          
+            }
+
+            if (postcode4 != '') {
+                postalField4.value = postcode4;
+                $("#CompanyZipCode").css("border-color", "green");
+            } else {
+                $("#CompanyZipCode").css("border-color", "orange");
+                postalField4.value = "";
+            }
+
+        }
+    }
+
     function fillInAddress5() {
         // Get the place details from the autocomplete object.
         const place5 = autocomplete5.getPlace();
@@ -524,6 +614,7 @@ $(document).ready(function() {
 
         }
     }
+
 
     initAutocomplete();
 

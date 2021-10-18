@@ -46,22 +46,29 @@
                                 <div class="col-md-12" >
                                 <label class="mb-1"><i class="fa fa-user"></i> Origin customer name<b class="text-danger">*</b></label>
                                     <div class="input-group">
-                                        <select style="width: 100%;" id="IdCustomerOrigin" name="IdCustomerOrigin" class="select2 form-control mb-3 custom-select originInput" readonly> </select>
+                                    <select readonly style="width: 100%;" id="IdCustomerOrigin" name="IdCustomerOrigin" class="select2 form-control mb-3 custom-select originInput">
+                                             <?php foreach($CustomerList  as $key => $value): ?>
+                                            <option value="<?= $value['Id']; ?>"<?php if($value['Id'] == $Order->IdCustomerOrigin): ?> selected="selected"<?php endif; ?>><?= $value['Customer']; ?></option>
+                                            <?php endforeach; ?>
+                                            </select>
                                     </div>
                                 </div>
                             </div><!-- end row -->
                             <br>
                         </div>
                         <!--end col-->
-                        <div class="col-md-6"> <span class="text-dark"><b><i data-feather="arrow-right-circle"></i>
-                                    Destination information</b></span>
+                        <div class="col-md-6"> <span class="text-dark"><b><i data-feather="arrow-right-circle"></i>Destination information</b></span>
                             <hr>
                             <div class="row">
 
                                 <div class="col-md-12" >
                                 <label class="mb-1"><i class="fa fa-user"></i> Destination customer name<b class="text-danger">*</b></label>
                                     <div class="input-group">
-                                        <select style="width: 100%;" id="IdCustomerDestination" name="IdCustomerDestination" class="select2 form-control mb-3 custom-select DestinationInput" readonly> </select>
+                                        <select style="width: 100%;" id="IdCustomerDestination" name="IdCustomerDestination" class="select2 form-control mb-3 custom-select DestinationInput" readonly>
+                                                <?php foreach($CustomerList  as $key => $value): ?>
+                                                <option value="<?= $value['Id']; ?>"<?php if($value['Id'] == $Order->IdCustomerDestination): ?> selected="selected"<?php endif; ?>><?= $value['Customer']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                     </div>
                                 </div>
                                 <br>
@@ -74,9 +81,9 @@
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-12" >
-                                    <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Address<b class="text-danger">*</b></label>
+                                    <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Origin address<b class="text-danger">*</b></label>
                                         <input style="display:none;" />
-                                        <input id="OriginAddress" name="OriginAddress" type="text" class="form-control originInput" placeholder="Ex. 12141 Pembroke Rd,..."  readonly>
+                                        <input id="OriginAddress" name="OriginAddress" type="text" class="form-control originInput" placeholder="Ex. 12141 Pembroke Rd,..."  readonly value="<?= $Order->OriginAddress; ?>">
                                     </div>
                                     <!-- end row -->
                                 </div>
@@ -87,22 +94,21 @@
                                             <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
                                                 <input style="display:none;" />
-                                                <input autocomplete="off" id="OriginCity" name="OriginCity" type="text"
-                                                    class="form-control originInput" placeholder="City" readonly>
+                                                <input autocomplete="off" id="OriginCity" name="OriginCity" type="text" class="form-control originInput" placeholder="City" readonly value="<?= $Order->OriginCity; ?>">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> State<b class="text-danger">*</b></label>
                                                 <input style="display:none;" />
                                                 <input autocomplete="off" id="OriginState" name="OriginState" type="text"
-                                                    class="form-control originInput" placeholder="State" readonly>
+                                                    class="form-control originInput" placeholder="State" readonly value="<?= $Order->OriginState; ?>">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
                                                 <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Zip Code</label>
                                                 <input style="display:none;" />
                                                 <input autocomplete="off" id="OriginZip" name="OriginZip" type="text"
-                                                    class="form-control originInput" placeholder="00000" readonly>
+                                                    class="form-control originInput" placeholder="00000" readonly value="<?= $Order->OriginZip; ?>">
                                             </div>
                                             <!-- end row -->
                                         </div>
@@ -116,7 +122,7 @@
                                                 <label class="mb-1"><i class="fa fa-mobile"></i> Phone
                                                     #1<b class="text-danger">*</b></label>
                                                 <input id="OriginPhone1" name="OriginPhone1" type="text"
-                                                    class="form-control originInput phone" placeholder="(555) 555-5555" readonly>
+                                                    class="form-control originInput phone" placeholder="(555) 555-5555" readonly value="<?=$CustomerOrigin->Phone1;?>">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
@@ -124,14 +130,14 @@
                                                     #2</label>
                                                     <input style="display:none;" />
                                                 <input autocomplete="off" id="OriginPhone2" name="OriginPhone2" type="text"
-                                                    class="form-control originInput phone" placeholder="(555) 555-5555" readonly>
+                                                    class="form-control originInput phone" placeholder="(555) 555-5555" readonly value="<?=$CustomerOrigin->Phone2;?>">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
                                                 <label class="mb-1"><i class="fa fa-envelope"></i> Email</label>
                                                 <input style="display:none;" />
                                                 <input autocomplete="off" id="OriginEmail" name="OriginEmail" type="email"
-                                                    class="form-control originInput" placeholder="cus@domain.com" readonly>
+                                                    class="form-control originInput" placeholder="cus@domain.com" readonly value="<?=$CustomerOrigin->Email;?>">
                                             </div>
                                             <!-- end row -->
                                         </div>
@@ -142,7 +148,7 @@
                                     <div class="col-md-12" >
                                         <label class="mb-1"><i class="fa fa-sticky-note"></i> Note</label>
                                         <textarea id="OriginNote" name="OriginNote" class="form-control originInput"
-                                            placeholder="Opcional information" rows="3" readonly></textarea>
+                                            placeholder="Opcional information" rows="3" readonly><?= $Order->OriginNote; ?></textarea>
                                     </div>
                                     <!-- end row -->
                                 </div>
@@ -153,7 +159,7 @@
                                     <div class="col-md-12" >
                                         <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Address<b class="text-danger">*</b></label>
                                             <input style="display:none;" />
-                                        <input id="DestinationAddress" name="DestinationAddress" type="text" class="form-control DestinationInput" placeholder="Ex. 1600 Pennsylvania..." readonly>
+                                        <input id="DestinationAddress" name="DestinationAddress" type="text" class="form-control DestinationInput" placeholder="Ex. 1600 Pennsylvania..." readonly  value="<?= $Order->DestinationAddress; ?>">
                                     </div>
                                     <!-- end row -->
                                 </div>
@@ -164,19 +170,19 @@
                                             <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
                                                 <input id="DestinationCity" name="DestinationCity" type="text"
-                                                    class="form-control DestinationInput" placeholder="City" readonly>
+                                                    class="form-control DestinationInput" placeholder="City" readonly value="<?= $Order->DestinationCity; ?>">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> State<b class="text-danger">*</b></label>
                                                 <input id="DestinationState" name="DestinationState" type="text"
-                                                    class="form-control DestinationInput" placeholder="State" readonly>
+                                                    class="form-control DestinationInput" placeholder="State" readonly value="<?= $Order->DestinationState; ?>">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
                                                 <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Zip Code</label>
                                                 <input id="DestinationZip" name="DestinationZip" type="text"
-                                                    class="form-control DestinationInput" placeholder="00000" readonly>
+                                                    class="form-control DestinationInput" placeholder="00000" readonly value="<?= $Order->DestinationZip; ?>">
                                             </div>
                                             <!-- end row -->
                                         </div>
@@ -191,7 +197,7 @@
                                                 #1<b class="text-danger">*</b></label>
                                                 <input id="DestinationPhone1" name="DestinationPhone1" type="text"
                                                     class="form-control DestinationInput phone"
-                                                    placeholder="(555) 555-5555" readonly>
+                                                    placeholder="(555) 555-5555" readonly value="<?=$CustomerDestination->Phone1;?>">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
@@ -199,13 +205,13 @@
                                                     #2</label>
                                                 <input id="DestinationPhone2" name="DestinationPhone2" type="text"
                                                     class="form-control DestinationInput phone"
-                                                    placeholder="(555) 555-5555" readonly>
+                                                    placeholder="(555) 555-5555" readonly value="<?=$CustomerDestination->Phone2;?>">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
                                                 <label class="mb-1"><i class="fa fa-envelope"></i> Email</label>
                                                 <input id="DestinationEmail" name="DestinationEmail" type="email"
-                                                    class="form-control DestinationInput" placeholder="cus@domain.com" readonly>
+                                                    class="form-control DestinationInput" placeholder="cus@domain.com" readonly value="<?=$CustomerDestination->Email;?>">
                                             </div>
                                             <!-- end row -->
                                         </div>
@@ -217,7 +223,7 @@
                                         <label class="mb-1"><i class="fa fa-sticky-note"></i> Note</label>
                                         <textarea id="DestinationNote" name="DestinationNote"
                                             class="form-control DestinationInput"
-                                            placeholder="Opcional information" rows="3" readonly></textarea>
+                                            placeholder="Opcional information" rows="3" readonly><?= $Order->DestinationNote; ?></textarea>
                                     </div>
                                     <!-- end row -->
                                 </div>
@@ -235,26 +241,25 @@
                                     <div class="row">
                                         <div class="col-md-3" >
                                         <label class="mb-1"><b>Pick up date</b><b class="text-danger">*</b></label>
-                                            <input id="PickUpDate" name="PickUpDate" type="date" class="form-control" readonly>
+                                            <input id="PickUpDate" name="PickUpDate" type="date" class="form-control" readonly  value="<?= $Order->PickUpDate; ?>">
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-3" >
                                         <label class="mb-1"><b>Delivery date</b><b class="text-danger">*</b></label>
-                                            <input id="DeliveryDate" name="DeliveryDate" type="date" class="form-control" readonly>
+                                            <input id="DeliveryDate" name="DeliveryDate" type="date" class="form-control" readonly value="<?= $Order->DeliveryDate; ?>">
                                         </div>
 
                                         <div class="col-md-3" >
                                             <label class="mb-1"><b>Order date (Today)</b></label>
-                                            <input id="PickUpOrderDateDate" name="OrderDate" type="date" class="form-control" value="" readonly>
+                                            <input id="PickUpOrderDateDate" name="OrderDate" type="date" class="form-control" value="<?= $Order->OrderDate; ?>" readonly>
                                         </div>
 
                                         <div class="col-md-3" >
                                         <label class="mb-1"><b>Order status</b><b class="text-danger">*</b></label>
-                                            <select style="width: 100%;" id="OrderStatusID" name="OrderStatusID"
-                                                class="form-control" readonly>
-                                                <?php foreach($OrderStatusList  as $key => $value): ?>
-                                                <option value="<?= $value['Id']; ?>"> <?= $value['Status']; ?> </option>
-                                                <?php endforeach; ?>
+                                        <select style="width: 100%;" id="OrderStatusID" name="OrderStatusID" class="form-control" readonly>
+                                            <?php foreach($OrderStatusList  as $key => $value): ?>
+                                            <option value="<?= $value['Id']; ?>"<?php if($value['Id'] == $Order->OrderStatusID): ?> selected="selected"<?php endif; ?>><?= $value['Status']; ?></option>
+                                            <?php endforeach; ?>
                                             </select>
                                         </div>
     
@@ -373,12 +378,12 @@
                                 <input type="text" id="PaymentID" name="PaymentID" value="<?= $Payment->Id; ?>" hidden/>
                                 <div class="col-md-6" >
                                 <label class="mb-1"> Card holder name<b class="text-danger">*</b></label>
-                                    <input type="text" class="form-control" name="CardHolderName" id="CardHolderName" style="text-transform:uppercase" readonly>
+                                    <input type="text" class="form-control" name="CardHolderName" id="CardHolderName" style="text-transform:uppercase" readonly value="<?= trim($Payment->CardHolderName); ?>">
                                 </div>
 
                                 <div class="col-md-6" >
                                             <label class="mb-1">Reference</label>
-                                            <input id="Reference" name="Reference" type="text" class="form-control" placeholder="0000000" readonly>
+                                            <input id="Reference" name="Reference" type="text" class="form-control" placeholder="0000000" readonly value="<?= $Payment->Reference; ?>">
                                 </div>
 
                                 <!-- end row -->
@@ -386,6 +391,7 @@
                             <br>
                         </div>
                         <!--end col-->
+
                         <div class="col-md-6"> <span class="text-dark"><b><i data-feather="dollar-sign"></i>
                                      Customer payment </b></span>
                             <hr>
@@ -393,12 +399,12 @@
                                 <div class="col-md-6" >
                                 <label class="mb-1"><b>Total</b><b class="text-danger">*</b></label>
                                     <input type="number" class="form-control" name="Total" id="Total"
-                                        placeholder="$0000" value="0" readonly>
+                                        placeholder="$0000"  readonly value="<?= $Order->Total; ?>">
                                 </div>
                                 <div class="col-md-6" >
                                 <label class="mb-1"><b>Deposit</b><b class="text-danger">*</b></label>
                                     <input id="Deposit" name="Deposit" type="number" class="form-control"
-                                        placeholder="$0000" value="0" readonly>
+                                        placeholder="$0000"  readonly value="<?= $Order->Deposit; ?>">
                                 </div>
                                 <!-- end row -->
                             </div>
@@ -417,19 +423,18 @@
                                         <div class="col-md-5" >
                                         <label class="mb-1"><i class="fa fa-credit-card"></i> Credit card number<b class="text-danger">*</b></label>
                                             <input id="CreditCard" name="CreditCard" type="text" class="form-control"
-                                                placeholder="#### #### #### ####" readonly>
+                                                placeholder="#### #### #### ####" readonly value="<?= $Payment->CreditCard; ?>">
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-3" >
                                         <label class="mb-1">Expiration date<b class="text-danger">*</b></label>
-                                            <input id="ExpDate" name="ExpDate" type="text" class="form-control"
-                                                placeholder="00/00" readonly>
+                                            <input id="ExpDate" name="ExpDate" type="text" class="form-control" placeholder="00/00" readonly value="<?= trim($Payment->ExpDate); ?>">
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-4" >
                                         <label class="mb-1">CVV<b class="text-danger">*</b></label>
                                             <input id="Cvv" name="Cvv" type="text" class="form-control"
-                                                placeholder="" readonly>
+                                                placeholder="" readonly value="<?= $Payment->Cvv; ?>">
                                         </div>
                                         <!-- end row -->
                                     </div>
@@ -442,7 +447,7 @@
                                         <div class="col-md-12" >
                                         <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Billing address<b class="text-danger">*</b></label>
                                         
-                                            <input id="BillingAddress" name="BillingAddress" type="text" class="form-control" placeholder="Ex. 12141 Pembroke Rd...." autocomplete="disabled" readonly>
+                                            <input id="BillingAddress" name="BillingAddress" type="text" class="form-control" placeholder="Ex. 12141 Pembroke Rd...." autocomplete="disabled" readonly value="<?= $Payment->BillingAddress; ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -454,19 +459,19 @@
                                             <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
                                                 <input id="BillingCity" name="BillingCity" type="text"
-                                                    class="form-control BillingInput" placeholder="City" readonly >
+                                                    class="form-control BillingInput" placeholder="City" readonly value="<?= $Payment->BillingCity; ?>">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> State<b class="text-danger">*</b></label>
                                                 <input id="BillingState" name="BillingState" type="text"
-                                                    class="form-control BillingInput" placeholder="State" readonly>
+                                                    class="form-control BillingInput" placeholder="State" readonly value="<?= $Payment->BillingState; ?>">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
                                                 <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Zip Code</label>
                                                 <input id="BillingZipCode" name="BillingZipCode" type="text"
-                                                    class="form-control BillingInput" placeholder="00000" readonly>
+                                                    class="form-control BillingInput" placeholder="00000" readonly value="<?= $Payment->BillingZipCode; ?>">
                                             </div>
                                             <!-- end row -->
                                         </div>
@@ -479,19 +484,19 @@
                                         <div class="col-md-4" >
                                         <label class="mb-1"><i class="fa fa-mobile"></i> Phone number #1<b class="text-danger">*</b></label>
                                             <input id="Tel1" name="Tel1" type="text" class="form-control phone"
-                                                placeholder="(555) 555-5555" readonly>
+                                                placeholder="(555) 555-5555" readonly value="<?= $Payment->Tel1; ?>">
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone number #2</label>
                                             <input id="Tel2" name="Tel2" type="text" class="form-control phone"
-                                                placeholder="(555) 555-5555" readonly>
+                                                placeholder="(555) 555-5555" readonly value="<?= $Payment->Tel2; ?>">
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-envelope"></i> Email</label>
                                             <input id="PaymentEmail" name="PaymentEmail" type="email"
-                                                class="form-control" placeholder="us@domain.com" readonly>
+                                                class="form-control" placeholder="us@domain.com" readonly value="<?= $Payment->PaymentEmail; ?>">
                                         </div>
                                         <!-- end row -->
                                     </div>
@@ -505,7 +510,7 @@
                                 <div class="col-md-12" >
                                     <label class="mb-1"><i class="fa fa-sticky-note"></i> Payment note</label>
                                     <textarea id="PaymentNote" name="PaymentNote" class="form-control"
-                                        placeholder="Opcional information" rows="5" readonly></textarea>
+                                        placeholder="Opcional information" rows="5" readonly><?= $Payment->PaymentNote; ?></textarea>
                                 </div>
                                 <!-- end row -->
                             </div>
@@ -524,37 +529,60 @@
                                 <div class="row">
                                     <label class="mb-1">Company name</label>
                                         <div class="input-group">
-                                            <select style="width: 100%;" id="IdCompanyService" name="IdCompanyService" class="select2 form-control mb-3 custom-select" readonly>
+                                        <select style="width: 100%;" id="IdCompanyService" name="IdCompanyService" class="select2 form-control mb-3 custom-select" readonly>
+                                            <option value="" selected>Select a truker company</option>
+                                             <?php foreach($Companies  as $key => $value): ?>
+                                                <option value="<?= $value['Id']; ?>"<?php if($value['Id'] == $Order->IdCompanyService): ?> selected="selected"<?php endif; ?>><?= $value['CompanyName']; ?></option>
+                                                <?php endforeach; ?>
                                             </select>
+                                           
                                         </div>
                                 </div>
 
                                 <div class="row inputpadding">
                                     <div class="col-md-12" >
                                         <label class="mb-1">Company address</label>
-                                        <input id="CompanyAddress" name="CompanyAddress" type="text"  class="form-control" placeholder="Input the company's address" readonly>
+                                        <input id="CompanyAddress" name="CompanyAddress" type="text"  class="form-control" placeholder="Input the company's address" readonly value="<?=$CompanyService->CompanyAddress;?>">
                                     </div>
                                 </div>
+                               
+                                <div class="row inputpadding">
+                                            <div class="col-md-4" >
+                                            <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
+                                                <input id="CompanyCity" name="CompanyCity" type="text" class="form-control CompanyInput" placeholder="City" readonly value="<?=$CompanyService->CompanyCity;?>">
+                                            </div>
+                                            <!-- end row -->
+                                            <div class="col-md-4" >
+                                            <label class="mb-1"><i class="fa fa-map-marker-alt"></i> State<b class="text-danger">*</b></label>
+                                                <input id="CompanyState" name="CompanyState" type="text" class="form-control CompanyInput" placeholder="State" readonly value="<?=$CompanyService->CompanyState;?>">
+                                            </div>
+                                            <!-- end row -->
+                                            <div class="col-md-4" >
+                                            <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Zip Code</label>
+                                                <input id="CompanyZipCode" name="CompanyZipCode" type="text"  class="form-control CompanyInput" placeholder="00000" readonly value="<?=$CompanyService->CompanyZipCode;?>">
+                                            </div>
+                                            <!-- end row -->
+                                        </div>
 
                                     <div class="row inputpadding">
 
                                             <div class="col-md-4" >
                                                 <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone #1</label>
                                                 <input id="CompanyPhone1" name="CompanyPhone1" type="text"
-                                                    class="form-control" placeholder="+1 (555) 555-5555" readonly>
+                                                    class="form-control" placeholder="+1 (555) 555-5555" readonly value="<?=$CompanyService->CompanyPhone1;?>">
                                             </div>
 
                                             
                                             <div class="col-md-4" >
                                                 <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone #2</label>
                                                 <input id="CompanyPhone2" name="CompanyPhone2" type="text"
-                                                    class="form-control" placeholder="+1 (555) 555-5555" readonly>
+                                                    class="form-control" placeholder="+1 (555) 555-5555" readonly value="<?=$CompanyService->CompanyPhone2;?>">
                                             </div>
                                         
                                             <div class="col-md-4" >
                                                 <label class="mb-1"><i class="fa fa-envelope"></i> Email</label>
                                                 <input id="CompanyEmail" name="CompanyEmail" type="email"
-                                                    class="form-control" placeholder="ez@domain.com" readonly>
+                                                    class="form-control" placeholder="ez@domain.com" readonly value="<?=$CompanyService->CompanyEmail;?>">
                                             </div>
                                     </div>
                                     <br>
@@ -564,7 +592,12 @@
                                                 <div class="row">
                                                     <label class="mb-1">Driver name</label>
                                                     <div class="input-group">
-                                                        <select style="width: 100%;" id="IdDriver" name="IdDriver" class="select2 form-control mb-3 custom-select" readonly> </select>
+                                                    <select style="width: 100%;" id="IdDriver" name="IdDriver" class="select2 form-control mb-3 custom-select" readonly>
+                                                            <option value="" selected>Select a driver</option>
+                                                            <?php foreach($DriverList  as $key => $value): ?>
+                                                                <option value="<?= $value['Id']; ?>"<?php if($value['Id'] == $Order->IdDriver): ?> selected="selected"<?php endif; ?>><?= $value['Driver']; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
                                                     </div>
                                                 </div>
                                     </div>
@@ -573,13 +606,13 @@
                                         <div class="col-md-6" >
                                             <label class="mb-1"><i class="fa fa-mobile"></i> Phone #1</label>
                                             <input id="DriverPhone1" name="DriverPhone1" type="text"
-                                                class="form-control" placeholder="+1 (555) 555-5555" readonly>
+                                                class="form-control" placeholder="+1 (555) 555-5555" readonly value="<?=$Driver->DriverPhone1?>">
                                         </div>
                                       
                                         <div class="col-md-6" >
                                             <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone #2</label>
                                             <input id="DriverPhone2" name="DriverPhone2" type="text"
-                                                class="form-control" placeholder="+1 (555) 555-5555" readonly>
+                                                class="form-control" placeholder="+1 (555) 555-5555" readonly value="<?=$Driver->DriverPhone2?>">
                                         </div>
 
                                     </div>
@@ -587,7 +620,7 @@
 
                         <!--end col-->
                               <div class="col-md-6"> 
-                                    <span class="text-dark"><b><i data-feather="dollar-sign"></i>Driver payment </b></span>
+                                    <span class="text-dark"><b><i data-feather="dollar-sign"></i>Truker payment </b></span>
                                         <hr>
                                      <div class="row">
                                         <div class="col-md-12">
@@ -595,17 +628,17 @@
                                                 <div class="col-md-6" >
                                                     <label class="mb-1"><i class="fa fa-lock text-secondary" ></i> <b>Total</b></label>
                                                     <input type="number" class="form-control" name="TotalOrder" id="TotalOrder"
-                                                        placeholder="$0000" readonly value="0" readonly>
+                                                        placeholder="$0000" readonly  value="<?=$Order->Total?>">
                                                 </div>
                                                 <div class="col-md-3" >
                                                     <label class="mb-1"><i class="fa fa-lock text-secondary" ></i> <b>Deposit</b></label>
                                                     <input id="DepositOrder" name="DepositOrder" type="number" class="form-control"
-                                                        placeholder="$0000" readonly value="0" readonly>
+                                                        placeholder="$0000" readonly  value="<?=$Order->Deposit?>">
                                                 </div>
 
                                                 <div class="col-md-3" >
                                                   <label class="mb-1"><i class="fa fa-money-bill"></i><b class="text-success"> Earnings</b></label>
-                                                  <input id="Earnings" name="Earnings" type="text" class="form-control" placeholder="$0000" readonly value="0">
+                                                  <input id="Earnings" name="Earnings" type="text" class="form-control" placeholder="$0000" readonly value="<?=$Order->Earnings?>">
                                                  </div>
 
                                             </div><br>
@@ -613,24 +646,24 @@
                                                 <div class="row">
                                                     <div class="col-md-6" >
                                                         <label class="mb-1"><i class="fa fa-lock text-secondary" ></i> Cod</label>
-                                                        <input id="Cod" name="Cod" type="number" class="form-control" placeholder="$0000" readonly value="0" readonly>
+                                                        <input id="Cod" name="Cod" type="number" class="form-control" placeholder="$0000" readonly value="<?=$Order->Cod?>" readonly>
                                                     </div>
 
                                                     <div class="col-md-6" >
                                                         <label class="mb-1"><i class="fa fa-lock text-secondary" ></i> Truker rate</label>
-                                                        <input id="TrukerRate" name="TrukerRate" type="number" class="form-control" placeholder="$0000" value="0" readonly>
+                                                        <input id="TrukerRate" name="TrukerRate" type="number" class="form-control" placeholder="$0000" value="<?=$Order->TrukerRate?>" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="row inputpadding">
                                                     <div class="col-md-6">
                                                         <label class="mb-1"><i class="fa fa-dollar-sign"></i><b class="text-warning"> Extra truker Fee</b></label>
-                                                        <input id="ExtraTrukerFee" name="ExtraTrukerFee" type="number" class="form-control" placeholder="$0000" value="0" readonly>
+                                                        <input id="ExtraTrukerFee" name="ExtraTrukerFee" type="number" class="form-control" placeholder="$0000" value="<?=$Order->ExtraTrukerFee?>" readonly>
                                                     </div>
 
                                                     <div class="col-md-6">
                                                         <label class="mb-1"><i class="fa fa-truck"></i> <b class="text-danger">Truker owes us</b></label>
-                                                        <input id="TrukerOwesUs" name="TrukerOwesUs" type="number" class="form-control"  placeholder="$0000" value="0" readonly>
+                                                        <input id="TrukerOwesUs" name="TrukerOwesUs" type="number" class="form-control"  placeholder="$0000" value="<?=$Order->TrukerOwesUs?>" readonly>
                                                     </div>
                                                 </div>
 
@@ -673,7 +706,7 @@ $(document).ready(function() {
 });
 
 
-GetListCustomer();
+//GetListCustomer();
 GetListVehicles();
 
 
@@ -713,7 +746,7 @@ function GetListVehicles() {
         var optionDefault2 = new Option("Select model", "", true, true);
         $('.ModelVehicle').append(optionDefault2);
 
-        $(".toast-success").html("Vehicles list ready");
+        $(".toast-success").html("View order ready");
         var myAlert = document.getElementById('toastSuccess');
         var bsAlert = new bootstrap.Toast(myAlert);
         bsAlert.show();
@@ -721,377 +754,88 @@ function GetListVehicles() {
     });
 
 }
+
 
 
 
 function GetListCustomer() {
+    var IdCustomerOriginTemp = $("#IdCustomerOrigin").val();
+    var IdCustomerDestinationTemp = $("#IdCustomerDestination").val();
 
     $.ajax({
         type: 'POST',
         url: "index.php?c=customers&a=GetListCustomers",
-    }).then(function(response) {
+        beforeSend: function() {
+            $("#LoadingButton").show();
+   
+       }}).then(function(response) {
 
+        $("#LoadingButton").hide();
         var data = JSON.parse(response);
 
-        var optionDefault = new Option("Select origin customer", "", true, true);
-        $('#IdCustomerOrigin').append(optionDefault);
+        if (data.length > 0) {
 
-        var optionDefault2 = new Option("Select destination customer", "", true, true);
-        $('#IdCustomerDestination').append(optionDefault2);
+            $('#IdCustomerOrigin, #IdCustomerDestination').empty();
 
-        if (data.OriginList.length > 0) {
-
-            data.OriginList.forEach(element => {
-                var optionBucle = new Option(element.Customer, element.Id, true, true);
-                $('#IdCustomerOrigin').append(optionBucle); //.trigger('change');
-            });
-        }
-
-        if (data.DestinationList.length > 0) {
-
-            data.DestinationList.forEach(element => {
-                var optionBucle2 = new Option(element.Customer, element.Id, true, true);
-                $('#IdCustomerDestination').append(optionBucle2); //.trigger('change');
-            });
-
-        }
-
-        $('#IdCustomerOrigin').val("").trigger('change');
-        $('#IdCustomerDestination').val("").trigger('change');
-       
-        $(".toast-success").html("Customer list ready");
-        var myAlert = document.getElementById('toastSuccess');
-        var bsAlert = new bootstrap.Toast(myAlert);
-        bsAlert.show();
-        
-
-        });
-}
-
-function loadInfoPDF1(){
- 
-    $(".OrderDateForm").text($("#PickUpOrderDateDate").val());
-    $(".ListVehiclesPDF").html("");
-
-    //Origin Info
-    $(".OriginNameForm").html($("#IdCustomerOrigin :selected").text().substr(0, $("#IdCustomerOrigin :selected").text().indexOf("-")) != "" ? $("#IdCustomerOrigin :selected").text().substr(0, $("#IdCustomerOrigin :selected").text().indexOf("-")) : "<span class='text-danger'>Check origin customer name</span>");
-    
-    $(".OriginAddressForm").html($("#OriginAddress").val() != "" ? $("#OriginAddress").val() :  "<span class='text-danger'>Check origin address</span>");
-
-    $(".PickUpDateForm").html($("#PickUpDate").val() != "" ? $("#PickUpDate").val() :  "<span class='text-danger'>Check pick up date</span>");
-    $(".DeliveryDateForm").html($("#DeliveryDate").val() != "" ? $("#DeliveryDate").val() :  "<span class='text-danger'>Check delivery date</span>");
-
-    if($("#OriginZip").val() != ""){
-        $(".OriginAddressForm").html($("#OriginAddress").val() != "" ? $("#OriginAddress").val() + "<br> Zip code: "+$("#OriginZip").val() :  "<span class='text-danger'>Check origin address</span>");
-    }
-   
-    $(".OriginPhone1Form").html($("#OriginPhone1").val() != "" ? $("#OriginPhone1").val() :  "<span class='text-danger'>Check origin phone1</span>");
-    $(".OriginPhone2Form").html($("#OriginPhone2").val() != "" ? "/ "+$("#OriginPhone2").val() :  "");
-
-    
-    //Destination Info
-    $(".DestinationNameForm").html($("#IdCustomerDestination :selected").text().substr(0, $("#IdCustomerDestination :selected").text().indexOf("-")) != "" ? $("#IdCustomerDestination :selected").text().substr(0, $("#IdCustomerDestination :selected").text().indexOf("-")) : "<span class='text-danger'>Check destination customer name</span>");
-    
-    $(".DestinationAddressForm").html($("#DestinationAddress").val() != "" ? $("#DestinationAddress").val() :  "<span class='text-danger'>Check destination address</span>");
-
-    if($("#DestinationZip").val() != ""){
-        $(".DestinationAddressForm").html($("#DestinationAddress").val() != "" ? $("#DestinationAddress").val() + "<br> Zip code: "+$("#DestinationZip").val() :  "<span class='text-danger'>Check destination address</span>");
-    }
-   
-    $(".DestinationPhone1Form").html($("#DestinationPhone1").val() != "" ? $("#DestinationPhone1").val() :  "<span class='text-danger'>Check destination phone1</span>");
-    $(".DestinationPhone2Form").html($("#DestinationPhone2").val() != "" ? "/ "+$("#DestinationPhone2").val() :  "");
-
-    //Vehicles Step info
-
-    var Vin, Brand, Model, ConditionVehicle, CarrierType, Color, Year, Vin = "";
-    var markup = "";
-
-    $(".registroVehiculo").each(function(){
-       
-       Brand       = $(this).find("select[name='Brand']").val();
-       Vin         = $(this).find("input[name^='Vin']").val();
-       Model       = $(this).find("select[name='Model']").val();
-       Color       = $(this).find("select[name='Color']").val();
-       Year        = $(this).find("input[name='Year']").val();
-       ConditionVehicle   = $(this).find("select[name='ConditionVehicle']").val();
-       CarrierType = $(this).find("select[name='CarrierType']").val();
-
-       if(Brand != ""){
-
-        markup += "<tr>"
-                     +"<td><h5 class='mt-0 mb-1 font-14'>"+Brand+"</h5><p class='mb-0 text-muted'>Vin "+Vin+"</p></td>"
-                     +"<td>" + Model + "</td>"
-                     +"<td>" + Color + "</td>"
-                     +"<td>" + Year + "</td>"
-                     +"<td>" + ConditionVehicle + "</td>"
-                     +"<td>" + CarrierType + "</td>"
-                     +"</tr>";
-       }
-       
+            var optionDefault = new Option("Select origin customer", "", true, true);
+            $('#IdCustomerOrigin, #IdCustomerDestination').append(optionDefault); 
       
-    });
+            data.forEach(element => {
+                var optionBucle = new Option(element.Customer, element.Id, true, true);
+                $('#IdCustomerOrigin, #IdCustomerDestination').append(optionBucle); 
+            });
+                 
+                 $(".toast-success").html("(!) Customer lists updated");
+                var myAlert = document.getElementById('toastSuccess');
+                var bsAlert = new bootstrap.Toast(myAlert);
+                bsAlert.show();
 
-     $(".ListVehiclesPDF").append(markup);
+                $('#IdCustomerOrigin').val(IdCustomerOriginTemp).trigger('change');
+                $("#IdCustomerDestination").val(IdCustomerDestinationTemp).trigger("change");
+               
+        }else{
 
-     //Payment info
-     $(".TotalForm").html($("#Total").val() != "" ? "US$ "+$("#Total").val() :  "<span class='text-danger'>Check total payment</span>");
-    $(".DepositForm").html($("#Deposit").val() != "" ? "US$ "+$("#Deposit").val() :  "<span class='text-danger'>Check deposit payment</span>");
-    $(".CardHolderNameForm").html($("#CardHolderName").val() != "" ? $("#CardHolderName").val() :  "<span class='text-danger'>Check card holder name</span>");
-    $(".CreditCardNumberForm").html($("#CreditCard").val() != "" ? $("#CreditCard").val() :  "<span class='text-danger'>Check credit card number</span>");
-    $(".ExperationDateForm").html($("#ExpDate").val() != "" ? $("#ExpDate").val() :  "<span class='text-danger'>Check experation date</span>");
-    $(".CVVForm").html($("#Cvv").val() != "" ? $("#Cvv").val() :  "<span class='text-danger'>Check CVV code</span>");
-  
-    $(".BillingAddressForm").html($("#BillingAddress").val() != "" ? $("#BillingAddress").val() :  "<span class='text-danger'>Check billing address</span>");
-    $(".BillingCityForm").html($("#BillingCity").val() != "" ? $("#BillingCity").val() :  "<span class='text-danger'>Check billing city</span>");
-    $(".BillingStateForm").html($("#BillingState").val() != "" ? $("#BillingState").val() :  "<span class='text-danger'>Check billing state</span>");
-    $(".BillingZipCodeForm").html($("#BillingZipCode").val() != "" ? $("#BillingZipCode").val() :  "<span class='text-danger'>Check billing zipcode</span>");
+                $(".toast-error").html("(x) Error to load customer list");
+                var myAlert = document.getElementById('toastError');
+                var bsAlert = new bootstrap.Toast(myAlert);
+                bsAlert.show();
 
-    var OriginNote = "";
-    var DestinationNote = "";
-    var OriginDestinationNote = "";
+                $('#IdCustomerOrigin').val("").trigger('change');
+                $("#IdCustomerDestination").val("").trigger("change");
+        }
 
-    if($("#OriginNote").val() != ""){
-        OriginNote ="<b>Origin notes:</b><br> "+$("#OriginNote").val()+"<br>";
-    }
-
-    if($("#DestinationNote").val() != ""){
-        DestinationNote ="<b>Destination notes:</b></br> "+$("#DestinationNote").val();
-    }
-
-    OriginDestinationNote = OriginNote + "<br>" + DestinationNote;
-    $(".OriginDestinationNotesForm").html(OriginDestinationNote != "" ? OriginDestinationNote :  "");
-                                                  
+      
+        })
 }
 
-function loadInfoPDF2(){
- 
-
- //Origin Info
- //$(".OriginNameForm").html($("#IdCustomerOrigin :selected").text().substr(0, $("#IdCustomerOrigin :selected").text().indexOf("-")) != "" ? $("#IdCustomerOrigin :selected").text().substr(0, $("#IdCustomerOrigin :selected").text().indexOf("-")) : "<span class='text-danger'>Check origin customer name</span>");
- 
- //$(".OriginAddressForm").html($("#OriginAddress").val() != "" ? $("#OriginAddress").val() :  "<span class='text-danger'>Check origin address</span>");
-
-  //Payment info
-  $("#TruckerCODForm").html($("#Cod").val() != "" ? "US$ "+$("#Cod").val() :  "<span class='text-danger'>Check Cod field</span>");
-  $("#TruckerFeeForm").html($("#ExtraTrukerFee").val() != "" ? "US$ "+$("#ExtraTrukerFee").val() :  "");
-  $("#TruckerRateForm").html($("#TrukerRate").val() != "" ? "US$ "+$("#TrukerRate").val() :  "");
-  
-
-}
-
-
-function GetListDrivers() {
-
-$.ajax({
-    type: 'POST',
-    url: "index.php?c=drivers&a=GetListDrivers",
-}).then(function(response) {
-
-    var data = JSON.parse(response);
-
-    if (data.length > 0) {
-
-        data.forEach(element => {
-            var optionBucle = new Option(element.Driver, element.Id, true, true);
-            $('#IdDriver').append(optionBucle); //.trigger('change');
-        });
-    }
-
-    var optionDefault = new Option("Select driver ", "", true, true);
-    $('#IdDriver').append(optionDefault);
-    $('#IdDriver').val("").trigger('change');
-
-    $(".toast-success").html("Driver's list ready");
-    var myAlert = document.getElementById('toastSuccess');
-    var bsAlert = new bootstrap.Toast(myAlert);
-    bsAlert.show();
-    
-
-
-    });
-}
-
-
-
-
-function GetListCompanyServices() {
-
-$.ajax({
-    type: 'POST',
-    url: "index.php?c=companyServices&a=GetListCompanyServices",
-}).then(function(response) {
-
-    var data = JSON.parse(response);
-
-    if (data.length > 0) {
-
-        data.forEach(element => {
-            var optionBucle = new Option(element.CompanyName, element.Id, true, true);
-            $('#IdCompanyService').append(optionBucle); //.trigger('change');
-        });
-    }
-
-    var optionDefault = new Option("Select trucker company", "", true, true);
-    $('#IdCompanyService').append(optionDefault);
-    $('#IdCompanyService').val("").trigger('change');
-
-    $(".toast-success").html("Trucker list ready");
-    var myAlert = document.getElementById('toastSuccess');
-    var bsAlert = new bootstrap.Toast(myAlert);
-    bsAlert.show();
-    });
-}
-
-GetListDrivers();
-GetListCompanyServices();
 
 function LoadEditFields(){
 
-    var IdCustomerOrigin = "<?= $Order->IdCustomerOrigin; ?>";
-    $('#IdCustomerOrigin').val(IdCustomerOrigin);
-    $('#IdCustomerOrigin').select2().trigger('change');
+$("#LoadingButton").show();
+//Colocarel ID de la orden para hacer el update
 
-    var IdCompanyService = "<?= $Order->IdCompanyService; ?>";
-    $('#IdCompanyService').val(IdCompanyService);
-    $('#IdCompanyService').select2().trigger('change');
+$('#IdCustomerOrigin').select2().trigger('change');
+$('#IdCustomerDestination').select2().trigger('change');
+$('#IdCompanyService').select2().trigger('change');
+$('#IdDriver').select2().trigger('change');
 
-    var IdDriver = "<?= $Order->IdDriver; ?>";
-    $('#IdDriver').val(IdDriver);
-    $('#IdDriver').select2().trigger('change');
+//Vehicles Step
+<?php
+    $js_array = json_encode($OrderDetail);
+    echo "var vehicleJSON = JSON.parse(".$js_array.");";
+ ?>
 
-    var OriginAddress = "<?= $Order->OriginAddress; ?>";
-    $("#OriginAddress").val(OriginAddress);
+if(vehicleJSON.length >0){
 
-    var OriginCity = "<?= $Order->OriginCity; ?>";
-    $("#OriginCity").val(OriginCity);
-
-    var OriginState = "<?= $Order->OriginState; ?>";
-    $("#OriginState").val(OriginState);
-
-    var OriginZip = "<?= $Order->OriginZip; ?>";
-    $("#OriginZip").val(OriginZip);
-
-    var OriginNote = "<?= $Order->OriginNote; ?>";
-    $("#OriginNote").val(OriginNote);
-
-    //Destination
-
-    var IdCustomerDestination = "<?= $Order->IdCustomerDestination; ?>";
-    $('#IdCustomerDestination').val(IdCustomerDestination);
-    $('#IdCustomerDestination').select2().trigger('change');
-    
-    var DestinationAddress = "<?= $Order->DestinationAddress; ?>";
-    $("#DestinationAddress").val(DestinationAddress);
-
-    var DestinationCity = "<?= $Order->DestinationCity; ?>";
-    $("#DestinationCity").val(DestinationCity);
-
-    var DestinationState = "<?= $Order->DestinationState; ?>";
-    $("#DestinationState").val(DestinationState);
-
-    var DestinationZip = "<?= $Order->DestinationZip; ?>";
-    $("#DestinationZip").val(DestinationZip);
-
-    var DestinationNote = "<?= $Order->DestinationNote; ?>";
-    $("#DestinationNote").val(DestinationNote);
-
-    //Vehicles Step
-
-    var PickUpDate = "<?= $Order->PickUpDate; ?>";
-    $("#PickUpDate").val(PickUpDate);
-
-    var DeliveryDate = "<?= $Order->DeliveryDate; ?>";
-    $("#DeliveryDate").val(DeliveryDate);
-
-    var OrderDate = "<?= $Order->OrderDate; ?>";
-    $("#PickUpOrderDateDate").val(OrderDate);
-
-    var OrderStatusID = "<?= $Order->OrderStatusID; ?>";
-    $("#OrderStatusID").val(OrderStatusID);
-
-    <?php
-        $js_array = json_encode($OrderDetail);
-        echo "var vehicleJSON = JSON.parse(".$js_array.");";
-     ?>
-
-    if(vehicleJSON.length >0){
-
-        vehicleJSON.forEach(element => {
-            EditVehicleList(element.Brand, element.Model, element.Year, element.Color, element.ConditionVehicle, element.CarrierType, element.Vin);
-        });
-    }
-
-    //$Payment Step
-
-    var CardHolderName = "<?= $Payment->CardHolderName; ?>";
-    $("#CardHolderName").val(CardHolderName);
-
-
-    var CreditCard = "<?= $Payment->CreditCard; ?>";
-    $("#CreditCard").val(CreditCard);
-
-    var ExpDate = "<?= $Payment->ExpDate; ?>";
-    $("#ExpDate").val(ExpDate);
-
-    var Cvv = "<?= $Payment->Cvv; ?>";
-    $("#Cvv").val(Cvv);
-   
-    var BillingAddress = "<?= $Payment->BillingAddress; ?>";
-    $("#BillingAddress").val(BillingAddress);
-
-    var BillingState = "<?= $Payment->BillingState; ?>";
-    $("#BillingState").val(BillingState);
-
-    var BillingCity = "<?= $Payment->BillingCity; ?>";
-    $("#BillingCity").val(BillingCity);
-
-    var BillingZipCode = "<?= $Payment->BillingZipCode; ?>";
-    $("#BillingZipCode").val(BillingZipCode);
-
-    var Tel1 = "<?= $Payment->Tel1; ?>";
-    $("#Tel1").val(Tel1);
-
-    var Tel2 = "<?= $Payment->Tel2; ?>";
-    $("#Tel2").val(Tel2);
-
-    var PaymentEmail = "<?= $Payment->PaymentEmail; ?>";
-    $("#PaymentEmail").val(PaymentEmail);
-
-    var PaymentNote = "<?= $Payment->PaymentNote; ?>";
-    $("#PaymentNote").val(PaymentNote);
-
-    var Reference = "<?= $Payment->Reference; ?>";
-    $("#Reference").val(Reference);
-
-    var Total = "<?= $Order->Total; ?>";
-    $("#Total").val(Total);
-
-    var Deposit = "<?= $Order->Deposit; ?>";
-    $("#Deposit").val(Deposit);
-
-        var TotalOrder = "<?= $Order->Total; ?>";
-        $("#TotalOrder").val(TotalOrder);
-
-        var Deposit = "<?= $Order->Deposit; ?>";
-        $("#DepositOrder").val($("#Deposit").val());
-
-        var Earnings = "<?= $Order->Earnings; ?>";
-        $("#Earnings").val(Earnings);
-
-        var Cod = "<?= $Order->Cod; ?>";
-        $("#Cod").val(Cod);
-
-        var TrukerRate = "<?= $Order->TrukerRate; ?>";
-        $("#TrukerRate").val(TrukerRate); 
-
-        var ExtraTrukerFee = "<?= $Order->ExtraTrukerFee; ?>";
-        $("#ExtraTrukerFee").val(ExtraTrukerFee); 
-
-        var TrukerOwesUs = "<?= $Order->TrukerOwesUs; ?>";
-        $("#TrukerOwesUs").val(TrukerOwesUs); 
-
-        
+    vehicleJSON.forEach(element => {
+        EditVehicleList(element.Brand, element.Model, element.Year, element.Color, element.ConditionVehicle, element.CarrierType, element.Vin);
+    });
 }
+
+$("#LoadingButton").hide();
+
+}
+
 
 function EditVehicleList(Brand, Model, Year, Color, ConditionVehicle, CarrierType, Vin) {
 //#contentVehicle"
@@ -1124,9 +868,9 @@ $(clonado).find(".select2").select2();
 
 $(document).ready(function($){
 setTimeout(() => {LoadEditFields();}, 3000);
-    $('.phone').mask('(000)000-0000');
+    $('.phone, #DriverPhone1, #DriverPhone2').mask('(000) 000-0000');
     $("#Cvv").mask('0000');
     $("#CreditCard").mask("0000 0000 0000 0000");
-    $('.inputNumber').mask('000.000.000.000.000,00', {reverse: true});
+    $('.inputNumber'). mask("#,##0.00", {reverse: true});
 });
 </script>

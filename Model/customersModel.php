@@ -29,7 +29,6 @@ class Customers {
     {
         try
         {
-
                 $stm = $this->pdo->prepare("SELECT * FROM vw_customers");
                 $stm->execute();
                 $row = $stm->fetchAll();
@@ -67,6 +66,8 @@ class Customers {
   
     public function Update($data)
     {
+
+      
         try
         {
             $sql = "UPDATE tbl_customers SET
@@ -90,7 +91,7 @@ $result = $this->pdo->prepare($sql)
                         $data->Email,
                         date("Y-m-d H:i:s") ,
                         (int)$_SESSION['UserOnline']->Id,
-                        (int)$data->IsActive,
+                        0,
                         intval($data->Id)
                     )
                 );

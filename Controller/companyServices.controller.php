@@ -86,7 +86,7 @@ class CompanyServicesController
                 $Message =  $this->model->Update($CompanyServices);
 
                 if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "/index.php?c=companyServices&a=Edit&Id="+$companyServices->Id+"; }, 100);</script>';
+                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "index.php?c=companyServices&a=Edit&Id="+$companyServices->Id+"; }, 100);</script>';
                 } else {
                     header('Location:index.php?c=companyServices&a=index');
                 }
@@ -95,8 +95,8 @@ class CompanyServicesController
 
                 $Message = $this->model->Create($CompanyServices);
 
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "../index.php"; }, 100);</script>';
+                if ($Message) {
+                    echo '<script> setTimeout(function(){ window.location.href = "index.php?c=companyServices&a=index"; }, 100);</script>';
                 } else {
                     header('Location:index.php?c=companyServices&a=index');
                 }
