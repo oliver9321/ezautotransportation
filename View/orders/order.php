@@ -5,6 +5,9 @@
     }
 
 </style>
+<link rel="stylesheet" type="text/css" href="https://printjs-4de6.kxcdn.com/print.min.css"/>
+<script type="text/javascript" src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+
 <div class="modal fade" id="ModalNewCustomer" role="dialog" aria-labelledby="ModalNewCustomerLabel" >
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -547,14 +550,14 @@
                                                     <div class="row registroVehiculo" id="templateVehiculo" style="padding-bottom:20px !important" hidden>
 
                                                         <div class="col-sm-2" >
-                                                            <label class="mb-1"><b>Brand</b><b class="text-danger">*</b></label>
+                                                            <label class="mb-1"><b>Brand</b></label>
                                                             <select style="width: 90%;" name="Brand" onchange="GetModelsByBrand(this)" class="select2 form-control mb-3 custom-select BrandVehicle vehicleList" >
                                                                 <option value="">Select brand</option>
                                                             </select>
                                                         </div>
 
                                                         <div class="col-sm-3" >
-                                                            <label class="mb-1"><b>Model</b><b class="text-danger">*</b></label>
+                                                            <label class="mb-1"><b>Model</b></label>
                                                             <select style="width: 90%;" name="Model"
                                                                 class="select2 form-control mb-3 custom-select ModelVehicle vehicleList">
                                                                 <option value="">Select model</option>
@@ -563,13 +566,13 @@
 
                                                             <!--end col-->
                                                          <div class="col-sm-1" >
-                                                            <label class="mb-1"><b>Year</b><b class="text-danger">*</b></label>
+                                                            <label class="mb-1"><b>Year</b></label>
                                                             <input type="number"  min="1900" name="Year"  class="form-control YearVehicle vehicleList" placeholder="">
                                                         </div>
 
                                                               <!-- end row -->
                                                          <div class="col-sm-1" >
-                                                            <label class="mb-1"><b>Color</b><b class="text-danger">*</b></label>
+                                                            <label class="mb-1"><b>Color</b></label>
                                                             <select style="width: 100%;" name="Color" class="form-control ColorVehicle vehicleList">
                                                             <option value="">Colors</option>
                                                                 <option value="White"> White</option>
@@ -587,7 +590,7 @@
                                                         </div>
 
                                                         <div class="col-sm-1" >
-                                                            <label class="mb-1"><b>Carrier</b><b class="text-danger">*</b></label>
+                                                            <label class="mb-1"><b>Carrier</b></label>
                                                             <select style="width: 100%;" name="CarrierType" class="form-control CarrierTypeVehicle vehicleList">
                                                             <option value="">Carriers</option>
                                                                 <option value="Open">Open</option>
@@ -598,7 +601,7 @@
                                                 
 
                                                         <div class="col-sm-1" >
-                                                            <label class="mb-1"><b>Condition</b><b class="text-danger">*</b></label>
+                                                            <label class="mb-1"><b>Condition</b></label>
                                                             <select style="width: 100%;" name="ConditionVehicle" class="form-control ConditionVehicle vehicleList">
                                                                 <option value="">Conditions</option>
                                                                 <option value="Running">Running</option>
@@ -857,12 +860,12 @@
                                                 <table class="table table-bordered mb-0">
                                                     <thead class="thead-light">
                                                         <tr>
-                                                            <th>Brand</th>
-                                                            <th>Model</th>
-                                                            <th>Color</th>
-                                                            <th>Year</th>
-                                                            <th>Condition</th>
-                                                            <th>Carrier type</th>
+                                                            <th><b>Brand</b></th>
+                                                            <th><b>Model</b></th>
+                                                            <th><b>Color</b></th>
+                                                            <th><b>Year</b></th>
+                                                            <th><b>Condition</b></th>
+                                                            <th><b>Carrier type</b></th>
                                                         </tr>
                                                         <!--end tr-->
                                                     </thead>
@@ -988,7 +991,7 @@
                                         <div class="col-lg-12 col-xl-4">
                                             <div class="float-end d-print-none"> 
                                             <a href="index.php?c=Orders&a=Index" class="btn btn-success btn-sm" id="ButtonExit"><i class="fa fa-document"></i> Go to Order List</a> 
-                                            <a href="javascript:window.print()" class="btn btn-info btn-sm"><i class="fa fa-print"></i> Print</a> 
+                                            <button onclick="printJS('form-horizontal', 'html')"  type="button" class="btn btn-info btn-sm"><i class="fa fa-print"></i> Print</button> 
                                         </div>
                                         <!--end col-->
                                     </div>
@@ -1205,7 +1208,7 @@ $("#form-horizontal").steps({
                      $("#ManualUpdateButton").show();
                     let continueCase3 = true;
                    
-                    if($("#CardHolderName").val() != "" &&  $("#ExpDate").val() != "" && $("#CreditCard").val() != ""  &&  $("#Cvv").val() != ""  &&  $("#BillingAddress").val() != "" &&  $("#BillingCity").val() != "" && $("#BillingState").val() != "" &&  $("#Tel1").val() != "" &&  $("#Total").val() != "" && $("#Deposit").val() != ""){
+                    if($("#CardHolderName").val() != "" &&  $("#ExpDate").val() != "" && $("#CreditCard").val() != ""  &&  $("#Cvv").val() != ""  &&  $("#BillingAddress").val() != "" &&  $("#BillingCity").val() != "" && $("#BillingState").val() != "" &&  $("#Tel1").val() != "" &&  $("#Total").val() != "0" && $("#Deposit").val() != "0"){
 
                        let ExpDate =  $("#ExpDate").val();
                        let month = ExpDate.substr(0,2);
@@ -1226,6 +1229,7 @@ $("#form-horizontal").steps({
                         return false;
 
                        }
+
 
 
                     if(ConvertNumber($("#Deposit").val()) > ConvertNumber($("#Total").val())){
@@ -1508,7 +1512,7 @@ function loadInfoPDF1(){
     $(".BillingAddressForm").html($("#BillingAddress").val() != "" ? $("#BillingAddress").val() :  "<span class='text-danger'>Check billing address</span>");
     $(".BillingCityForm").html($("#BillingCity").val() != "" ? $("#BillingCity").val() :  "<span class='text-danger'>Check billing city</span>");
     $(".BillingStateForm").html($("#BillingState").val() != "" ? $("#BillingState").val() :  "<span class='text-danger'>Check billing state</span>");
-    $(".BillingZipCodeForm").html($("#BillingZipCode").val() != "" ? $("#BillingZipCode").val() :  "<span class='text-danger'>Check billing zipcode</span>");
+    $(".BillingZipCodeForm").html($("#BillingZipCode").val() != "" ? $("#BillingZipCode").val() :  "");
 
     var OriginNote = "";
     var DestinationNote = "";

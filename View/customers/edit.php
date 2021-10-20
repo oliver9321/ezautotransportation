@@ -35,7 +35,7 @@
    <form id="frm-Customers" action="?c=Customers&a=Save" method="post" enctype="multipart/form-data">
 
             <input type="hidden" name="Id" id="Id" value="<?=$Customer->Id; ?>" />
-            <input type="text" name="IsActive" id="IsActive" value="<?=$Customer->IsActive?>">
+            <input type="hidden" name="IsActive" id="IsActive" value="<?=$Customer->IsActive?>">
 
                 <div class="row">
                     <div class="col-sm-8 offset-sm-2">
@@ -79,7 +79,7 @@
                                             <br>
                                             <div class="form-check form-switch form-switch-danger">
                                             <input class="form-check-input" type="checkbox" id="IsActiveChange" checked="">
-                                                <label class="form-check-label text-da" for="IsActive"><b> <i class="fa fa-trash"></i> Click for delete</b></label> 
+                                                <label class="form-check-label text-da" for="IsActive"><b> <i class="fa fa-trash text-danger"></i> Click for delete</b></label> 
                                             </div>
                                             </div>
                                        

@@ -75,7 +75,6 @@ $(document).ready(function() {
                 "targets": 6,
                 "data": "IsActive",
                 "render": function (data) {
-                    console.log(data);
                     return data == 1 ? '<center><button type="button" class="btn btn-success"> <i class="ti-check"></i> </button></center>': '<center><button type="button" class="btn btn-sm btn-danger btn-circle waves-effect waves-light"> <i class="ti-close"></i> </button></center>';
          }}]
     });

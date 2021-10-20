@@ -1,5 +1,9 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+header("Access-Control-Allow-Methods: POST");
+
 require_once 'Config/Core.php'; 
 require_once 'Model/ordersModel.php'; 
 require_once 'Model/paymentsModel.php'; 
@@ -601,25 +605,16 @@ class OrdersController
 
     public function PayOrder(){
 
-        if(isset($_POST['Id']) && $_POST['Id'] != "" && isset($_POST['FieldSelected']) && $_POST['FieldSelected'] != ""){
+        if(isset($_POST['Id']) && $_POST['Id'] != ""){
 
             $Orders = new Orders();
             $result = "";
 
-            if($_POST['FieldSelected'] == "ExtraTruckerFee"){
-               
                 $Orders->Id = $_POST['Id'];
                 $Orders->ExtraTrukerFee  = 0;
-                $result = $Orders->PayExtraTruckerFee($Orders);
-                
-            }else if($_POST['FieldSelected'] == "TruckerOwesUS"){
-                
-                $Orders->Id = $_POST['Id'];
                 $Orders->TrukerOwesUs = 0;
-                $result = $Orders->PayTruckerOwesUS($Orders);
+                $result = $Orders->PayExtraTruckerFeeAndTrukerOwesUs($Orders);
 
-            }
-           
             echo json_encode($result, true);
 
         }else{

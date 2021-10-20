@@ -62,7 +62,7 @@
                             <th></th>
                             <th></th>                           
                             <th></th>
-                            <th class=" font-weight-bold"><b>Totals:</b></th>  
+                            <th class=" font-weight-bold"><b>Total:</b></th>
                             <th class=""></th>  
                             <th class=""></th>  
                             <th class="text-warning font-weight-bold"></th>  
@@ -90,16 +90,9 @@
                                       <div class="col-md-12" >
                                             <label class="mb-1"><b>Order ID</b></label>
                                             <input type="text" id="Id" readonly class="form-control">
+                                            <span class="text-muted">The amount greater than 0 will be paid.</span>
                                         </div><br>
                                                     
-                                    <div class="col-md-12" >
-                                            <label class="mb-1"><b>Mark as paid</b><b class="text-danger">*</b></label>
-                                            <select style="width: 100%;" id="FieldSelected" name="FieldSelected" class="form-control">
-                                                <option selected value="">Select an option</option>
-                                                <option value="ExtraTruckerFee">Extra Trucker Fee</option>
-                                                <option value="TruckerOwesUS">Trucker Owes US</option>
-                                            </select>
-                                        </div>
                                  </div>
                     </div>
                     <!--end col-->
@@ -213,12 +206,12 @@ $(document).ready(function() {
                 }}, {
                 "targets": 4,
                 "render": function (data, type, row) {
-                    return (data == "Pending" ?  '<center><span class="badge badge-soft-danger px-2">'+data+'</span></center>'  : '<center><span class="badge badge-soft-success px-2">'+data+'</span></center>')
+                    return (data == "Pending" ?  '<center><span class="badge badge-soft-danger px-2">'+data+'</span></center>'  : '<center><span class="badge badge-soft-dark px-2">'+data+'</span></center>')
          
                 }},{
                 "targets": 5,
                 "render": function (data, type, row) {
-                    return (data == "Pending" ?  '<center><span class="badge badge-soft-danger px-2">'+data+'</span></center>'  : '<center><span class="badge badge-soft-success px-2">'+data+'</span></center>')
+                    return (data == "Pending" ?  '<center><span class="badge badge-soft-danger px-2">'+data+'</span></center>'  : '<center><span class="badge badge-soft-dark px-2">'+data+'</span></center>')
          
                 }} ]
     });
@@ -232,12 +225,12 @@ function ChangeStatus(OrderID){
 
 function PayOrder(){
 
-    if($("#Id").val() != '' && $("#FieldSelected").val() != ''){
+    if($("#Id").val() != ''){
 
     $.ajax({
         type: 'POST',
         url: "index.php?c=Orders&a=PayOrder",
-        data:{ Id: $("#Id").val(), "FieldSelected": $("#FieldSelected").val()}
+        data:{ Id: $("#Id").val()}
      }).then(function(response) {
 
         if(response == 'true' || response == true){
@@ -254,7 +247,6 @@ function PayOrder(){
             var bsAlert = new bootstrap.Toast(myAlert);
             bsAlert.show();
 
-        
         }
         $("#ModalMarkPaid").modal('hide'); 
         location.reload();

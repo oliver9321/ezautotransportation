@@ -146,7 +146,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark">
-                <h6 class="modal-title m-0" id="ModalChangeStatusLabel"> <i class="fas fa-car me-2"></i> Change status order</h6>
+                <h6 class="modal-title m-0" id="ModalChangeStatusLabel"> <i class="fas fa-file me-2"></i> Change status order</h6>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!--end modal-header-->
@@ -184,7 +184,6 @@
             <!--end modal-body-->
             <div class="modal-footer">
                 <button type="button" onclick="UpdateStatusOrder()" class="btn btn-soft-primary btn-sm">Update order</button>
-                <button type="button" class="btn btn-soft-secondary btn-sm" data-bs-dismiss="modal">Close</button>
             </div>
             <!--end modal-footer-->
         </div>
@@ -268,7 +267,7 @@ datatable = $('#OrderList').DataTable({
             "targets":1,
             "data": "Editar",
             "render": function (data, type, row) {
-                return '<center><a class="btn btn-primary btn-sm" title="View order" href="index.php?c=Orders&a=View&Id='+data+'"> <i class="ti-file"></i></a><a class="btn btn-warning btn-sm" href="index.php?c=Orders&a=Edit&Id='+data+'" title="Edit order"> <i class="ti-pencil"></i></a><button class="btn btn-info btn-sm" onclick="ChangeStatus('+data+')"  title="Change status"> <i class="ti-loop"></i></button><a class="btn btn-success btn-sm" title="View payment info" href="index.php?c=Payments&a=Index"> <i class="ti-money"></i></a></center>';
+                return '<center><a class="btn btn-primary btn-sm" title="View order" href="index.php?c=Orders&a=View&Id='+data+'"> <i class="ti-file"></i></a><a class="btn btn-warning btn-sm" href="index.php?c=Orders&a=Edit&Id='+data+'" title="Edit order"> <i class="ti-pencil"></i></a><button class="btn btn-info btn-sm" onclick="ChangeStatus('+data+')"  title="Change status"> <i class="ti-loop"></i></button><a class="btn btn-success btn-sm" title="Go to View payment" href="index.php?c=Payments&a=Index"> <i class="ti-money"></i></a></center>';
             }}, {
                 "targets": 2,
                 "render": function (data, type, row) {

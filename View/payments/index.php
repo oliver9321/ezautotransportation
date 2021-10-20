@@ -62,7 +62,7 @@
                             <th></th>
                             <th></th>                           
                             <th></th>
-                            <th class=" font-weight-bold"><b>Totals:</b></th>  
+                            <th class=" font-weight-bold"><b>Total:</b></th>
                             <th class=""></th>  
                             <th class=""></th>  
                             <th class="text-warning font-weight-bold"></th>  

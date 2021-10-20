@@ -669,6 +669,14 @@
 
                                           </div>
                                     </div>
+                                        <div class="col-md-12">
+                                                 <div class="row inputpadding">
+                                                   <div class="col-md-12" >
+                                                         <label class="mb-1"><i class="fa fa-exclamation-triangle"></i> Cancelation Note</label>
+                                                          <textarea id="CancelledNote" class="form-control" rows="4" readonly><?=$Order->CancelledNote?></textarea>
+                                                  </div>
+                                              </div>
+                                        </div>
                                 </div>
                             <!--end form-group-->
                         </div>
@@ -700,8 +708,6 @@ $(document).ready(function() {
     $('.select2').select2({disabled:'readonly'});
    $("body").addClass("enlarge-menu");
    $(".ListVehiclesPDF").html("");
-
- 
 
 });
 

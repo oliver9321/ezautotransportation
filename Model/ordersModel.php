@@ -452,27 +452,17 @@ $result = $this->pdo->prepare($sql)->execute(
 
  }
 
- public function PayExtraTruckerFee($data){
+ public function PayExtraTruckerFeeAndTrukerOwesUs($data){
     
     try{
-        $sql = "UPDATE tbl_orders SET ExtraTrukerFee  = ? WHERE Id = ?";
-        return $this->pdo->prepare($sql)->execute(array($data->ExtraTrukerFee,$data->Id));
+        $sql = "UPDATE tbl_orders SET ExtraTrukerFee  = ?, TrukerOwesUs = ? WHERE Id = ?";
+        return $this->pdo->prepare($sql)->execute(array($data->ExtraTrukerFee, $data->TrukerOwesUs, $data->Id));
     } catch (Exception $e){
         die("PayExtraTruckerFee: ".$e->getMessage());
     }
 
  }
 
- public function PayTruckerOwesUS($data){
-    
-    try{
-        $sql = "UPDATE tbl_orders SET TrukerOwesUs  = ? WHERE Id = ?";
-        return $this->pdo->prepare($sql)->execute(array($data->TrukerOwesUs,$data->Id));
-    } catch (Exception $e){
-        die("PayTruckerOwesUS: ".$e->getMessage());
-    }
-
- }
 
  function decryptIt($string, $key) {
 
