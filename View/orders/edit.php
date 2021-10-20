@@ -543,7 +543,7 @@
                                                             <!--end col-->
                                                             <div class="col-sm-1">
                                                                 <label class="mb-1"><b>Year</b><b class="text-danger">*</b></label>
-                                                                <input type="number" min="1900" name="Year" class="form-control YearVehicle vehicleList" placeholder="">
+                                                                <input type="number" min="1900"  maxlength="5" name="Year" class="form-control YearVehicle vehicleList" placeholder="">
                                                             </div>
 
                                                             <!-- end row -->

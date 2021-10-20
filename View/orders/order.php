@@ -789,70 +789,53 @@
 <h3>Confirm order</h3>
                 <fieldset>
                     <div class="row">
-                        <div class="col-lg-12 mx-auto" id="zonaPrint">
+                        <div class="col-lg-12" id="zonaPrint">
                             <div class="card">
-                                <div class="card-body invoice-head">
-                                    <div class="row">
+                            <div class="card-body">
+                                    <img src="assets/images/logopdf1.png" alt="Logo" id="imgLogoPDF" class="rounded float-start" width="30%">
 
-                                        <div class="card mb-0" style="border:0px solid rgba(0, 0, 0, 0.125) !important">
-                                               
-                                            <div class="row g-1">
-                                                    
-                                                    <div class="col-md-3 align-self-center">
-                                                        <img src="assets/images/logopdf1.png" alt="LogoPdf1" class="img-fluid">
-                                                    </div><!--end col-->
-
-                                                    <div class="col-md-4 ms-auto align-self-center">
-                                                        <div class="card-body">
-                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-web text-dark"></i> <?=URL_WEBSITE?></p>
-                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-phone text-dark"></i> <?=TELEFONO?></p>
-                                                            <p class="card-text mb-0 text-muted"><i class="mdi mdi-map-marker text-dark"></i> <?=DIRECCION?></p>
-                                                        </div>
-                                                    </div><!--end col-->
-
-                                                </div><!--end row-->
-
-                                            </div>
-                                        <!--end col-->
+                                    <div class="rounded float-end">
+                                        <br>
+                                        <h6 class="card-text mb-0 text-muted"><i class="mdi mdi-web text-dark"></i> <?= URL_WEBSITE ?></h6>
+                                        <h6 class="card-text mb-0 text-muted"><i class="mdi mdi-phone text-dark"></i> <?= TELEFONO ?></h6>
+                                        <h6 class="card-text mb-0 text-muted"><i class="mdi mdi-map-marker text-dark"></i> <?= DIRECCION ?></h6>
                                     </div>
-                                    <!--end row-->
+                                </div>
+                                <!--end card-body-->
+
+                                <div class="card-body invoice-head">
+
+                                    <div class="card"></div>
+                                    <!--end card-->
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <center><h6 style="padding-top: 8px;"><b>Order ID: </b><span class="OrderIDForm"></span> <b> | Order date: </b><span class="OrderDateForm">0000-00-00</span><b> | Pick up date: </b><span class="PickUpDateForm">0000-00-00</span><b> | Delivery date: </b><span class="DeliveryDateForm">0000-00-00</span></h6></center>
+                                            <hr>
+                                        </div>
+                                    </div>
+
+                                    <div class="container">
+                                            <div class="row">
+                                                <div class="col">
+                                                        <h6 class="mb-0"><b>Origin: </b><span class="OriginNameForm"></span></h6>
+                                                        <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="OriginPhone1Form"></span><span class="OriginPhone2Form"></span></h6>
+                                                        <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="OriginAddressForm"></span></h6>
+                                                       
+                                                </div>
+                                            
+                                                <div class="col">
+                                                        <h6 class="mb-0"><b>Destination: </b><span class="DestinationNameForm"></span></h6>
+                                                        <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="DestinationPhone1Form"></span> <span class="DestinationPhone2Form"></span></h6>
+                                                        <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="DestinationAddressForm"></span></h6>
+                                                </div>
+                                            </div>
+                                     </div>
+                                  
                                 </div>
                                 <!--end card-body-->
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="">
-                                            <h6 class="mb-0"><b>Order ID: </b><span class="OrderIDForm"></span></h6>
-                                                <h6 class="mb-0"><b>Order date: </b><span class="OrderDateForm">0000-00-00</span></h6>
-                                                <h6 class="mb-0"><b>Pick up date: </b><span class="PickUpDateForm">0000-00-00</span></h6>
-                                                <h6 class="mb-0"><b>Delivery date: </b><span class="DeliveryDateForm">0000-00-00</span></h6><br>
-                                            </div>
-                                        </div>
-                                        <!--end col-->
-                                        <div class="col-md-4">
-                                            <div class="float-left">
-                                                <address class="font-13">
-                                                    <strong class="font-14">Origin:</strong><br>
-                                                    <b class="OriginNameForm">Field empty</b><br>
-                                                    <span><i class="fa fa-map-marker-alt"></i> </span><i class="OriginAddressForm">Field empty</i><br>
-                                                    <span title="Phone"><i class="fa fa-phone-alt"></i>  <span class="OriginPhone1Form"></span> <span class="OriginPhone2Form"></span></span>
-                                                </address>
-                                            </div>
-                                        </div>
-                                        <!--end col-->
-                                        <div class="col-md-4">
-                                            <div class="">
-                                            <address class="font-13">
-                                                    <strong class="font-14">Destination:</strong><br>
-                                                    <b class="DestinationNameForm">Field empty</b><br>
-                                                    <span><i class="fa fa-map-marker-alt"></i> </span><i class="DestinationAddressForm">Field empty</i><br>
-                                                    <span title="Phone"><i class="fa fa-phone-alt"></i>  <span class="DestinationPhone1Form"></span> <span class="DestinationPhone2Form"></span></span>
-                                                </address>
-                                            </div>
-                                        </div>
-                                        <!--end col-->
-                                    </div>
-                                    <!--end row-->
+                                
                                     <div class="row">
                                     
                                         <div class="col-lg-12">
@@ -991,7 +974,7 @@
                                         <div class="col-lg-12 col-xl-4">
                                             <div class="float-end d-print-none"> 
                                             <a href="index.php?c=Orders&a=Index" class="btn btn-success btn-sm" id="ButtonExit"><i class="fa fa-document"></i> Go to Order List</a> 
-                                            <button onclick="printJS('form-horizontal', 'html')"  type="button" class="btn btn-info btn-sm"><i class="fa fa-print"></i> Print</button> 
+                                            <button onclick="printJS({printable: 'zonaPrint', type:'html', css: ['assets/css/bootstrap.min.css','assets/css/app.min.css','assets/css/icons.min.css','assets/css/print.css' ],  style: '@page {margin: 4mm}', scanStyles: false})" type="button" class="btn btn-info btn-sm"><i class="fa fa-print"></i> Print</button>
                                         </div>
                                         <!--end col-->
                                     </div>
