@@ -5,27 +5,6 @@
     }
 </style>
 
-
-<div class="position-fixed top-0 end-0 p-3" style=" z-index: 9999999 !important;">
-    <div id="toastSuccess" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body toast-success">
-                <!-- Message from js -->
-            </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-    </div>
-    <div id="toastError" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body toast-error">
-                <!-- Message from js -->
-            </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-    </div>
-</div>
-
-
 <span class="text-dark">
     <h4>Order # <?= $Order->Id ?></h4>
 </span>
@@ -351,6 +330,7 @@
                 </fieldset>
                 <!--end fieldset-->
                 <br>
+                <?php  if($_SESSION['UserOnline']->Profile == "admin") {?>
                 <fieldset>
                     <div class="row">
                         <div class="col-md-6"> <span class="text-dark"><b><i data-feather="credit-card"></i> Payment</b></span>
@@ -477,6 +457,7 @@
                     <!--end row-->
         
                 </fieldset>
+                <?php } ?>
                 <hr />
                 <fieldset>
                     <div class="row">
@@ -588,7 +569,7 @@
             <!--end form-->
         </div>
         <!--end card-body-->
-        <a href="index.php?c=Orders&a=Edit&Id=<?= $Order->Id ?>" class="d-print-none btn btn-warning text-white"><i class="fa fa-edit text-white"></i> Update order</a>
+        <a href="index.php?c=Orders&a=Edit&Id=<?= $Order->Id ?>" class="d-print-none btn btn-dark text-white"><i class="fa fa-edit text-white"></i> Update order</a>
     </div>
     <!--end card-->
 </div>

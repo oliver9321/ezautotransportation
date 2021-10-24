@@ -16,7 +16,7 @@ class DriversController
 
         if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
 
-            $data = $this->model->View();
+        $data = $this->model->View();
 
         GetRouteView(null, "header");
         require_once 'View/drivers/index.php';
@@ -79,25 +79,11 @@ class DriversController
 
             //Si viene un Id, es porque quieres hacer un Update, de lo contrario INSERT
             if ($Driver->Id > 0) {
-
-                $Message =  $this->model->Update($Driver);
-           
-                if ($Message != "1") {
-                    echo '<script> setTimeout(function(){ window.location.href = "index.php?c=Drivers&a=Edit&Id="+$Driver->Id+"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=Drivers&a=index');
-                }
-
+                $this->model->Update($Driver);
             } else {
-
-                $Message = $this->model->Create($Driver);
-
-                if ($Message != "1") {
-                    echo '<script> setTimeout(function(){ window.location.href = "index.php?c=Drivers&a=index"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=Drivers&a=index');
-                }
+                $this->model->Create($Driver);
             }
+            header('Location:index.php?c=Drivers&a=index');
 
         } else {
             header('Location:index.php?c=Drivers&a=Edit');
@@ -115,8 +101,6 @@ class DriversController
                 $driver->DriverName      = $_POST['DriverName'];
                 $driver->DriverPhone1    = $_POST['DriverPhone1'];
                 $driver->DriverPhone2    = $_POST['DriverPhone2'];
-
-                //Campos genericos
                 $driver->IsActive = 1;
 
                 echo json_encode($this->model->Create($driver), true);

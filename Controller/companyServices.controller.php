@@ -1,5 +1,4 @@
 <?php
-
 require_once 'Config/Core.php'; 
 require_once 'Model/companyServicesModel.php'; 
 
@@ -76,31 +75,16 @@ class CompanyServicesController
             $CompanyServices->CompanyPhone1     = $_REQUEST['CompanyPhone1'];
             $CompanyServices->CompanyPhone2     = $_REQUEST['CompanyPhone2'];
             $CompanyServices->CompanyEmail      = $_REQUEST['CompanyEmail'];
-
-            //Campos genericos
             $CompanyServices->IsActive          = $_REQUEST['IsActive'];
 
             //Si viene un Id, es porque quieres hacer un Update, de lo contrario INSERT
             if ($CompanyServices->Id > 0) {
-
-                $Message =  $this->model->Update($CompanyServices);
-
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "index.php?c=companyServices&a=Edit&Id="+$companyServices->Id+"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=companyServices&a=index');
-                }
-
+                $this->model->Update($CompanyServices);
             } else {
-
-                $Message = $this->model->Create($CompanyServices);
-
-                if ($Message) {
-                    echo '<script> setTimeout(function(){ window.location.href = "index.php?c=companyServices&a=index"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=companyServices&a=index');
-                }
+                $this->model->Create($CompanyServices);
             }
+            
+            header('Location:index.php?c=companyServices&a=index');
 
         } else {
             header('Location:index.php?c=companyServices&a=Edit');

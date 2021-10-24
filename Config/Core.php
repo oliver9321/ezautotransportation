@@ -9,10 +9,10 @@ define("TELEFONO", "(305) 381-5252");
 define("URL_WEBSITE", "www.ezautotransportationusa.com");
 define("DIRECCION", "5951 NW 151ST ST MIAMI LAKES FL 33014 SUITE#207");
 
-define ("VERSION", "v2.5");
+define ("VERSION", "v3");
 define ("DEBUG", true);
-define("COLOR","text-warning");
-define ("MODE", "Test mode");
+define("COLOR","text-success");
+define ("MODE", "Production");
 define("USUARIO_DB", "delimar1_logisti");
 define("PASSWORD_DB", "logistics_transport123");
 //define("SERVIDOR", "127.0.0.1"); //local

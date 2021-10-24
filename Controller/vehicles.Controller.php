@@ -29,9 +29,7 @@ class VehiclesController
     public function View(){
 
         if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
-
          echo json_encode($this->model->View(), true);
-
         }else{
             header('Location:permision.php');
         }
@@ -80,25 +78,12 @@ class VehiclesController
 
             //Si viene un Id, es porque quieres hacer un Update, de lo contrario INSERT
             if ($Vehicles->Id > 0) {
-
-                $Message =  $this->model->Update($Vehicles);
-
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "/index.php?c=vehicles&a=Edit&Id="+$vehicles->Id+"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=vehicles&a=index');
-                }
-
+               $this->model->Update($Vehicles);
             } else {
-
-                $Message = $this->model->Create($Vehicles);
-
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "../index.php"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=vehicles&a=index');
-                }
+               $this->model->Create($Vehicles);
             }
+
+            header('Location:index.php?c=vehicles&a=index');
 
         } else {
             header('Location:index.php?c=vehicles&a=Edit');

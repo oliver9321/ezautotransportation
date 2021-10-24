@@ -16,9 +16,9 @@
                     </div><!--end row-->
                     <!-- end page title end breadcrumb -->
                     <div class="row">
-                        <div class="col-lg-9">
+                        <div class="col-lg-12">
                             <div class="row justify-content-center">
-                                <div class="col-md-6 col-lg-3">
+                                <div class="col-md-6 col-lg-4">
                                 <a href="index.php?c=Customers&a=Index">
                                     <div class="card report-card bg-dark">
                                         <div class="card-body">
@@ -39,7 +39,7 @@
                                 </div> <!--end col--> 
 
                                
-                                <div class="col-md-6 col-lg-3">
+                                <div class="col-md-6 col-lg-4">
                                 <a href="index.php?c=Orders&a=Index">
                                     <div class="card report-card bg-dark">
                                         <div class="card-body">
@@ -60,7 +60,7 @@
                                 </div> <!--end col--> 
                                
 
-                                <div class="col-md-6 col-lg-3">
+                                <div class="col-md-6 col-lg-4">
                                 <a href="index.php?c=Drivers&a=Index">
                                     <div class="card report-card bg-dark">
                                         <div class="card-body">
@@ -124,51 +124,6 @@
                                 </div><!--end card-body--> 
                             </div><!--end card--> 
                         </div><!--end col-->
-                        <div class="col-lg-3">
-                            <div class="card"> 
-                            <div class="row align-items-center">
-                                        <div class="col-auto"> 
-                                            <div class="dropdown">
-                                                <a href="#" class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Today
-                                                </a>
-                                            </div>               
-                                        </div><!--end col-->                                      
-                                    </div>  <!--end row--> 
-                                <div class="card-body border-bottom-dashed">
-                                    <div class="earning-data text-center">
-                                        <img src="assets/images/money-beg.png" alt="" class="money-bag my-3" height="60">
-                                        <h5 class="earn-money mb-1">$<?=$SumTotalToday?></h5>
-                                        <p class="text-muted font-15 mb-4">Deposit Today</p>
-                                    </div>                                                                                                          
-                                </div><!--end card-body-->
-                                <div class="card-body my-1">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="media">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-percent align-self-center icon-md text-secondary me-2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                                                <div class="media-body align-self-center"> 
-                                                    <h6 class="m-0 font-20">$<?=$SumTrukerOwesUsToday?></h6>
-                                                    <p class=" mb-0 text-danger">Loss</p>                                                                                                                                               
-                                                </div><!--end media body-->
-                                            </div>
-                                        </div><!--end col--> 
-                                        <div class="col">
-                                            <div class="media">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign align-self-center icon-md text-secondary me-2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                                                <div class="media-body align-self-center"> 
-                                                    <h6 class="m-0 font-20">$<?=$SumEarningsToday?></h6>
-                                                    <p class="mb-0 text-success">Earnings</p>                                                                                          
-                                                </div><!--end media body-->
-                                            </div>
-                                        </div><!--end col-->                                         
-                                    </div><!--end row-->  
-                                </div><!--end card-body-->
-                                                       
-                                                             
-                            </div><!--end card--> 
-                        </div> <!--end col--> 
-                        
                     </div><!--end row-->
   
                     

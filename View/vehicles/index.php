@@ -6,7 +6,7 @@
       <div class="card">
           <div class="card-header bg-dark">
               <h4 class="card-title text-white">VEHICLES LIST</h4>
-               <p class="text-muted mb-0">Datatable</p>
+               <p class="text-muted mb-0">Report</p>
             </div><!--end card-header-->
             
             <div class="card-body">  
@@ -34,10 +34,8 @@ $(document).ready(function() {
     $.noConflict();
     $('#VehiclesList').DataTable({
         dom: 'Bfrtip',
-            buttons: [{
-            extend: 'copy',
-            text: 'Copy to clipboard'
-        },{
+            buttons: [
+        {
             extend: 'excel',
             filename: 'Vehicles List'
         },{

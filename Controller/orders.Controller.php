@@ -142,7 +142,7 @@ class OrdersController
 
         $OrderArray = "";
 
-        if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
+        if($_SESSION['UserOnline']->Profile == "admin") {
         
         if(isset($_REQUEST['Id'])){
 
@@ -182,42 +182,6 @@ class OrdersController
         }
     }
 
-    //Guardar un registro
-    public function Save()
-    {
-        //Se colocan los campos obligatorios en la tabla.
-        if (isset($_REQUEST['IdCustomerOrigin']) && isset($_REQUEST['IdCustomerDestination'])) {
-
-            $Orders = new Orders();
-            $Orders->IsActive                = $_REQUEST['IsActive'];
-
-            //Si viene un Id, es porque quieres hacer un Update, de lo contrario INSERT
-            if ($Orders->Id > 0) {
-
-                $Message =  $this->model->Update($Orders);
-
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "/index.php?c=orders&a=Edit&Id="+$orders->Id+"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=orders&a=index');
-                }
-
-            } else {
-
-                $Message = $this->model->Create($Orders);
-
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "../index.php"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=orders&a=index');
-                }
-            }
-
-        } else {
-            header('Location:index.php?c=orders&a=Edit');
-        }
-    }
-    
     public function SaveOrder(){
 
         if(isset($_POST['order']) && isset($_POST['vehicles'])){

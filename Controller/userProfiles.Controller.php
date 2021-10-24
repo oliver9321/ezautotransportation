@@ -29,9 +29,7 @@ class UserProfilesController
     public function View(){
 
         if($_SESSION['UserOnline']->Profile == "admin") {
-
          echo json_encode($this->model->View(), true);
-
         }else{
             header('Location:index.php?c=login&a=index');
         }
@@ -70,31 +68,16 @@ class UserProfilesController
             $UserProfiles->Id           = $_REQUEST['Id'];
             $UserProfiles->Profile      = $_REQUEST['Profile'];
             $UserProfiles->Description  = $_REQUEST['Description'];
-      
-            //Campos genericos
-            $UserProfiles->IsActive                = $_REQUEST['IsActive'];
+            $UserProfiles->IsActive     = $_REQUEST['IsActive'];
 
             //Si viene un Id, es porque quieres hacer un Update, de lo contrario INSERT
             if ($UserProfiles->Id > 0) {
-
-                $Message =  $this->model->Update($UserProfiles);
-
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "/index.php?c=userProfiles&a=Edit&Id="+$userProfiles->Id+"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=userProfiles&a=index');
-                }
-
+                $this->model->Update($UserProfiles);
             } else {
-
-                $Message = $this->model->Create($UserProfiles);
-
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "../index.php"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=userProfiles&a=index');
-                }
+               $this->model->Create($UserProfiles);
             }
+
+            header('Location:index.php?c=userProfiles&a=index');
 
         } else {
             header('Location:index.php?c=userProfiles&a=Edit');

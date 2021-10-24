@@ -1,5 +1,5 @@
 
-            <div class="row">
+           <br> <div class="row col-sm-8 offset-sm-2">
                     <div class="col-sm-12">
                         <div class="page-title-box">
                             <div class="row">
@@ -16,28 +16,44 @@
                     </div>
                 </div>
 
-<br>
+
 <div class="row">
     
    <div class="col-sm-12">
      
    <form id="frm-users" action="?c=users&a=Save" method="post" enctype="multipart/form-data">
 
-            <input type="hidden" name="Id" id="Id" value="<?php echo $User->Id; ?>" />
-            <input type="hidden" name="IsActive" id="IsActive" value="<?php echo ($User->Id != null) ? $User->IsActive : 1 ?>" >
+            <input type="hidden" name="Id" id="Id" value="<?= $User->Id; ?>" />
+            <input type="hidden" name="IsActive" id="IsActive" value="<?= $User->Id?>" >
 
                 <div class="row">
                     <div class="col-sm-8 offset-sm-2">
                         <div class="card">
                             <div class="card-header bg-dark">
-                                <h4 class="card-title text-white">User maintenance</h4>
-                                <p class="text-muted mb-0">Form</p>
+                                <h4 class="card-title text-white">Users</h4>
+                                <p class="text-muted mb-0">Management</p>
                             </div>
                    
                             <div class="card-body">
 
                                     <div class="mb-3">
-                                    <label for="ProfileUserId"><b>*Profile:</b></label>
+                                        <label class="form-label text-danger" for="Name">*Name:</label>
+                                        <input type="text" class="form-control" id="Name" name="Name" aria-describedby="Name" placeholder="Enter Name" value="<?= $User->Name; ?>"> 
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label" for="LastName">Last name:</label>
+                                        <input type="text" class="form-control" id="LastName" name="LastName" aria-describedby="LastName" placeholder="Enter Last Name" value="<?= $User->LastName; ?>"> 
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label text-danger" for="UserName">*User name:</label>
+                                        <input type="text" class="form-control" id="UserName" name="UserName" aria-describedby="UserName" placeholder="Enter User Name" value="<?= $User->UserName; ?>"> 
+                                    </div>
+
+                                    
+                                    <div class="mb-3">
+                                    <label for="ProfileUserId text-danger"><b>*Profile:</b></label>
                                     <select id="ProfileUserId" name="ProfileUserId" class="form-control select2">
                                         <option value="" selected>Select user profile</option>
                                         <?php foreach($userProfileList as $a): ?>
@@ -48,38 +64,30 @@
                             
 
                                     <div class="mb-3">
-                                        <label class="form-label text-danger" for="Name">*Name:</label>
-                                        <input type="text" class="form-control" id="Name" name="Name" aria-describedby="Name" placeholder="Enter Name" value="<?php echo $User->Name; ?>"> 
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-label text-danger" for="LastName">*Last name:</label>
-                                        <input type="text" class="form-control" id="LastName" name="LastName" aria-describedby="LastName" placeholder="Enter Last Name" value="<?php echo $User->LastName; ?>"> 
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-label text-danger" for="UserName">*User name:</label>
-                                        <input type="text" class="form-control" id="UserName" name="UserName" aria-describedby="UserName" placeholder="Enter User Name" value="<?php echo $User->UserName; ?>"> 
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-label text-danger" for="Password">*Profile password:</label>
-                                        <input type="text" class="form-control" id="Password" name="Password" aria-describedby="Password" placeholder="Enter Password" value="<?php echo $User->Password; ?>"> 
+                                        <label class="form-label text-danger" for="Password">*Password:</label>
+                                        <input type="text" class="form-control" id="Password" name="Password" aria-describedby="Password" placeholder="Enter Password" value="<?= $User->Password; ?>"> 
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label text-danger" for="Email">*Email:</label>
-                                        <input type="text" class="form-control" id="Email" name="Email" aria-describedby="Email" placeholder="Enter Email" value="<?php echo $User->Email; ?>"> 
+                                        <input type="text" class="form-control" id="Email" name="Email" aria-describedby="Email" placeholder="Enter Email" value="<?= $User->Email; ?>"> 
                                     </div>
 
                                     <!--<div class="mb-3">
                                         <label class="form-label text-danger" for="Image">Imagen:</label>
-                                        <input type="text" class="form-control" id="Image" name="Image" aria-describedby="Image" placeholder="" value="<?php echo $User->Image; ?>"> 
+                                        <input type="text" class="form-control" id="Image" name="Image" aria-describedby="Image" placeholder="" value="<?= $User->Image; ?>"> 
                                     </div>-->
                             
                                     <?php if($User->Id != null){?>
                                         <button type="submit" class="btn btn-warning">Update <i class="fa fa-refresh"></i> </button>
-                                        <input type="checkbox"  data-toggle="toggle" id="IsActiveToogle" data-on="IsActive" data-off="Inactivo" data-onstyle="success" data-offstyle="danger" data-onstyle="danger" data-style="ios">
+                                        <div class="mb-3">
+                                            <br>
+                                            <div class="form-check form-switch form-switch-danger">
+                                            <input class="form-check-input" type="checkbox" id="IsActiveChange" checked="">
+                                                <label class="form-check-label text-da" for="IsActive"><b> <i class="fa fa-trash text-danger"></i> Click for delete</b></label> 
+                                            </div>
+                                            </div>
+                                       
                                     <?php }else {?>
                                         <button type="submit"  class="btn btn-success">Submit <i class="fa fa-save"></i> </button>
                                     <?php }?>
@@ -99,34 +107,32 @@
 
     $(document).ready(function(){
 
-        $("#frm-users").submit(function(){
-            return $(this).validate();
-        });
+        var IsActive = "<?=$User->IsActive?>";
+     
+     if(IsActive == 1){
+         $("#IsActiveChange").prop("checked", false);
+     }else{
+         $("#IsActiveChange").prop("checked", true);
+     }
+     
+     $('#IsActiveChange').change(function() {
 
-        var ProfileUserId = "<?= $User->ProfileUserId;?>";
-        $("#ProfileUserId").val(ProfileUserId);
+         if($(this).prop('checked') == true){
 
-        if($("#IsActive").val() > 0){
-           // $('#IsActiveToogle').bootstrapToggle('on');
-        }else{
-            //$('#IsActiveToogle').bootstrapToggle('off');
-        }
+             $(".toast-warning").html("(x) This record will be deleted.");
+             var myAlert2 = document.getElementById('toastWarning');
+             var bsAlert2 = new bootstrap.Toast(myAlert2);
+             bsAlert2.show();
 
-        $('#IsActiveToogle').change(function() {
+              $("#IsActive").val(0);
+              setTimeout(function(){  $("#frm-users").submit();}, 2000)
+             
+         }else{
+             $("#IsActive").val(1);
+         }
 
-            if($(this).prop('checked') == false){
-
-                swal({
-                    title: 'Registro Eliminado',
-                    text: 'Presione Actualizar para eliminar el registro',
-                    type: 'error',
-                    timer: 5000,
-                    buttonsStyling: true
-                });
-            }
-            $("#IsActive").val(($(this).prop('checked')) == false ? 0 : 1);
-        });
-
+      
+     });
     });
 
 </script>

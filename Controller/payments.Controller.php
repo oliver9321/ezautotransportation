@@ -21,7 +21,7 @@ class PaymentsController
         GetRouteView(null, "footer");
 
         }else{
-            header('Location:index.php?c=login&a=index');
+            header('Location:permision.php');
         }
     }
 
@@ -34,7 +34,7 @@ class PaymentsController
         GetRouteView(null, "footer");
 
         }else{
-            header('Location:index.php?c=login&a=index');
+            header('Location:permision.php');
         }
     }
 
@@ -47,7 +47,7 @@ class PaymentsController
          echo json_encode($this->model->View(), true);
 
         }else{
-            header('Location:index.php?c=login&a=index');
+            header('Location:permision.php');
         }
 
     }
@@ -72,7 +72,7 @@ class PaymentsController
        GetRouteView(null, "footer");
 
         }else{
-            header('Location:index.php?c=login&a=index');
+            header('Location:permision.php');
         }
     }
 
@@ -101,26 +101,12 @@ class PaymentsController
 
             //Si viene un Id, es porque quieres hacer un Update, de lo contrario INSERT
             if ($Payments->Id > 0) {
-
-                $Message =  $this->model->Update($Payments);
-
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "/index.php?c=payments&a=Edit&Id="+$payments->Id+"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=payments&a=index');
-                }
-
+                $this->model->Update($Payments);
             } else {
-
-                $Message = $this->model->Create($Payments);
-
-                if ($Message) {
-                    echo '<script>setTimeout(function(){ window.location.href = "index.php?c=payments&a=index"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=payments&a=index');
-                }
-                
+                $this->model->Create($Payments);
             }
+
+            header('Location:index.php?c=payments&a=index');
 
         } else {
             header('Location:index.php?c=payments&a=Edit');

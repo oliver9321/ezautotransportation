@@ -49,8 +49,8 @@ class UsersController
           $userProfileList =  $userProfile->GetListUserProfiles();
 
         if(isset($_REQUEST['Id'])){
-            $User =  $this->model->Edit($_REQUEST['Id']);
-            $User->Password = trim($this->decryptIt($User->Password, KEY));
+            $User           =  $this->model->Edit($_REQUEST['Id']);
+            $User->Password = trim($this->decryptIt(trim($User->Password), KEY));
         }
 
        GetRouteView(null, "header");
@@ -71,38 +71,24 @@ class UsersController
             $Users = new Users();
             
             //Campos unicos por tabla
+            $Users->Id                    = $_REQUEST['Id'];
             $Users->ProfileUserId         = $_REQUEST['ProfileUserId'];
             $Users->Name                  = $_REQUEST['Name'];
             $Users->LastName              = $_REQUEST['LastName'];
             $Users->UserName              = $_REQUEST['UserName'];
-            $Users->Password              = $_REQUEST['Password'];
+            $Users->Password              = trim($this->encryptIt(trim($_REQUEST['Password']), KEY));
             $Users->Email                 = $_REQUEST['Email'];
             $Users->Image                 = 'logoTransport.png';
-
-            //Campos genericos
-            $Users->IsActive                = $_REQUEST['IsActive'];
+            $Users->IsActive              = $_REQUEST['IsActive'];
 
             //Si viene un Id, es porque quieres hacer un Update, de lo contrario INSERT
             if ($Users->Id > 0) {
-
-                $Message =  $this->model->Update($Users);
-
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "/index.php?c=users&a=Edit&Id="+$users->Id+"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=users&a=index');
-                }
-
+                $this->model->Update($Users);
             } else {
-
-                $Message = $this->model->Create($Users);
-
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "../index.php"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=users&a=index');
-                }
+                $this->model->Create($Users);
             }
+
+            header('Location:index.php?c=users&a=Index');
 
         } else {
             header('Location:index.php?c=users&a=Edit');

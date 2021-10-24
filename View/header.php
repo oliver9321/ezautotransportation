@@ -46,7 +46,7 @@
     <div class="left-sidenav">
         <!-- LOGO -->
         <div class="brand">
-            <a href="index.php?c=Dashboard&a=Index" class="logo">
+                     <?php echo($_SESSION['UserOnline']->Profile == "admin") ? '<a href="index.php?c=Dashboard&a=Index" class="logo">':' <a href="index.php?c=Dashboard&a=Manager" class="logo">' ?>
                   <span class="text-secondary">
                      <b><?=SYSTEM_NAME?></b>
                     </span>
@@ -60,9 +60,12 @@
         <div class="menu-content h-100" data-simplebar>
             <ul class="metismenu left-sidenav-menu">
                 <li class="menu-label mt-0">Components</li>
+
                 <li>
-                    <a href="?c=Dashboard&a=Index"> <i class="fa fa-desktop align-self-center menu-icon"></i><span>Dashboard</span></a>
+                <?php echo($_SESSION['UserOnline']->Profile == "admin") ? '<a href="?c=Dashboard&a=Index"> <i class="fa fa-desktop align-self-center menu-icon"></i><span>Dashboard</span></a>':'<a href="?c=Dashboard&a=Manager"> <i class="fa fa-desktop align-self-center menu-icon"></i><span>Dashboard</span></a>' ?>
                 </li>
+
+                <?php if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") { ?>
 
                 <li>
                     <a href="javascript: void(0);"><i class="fa fa-users align-self-center menu-icon"></i><span>Customers</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
@@ -77,14 +80,6 @@
                 </li>
 
                 <li>
-                    <a href="javascript: void(0);"><i class="fa fa-book align-self-center menu-icon"></i><span>Payments List</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item"><a class="nav-link" href="index.php?c=Payments&a=Index"><i class="ti-control-record"></i>General Report</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.php?c=Payments&a=Summary"><i class="ti-control-record"></i>Summary Report</a></li>
-                    </ul>
-                </li>
-
-                <li>
                     <a href="javascript: void(0);"><i class="fa fa-truck align-self-center menu-icon"></i><span>Trucker Company</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
                         <li class="nav-item"><a class="nav-link" href="index.php?c=companyServices&a=Index"><i class="ti-control-record"></i>List</a></li>
@@ -92,7 +87,7 @@
                     </ul>
                 </li>
 
-
+                
                 <li>
                     <a href="javascript: void(0);"><i  class="fa fa-bus align-self-center menu-icon"></i><span>Drivers</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
@@ -108,6 +103,20 @@
                         <li class="nav-item"><a class="nav-link" href="index.php?c=Vehicles&a=Edit"><i class="ti-control-record"></i>Create</a></li>
                     </ul>
                 </li>
+
+
+                <?php } ?>
+
+                <?php if($_SESSION['UserOnline']->Profile == "admin") { ?>
+
+                <li>
+                    <a href="javascript: void(0);"><i class="fa fa-book align-self-center menu-icon"></i><span>Payments List</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li class="nav-item"><a class="nav-link" href="index.php?c=Payments&a=Index"><i class="ti-control-record"></i>General Report</a></li>
+                       <!-- <li class="nav-item"><a class="nav-link" href="index.php?c=Payments&a=Summary"><i class="ti-control-record"></i>Summary Report</a></li>-->
+                    </ul>
+                </li>
+
 
                 <li>
                     <a href="javascript: void(0);"><i class="fa fa-check-circle align-self-center menu-icon"></i><span>Status Orders </span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
@@ -133,6 +142,8 @@
                     </ul>
                 </li>
 
+                <?php } ?>
+
 
                 <hr class="hr-dashed hr-menu">
                <!-- <li class="menu-label my-2">Components</li>-->
@@ -145,6 +156,7 @@
 
 
     <div class="page-wrapper">
+
   
         <!-- Top Bar Start -->
         <div class="topbar">
@@ -218,9 +230,37 @@
         </div>
         <!-- Top Bar End -->
 
-
-
         <!-- Page Content-->
         <div class="page-content bg-light">
+
+        <div class="position-fixed top-2 star-0 p-3" style=" z-index: 9999999 !important;">
+                    <div id="toastSuccess" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex">
+                            <div class="toast-body toast-success">
+                                <!-- Message from js -->
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <div id="toastError" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex">
+                            <div class="toast-body toast-error">
+                                <!-- Message from js -->
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                    </div>
+
+                    <div id="toastWarning" class="toast align-items-center text-white bg-warning border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex">
+                            <div class="toast-body toast-warning">
+                                <!-- Message from js -->
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+                        
             <div class="container">
-        
+
+            

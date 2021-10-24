@@ -1,30 +1,5 @@
 <br>
 
-<div class="position-fixed top-0 end-0 p-3" style=" z-index: 9999999 !important;">
-    <div id="toastSuccess" class="toast align-items-center text-white bg-success border-0" role="alert"
-        aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body toast-success">
-                <!-- Message from js -->
-            </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-                aria-label="Close"></button>
-        </div>
-    </div>
-    <div id="toastError" class="toast align-items-center text-white bg-danger border-0" role="alert"
-        aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body toast-error">
-                <!-- Message from js -->
-            </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-                aria-label="Close"></button>
-        </div>
-    </div>
-</div>
-
-
-
         <div class="row">
         <div class="col-md-12">
 
@@ -199,11 +174,17 @@
  let datatable = "";
 $("#formCancelledNote").hide();
 
+var permiso = " <?= ($_SESSION['UserOnline']->Profile == 'admin') ? true : false ?>";
+let botonPayment = "";
+if(permiso == true){
+ botonPayment = '<a class="btn btn-success btn-sm" title="Go to View payment" href="index.php?c=Payments&a=Index"> <i class="ti-money"></i></a>';
+}
+
 $(document).ready(function() {
 
     $("body").addClass("enlarge-menu");
     $.noConflict();
-
+ 
     $('#OrderList tfoot th').each( function () {
         var title = $(this).text();
         $(this).html( '<input type="text" placeholder="Search by '+title+'" />' );
@@ -266,7 +247,13 @@ datatable = $('#OrderList').DataTable({
             "targets":1,
             "data": "Editar",
             "render": function (data, type, row) {
-                return '<center><a class="btn btn-primary btn-sm" title="View order" href="index.php?c=Orders&a=View&Id='+data+'"> <i class="ti-file"></i></a><a class="btn btn-warning btn-sm" href="index.php?c=Orders&a=Edit&Id='+data+'" title="Edit order"> <i class="ti-pencil"></i></a><button class="btn btn-info btn-sm" onclick="ChangeStatus('+data+')"  title="Change status"> <i class="ti-loop"></i></button><a class="btn btn-success btn-sm" title="Go to View payment" href="index.php?c=Payments&a=Index"> <i class="ti-money"></i></a></center>';
+                let permiso2 = "<?= ($_SESSION['UserOnline']->Profile == 'admin') ? true : false ?>";
+                let botonEditar = "";
+                if(permiso2 == true){
+                    botonEditar = '<a class="btn btn-warning btn-sm" href="index.php?c=Orders&a=Edit&Id='+data+'" title="Edit order"> <i class="ti-pencil"></i></a>';
+                }
+
+                return '<center><a class="btn btn-primary btn-sm" title="View order" href="index.php?c=Orders&a=View&Id='+data+'"> <i class="ti-file"></i></a>'+botonEditar+' <button class="btn btn-info btn-sm" onclick="ChangeStatus('+data+')"  title="Change status"> <i class="ti-loop"></i></button>'+botonPayment+'</center>';
             }}, {
                 "targets": 2,
                 "render": function (data, type, row) {
@@ -274,23 +261,23 @@ datatable = $('#OrderList').DataTable({
                     switch (data) {
 
                             case 'Pending':
-                                data = '<center><span class="badge badge-soft-warning px-2">'+data+'</span></center>'
+                                data = '<center><span class="badge badge-soft-warning px-2"><b>'+data+'</b></span></center>'
                             break;
 
                             case 'Picked up':
-                                data = '<center><span class="badge badge-soft-primary px-2">'+data+'</span></center>'
+                                data = '<center><span class="badge badge-soft-primary px-2"><b>'+data+'</b></span></center>'
                             break;
 
                             case 'Delivered':
-                                data = '<center><span class="badge badge-soft-success px-2">'+data+'</span></center>'
+                                data = '<center><span class="badge badge-soft-success px-2"><b>'+data+'</b></span></center>'
                             break;
 
                             case 'Cancelled':
-                                data = '<center><span class="badge badge-soft-danger px-2">'+data+'</span></center>'
+                                data = '<center><span class="badge badge-soft-danger px-2"><b>'+data+'</b></span></center>'
                             break;
                     
                         default:
-                                data = '<center><span class="badge badge-soft-secondary px-2">'+data+'</span></center>'
+                                data = '<center><span class="badge badge-soft-secondary px-2"><b>'+data+'</b></span></center>'
                             break;
                     }
 
@@ -337,7 +324,7 @@ function UpdateStatusOrder(){
 
                 if(response == 'true'){
                     
-                    $(".toast-success").html("status order update");
+                    $(".toast-success").html("Status updated");
                     var myAlert = document.getElementById('toastSuccess');
                     var bsAlert = new bootstrap.Toast(myAlert);
                     bsAlert.show();
@@ -345,7 +332,7 @@ function UpdateStatusOrder(){
                     location.reload();
                 }else{
 
-                    $(".toast-error").html("(!) error - Order update");
+                    $(".toast-error").html("(!) Error - Order updated");
                     var myAlert = document.getElementById('toastError');
                     var bsAlert = new bootstrap.Toast(myAlert);
                     bsAlert.show();

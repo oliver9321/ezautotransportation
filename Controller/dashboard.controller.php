@@ -70,9 +70,35 @@ class dashboardController{
          }else{
             header('Location:permision.php'); 
          }
-
          
     }
 
+    
+    public function Manager(){
+
+      if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
+
+        
+        $this->driversModel   = new Drivers();
+        $rsDrivers      = $this->driversModel->getCountDrivers();
+        $CountDrivers   = $rsDrivers['CountDrivers'];
+
+        $this->customersModel = new Customers();
+        $rsCustomers    = $this->customersModel->getCountCustomers();
+        $CountCustomers = $rsCustomers['CountCustomers'];
+
+        $this->ordersModel    = new Orders();
+        $rsOrders       = $this->ordersModel->getCountOrders();
+        $CountOrders    = $rsOrders['CountOrders'];
+
+      GetRouteView(null, "header");
+      require_once 'View/dashboard/manager.php';
+      require_once 'View/footer.php';
+      
+    }else{
+      header('Location:permision.php'); 
+     }
+    
+    }
 
 }

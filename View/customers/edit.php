@@ -1,15 +1,6 @@
-<div id="toastWarning" class="toast align-items-center text-white bg-warning border-0" role="alert"
-        aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body toast-warning">
-                <!-- Message from js -->
-            </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-                aria-label="Close"></button>
-        </div>
-    </div>
 
-            <div class="row">
+           <br>
+           <div class="row col-sm-8 offset-sm-2">
                     <div class="col-sm-12">
                         <div class="page-title-box">
                             <div class="row">
@@ -18,7 +9,7 @@
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="?c=Dashboard&a=Index">Dashboard</a></li>
                                         <li class="breadcrumb-item"><a href="?c=Customers&a=Index">Customers list</a></li>
-                                        <li class="breadcrumb-item active"><a href="#"><b>Form</b></a></li>
+                                        <li class="breadcrumb-item active"><a href="#"><b>Management</b></a></li>
                                     </ol>
                                 </div>
                             </div>
@@ -26,7 +17,6 @@
                     </div>
                 </div>
 
-<br>
 
 <div class="row">
     
@@ -41,8 +31,8 @@
                     <div class="col-sm-8 offset-sm-2">
                         <div class="card">
                             <div class="card-header  bg-dark">
-                                <h1 class="card-title text-white">Customer maintenance</h1>
-                                <p class="text-muted mb-0">Form</p>
+                                <h4 class="card-title text-white">Customer</h4>
+                                <p class="text-muted mb-0">Management</p>
                             </div>
                    
                             <div class="card-body">

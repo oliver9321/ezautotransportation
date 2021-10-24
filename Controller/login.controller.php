@@ -44,7 +44,7 @@ class loginController{
       
                           case "manager":
                               $_SESSION['UserOnline'] = $user;
-                              header('Location: index.php?c=dashboard&a=index');
+                              header('Location: index.php?c=dashboard&a=manager');
                               break;
       
                           default:

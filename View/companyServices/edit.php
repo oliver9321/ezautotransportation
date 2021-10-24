@@ -3,7 +3,8 @@
         z-index: 10000 !important;
     }
 </style>
-          <div class="row">
+<br>
+          <div class="row col-sm-8 offset-sm-2">
                     <div class="col-sm-12">
                         <div class="page-title-box">
                             <div class="row">
@@ -12,7 +13,7 @@
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="?c=Dashboard&a=Index">Dashboard</a></li>
                                         <li class="breadcrumb-item "><a href="?c=companyServices&a=Index">Truker Company list</a></li>
-                                        <li class="breadcrumb-item active"><a href="#"><b>Form</b></a></li>
+                                        <li class="breadcrumb-item active"><a href="#"><b>Management</b></a></li>
                                     </ol>
                                 </div>
                             </div>
@@ -20,68 +21,68 @@
                     </div>
                 </div>
 
-<br>
+
 <div class="row">
     
    <div class="col-sm-12">
      
    <form id="frm-companyServices" action="?c=companyServices&a=Save" method="post" enctype="multipart/form-data">
 
-            <input type="hidden" name="Id" id="Id" value="<?php echo $CompanyService->Id; ?>" />
+            <input type="hidden" name="Id" id="Id" value="<?= $CompanyService->Id; ?>" />
             <input type="hidden" name="IsActive" id="IsActive" value="<?= $CompanyService->IsActive?>" >
 
                 <div class="row">
                     <div class="col-sm-8 offset-sm-2">
                         <div class="card">
                             <div class="card-header bg-dark">
-                                <h4 class="card-title text-white">Truker Company Maintenance</h4>
-                                <p class="text-muted mb-0">Form</p>
+                                <h4 class="card-title text-white">Truker Company</h4>
+                                <p class="text-muted mb-0">Management</p>
                             </div>
                    
                             <div class="card-body">
 
                                     <div class="mb-3">
                                         <label class="form-label text-danger" for="CompanyName">*Company name:</label>
-                                        <input type="text" class="form-control" id="CompanyName" name="CompanyName" aria-describedby="CompanyName" placeholder="Enter the company name" value="<?php echo $CompanyService->CompanyName; ?>" required> 
+                                        <input type="text" class="form-control" id="CompanyName" name="CompanyName" aria-describedby="CompanyName" placeholder="Enter the company name" value="<?= $CompanyService->CompanyName; ?>" required> 
                                     </div>
 
                                     <div class="mb-3">
-                                        <label class="form-label text-danger" for="CompanyAddress">Company address:</label>
-                                        <input type="text" class="form-control" id="CompanyAddress" name="CompanyAddress"  aria-describedby="CompanyAddress" placeholder="Enter the address" value="<?php echo $CompanyService->CompanyAddress; ?>" required>
+                                        <label class="form-label text-danger" for="CompanyAddress">*Address:</label>
+                                        <input type="text" class="form-control" id="CompanyAddress" name="CompanyAddress"  aria-describedby="CompanyAddress" placeholder="Enter the address" value="<?= $CompanyService->CompanyAddress; ?>" required>
                                     </div>
 
                                     <div class="mb-3">
-                                        <label class="form-label text-danger" for="CompanyCity">Company city:</label>
-                                        <input type="text" class="form-control" id="CompanyCity" name="CompanyCity"  aria-describedby="CompanyCity" placeholder="Enter the city" value="<?php echo $CompanyService->CompanyCity; ?>" required>
-                                    </div>
-
-
-                                    <div class="mb-3">
-                                        <label class="form-label text-danger" for="CompanyState">Company state:</label>
-                                        <input type="text" class="form-control" id="CompanyState" name="CompanyState"  aria-describedby="CompanyState" placeholder="Enter the state" value="<?php echo $CompanyService->CompanyState; ?>">
+                                        <label class="form-label text-danger" for="CompanyCity">*City:</label>
+                                        <input type="text" class="form-control" id="CompanyCity" name="CompanyCity"  aria-describedby="CompanyCity" placeholder="Enter the city" value="<?= $CompanyService->CompanyCity; ?>" required>
                                     </div>
 
 
                                     <div class="mb-3">
-                                        <label class="form-label" for="CompanyZipCode">Company zip code:</label>
-                                        <input type="text" class="form-control" id="CompanyZipCode" name="CompanyZipCode"  aria-describedby="CompanyZipCode" placeholder="Enter the zip code" value="<?php echo $CompanyService->CompanyZipCode; ?>">
+                                        <label class="form-label text-danger" for="CompanyState">*State:</label>
+                                        <input type="text" class="form-control" id="CompanyState" name="CompanyState"  aria-describedby="CompanyState" placeholder="Enter the state" value="<?= $CompanyService->CompanyState; ?>">
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label class="form-label" for="CompanyZipCode">Zip code:</label>
+                                        <input type="text" class="form-control" id="CompanyZipCode" name="CompanyZipCode"  aria-describedby="CompanyZipCode" placeholder="Enter the zip code" value="<?= $CompanyService->CompanyZipCode; ?>">
                                     </div>
 
 
                                     <div class="mb-3">
                                         <label class="form-label text-danger" for="CompanyPhone1">*Phone #1:</label>
-                                        <input type="text" class="form-control phone" id="CompanyPhone1" name="CompanyPhone1"  aria-describedby="CompanyPhone1" placeholder="(555) 555-555" value="<?php echo $CompanyService->CompanyPhone1; ?>" required>
+                                        <input type="text" class="form-control phone" id="CompanyPhone1" name="CompanyPhone1"  aria-describedby="CompanyPhone1" placeholder="(555) 555-555" value="<?= $CompanyService->CompanyPhone1; ?>" required>
                                     </div>
 
 
                                     <div class="mb-3">
                                         <label class="form-label" for="CompanyPhone2">Phone #2:</label>
-                                        <input type="text" class="form-control phone" id="CompanyPhone2" name="CompanyPhone2"  aria-describedby="CompanyPhone2" placeholder="(555) 555-555 (optional)" value="<?php echo $CompanyService->CompanyPhone2; ?>">
+                                        <input type="text" class="form-control phone" id="CompanyPhone2" name="CompanyPhone2"  aria-describedby="CompanyPhone2" placeholder="(555) 555-555 (optional)" value="<?= $CompanyService->CompanyPhone2; ?>">
                                     </div>
                                     
                                     <div class="mb-3">
-                                        <label class="form-label" for="CompanyEmail">Company email:</label>
-                                        <input type="email" class="form-control" id="CompanyEmail" name="CompanyEmail"  aria-describedby="CompanyEmail" placeholder="Enter the email (optional)" value="<?php echo $CompanyService->CompanyEmail; ?>">
+                                        <label class="form-label" for="CompanyEmail">Email:</label>
+                                        <input type="email" class="form-control" id="CompanyEmail" name="CompanyEmail"  aria-describedby="CompanyEmail" placeholder="Enter the email (optional)" value="<?= $CompanyService->CompanyEmail; ?>">
                                     </div>
                                    
                                     <?php if($CompanyService->Id != null){?>
@@ -128,6 +129,12 @@
         $('#IsActiveChange').change(function() {
 
             if($(this).prop('checked') == true){
+
+                $(".toast-warning").html("(x) This record will be deleted.");
+                var myAlert2 = document.getElementById('toastWarning');
+                var bsAlert2 = new bootstrap.Toast(myAlert2);
+                bsAlert2.show();
+
                  $("#IsActive").val(0);
                  setTimeout(function(){  $("#frm-companyServices").submit();}, 2000)
                 
@@ -137,7 +144,6 @@
 
          
         });
-
         let autocomplete4;
         let address1Field4;
         let postalField4;

@@ -1,5 +1,4 @@
 <?php
-
 require_once 'Config/Core.php'; // Obligatorio en todos los controladores
 require_once 'Model/orderDetailsModel.php'; //Insertar Modelo correspondiente al controlador
 
@@ -74,31 +73,16 @@ class OrderDetailsController
             $OrderDetails->Year            = $_REQUEST['Year'];
             $OrderDetails->ConditionVehicle  = $_REQUEST['ConditionVehicle'];
             $OrderDetails->CarrierType     = $_REQUEST['CarrierType'];
-  
-            //Campos genericos
-            $OrderDetails->IsActive                = $_REQUEST['IsActive'];
+            $OrderDetails->IsActive        = $_REQUEST['IsActive'];
 
             //Si viene un Id, es porque quieres hacer un Update, de lo contrario INSERT
             if ($OrderDetails->Id > 0) {
-
-                $Message =  $this->model->Update($OrderDetails);
-
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "/index.php?c=orderDetails&a=Edit&Id="+$orderDetails->Id+"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=orderDetails&a=index');
-                }
-
+                $this->model->Update($OrderDetails);
             } else {
-
                 $Message = $this->model->Create($OrderDetails);
-
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "../index.php"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=orderDetails&a=index');
-                }
             }
+
+            header('Location:index.php?c=orderDetails&a=index');
 
         } else {
             header('Location:index.php?c=orderDetails&a=Edit');

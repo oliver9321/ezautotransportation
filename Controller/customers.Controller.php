@@ -16,7 +16,6 @@ class CustomersController
 
         if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
 
-
         GetRouteView(null, "header");
         require_once 'View/customers/index.php';
         GetRouteView(null, "footer");
@@ -30,9 +29,7 @@ class CustomersController
     public function View(){
 
         if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
-
-         echo json_encode($this->model->View(), true);
-
+             echo json_encode($this->model->View(), true);
         }else{
             header('Location:permision.php');
         }
@@ -50,9 +47,9 @@ class CustomersController
             $Customer =  $this->model->Edit($_REQUEST['Id']);
         }
 
-       GetRouteView(null, "header");
-       require_once 'View/customers/edit.php';
-       GetRouteView(null, "footer");
+        GetRouteView(null, "header");
+        require_once 'View/customers/edit.php';
+        GetRouteView(null, "footer");
 
         }else{
             header('Location:permision.php');
@@ -78,26 +75,14 @@ class CustomersController
 
             //Si viene un Id, es porque quieres hacer un Update, de lo contrario INSERT
             if ($Customers->Id > 0) {
-
-                $Message =  $this->model->Update($Customers);
-
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "/index.php?c=customers&a=Edit&Id="+$customers->Id+"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=customers&a=index');
-                }
+               $this->model->Update($Customers);
 
             } else {
-
-                $Message = $this->model->Create($Customers);
-
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "../index.php"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=customers&a=index');
-                }
+                $this->model->Create($Customers);
             }
 
+            header('Location:index.php?c=customers&a=Edit');
+         
         } else {
             header('Location:index.php?c=customers&a=Edit');
         }
@@ -114,13 +99,9 @@ class CustomersController
                     $Customers->Phone1          = $_POST['Phone1'];
                     $Customers->Phone2          = $_POST['Phone2'];
                     $Customers->Email           = $_POST['Email'];
-    
-                    //Campos genericos
                     $Customers->IsActive       = 1;
     
                     echo json_encode($this->model->Create($Customers), true);
-                  
-
         }else{
             echo "Please, complete the required fields (*)";
         }   

@@ -69,31 +69,16 @@ class OrderStatusController
             //Campos unicos por tabla
             $OrderStatus->Status   = $_REQUEST['Status'];
             $OrderStatus->Id       = $_REQUEST['Id'];
-           
-            //Campos genericos
             $OrderStatus->IsActive  = $_REQUEST['IsActive'];
 
             //Si viene un Id, es porque quieres hacer un Update, de lo contrario INSERT
             if ($OrderStatus->Id > 0) {
-
-                $Message =  $this->model->Update($OrderStatus);
-
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "/index.php?c=orderStatus&a=Edit&Id="+$OrderStatus->Id+"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=orderStatus&a=index');
-                }
-
+                $this->model->Update($OrderStatus);
             } else {
-
-                $Message = $this->model->Create($OrderStatus);
-
-                if ($Message != "1") {
-                    echo '<script>alert("' . $Message . '"); setTimeout(function(){ window.location.href = "../index.php"; }, 100);</script>';
-                } else {
-                    header('Location:index.php?c=orderStatus&a=index');
-                }
+               $this->model->Create($OrderStatus);
             }
+
+            header('Location:index.php?c=orderStatus&a=index');
 
         } else {
             header('Location:index.php?c=orderStatus&a=Edit');

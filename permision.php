@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>EZ AUTO TRANSPORT</title>
+        <title>SECURITY</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <link rel="shortcut icon" href="assets/images/favicon.ico">
@@ -27,18 +27,18 @@
                                         <a href="index.php?c=login&a=index" class="logo logo-admin">
                                             <img src="assets/images/logoTransport.png" height="150" alt="logo" class="auth-logo">
                                         </a>
-                                        <h4 class="mt-3 mb-1 fw-semibold text-white font-18">Oops! Sorry you don't have permision</h4>   
                                     </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="ex-page-content text-center">
                                         <img src="assets/images/error.svg" alt="0" class="" height="170">
                                         <h1 class="mt-5 mb-4">404!</h1>  
-                                        <h5 class="font-16 text-muted mb-5">Somthing went wrong</h5>                                    
+                                        <h5 class="font-16 text-danger mb-5">Oops! Sorry you don't have permision</h5>                                    
                                     </div>   
                                  
                                     <center>
-                                    <a class="btn btn-primary w-50 waves-effect waves-light" href="index.php?c=login&a=index">Back to Login <i class="fas fa-redo ms-1"></i></a>  
+                                    <a class="btn btn-primary w-50 waves-effect waves-light" href="index.php?c=login&a=index">Back to Login</a>  
+                                    <a class="btn btn-secondary w-50 waves-effect waves-light" href="javascript:history.back()">Go Back <i class="fas fa-redo ms-1"></i></a>
                                     </center>
                                     
                                 </div>
