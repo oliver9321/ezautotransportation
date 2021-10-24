@@ -25,8 +25,8 @@ class dashboardController{
     public function Index(){
 
         if(count($_SESSION) > 0){
-
-             if(isset($_SESSION['UserOnline']) && $_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager"){
+        
+             if($_SESSION['UserOnline']->Profile == "admin"){
 
                 $this->driversModel   = new Drivers();
                 $rsDrivers      = $this->driversModel->getCountDrivers();
@@ -40,14 +40,12 @@ class dashboardController{
                 $rsOrders       = $this->ordersModel->getCountOrders();
                 $CountOrders    = $rsOrders['CountOrders'];
 
-              
                 $rsSumEarnings  = $this->ordersModel->getSumEarnings();
                 $SumEarnings    = $rsSumEarnings['Earnings'];
 
                 $rsSumEarningsToday  = $this->ordersModel->getSumEarningsToday();
                 $SumEarningsToday    = $rsSumEarningsToday['Earnings'];
 
-               
                 $rsSumTotalToday = $this->ordersModel->getSumTotalToday();
                 $SumTotalToday   = $rsSumTotalToday['Total'];
 
@@ -66,19 +64,14 @@ class dashboardController{
                 require_once 'View/footer.php';
 
                }else{
-                    header('Location:index.php?c=login&a=index');
+                    header('Location:permision.php');
                }
                
          }else{
-             header('Location:index.php?c=login&a=index');   
+            header('Location:permision.php'); 
          }
 
          
-    }
-
-    public function GetListTurnosBySucursal(){
-
-        echo json_encode($this->model->GetListTurnosBySucursal(), true);
     }
 
 

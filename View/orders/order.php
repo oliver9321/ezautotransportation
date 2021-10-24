@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="https://printjs-4de6.kxcdn.com/print.min.css"/>
 <script type="text/javascript" src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 
-<div class="modal fade" id="ModalNewCustomer" role="dialog" aria-labelledby="ModalNewCustomerLabel" >
+<div class="modal fade" id="ModalNewCustomer" role="dialog" aria-labelledby="ModalNewCustomerLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info">
@@ -28,34 +28,24 @@
                             </div>
                             <div class="mb-1">
                                 <label class="form-label" for="LastNameNewCustomer">Last name:</label>
-                                <input class="form-control" type="text" id="LastNameNewCustomer"
-                                    name="LastNameNewCustomer">
+                                <input class="form-control" type="text" id="LastNameNewCustomer" name="LastNameNewCustomer">
                             </div>
                             <div class="mb-1">
                                 <label class="form-label text-danger" for="Phone1NewCustomer">*Phone #1</label>
-                                <div class="input-group"> <span class="input-group-text"><i
-                                            class="fa fa-mobile"></i></span>
-                                    <input type="tel" class="form-control phone" id="Phone1NewCustomer"
-                                        name="Phone1NewCustomer" placeholder="(555) 555-5555"
-                                        aria-describedby="basic-addon1">
+                                <div class="input-group"> <span class="input-group-text"><i class="fa fa-mobile"></i></span>
+                                    <input type="tel" class="form-control phone" id="Phone1NewCustomer" name="Phone1NewCustomer" placeholder="(555) 555-5555">
                                 </div>
                             </div>
                             <div class="mb-1">
                                 <label class="form-label" for="Phone2NewCustomer">Phone #2</label>
-                                <div class="input-group"> <span class="input-group-text"><i
-                                            class="las la-phone"></i></span>
-                                    <input type="tel" class="form-control phone" id="Phone2NewCustomer"
-                                        name="Phone2NewCustomer" placeholder="(555) 555-5555"
-                                        aria-describedby="basic-addon1">
+                                <div class="input-group"> <span class="input-group-text"><i class="las la-phone"></i></span>
+                                    <input type="tel" class="form-control phone" id="Phone2NewCustomer" name="Phone2NewCustomer" placeholder="(555) 555-5555">
                                 </div>
                             </div>
                             <div class="mb-1">
                                 <label class="form-label" for="EmailNewCustomer">Email address</label>
-                                <div class="input-group"> <span class="input-group-text"><i
-                                            class="las la-at"></i></span>
-                                    <input type="email" class="form-control" id="EmailNewCustomer"
-                                        name="EmailNewCustomer" placeholder="customer@domain.com"
-                                        aria-describedby="basic-addon1">
+                                <div class="input-group"> <span class="input-group-text"><i class="las la-at"></i></span>
+                                    <input type="email" class="form-control" id="EmailNewCustomer" name="EmailNewCustomer" placeholder="customer@domain.com">
                                 </div>
                             </div>
                         </div>
@@ -76,7 +66,7 @@
     <!--end modal-dialog-->
 </div>
 
-<div class="modal fade" id="ModalNewVehicle" role="dialog" aria-labelledby="ModalNewVehicleLabel" >
+<div class="modal fade" id="ModalNewVehicle" role="dialog" aria-labelledby="ModalNewVehicleLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info">
@@ -135,8 +125,7 @@
 
                             <div class="mb-1">
                                 <label class="form-label text-danger" for="CompanyAddressNewCompany">*Address:</label>
-                                <input class="form-control" type="text" id="CompanyAddressNewCompany"
-                                    name="CompanyAddressNewCompany">
+                                <input class="form-control" type="text" id="CompanyAddressNewCompany" name="CompanyAddressNewCompany">
                             </div>
 
                             
@@ -157,31 +146,22 @@
 
                             <div class="mb-1">
                                 <label class="form-label text-danger" for="CompanyPhone1NewCompany">*Phone #1</label>
-                                <div class="input-group"> <span class="input-group-text"><i
-                                            class="las la-phone"></i></span>
-                                    <input type="tel" class="form-control phone" id="CompanyPhone1NewCompany"
-                                        name="CompanyPhone1NewCompany" placeholder="(555) 555-5555"
-                                        aria-describedby="basic-addon1">
+                                <div class="input-group"> <span class="input-group-text"><i class="las la-phone"></i></span>
+                                    <input type="text" class="form-control phone" id="CompanyPhone1NewCompany" name="CompanyPhone1NewCompany" placeholder="(555) 555-5555">
                                 </div>
                             </div>
 
                             <div class="mb-1">
                                 <label class="form-label" for="CompanyPhone2NewCompany">Phone #2</label>
-                                <div class="input-group"> <span class="input-group-text"><i
-                                            class="las la-phone"></i></span>
-                                    <input type="tel" class="form-control phone" id="CompanyPhone2NewCompany"
-                                        name="CompanyPhone2NewCompany" placeholder="(555) 555-5555"
-                                        aria-describedby="basic-addon1">
+                                <div class="input-group"> <span class="input-group-text"><i class="las la-phone"></i></span>
+                                    <input type="text" class="form-control phone" id="CompanyPhone2NewCompany" name="CompanyPhone2NewCompany" placeholder="(555) 555-5555">
                                 </div>
                             </div>
 
                             <div class="mb-1">
                                 <label class="form-label" for="CompanyEmailNewCompany">Email address</label>
-                                <div class="input-group"> <span class="input-group-text"><i
-                                            class="las la-at"></i></span>
-                                    <input type="email" class="form-control" id="CompanyEmailNewCompany"
-                                        name="CompanyEmailNewCompany" placeholder="company@domain.com"
-                                        aria-describedby="basic-addon1">
+                                <div class="input-group"> <span class="input-group-text"><i class="las la-at"></i></span>
+                                    <input type="email" class="form-control" id="CompanyEmailNewCompany" name="CompanyEmailNewCompany" placeholder="company@domain.com">
                                 </div>
                             </div>
                         </div>
@@ -202,7 +182,7 @@
     <!--end modal-dialog-->
 </div>
 
-<div class="modal fade" id="ModalNewDriver" role="dialog" aria-labelledby="ModalNewDriverLabel" >
+<div class="modal fade" id="ModalNewDriver" role="dialog" aria-labelledby="ModalNewDriverLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info">
@@ -218,27 +198,20 @@
 
                             <div class="mb-1">
                                 <label class="form-label text-danger" for="DriverNameNewDriver">*Driver name:</label>
-                                <input class="form-control" type="text" id="DriverNameNewDriver"
-                                    name="DriverNameNewDriver">
+                                <input class="form-control" type="text" id="DriverNameNewDriver" name="DriverNameNewDriver">
                             </div>
 
                             <div class="mb-1">
                                 <label class="form-label text-danger" for="DriverPhone1NewDriver">*Phone #1</label>
-                                <div class="input-group"> <span class="input-group-text"><i
-                                            class="las la-phone"></i></span>
-                                    <input type="text" class="form-control phone" id="DriverPhone1NewDriver"
-                                        name="DriverPhone1NewDriver" placeholder="(555) 555-5555"
-                                        aria-describedby="basic-addon1">
+                                <div class="input-group"> <span class="input-group-text"><i class="las la-phone"></i></span>
+                                    <input type="text" class="form-control phone" id="DriverPhone1NewDriver" name="DriverPhone1NewDriver" placeholder="(555) 555-5555">
                                 </div>
                             </div>
 
                             <div class="mb-1">
                                 <label class="form-label" for="DriverPhone2NewDriver">Phone #2</label>
-                                <div class="input-group"> <span class="input-group-text"><i
-                                            class="las la-phone"></i></span>
-                                            <input type="text" class="form-control phone" id="DriverPhone2NewDriver"
-                                        name="DriverPhone2NewDriver" placeholder="(555) 555-5555"
-                                        aria-describedby="basic-addon1">
+                                <div class="input-group"> <span class="input-group-text"><i class="las la-phone"></i></span>
+                                            <input type="text" class="form-control phone" id="DriverPhone2NewDriver" name="DriverPhone2NewDriver" placeholder="(555) 555-5555">
                                 </div>
                             </div>
 
@@ -262,24 +235,20 @@
 
 
 <div class="position-fixed top-0 end-0 p-3" style=" z-index: 9999999 !important;">
-    <div id="toastSuccess" class="toast align-items-center text-white bg-success border-0" role="alert"
-        aria-live="assertive" aria-atomic="true">
+    <div id="toastSuccess" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
             <div class="toast-body toast-success">
                 <!-- Message from js -->
             </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-                aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
-    <div id="toastError" class="toast align-items-center text-white bg-danger border-0" role="alert"
-        aria-live="assertive" aria-atomic="true">
+    <div id="toastError" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
             <div class="toast-body toast-error">
                 <!-- Message from js -->
             </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-                aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
     </div>
 </div>
@@ -294,7 +263,7 @@
             <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal" data-bs-target="#ModalNewCompanyService"><i class="fa fa-truck me-2"></i>New company</button>
             <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal" data-bs-target="#ModalNewDriver"><i class="fa fa-bus me-2"></i>New driver</button>
             <button type="button" class="btn btn-soft-danger btn-sm" onclick="$('input, textarea, select').val('');">Clear all fields</button>
-             <button type="button" id="LoadingButton" class="btn btn-soft-light btn-sm"> <div class="spinner-border spinner-border-sm text-danger" role="status"></div></button>
+             <button type="button" id="LoadingButton" class="btn btn-soft-light btn-sm"><div class="spinner-border spinner-border-sm text-danger" role="status"></div></button>
         </div>
         <!--end card-header-->
         <div class="card-body">
@@ -306,13 +275,13 @@
                         <div class="col-md-6"> <span class="text-dark"><b><i data-feather="map-pin"></i> Origin information</b></span>
                             <hr>
                             <div class="row">
-                                <div class="col-md-12" >
+                                <div class="col-md-12">
                                 <label class="mb-1"><i class="fa fa-user"></i> Origin customer name<b class="text-danger">*</b></label>
                                     <div class="input-group">
-                                        <select style="width: 90%;" id="IdCustomerOrigin" name="IdCustomerOrigin" class="select2 form-control mb-3 custom-select originInput" onchange="onchangeOriginCustomer()">
+                                        <select id="IdCustomerOrigin" name="IdCustomerOrigin" class="select2 form-control mb-3 custom-select originInput" onchange="onchangeOriginCustomer()">
                                                 <option value="" selected>Select a origin customer</option>
                                                 <?php foreach($CustomerList  as $key => $value): ?>
-                                                    <option value="<?= $value['Id']; ?>"> <?= $value['Customer']; ?> </option>
+                                                    <option value="<?= $value['Id']; ?>"> <?= $value['Customer']; ?></option>
                                             <?php endforeach; ?>
                                             </select>
                                             <button class="btn btn-dark" type="button" id="SearchCustomerName"><i class="ti ti-reload"></i></button>
@@ -323,20 +292,19 @@
                         </div>
                         <!--end col-->
                         <div class="col-md-6"> <span class="text-dark"><b><i data-feather="arrow-right-circle"></i> Destination information</b></span>
-
                             <hr>
                             <div class="row">
 
-                                <div class="col-md-12" >
+                                <div class="col-md-12">
                                 <label class="mb-1"><i class="fa fa-user"></i> Destination customer name<b class="text-danger">*</b></label>
                                     <div class="input-group">
-                                        <select style="width: 90%;" id="IdCustomerDestination" name="IdCustomerDestination" class="select2 form-control mb-3 custom-select DestinationInput" onchange="onchangeDestinationCustomer()">
+                                        <select  id="IdCustomerDestination" name="IdCustomerDestination" class="select2 form-control mb-3 custom-select DestinationInput" onchange="onchangeDestinationCustomer()">
                                                 <option value="" selected>Select a destination customer</option>
                                                 <?php foreach($CustomerList  as $key => $value): ?>
-                                                    <option value="<?= $value['Id']; ?>"> <?= $value['Customer']; ?> </option>
+                                                    <option value="<?= $value['Id']; ?>"><?= $value['Customer']; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
-                                        <button class="btn btn-dark" type="button" id="SearchDestinationCustomer"><i  class="ti ti-reload"></i></button>
+                                        <button class="btn btn-dark" type="button" id="SearchDestinationCustomer"><i class="ti ti-reload"></i></button>
                                     </div>
                                 </div>
                                 <br>
@@ -351,7 +319,7 @@
                                     <div class="col-md-12" >
                                         <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Origin address<b class="text-danger">*</b></label>
                                         <input style="display:none;" />
-                                        <input id="OriginAddress" name="OriginAddress" type="text" class="form-control originInput" placeholder="Ex. 12141 Pembroke Rd,..."  >
+                                        <input id="OriginAddress" name="OriginAddress" type="text" class="form-control originInput" placeholder="Ex. 12141 Pembroke Rd,..."  maxlength="200" minlength="10">
                                     </div>
                                     <!-- end row -->
                                 </div>
@@ -362,19 +330,19 @@
                                             <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
                                                 <input type="text" style="display:none;" />
-                                                <input id="OriginCity" name="OriginCity" type="search"  class="form-control originInput pac-target-input" placeholder="City">
+                                                <input id="OriginCity" name="OriginCity" type="text"  class="form-control originInput pac-target-input" placeholder="City" minlength="2" maxlength="80" required>
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4" >
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> State<b class="text-danger">*</b></label>
                                                 <input style="display:none;" />
-                                                <input autocomplete="off" id="OriginState" name="OriginState" type="text"  class="form-control originInput" placeholder="State">
+                                                <input autocomplete="off" id="OriginState" name="OriginState" type="text"  class="form-control originInput" placeholder="State" minlength="1" maxlength="25" required>
                                             </div>
                                             <!-- end row -->
-                                            <div class="col-md-4" >
+                                            <div class="col-md-4">
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Zip Code</label>
                                                 <input style="display:none;" />
-                                                <input autocomplete="off" id="OriginZip" name="OriginZip" type="text"  class="form-control originInput" placeholder="00000">
+                                                <input autocomplete="off" id="OriginZip" name="OriginZip" type="text"  class="form-control originInput" placeholder="00000" maxlength="20">
                                             </div>
                                             <!-- end row -->
                                         </div>
@@ -384,18 +352,18 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="row">
-                                            <div class="col-md-4" >
+                                            <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-mobile"></i> Phone #1<b class="text-danger">*</b></label>
-                                                <input id="OriginPhone1" name="OriginPhone1" type="text" class="form-control originInput phone" placeholder="(555) 555-5555">
+                                                <input id="OriginPhone1" name="OriginPhone1" type="text" class="form-control originInput phone" placeholder="(555) 555-5555" minlength="4" maxlength="16" required>
                                             </div>
                                             <!-- end row -->
-                                            <div class="col-md-4" >
+                                            <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone #2</label>
                                                     <input style="display:none;" />
                                                 <input autocomplete="off" id="OriginPhone2" name="OriginPhone2" type="text" class="form-control originInput phone" placeholder="(555) 555-5555">
                                             </div>
                                             <!-- end row -->
-                                            <div class="col-md-4" >
+                                            <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-envelope"></i> Email</label>
                                                 <input style="display:none;" />
                                                 <input autocomplete="off" id="OriginEmail" name="OriginEmail" type="email" class="form-control originInput" placeholder="cus@domain.com">
@@ -406,9 +374,9 @@
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <div class="col-md-12" >
+                                    <div class="col-md-12">
                                         <label class="mb-1"><i class="fa fa-sticky-note"></i> Note</label>
-                                        <textarea id="OriginNote" name="OriginNote" class="form-control originInput" placeholder="Opcional information" rows="3"></textarea>
+                                        <textarea id="OriginNote" name="OriginNote" class="form-control originInput" placeholder="Opcional information" maxlength="300" rows="3"></textarea>
                                     </div>
                                     <!-- end row -->
                                 </div>
@@ -416,10 +384,10 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="row">
-                                    <div class="col-md-12" >
+                                    <div class="col-md-12">
                                         <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Destination address<b class="text-danger">*</b></label>
                                             <input style="display:none;" />
-                                            <input id="DestinationAddress" name="DestinationAddress" type="text" class="form-control DestinationInput" placeholder="Ex. 1600 Pennsylvania...">
+                                            <input id="DestinationAddress" name="DestinationAddress" type="text" class="form-control DestinationInput" placeholder="Ex. 1600 Pennsylvania..." minlength="10" maxlength="300" required>
                                     </div>
                                     <!-- end row -->
                                 </div>
@@ -427,17 +395,17 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="row">
-                                            <div class="col-md-4" >
+                                            <div class="col-md-4">
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
-                                                <input id="DestinationCity" name="DestinationCity" type="text" class="form-control DestinationInput" placeholder="City">
+                                                <input id="DestinationCity" name="DestinationCity" type="text" class="form-control DestinationInput" placeholder="City" minlength="4" maxlength="80" required>
                                             </div>
                                             <!-- end row -->
-                                            <div class="col-md-4" >
+                                            <div class="col-md-4">
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> State<b class="text-danger">*</b></label>
-                                                <input id="DestinationState" name="DestinationState" type="text"  class="form-control DestinationInput" placeholder="State">
+                                                <input id="DestinationState" name="DestinationState" type="text"  class="form-control DestinationInput" placeholder="State" minlength="1" maxlength="30" required>
                                             </div>
                                             <!-- end row -->
-                                            <div class="col-md-4" >
+                                            <div class="col-md-4">
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Zip Code</label>
                                                 <input id="DestinationZip" name="DestinationZip" type="text" class="form-control DestinationInput" placeholder="00000">
                                             </div>
@@ -449,17 +417,17 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="row">
-                                            <div class="col-md-4" >
+                                            <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-mobile"></i> Phone #1<b class="text-danger">*</b></label>
-                                                <input id="DestinationPhone1" name="DestinationPhone1" type="text"  class="form-control DestinationInput phone" placeholder="(555) 555-5555">
+                                                <input id="DestinationPhone1" name="DestinationPhone1" type="text"  class="form-control DestinationInput phone" placeholder="(555) 555-5555" minlength="4" maxlength="16" required>
                                             </div>
                                             <!-- end row -->
-                                            <div class="col-md-4" >
+                                            <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone #2</label>
                                                 <input id="DestinationPhone2" name="DestinationPhone2" type="text" class="form-control DestinationInput phone" placeholder="(555) 555-5555">
                                             </div>
                                             <!-- end row -->
-                                            <div class="col-md-4" >
+                                            <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-envelope"></i> Email</label>
                                                 <input id="DestinationEmail" name="DestinationEmail" type="email" class="form-control DestinationInput" placeholder="cus@domain.com">
                                             </div>
@@ -469,9 +437,9 @@
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <div class="col-md-12" >
+                                    <div class="col-md-12">
                                         <label class="mb-1"><i class="fa fa-sticky-note"></i> Note</label>
-                                        <textarea id="DestinationNote" name="DestinationNote" class="form-control DestinationInput" placeholder="Opcional information" rows="3"></textarea>
+                                        <textarea id="DestinationNote" name="DestinationNote" class="form-control DestinationInput" maxlength="300" placeholder="Optional information" rows="3"></textarea>
                                     </div>
                                     <!-- end row -->
                                 </div>
@@ -491,14 +459,14 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="row">
-                                        <div class="col-md-6" >
+                                        <div class="col-md-6">
                                             <label class="mb-1"><b>Pick up date</b><b class="text-danger">*</b></label>
-                                            <input id="PickUpDate" name="PickUpDate" type="date" class="form-control">
+                                            <input id="PickUpDate" name="PickUpDate" type="text" class="form-control inputDate" placeholder="mm/dd/yyyy" minlength="8" required>
                                         </div>
                                         <!-- end row -->
-                                        <div class="col-md-6" >
+                                        <div class="col-md-6">
                                             <label class="mb-1"><b>Delivery date</b><b class="text-danger">*</b></label>
-                                            <input id="DeliveryDate" name="DeliveryDate" type="date" class="form-control">
+                                            <input id="DeliveryDate" name="DeliveryDate" type="text" class="form-control inputDate" placeholder="mm/dd/yyyy" minlength="8" required>
                                         </div>
                                         <!-- end row -->
                                     </div>
@@ -511,16 +479,16 @@
                                 <div class="col-md-12">
                                     <div class="row">
 
-                                        <div class="col-md-6" >
+                                        <div class="col-md-6">
                                             <label class="mb-1"><b>Order date (Today)</b></label>
-                                            <input id="PickUpOrderDateDate" name="OrderDate" type="date"  class="form-control" value="<?= date('Y-m-d'); ?>" readonly>
+                                            <input id="PickUpOrderDateDate" name="OrderDate" type="text"  placeholder="mm/dd/yyyy" class="form-control" value="<?= date('m/d/Y'); ?>" readonly>
                                         </div>
                                         <!-- end row -->
-                                        <div class="col-md-6" >
+                                        <div class="col-md-6">
                                             <label class="mb-1"><b>Order status</b><b class="text-danger">*</b></label>
-                                            <select style="width: 100%;" id="OrderStatusID" name="OrderStatusID" class="form-control" readonly>
+                                            <select  id="OrderStatusID" name="OrderStatusID" class="form-control" readonly>
                                                 <?php foreach($OrderStatusList  as $key => $value): ?>
-                                                <option value="<?= $value['Id']; ?>"> <?= $value['Status']; ?> </option>
+                                                <option value="<?= $value['Id']; ?>"> <?= $value['Status']; ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
@@ -533,11 +501,8 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <button title="Refresh brand and model list" data-tippy-size="large"
-                                        class="btn btn-sm btn-dark tippy-btn" type="button" id="SearchVehicles"><i
-                                            class="ti ti-reload"></i></button>
-                                    <button type="button" onclick="AddVehicleList()"
-                                        class="btn btn-sm btn-outline-primary"> <i class="fas fa-plus"></i> Add vehicles</button>
+                                    <button title="Refresh brand and model list" data-tippy-size="large" class="btn btn-sm btn-dark tippy-btn" type="button" id="SearchVehicles"><i class="ti ti-reload"></i></button>
+                                    <button type="button" onclick="AddVehicleList()" class="btn btn-sm btn-outline-primary"> <i class="fas fa-plus"></i> Add vehicles</button>
                                 </div>
                                 <!--end card-header-->
                                 <div class="card-body">
@@ -549,31 +514,30 @@
 
                                                     <div class="row registroVehiculo" id="templateVehiculo" style="padding-bottom:20px !important" hidden>
 
-                                                        <div class="col-sm-2" >
-                                                            <label class="mb-1"><b>Brand</b></label>
-                                                            <select style="width: 90%;" name="Brand" onchange="GetModelsByBrand(this)" class="select2 form-control mb-3 custom-select BrandVehicle vehicleList" >
+                                                        <div class="col-sm-2">
+                                                            <label class="mb-1 text-danger"><b>Brand</b></label>
+                                                            <select  name="Brand" onchange="GetModelsByBrand(this)" class="select2 form-control mb-3 custom-select BrandVehicle vehicleList">
                                                                 <option value="">Select brand</option>
                                                             </select>
                                                         </div>
 
-                                                        <div class="col-sm-3" >
-                                                            <label class="mb-1"><b>Model</b></label>
-                                                            <select style="width: 90%;" name="Model"
-                                                                class="select2 form-control mb-3 custom-select ModelVehicle vehicleList">
+                                                        <div class="col-sm-2">
+                                                            <label class="mb-1 text-danger"><b>Model</b></label>
+                                                            <select  name="Model" class="select2 form-control mb-3 custom-select ModelVehicle vehicleList">
                                                                 <option value="">Select model</option>
                                                             </select>
                                                         </div>
 
                                                             <!--end col-->
-                                                         <div class="col-sm-1" >
-                                                            <label class="mb-1"><b>Year</b></label>
-                                                            <input type="number"  min="1900" name="Year"  class="form-control YearVehicle vehicleList" placeholder="">
+                                                         <div class="col-sm-1">
+                                                            <label class="mb-1 text-danger"><b>Year</b></label>
+                                                            <input type="text"  name="Year"  minlength="4" maxlength="5" class="form-control YearVehicle vehicleList" placeholder="">
                                                         </div>
 
                                                               <!-- end row -->
-                                                         <div class="col-sm-1" >
-                                                            <label class="mb-1"><b>Color</b></label>
-                                                            <select style="width: 100%;" name="Color" class="form-control ColorVehicle vehicleList">
+                                                         <div class="col-sm-1">
+                                                            <label class="mb-1 text-danger"><b>Color</b></label>
+                                                            <select  name="Color" class="form-control ColorVehicle vehicleList">
                                                             <option value="">Colors</option>
                                                                 <option value="White"> White</option>
                                                                 <option value="Black"> Black</option>
@@ -590,8 +554,8 @@
                                                         </div>
 
                                                         <div class="col-sm-1" >
-                                                            <label class="mb-1"><b>Carrier</b></label>
-                                                            <select style="width: 100%;" name="CarrierType" class="form-control CarrierTypeVehicle vehicleList">
+                                                            <label class="mb-1 text-danger"><b>Carrier</b></label>
+                                                            <select  name="CarrierType" class="form-control CarrierTypeVehicle vehicleList">
                                                             <option value="">Carriers</option>
                                                                 <option value="Open">Open</option>
                                                                 <option value="Enclosed">Enclosed</option>
@@ -601,8 +565,8 @@
                                                 
 
                                                         <div class="col-sm-1" >
-                                                            <label class="mb-1"><b>Condition</b></label>
-                                                            <select style="width: 100%;" name="ConditionVehicle" class="form-control ConditionVehicle vehicleList">
+                                                            <label class="mb-1 text-danger"><b>Condition</b></label>
+                                                            <select  name="ConditionVehicle" class="form-control ConditionVehicle vehicleList">
                                                                 <option value="">Conditions</option>
                                                                 <option value="Running">Running</option>
                                                                 <option value="Non-running">Non-running</option>
@@ -610,10 +574,10 @@
                                                         </div>
 
 
-                                                        <div class="col-sm-3" >
+                                                        <div class="col-sm-3">
                                                         <label class="mb-1"><b>Vin</b></label>
                                                             <div class="input-group">
-                                                                <input type="text" name="Vin" class="form-control VinVehicle vehicleList" style="text-transform:uppercase">
+                                                                <input type="text" name="Vin" class="form-control VinVehicle vehicleList" style="text-transform:uppercase" maxlength="20">
                                                                 <button type="button" title="Delete vehicle" onclick="EliminarVehiculo(this)"  class="btn btn-outline-danger"> <span class="far fa-trash-alt me-1"></span> </button>
                                                             </div>
                                                         </div>
@@ -655,14 +619,14 @@
         <hr>
         <div class="row">	
 
-            <div class="col-md-6" >
+            <div class="col-md-6">
                 <label class="mb-1"> Card holder name<b class="text-danger">*</b></label>
-                <input type="text" class="form-control" name="CardHolderName" id="CardHolderName" style="text-transform:uppercase">
+                <input type="text" class="form-control" name="CardHolderName" id="CardHolderName" style="text-transform:uppercase" maxlength="60" minlength="2" required>
             </div>
 
-            <div class="col-md-6" >
+            <div class="col-md-6">
                         <label class="mb-1">Reference</label>
-                        <input id="Reference" name="Reference" type="text" class="form-control" placeholder="0000000">
+                        <input id="Reference" name="Reference" type="text" class="form-control" placeholder="0000000" maxlength="50">
             </div>
 
             <!-- end row -->
@@ -674,13 +638,13 @@
                  Customer payment </b></span>
         <hr>
         <div class="row">
-            <div class="col-md-6" >
+            <div class="col-md-6">
                 <label class="mb-1"><b>Total</b><b class="text-danger">*</b></label>
-                <input type="text" class="form-control inputNumber" name="Total" id="Total"  placeholder="$0000" value="0">
+                <input type="text" class="form-control inputNumber" name="Total" id="Total"  placeholder="$0000" value="0" required>
             </div>
-            <div class="col-md-6" >
+            <div class="col-md-6">
                 <label class="mb-1"><b>Deposit</b><b class="text-danger">*</b></label>
-                <input id="Deposit" name="Deposit" type="text" class="form-control inputNumber" placeholder="$0000" value="0">
+                <input id="Deposit" name="Deposit" type="text" class="form-control inputNumber" placeholder="$0000" value="0" required>
             </div>
             <!-- end row -->
         </div>
@@ -696,19 +660,19 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-5" >
+                    <div class="col-md-5">
                         <label class="mb-1"><i class="fa fa-credit-card"></i> Credit card number<b class="text-danger">*</b></label>
-                        <input id="CreditCard" name="CreditCard" type="text" class="form-control" placeholder="#### #### #### ####">
+                        <input id="CreditCard" name="CreditCard" type="text" class="form-control" placeholder="#### #### #### ####" minlength="8" required>
                     </div>
                     <!-- end row -->
-                    <div class="col-md-3" >
+                    <div class="col-md-3">
                         <label class="mb-1">Expiration date<b class="text-danger">*</b></label>
-                        <input id="ExpDate" name="ExpDate" type="text" class="form-control" placeholder="00/00">
+                        <input id="ExpDate" name="ExpDate" type="text" class="form-control" placeholder="00/00" minlength="5" required>
                     </div>
                     <!-- end row -->
-                    <div class="col-md-4" >
+                    <div class="col-md-4">
                         <label class="mb-1">CVV<b class="text-danger">*</b></label>
-                        <input id="Cvv" name="Cvv" type="text" class="form-control"  placeholder="">
+                        <input id="Cvv" name="Cvv" type="text" class="form-control"  placeholder="000" maxlength="5" minlength="3" required>
                     </div>
                     <!-- end row -->
                 </div>
@@ -718,10 +682,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-12" >
+                    <div class="col-md-12">
                         <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Billing address<b class="text-danger">*</b></label>
                         <input style="display:none;" />
-                        <input id="BillingAddress" name="BillingAddress" type="text" class="form-control" placeholder="Ex. 12141 Pembroke Rd...." autocomplete="disabled">
+                        <input id="BillingAddress" name="BillingAddress" type="text" class="form-control" placeholder="Ex. 12141 Pembroke Rd...." autocomplete="disabled" maxlength="200" required>
                     </div>
                 </div>
             </div>
@@ -730,19 +694,19 @@
         <div class="row">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-4" >
+                        <div class="col-md-4">
                         <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
-                            <input id="BillingCity" name="BillingCity" type="text" class="form-control BillingInput" placeholder="City">
+                            <input id="BillingCity" name="BillingCity" type="text" class="form-control BillingInput" placeholder="City" maxlength="80">
                         </div>
                         <!-- end row -->
-                        <div class="col-md-4" >
+                        <div class="col-md-4">
                         <label class="mb-1"><i class="fa fa-map-marker-alt"></i> State<b class="text-danger">*</b></label>
-                            <input id="BillingState" name="BillingState" type="text"  class="form-control BillingInput" placeholder="State">
+                            <input id="BillingState" name="BillingState" type="text" class="form-control BillingInput" placeholder="State" maxlength="25">
                         </div>
                         <!-- end row -->
-                        <div class="col-md-4" >
+                        <div class="col-md-4">
                         <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Zip Code</label>
-                            <input id="BillingZipCode" name="BillingZipCode" type="text" class="form-control BillingInput" placeholder="00000">
+                            <input id="BillingZipCode" name="BillingZipCode" type="text" class="form-control BillingInput" placeholder="00000" maxlength="10">
                         </div>
                         <!-- end row -->
                     </div>
@@ -752,19 +716,19 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-4" >
+                    <div class="col-md-4">
                         <label class="mb-1"><i class="fa fa-mobile"></i> Phone number #1<b class="text-danger">*</b></label>
-                        <input id="Tel1" name="Tel1" type="text" class="form-control phone" placeholder="(555) 555-5555">
+                        <input id="Tel1" name="Tel1" type="text" class="form-control phone" placeholder="(555) 555-5555" maxlength="15">
                     </div>
                     <!-- end row -->
-                    <div class="col-md-4" >
+                    <div class="col-md-4">
                         <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone number #2</label>
-                        <input id="Tel2" name="Tel2" type="text" class="form-control phone" placeholder="(555) 555-5555">
+                        <input id="Tel2" name="Tel2" type="text" class="form-control phone" placeholder="(555) 555-5555" maxlength="15">
                     </div>
                     <!-- end row -->
-                    <div class="col-md-4" >
+                    <div class="col-md-4">
                         <label class="mb-1"><i class="fa fa-envelope"></i> Email</label>
-                        <input id="PaymentEmail" name="PaymentEmail" type="email"  class="form-control" placeholder="us@domain.com">
+                        <input id="PaymentEmail" name="PaymentEmail" type="email"  class="form-control" placeholder="us@domain.com" maxlength="50">
                     </div>
                     <!-- end row -->
                 </div>
@@ -775,9 +739,9 @@
 
     <div class="col-md-6">
     <div class="row">
-            <div class="col-md-12" >
+            <div class="col-md-12">
                 <label class="mb-1"><i class="fa fa-sticky-note"></i> Payment note</label>
-                <textarea id="PaymentNote" name="PaymentNote" class="form-control" placeholder="Opcional information" rows="5"></textarea>
+                <textarea id="PaymentNote" name="PaymentNote" class="form-control" placeholder="Opcional information" rows="5" maxlength="200"></textarea>
             </div>
             <!-- end row -->
         </div>
@@ -810,7 +774,7 @@
 
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <center><h6 style="padding-top: 8px;"><b>Order ID: </b><span class="OrderIDForm"></span> <b> | Order date: </b><span class="OrderDateForm">0000-00-00</span><b> | Pick up date: </b><span class="PickUpDateForm">0000-00-00</span><b> | Delivery date: </b><span class="DeliveryDateForm">0000-00-00</span></h6></center>
+                                            <center><h6 style="padding-top: 8px;"><b>Order ID: </b><span class="OrderIDForm"></span> <b> | Order date: </b><span class="OrderDateForm">00/00/0000</span><b> | Pick up date: </b><span class="PickUpDateForm">00/00/0000</span><b> | Delivery date: </b><span class="DeliveryDateForm">00/00/0000</span></h6></center>
                                             <hr>
                                         </div>
                                     </div>
@@ -863,9 +827,6 @@
                                                             <td class="border-0 font-14 text-dark"><b></b>
                                                             </td>
                                                         </tr>
-                                                        <!--end tr-->
-                                                        <!--end tr-->
-
                                                         <tr class="bg-secondary text-white">
                                                             <th colspan="2" class="border-0"></th>
                                                             <th colspan="2" class="border-0"></th>
@@ -913,7 +874,7 @@
                                                                     <p class="mb-0 text-muted CreditCardNumberForm"></p>
                                                                 </td>
 
-                                                                <td  style="border-style: none;">
+                                                                <td style="border-style: none;">
                                                                     <h5 class="mt-0 mb-1 font-14"><b>City</b></h5>
                                                                     <p class="mb-0 text-muted BillingCityForm"></p>
                                                                 </td>
@@ -931,18 +892,17 @@
                                                                     <p class="mb-0 text-muted ExperationDateForm"></p>
                                                                 </td>
 
-                                                                <td  style="border-style: none;">
-                                                                    <h5 class="mt-0 mb-1 font-14"><b>CVV</b></h5>
+                                                                <td style="border-style: none;">
+                                                                    <h5 class="mt-0 mb-1 font-14"><b>Cvv</b></h5>
                                                                     <p class="mb-0 text-muted CVVForm"></p>
                                                                 </td>
 
-
-                                                                <td  style="border-style: none;">
+                                                                <td style="border-style: none;">
                                                                     <h5 class="mt-0 mb-1 font-14"><b>State</b></h5>
                                                                     <p class="mb-0 text-muted BillingStateForm"></p>
                                                                 </td>
 
-                                                                <td  style="border-style: none;">
+                                                                <td style="border-style: none;">
                                                                     <h5 class="mt-0 mb-1 font-14"><b>Zip code</b></h5>
                                                                     <p class="mb-0 text-muted BillingZipCodeForm"></p>
                                                                 </td>
@@ -974,7 +934,7 @@
                                         <div class="col-lg-12 col-xl-4">
                                             <div class="float-end d-print-none"> 
                                             <a href="index.php?c=Orders&a=Index" class="btn btn-success btn-sm" id="ButtonExit"><i class="fa fa-document"></i> Go to Order List</a> 
-                                            <button onclick="printJS({printable: 'zonaPrint', type:'html', css: ['assets/css/bootstrap.min.css','assets/css/app.min.css','assets/css/icons.min.css','assets/css/print.css' ],  style: '@page {margin: 4mm}', scanStyles: false})" type="button" class="btn btn-info btn-sm"><i class="fa fa-print"></i> Print</button>
+                                            <button id="BtnPrintOrder" onclick="printJS({printable: 'zonaPrint', type:'html', css: ['assets/css/bootstrap.min.css','assets/css/app.min.css','assets/css/icons.min.css','assets/css/print.css' ],  style: '@page {margin: 4mm}', scanStyles: false})" type="button" class="btn btn-info btn-sm"><i class="fa fa-print"></i> Print</button>
                                         </div>
                                         <!--end col-->
                                     </div>
@@ -1009,14 +969,15 @@
 
 <script src="assets/js/orders.js"></script>
 <script src="assets/js/jquery.mask.js"></script>
+
 <script type="text/javascript"> 
   $("#LoadingButton").hide();
   $("#ButtonExit").hide();
-
+  $("#BtnPrintOrder").hide();
 
 $(document).ready(function($){
 
-    $('.phone').mask('(000) 000-0000');
+    $('.phone').mask("(000) 000-0000", {placeholder: "(000) 000-0000"});
     $("#Cvv").mask('0000');
     $("#CreditCard").mask("0000 0000 0000 0000");
     $('.inputNumber').keyup(function(){
@@ -1026,7 +987,10 @@ $(document).ready(function($){
         $('.inputNumber'). mask("#,##0.00", {reverse: true});
     });
 
+    $('.inputDate').mask("00/00/0000", {placeholder: "MM/DD/YYYY"});
+
     $('#ExpDate').mask("AB/CD", {
+      placeholder: "MM/YY",
       translation: {
         A: { pattern: /[0-9]/ },
         B: { pattern: /[0-9]/ },
@@ -1055,31 +1019,84 @@ $(document).ready(function($){
 
     $("#DeliveryDate").change(function(){
 
-        const PickUpOrderDateDate = new Date($("#PickUpOrderDateDate").val());
-        const DeliveryDate = new Date($("#DeliveryDate").val());
+        let PickUpOrderDateDate = new Date($("#PickUpOrderDateDate").val());
+        let DeliveryDate        = new Date($("#DeliveryDate").val());
+        let MonthDeliveryDate = $("#DeliveryDate").val().substr(0,2);
 
-        if(+DeliveryDate < +PickUpOrderDateDate){
+        let PickUpDate = new Date($("#PickUpDate").val());
+        let MonthPickUpDate = $("#PickUpDate").val().substr(0,2);
 
-            $(".toast-error").html("(!) The delivery date cannot be less than today");
+        if(MonthDeliveryDate > 12){
+            $(".toast-error").html("(!) invalid format [Delivery date]");
             var myAlert2 = document.getElementById('toastError');
             var bsAlert2 = new bootstrap.Toast(myAlert2);
             bsAlert2.show();
         }
 
+        if(MonthPickUpDate > 12){
+            $(".toast-error").html("(!) invalid format [PickUp date]");
+            var myAlert2 = document.getElementById('toastError');
+            var bsAlert2 = new bootstrap.Toast(myAlert2);
+            bsAlert2.show();
+        }
+
+        if(+DeliveryDate < +PickUpOrderDateDate){
+
+            $(".toast-error").html("(!) The delivery date cannot be less than Today");
+            var myAlert2 = document.getElementById('toastError');
+            var bsAlert2 = new bootstrap.Toast(myAlert2);
+            bsAlert2.show();
+        }
+
+        if(+DeliveryDate < +PickUpDate){
+
+            $(".toast-error").html("(!) The delivery date cannot be less than Pick Up date");
+            var myAlert2 = document.getElementById('toastError');
+            var bsAlert2 = new bootstrap.Toast(myAlert2);
+            bsAlert2.show();
+       }
+
+
         });
 
         $("#PickUpDate").change(function(){
 
-        const PickUpDate = new Date($("#PickUpDate").val());
-        const PickUpOrderDateDate = new Date($("#PickUpOrderDateDate").val());
+        let PickUpOrderDateDate = new Date($("#PickUpOrderDateDate").val());
+        let DeliveryDate        = new Date($("#DeliveryDate").val());
+        let MonthDeliveryDate = $("#DeliveryDate").val().substr(0,2);
 
-        if(+PickUpDate < +PickUpOrderDateDate){
+        let PickUpDate = new Date($("#PickUpDate").val());
+        let MonthPickUpDate = $("#PickUpDate").val().substr(0,2);
 
-            $(".toast-error").html("(!) The pick-up date cannot be less than today");
-            var myAlert1 = document.getElementById('toastError');
-            var bsAlert1 = new bootstrap.Toast(myAlert1);
-            bsAlert1.show();
+        if(MonthDeliveryDate > 12){
+            $(".toast-error").html("(!) invalid format [Delivery date]");
+            var myAlert2 = document.getElementById('toastError');
+            var bsAlert2 = new bootstrap.Toast(myAlert2);
+            bsAlert2.show();
         }
+
+        if(MonthPickUpDate > 12){
+            $(".toast-error").html("(!) invalid format [PickUp date]");
+            var myAlert2 = document.getElementById('toastError');
+            var bsAlert2 = new bootstrap.Toast(myAlert2);
+            bsAlert2.show();
+        }
+
+        if(+DeliveryDate < +PickUpOrderDateDate){
+
+            $(".toast-error").html("(!) The delivery date cannot be less than Today");
+            var myAlert2 = document.getElementById('toastError');
+            var bsAlert2 = new bootstrap.Toast(myAlert2);
+            bsAlert2.show();
+        }
+
+        if(+DeliveryDate < +PickUpDate){
+
+            $(".toast-error").html("(!) The delivery date cannot be less than Pick Up date");
+            var myAlert2 = document.getElementById('toastError');
+            var bsAlert2 = new bootstrap.Toast(myAlert2);
+            bsAlert2.show();
+       }
 
         }); 
 });
@@ -1102,8 +1119,8 @@ function GetModelsByBrand(e){
                  
                 var newOptions = JSON.parse(response);
 
-                var count =  $('.BrandVehicle:not(:hidden)').closest('div').next().find('.ModelVehicle:not(:hidden)').length-1;
-                var htmlSelect =$('.BrandVehicle:not(:hidden)').closest('div').next().find('.ModelVehicle:not(:hidden)')[count];
+                var count = $('.BrandVehicle:not(:hidden)').closest('div').next().find('.ModelVehicle:not(:hidden)').length-1;
+                var htmlSelect = $('.BrandVehicle:not(:hidden)').closest('div').next().find('.ModelVehicle:not(:hidden)')[count];
                 $(htmlSelect).empty();
 
                 var optionDefault = new Option("Select the model", "", true, true);
@@ -1149,35 +1166,77 @@ $("#form-horizontal").steps({
                 break;
 
                 case 2:
+                  
                     $("#ManualUpdateButton").show();
-                    const PickUpOrderDateDate = new Date($("#PickUpOrderDateDate").val());
-                    const DeliveryDate = new Date($("#DeliveryDate").val());
-                    const PickUpDate = new Date($("#PickUpDate").val());
-                    let continueCase = false;
 
-                    if(($("#PickUpDate").val() != "") && (+PickUpDate >= +PickUpOrderDateDate)){
-                        continueCase = true;
-                    }else{
-                       
-                        $(".toast-error").html("(!) The pick-up date cannot be less than today or empty [Step 2]");
+                        let continueCase = true;
+
+                        let PickUpOrderDateDate = new Date($("#PickUpOrderDateDate").val());
+                        let DeliveryDate        = new Date($("#DeliveryDate").val());
+                        let MonthDeliveryDate = $("#DeliveryDate").val().substr(0,2);
+
+                        let PickUpDate = new Date($("#PickUpDate").val());
+                        let MonthPickUpDate = $("#PickUpDate").val().substr(0,2);
+
+                        if($("#DeliveryDate").val() == "" || $("#PickUpDate").val() == ""){
+                            $(".toast-error").html("(!) PickUpDate or DeliveryDate empty");
+                            var myAlert2 = document.getElementById('toastError');
+                            var bsAlert2 = new bootstrap.Toast(myAlert2);
+                            bsAlert2.show();
+                            continueCase = false;
+                        }
+
+                        if(MonthDeliveryDate > 12){
+                            $(".toast-error").html("(!) invalid format [Delivery date]");
+                            var myAlert2 = document.getElementById('toastError');
+                            var bsAlert2 = new bootstrap.Toast(myAlert2);
+                            bsAlert2.show();
+                            continueCase = false;
+                        }
+
+                        if(MonthPickUpDate > 12){
+                            $(".toast-error").html("(!) invalid format [PickUp date]");
+                            var myAlert2 = document.getElementById('toastError');
+                            var bsAlert2 = new bootstrap.Toast(myAlert2);
+                            bsAlert2.show();
+                            continueCase = false;
+                        }
+
+                        if(+DeliveryDate < +PickUpOrderDateDate){
+
+                            $(".toast-error").html("(!) The delivery date cannot be less than Today");
+                            var myAlert2 = document.getElementById('toastError');
+                            var bsAlert2 = new bootstrap.Toast(myAlert2);
+                            bsAlert2.show();
+                           continueCase = false;
+                        }
+
+                        if(+PickUpDate < +PickUpOrderDateDate){
+
+                        $(".toast-error").html("(!) The PickUpDate cannot be less than Today");
                         var myAlert2 = document.getElementById('toastError');
                         var bsAlert2 = new bootstrap.Toast(myAlert2);
                         bsAlert2.show();
                         continueCase = false;
-                        return false;
-                    }
+                      }
 
-                     if(($("#DeliveryDate").val() != "") && (+DeliveryDate >= +PickUpOrderDateDate)){
-                        continueCase = true;
-                    } else{
+                        if(+DeliveryDate < +PickUpDate){
 
-                        $(".toast-error").html("(!) The delivery date cannot be less than today or empty [Step 2]");
-                        var myAlert1 = document.getElementById('toastError');
-                        var bsAlert1 = new bootstrap.Toast(myAlert1);
-                        bsAlert1.show();
-                        continueCase = false;
-                        return false;
-                    }
+                            $(".toast-error").html("(!) The delivery date cannot be less than Pick Up date");
+                            var myAlert2 = document.getElementById('toastError');
+                            var bsAlert2 = new bootstrap.Toast(myAlert2);
+                            bsAlert2.show();
+                            continueCase = false;
+                         }
+
+                         if(+PickUpDate > +DeliveryDate){
+
+                            $(".toast-error").html("(!) The PickUp Date cannot be greater than Delivery Date");
+                            var myAlert2 = document.getElementById('toastError');
+                            var bsAlert2 = new bootstrap.Toast(myAlert2);
+                            bsAlert2.show();
+                            continueCase = false;
+                         }
 
                     if(continueCase == true){
                         return true;
@@ -1200,7 +1259,10 @@ $("#form-horizontal").steps({
 
                        ExpDate = month+'/'+day+'/'+year;
                        let ExpDateConverted    = new Date(ExpDate);
+                       //ExpDateConverted = ExpDateConverted.toLocaleDateString("en-US");
+
                        let OrderDate = new Date($("#PickUpOrderDateDate").val());
+                       OrderDate = OrderDate.toLocaleDateString("en-US");
 
                        if($("#ExpDate").val().length != 5){
                        
@@ -1266,6 +1328,7 @@ $("#form-horizontal").steps({
             labels: { cancel: "Cancel", current: "current step:", pagination: "Pagination", finish: "Save order", next: "Next Step", previous: "Previous Step", loading: "Loading ..." },         
             onFinishing: function(event, currentIndex) {
                 saveOrder();
+                $("#BtnPrintOrder").show();
                 return true;
             }
 });
@@ -1285,7 +1348,7 @@ function AddVehicleList() {
    var clonado =  $('#templateVehiculo').clone().val('');
    clonado.removeAttr('hidden');
    clonado.appendTo("#contentVehicle");
-   $(clonado).find(".select2").select2();
+   $(clonado).find(".select2").select2({ width:'100%'});
 
 }
 
@@ -1298,22 +1361,24 @@ function EliminarVehiculo(e) {
 //Input Search Select2
 $(document).ready(function() {
    
-    $('.select2').select2();
     $("body").addClass("enlarge-menu");
     $(".steps, .actions").addClass("d-print-none");
-    $(".ListVehiclesPDF").html("");    $('.select2').select2();
+    $(".ListVehiclesPDF").html("");   
+     $('.select2').select2({width:'94%'});
    
     $(".originInput, .DestinationInput").change(function() {
         $(this).css("border-color", "#A6A6A6");
     });
 
-
-
-
 });
 
 $("#SearchVehicles").click(function() {
     GetListVehicles();
+});
+
+//Destination Customer
+$("#SearchDestinationCustomer, #SearchCustomerName").click(function() {
+    GetListCustomer();
 });
 
 
@@ -1351,11 +1416,10 @@ function GetListVehicles() {
         $('.BrandVehicle').append(optionDefault);
         $('.BrandVehicle').val("").trigger('change');
 
-        $('.ModelVehicle').val("").trigger('change');
         var optionDefault2 = new Option("Select model", "", true, true);
         $('.ModelVehicle').append(optionDefault2);
-
-        $(".toast-success").html("System ready");
+        $('.ModelVehicle').val("").trigger('change');   
+        $(".toast-success").html("Wait 5 seconds...");
         var myAlert = document.getElementById('toastSuccess');
         var bsAlert = new bootstrap.Toast(myAlert);
         bsAlert.show(); 
@@ -1363,12 +1427,6 @@ function GetListVehicles() {
     });
 
 }
-
-//Destination Customer
-$("#SearchDestinationCustomer, #SearchCustomerName").click(function() {
-    GetListCustomer();
-});
-
 
 function GetListCustomer() {
 
@@ -1405,7 +1463,7 @@ function GetListCustomer() {
 
                 $('#IdCustomerOrigin').val(IdCustomerOriginTemp).trigger('change');
                 $("#IdCustomerDestination").val(IdCustomerDestinationTemp).trigger("change");
-               
+            
         }else{
 
                 $(".toast-error").html("(x) Error to load customer list");
@@ -1428,17 +1486,17 @@ function loadInfoPDF1(){
 
     //Origin Info
     $(".OriginNameForm").html($("#IdCustomerOrigin :selected").text() != "" ? $("#IdCustomerOrigin :selected").text() : "<span class='text-danger'>Check origin customer name</span>");
-    $(".OriginAddressForm").html($("#OriginAddress").val() != "" ? $("#OriginAddress").val() :  "<span class='text-danger'>Check origin address</span>");
+    $(".OriginAddressForm").html($("#OriginAddress").val() != "" ? $("#OriginAddress").val() : "<span class='text-danger'>Check origin address</span>");
 
-    $(".PickUpDateForm").html($("#PickUpDate").val() != "" ? $("#PickUpDate").val() :  "<span class='text-danger'>Check pick up date</span>");
-    $(".DeliveryDateForm").html($("#DeliveryDate").val() != "" ? $("#DeliveryDate").val() :  "<span class='text-danger'>Check delivery date</span>");
+    $(".PickUpDateForm").html($("#PickUpDate").val() != "" ? $("#PickUpDate").val() : "<span class='text-danger'>Check pick up date</span>");
+    $(".DeliveryDateForm").html($("#DeliveryDate").val() != "" ? $("#DeliveryDate").val() : "<span class='text-danger'>Check delivery date</span>");
 
     if($("#OriginZip").val() != ""){
         $(".OriginAddressForm").html($("#OriginAddress").val() != "" ? $("#OriginAddress").val() + "<br> Zip code: "+$("#OriginZip").val() :  "<span class='text-danger'>Check origin address</span>");
     }
    
-    $(".OriginPhone1Form").html($("#OriginPhone1").val() != "" ? $("#OriginPhone1").val() :  "<span class='text-danger'>Check origin phone1</span>");
-    $(".OriginPhone2Form").html($("#OriginPhone2").val() != "" ? "/ "+$("#OriginPhone2").val() :  "");
+    $(".OriginPhone1Form").html($("#OriginPhone1").val() != "" ? $("#OriginPhone1").val() : "<span class='text-danger'>Check origin phone1</span>");
+    $(".OriginPhone2Form").html($("#OriginPhone2").val() != "" ? " / " + $("#OriginPhone2").val() : "");
 
      //Destination Info
     $(".DestinationNameForm").html($("#IdCustomerDestination :selected").text() != "" ? $("#IdCustomerDestination :selected").text() : "<span class='text-danger'>Check destination customer name</span>");
@@ -1450,7 +1508,7 @@ function loadInfoPDF1(){
     }
    
     $(".DestinationPhone1Form").html($("#DestinationPhone1").val() != "" ? $("#DestinationPhone1").val() :  "<span class='text-danger'>Check destination phone1</span>");
-    $(".DestinationPhone2Form").html($("#DestinationPhone2").val() != "" ? "/ "+$("#DestinationPhone2").val() :  "");
+    $(".DestinationPhone2Form").html($("#DestinationPhone2").val() != "" ? " / " + $("#DestinationPhone2").val() : "");
 
     //Vehicles Step info
 
@@ -1555,7 +1613,9 @@ function saveOrder(){
                         var bsAlert = new bootstrap.Toast(myAlert);
                         bsAlert.show();
                         setTimeout(() => { bsAlert.hide();}, 3000);
-                        setTimeout(() => {window.print();}, 4000);
+                        setTimeout(() => {
+                            printJS({printable: 'zonaPrint', type:'html', css: ['assets/css/bootstrap.min.css','assets/css/app.min.css','assets/css/icons.min.css','assets/css/print.css' ],  style: '@page {margin: 4mm}', scanStyles: false});
+                        }, 4000);
 
                     }else{
 

@@ -63,7 +63,7 @@
                                             <!--end form-group-->
                                             <div class="form-group small clearfix">
                                                 <label class="checkbox-inline form-label">Code</label>
-                                                &nbsp;&nbsp;<img src="captcha.php" height="20">
+                                                &nbsp;&nbsp;<img src="captcha.php" height="25">
                                             </div> 
 
                                             <div class="form-group row my-3">

@@ -82,12 +82,12 @@
             <div class="card">
                 <div class="card-header bg-dark">
                     <h4 class="card-title text-white">ORDER LIST</h4>
-                    <p class="text-muted mb-0">Datatable</p>
+                    <p class="text-muted mb-0">Management</p>
                     </div><!--end card-header-->
                     
                     <div class="card-body">  
                     <!-- <table id="CustomerList" width="100%" class="table table-striped table-bordered dataTable mb-0  table-responsive">-->
-                        <div>
+                      
                             <table id="OrderList" class="table table-bordered table-hover" style="width:100%" >
                             <thead>
                                <tr class="bg-light ">
@@ -135,7 +135,9 @@
                                     <th class="text-center"><b>Cancelled Note</b></th>
                             </tfoot>
                         </table>
-                        </div>
+                        <hr>
+                        <p class="text-mute"><b>Leyends:</b></p>
+                        <p class="text-secondary"><i class="ti-file text-primary"></i> View order | <i class="ti-loop text-warning"></i> Edit order | <i class="ti-loop text-info"></i> Change status | <i class="ti-money text-success"></i> Go to view payment list</p>
                     </div>
                 </div>
             </div> <!-- end col -->
@@ -227,9 +229,6 @@ datatable = $('#OrderList').DataTable({
         scrollCollapse: true,
        dom: 'Bfrtip',
        buttons: [{
-            extend: 'copy',
-            text: 'Copy to clipboard'
-        },{
             extend: 'excel',
             filename: 'Order List'
         },{
@@ -322,31 +321,40 @@ function UpdateStatusOrder(){
 
     if($("#Id").val() != '' && $("#OrderStatusID").val() != ''){
 
-    $.ajax({
-        type: 'POST',
-        url: "index.php?c=Orders&a=UpdateStatusOrder",
-        data:{ Id: $("#Id").val(), "OrderStatusID": $("#OrderStatusID").val(), "CancelledNote": $("#CancelledNote").val()}
-     }).then(function(response) {
+    if($("#OrderStatusID").val() == 4 && $("#formCancelledNote").val() ==""){
 
-        if(response == 'true'){
-            
-            $(".toast-success").html("status order update");
-            var myAlert = document.getElementById('toastSuccess');
+           $(".toast-error").html("Cancelled note is required");
+           var myAlert = document.getElementById('toastError');
             var bsAlert = new bootstrap.Toast(myAlert);
-            bsAlert.show();
-             $("#ModalChangeStatus").modal('hide'); 
-             location.reload();
-        }else{
+             bsAlert.show();
+    }else{
 
-            $(".toast-error").html("(!) error - Order update");
-            var myAlert = document.getElementById('toastError');
-            var bsAlert = new bootstrap.Toast(myAlert);
-            bsAlert.show();
+            $.ajax({
+                type: 'POST',
+                url: "index.php?c=Orders&a=UpdateStatusOrder",
+                data:{ Id: $("#Id").val(), "OrderStatusID": $("#OrderStatusID").val(), "CancelledNote": $("#CancelledNote").val()}
+            }).then(function(response) {
 
-         $("#ModalChangeStatus").modal('hide'); 
-        }
+                if(response == 'true'){
+                    
+                    $(".toast-success").html("status order update");
+                    var myAlert = document.getElementById('toastSuccess');
+                    var bsAlert = new bootstrap.Toast(myAlert);
+                    bsAlert.show();
+                    $("#ModalChangeStatus").modal('hide'); 
+                    location.reload();
+                }else{
 
-     });
+                    $(".toast-error").html("(!) error - Order update");
+                    var myAlert = document.getElementById('toastError');
+                    var bsAlert = new bootstrap.Toast(myAlert);
+                    bsAlert.show();
+
+                     $("#ModalChangeStatus").modal('hide'); 
+                }
+
+            });
+      }
     }
 }
 

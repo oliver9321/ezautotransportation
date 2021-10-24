@@ -22,8 +22,7 @@ class loginController{
 	
                 if ($_POST["vercode"] != $_SESSION["vercode"] OR $_SESSION["vercode"]=='')  {
                     echo '<script>alert("Invalid code security"); setTimeout(function(){ window.location.href = "index.php?c=Login&a=index"; }, 100);</script>';
-                } 
-                else{
+                } else{
                   //  echo "<script>alert('Verification code match !');</script>" ;
 
                   $login = new login();
@@ -49,13 +48,13 @@ class loginController{
                               break;
       
                           default:
-                              echo '<script>alert("Invalid user, No posee permisos o Clave invalida"); setTimeout(function(){ window.location.href = "index.php?c=Login&a=index"; }, 100);</script>';
+                              echo '<script>alert("Invalid user, user or password incorrect"); setTimeout(function(){ window.location.href = "permision.php"; }, 100);</script>';
                               break;
                       }
       
       
                   }else{
-                      echo '<script>alert("Invalid user, No posee permisos o Clave invalida"); setTimeout(function(){ window.location.href = "index.php?c=Login&a=index"; }, 100);</script>';
+                      echo '<script>setTimeout(function(){ window.location.href = "permision.php"; }, 100);</script>';
                   }
 
                 }
@@ -64,7 +63,7 @@ class loginController{
 
 
         }else{
-            echo '<script>alert("Ingrese su username and password); setTimeout(function(){ window.location.href = "index.php?c=Login&a=index"; }, 100);</script>';
+            echo '<script>alert("input your username and password); setTimeout(function(){ window.location.href = "index.php?c=Login&a=index"; }, 100);</script>';
         }
 
     }
@@ -78,7 +77,6 @@ class loginController{
         header('Location: index.php?c=login&a=index');
 
     }
-
 
     function encryptIt($string, $key) {
 

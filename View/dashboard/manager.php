@@ -61,26 +61,6 @@
                                
 
                                 <div class="col-md-6 col-lg-3">
-                                <a href="index.php?c=Payments&a=Index">
-                                    <div class="card report-card bg-dark">
-                                        <div class="card-body">
-                                            <div class="row d-flex justify-content-center">                                                
-                                                <div class="col">
-                                                    <p class="text-white mb-0 fw-semibold">Payment List</p>
-                                                    <h3 class="m-0 text-white"><?= $SumEarnings ?><span class="text-muted" style="font-size: 10px;"> Earnings</span></h3>
-                                                </div>
-                                                <div class="col-auto align-self-center">
-                                                    <div class="report-main-icon bg-dark-alt">
-                                                        <i data-feather="dollar-sign" class="align-self-center text-muted icon-sm"></i>  
-                                                    </div>
-                                                </div> 
-                                            </div>
-                                        </div><!--end card-body--> 
-                                    </div><!--end card--> 
-                                    </a>
-                                </div> <!--end col--> 
-
-                                <div class="col-md-6 col-lg-3">
                                 <a href="index.php?c=Drivers&a=Index">
                                     <div class="card report-card bg-dark">
                                         <div class="card-body">
@@ -178,50 +158,6 @@
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign align-self-center icon-md text-secondary me-2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                                                 <div class="media-body align-self-center"> 
                                                     <h6 class="m-0 font-20">$<?=$SumEarningsToday?></h6>
-                                                    <p class="mb-0 text-success">Earnings</p>                                                                                          
-                                                </div><!--end media body-->
-                                            </div>
-                                        </div><!--end col-->                                         
-                                    </div><!--end row-->  
-                                </div><!--end card-body-->
-                                                       
-                                                             
-                            </div><!--end card--> 
-
-                            <br/>
-                            <div class="card"> 
-                            <div class="row align-items-center">
-                                        <div class="col-auto"> 
-                                            <div class="dropdown">
-                                                <a href="#" class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                   This Month
-                                                </a>
-                                            </div>               
-                                        </div><!--end col-->                                      
-                                    </div>  <!--end row--> 
-                                <div class="card-body border-bottom-dashed">
-                                    <div class="earning-data text-center">
-                                        <img src="assets/images/money-beg.png" alt="" class="money-bag my-3" height="60">
-                                        <h5 class="earn-money mb-1">$<?=$SumTotal?></h5>
-                                        <p class="text-muted font-15 mb-4">Deposit Month</p>
-                                    </div>                                                                                                          
-                                </div><!--end card-body-->
-                                <div class="card-body my-1">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="media">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-percent align-self-center icon-md text-secondary me-2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                                                <div class="media-body align-self-center"> 
-                                                    <h6 class="m-0 font-20">$<?=$SumTrukerOwesUs?></h6>
-                                                    <p class=" mb-0 text-danger">Loss</p>                                                                                                                                               
-                                                </div><!--end media body-->
-                                            </div>
-                                        </div><!--end col--> 
-                                        <div class="col">
-                                            <div class="media">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign align-self-center icon-md text-secondary me-2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                                                <div class="media-body align-self-center"> 
-                                                    <h6 class="m-0 font-20">$<?=$SumEarnings?></h6>
                                                     <p class="mb-0 text-success">Earnings</p>                                                                                          
                                                 </div><!--end media body-->
                                             </div>

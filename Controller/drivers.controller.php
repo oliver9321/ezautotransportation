@@ -14,7 +14,7 @@ class DriversController
     //Vista Index
     public function Index(){
 
-        if($_SESSION['UserOnline']->Profile == "admin") {
+        if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
 
             $data = $this->model->View();
 
@@ -23,19 +23,19 @@ class DriversController
         GetRouteView(null, "footer");
 
         }else{
-            header('Location:index.php?c=login&a=index');
+            header('Location:permision.php');
         }
     }
 
     //Vista
     public function View(){
 
-        if($_SESSION['UserOnline']->Profile == "admin"){
+        if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
 
          echo json_encode($this->model->View(), true);
        
         }else{
-            header('Location:index.php?c=login&a=index');
+            header('Location:permision.php');
         }
 
     }
@@ -43,7 +43,7 @@ class DriversController
     //Vista Editar
     public function Edit(){
 
-        if($_SESSION['UserOnline']->Profile == "admin") {
+        if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
 
           $Driver = new Drivers();
 
@@ -56,7 +56,7 @@ class DriversController
        GetRouteView(null, "footer");
 
         }else{
-            header('Location:index.php?c=login&a=index');
+            header('Location:permision.php');
         }
     }
 

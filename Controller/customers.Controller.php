@@ -14,26 +14,27 @@ class CustomersController
     //Vista Index
     public function Index(){
 
-        if($_SESSION['UserOnline']->Profile == "admin") {
+        if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
+
 
         GetRouteView(null, "header");
         require_once 'View/customers/index.php';
         GetRouteView(null, "footer");
 
         }else{
-            header('Location:index.php?c=login&a=index');
+            header('Location:permision.php');
         }
     }
 
     //Vista
     public function View(){
 
-        if($_SESSION['UserOnline']->Profile == "admin") {
+        if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
 
          echo json_encode($this->model->View(), true);
 
         }else{
-            header('Location:index.php?c=login&a=index');
+            header('Location:permision.php');
         }
 
     }
@@ -41,7 +42,7 @@ class CustomersController
     //Vista Editar
     public function Edit(){
 
-        if($_SESSION['UserOnline']->Profile == "admin") {
+        if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
 
           $Customer = new Customers();
 
@@ -54,7 +55,7 @@ class CustomersController
        GetRouteView(null, "footer");
 
         }else{
-            header('Location:index.php?c=login&a=index');
+            header('Location:permision.php');
         }
     }
 

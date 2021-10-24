@@ -38,19 +38,19 @@
                             <div class="mb-1">
                                 <label class="form-label text-danger" for="Phone1NewCustomer">*Phone #1</label>
                                 <div class="input-group"> <span class="input-group-text"><i class="fa fa-mobile"></i></span>
-                                    <input type="tel" class="form-control phone" id="Phone1NewCustomer" name="Phone1NewCustomer" placeholder="(555) 555-5555" aria-describedby="basic-addon1">
+                                    <input type="tel" class="form-control phone" id="Phone1NewCustomer" name="Phone1NewCustomer" placeholder="(555) 555-5555">
                                 </div>
                             </div>
                             <div class="mb-1">
                                 <label class="form-label" for="Phone2NewCustomer">Phone #2</label>
                                 <div class="input-group"> <span class="input-group-text"><i class="las la-phone"></i></span>
-                                    <input type="tel" class="form-control phone" id="Phone2NewCustomer" name="Phone2NewCustomer" placeholder="(555) 555-5555" aria-describedby="basic-addon1">
+                                    <input type="tel" class="form-control phone" id="Phone2NewCustomer" name="Phone2NewCustomer" placeholder="(555) 555-5555">
                                 </div>
                             </div>
                             <div class="mb-1">
                                 <label class="form-label" for="EmailNewCustomer">Email address</label>
                                 <div class="input-group"> <span class="input-group-text"><i class="las la-at"></i></span>
-                                    <input type="email" class="form-control" id="EmailNewCustomer" name="EmailNewCustomer" placeholder="customer@domain.com" aria-describedby="basic-addon1">
+                                    <input type="email" class="form-control" id="EmailNewCustomer" name="EmailNewCustomer" placeholder="customer@domain.com">
                                 </div>
                             </div>
                         </div>
@@ -152,21 +152,21 @@
                             <div class="mb-1">
                                 <label class="form-label text-danger" for="CompanyPhone1NewCompany">*Phone #1</label>
                                 <div class="input-group"> <span class="input-group-text"><i class="las la-phone"></i></span>
-                                    <input type="tel" class="form-control phone" id="CompanyPhone1NewCompany" name="CompanyPhone1NewCompany" placeholder="(555) 555-5555" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control phone" id="CompanyPhone1NewCompany" name="CompanyPhone1NewCompany" placeholder="(555) 555-5555">
                                 </div>
                             </div>
 
                             <div class="mb-1">
                                 <label class="form-label" for="CompanyPhone2NewCompany">Phone #2</label>
                                 <div class="input-group"> <span class="input-group-text"><i class="las la-phone"></i></span>
-                                    <input type="tel" class="form-control phone" id="CompanyPhone2NewCompany" name="CompanyPhone2NewCompany" placeholder="(555) 555-5555" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control phone" id="CompanyPhone2NewCompany" name="CompanyPhone2NewCompany" placeholder="(555) 555-5555">
                                 </div>
                             </div>
 
                             <div class="mb-1">
                                 <label class="form-label" for="CompanyEmailNewCompany">Email address</label>
                                 <div class="input-group"> <span class="input-group-text"><i class="las la-at"></i></span>
-                                    <input type="email" class="form-control" id="CompanyEmailNewCompany" name="CompanyEmailNewCompany" placeholder="company@domain.com" aria-describedby="basic-addon1">
+                                    <input type="email" class="form-control" id="CompanyEmailNewCompany" name="CompanyEmailNewCompany" placeholder="company@domain.com">
                                 </div>
                             </div>
                         </div>
@@ -209,14 +209,14 @@
                             <div class="mb-1">
                                 <label class="form-label text-danger" for="DriverPhone1NewDriver">*Phone #1</label>
                                 <div class="input-group"> <span class="input-group-text"><i class="las la-phone"></i></span>
-                                    <input type="text" class="form-control phone" id="DriverPhone1NewDriver" name="DriverPhone1NewDriver" placeholder="(555) 555-5555" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control phone" id="DriverPhone1NewDriver" name="DriverPhone1NewDriver" placeholder="(555) 555-5555">
                                 </div>
                             </div>
 
                             <div class="mb-1">
                                 <label class="form-label" for="DriverPhone2NewDriver">Phone #2</label>
                                 <div class="input-group"> <span class="input-group-text"><i class="las la-phone"></i></span>
-                                    <input type="text" class="form-control phone" id="DriverPhone2NewDriver" name="DriverPhone2NewDriver" placeholder="(555) 555-5555" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control phone" id="DriverPhone2NewDriver" name="DriverPhone2NewDriver" placeholder="(555) 555-5555">
                                 </div>
                             </div>
 
@@ -274,7 +274,7 @@
         </div>
         <!--end card-header-->
         <div class="card-body">
-            <form id="form-horizontal" class="form-horizontal form-wizard-wrapper">
+            <form id="form-horizontal" class="form-horizontal form-wizard-wrapper" autocomplete="off">
                 <input type="text" name="Id" id="Id" value="<?= $Order->Id ?>" hidden>
 
                 <h3>Basic info</h3>
@@ -286,7 +286,7 @@
                                 <div class="col-md-12">
                                     <label class="mb-1"><i class="fa fa-user"></i> Origin customer name<b class="text-danger">*</b></label>
                                     <div class="input-group">
-                                        <select style="width: 90%;" id="IdCustomerOrigin" name="IdCustomerOrigin" class="select2 form-control mb-3 custom-select originInput" onchange="onchangeOriginCustomer()">
+                                        <select id="IdCustomerOrigin" name="IdCustomerOrigin" class="select2 form-control mb-3 custom-select originInput" onchange="onchangeOriginCustomer()">
                                             <?php foreach ($CustomerList  as $key => $value) : ?>
                                                 <option value="<?= $value['Id']; ?>" <?php if ($value['Id'] == $Order->IdCustomerOrigin) : ?> selected="selected" <?php endif; ?>><?= $value['Customer']; ?></option>
                                             <?php endforeach; ?>
@@ -306,7 +306,7 @@
                                 <div class="col-md-12">
                                     <label class="mb-1"><i class="fa fa-user"></i> Destination customer name<b class="text-danger">*</b></label>
                                     <div class="input-group">
-                                        <select style="width: 90%;" id="IdCustomerDestination" name="IdCustomerDestination" class="select2 form-control mb-3 custom-select DestinationInput" onchange="onchangeDestinationCustomer()">
+                                        <select id="IdCustomerDestination" name="IdCustomerDestination" class="select2 form-control mb-3 custom-select DestinationInput" onchange="onchangeDestinationCustomer()">
                                             <?php foreach ($CustomerList  as $key => $value) : ?>
                                                 <option value="<?= $value['Id']; ?>" <?php if ($value['Id'] == $Order->IdCustomerDestination) : ?> selected="selected" <?php endif; ?>><?= $value['Customer']; ?></option>
                                             <?php endforeach; ?>
@@ -339,19 +339,19 @@
                                             <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
                                                 <input style="display:none;" />
-                                                <input autocomplete="off" id="OriginCity" name="OriginCity" type="text" class="form-control originInput" placeholder="City" value="<?= $Order->OriginCity; ?>">
+                                                <input autocomplete="off" id="OriginCity" name="OriginCity" type="text" class="form-control originInput" placeholder="City" value="<?= $Order->OriginCity; ?>" minlength="2" maxlength="80" required>
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-map-marker-alt"></i> State<b class="text-danger">*</b></label>
                                                 <input style="display:none;" />
-                                                <input autocomplete="off" id="OriginState" name="OriginState" type="text" class="form-control originInput" placeholder="State" value="<?= $Order->OriginState; ?>">
+                                                <input autocomplete="off" id="OriginState" name="OriginState" type="text" class="form-control originInput" placeholder="State" value="<?= $Order->OriginState; ?>" minlength="1" maxlength="25" required>
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Zip Code</label>
                                                 <input style="display:none;" />
-                                                <input autocomplete="off" id="OriginZip" name="OriginZip" type="text" class="form-control originInput" placeholder="00000" value="<?= $Order->OriginZip; ?>">
+                                                <input autocomplete="off" id="OriginZip" name="OriginZip" type="text" class="form-control originInput" placeholder="00000" value="<?= $Order->OriginZip; ?>" maxlength="20">
                                             </div>
                                             <!-- end row -->
                                         </div>
@@ -363,7 +363,7 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-mobile"></i> Phone #1<b class="text-danger">*</b></label>
-                                                <input id="OriginPhone1" name="OriginPhone1" type="text" class="form-control originInput phone" placeholder="(555) 555-5555" value="<?= $CustomerOrigin->Phone1; ?>">
+                                                <input id="OriginPhone1" name="OriginPhone1" type="text" class="form-control originInput phone" placeholder="(555) 555-5555" value="<?= $CustomerOrigin->Phone1; ?>" minlength="4" maxlength="16" required>
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4">
@@ -385,7 +385,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label class="mb-1"><i class="fa fa-sticky-note"></i> Note</label>
-                                        <textarea id="OriginNote" name="OriginNote" class="form-control originInput" placeholder="Opcional information" rows="3"><?= $Order->OriginNote; ?></textarea>
+                                        <textarea id="OriginNote" name="OriginNote" class="form-control originInput" placeholder="Opcional information" maxlength="300" rows="3"><?= $Order->OriginNote; ?></textarea>
                                     </div>
                                     <!-- end row -->
                                 </div>
@@ -396,7 +396,7 @@
                                     <div class="col-md-12">
                                         <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Destination address<b class="text-danger">*</b></label>
                                         <input style="display:none;" />
-                                        <input id="DestinationAddress" name="DestinationAddress" type="text" class="form-control DestinationInput" placeholder="Ex. 1600 Pennsylvania..." value="<?= $Order->DestinationAddress; ?>">
+                                        <input id="DestinationAddress" name="DestinationAddress" type="text" class="form-control DestinationInput" placeholder="Ex. 1600 Pennsylvania..." value="<?= $Order->DestinationAddress; ?>" minlength="10" maxlength="300" required>
                                     </div>
                                     <!-- end row -->
                                 </div>
@@ -407,12 +407,12 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
-                                                <input id="DestinationCity" name="DestinationCity" type="text" class="form-control DestinationInput" placeholder="City" value="<?= $Order->DestinationCity; ?>">
+                                                <input id="DestinationCity" name="DestinationCity" type="text" class="form-control DestinationInput" placeholder="City" value="<?= $Order->DestinationCity; ?>" minlength="4" maxlength="80" required>
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-map-marker-alt"></i> State<b class="text-danger">*</b></label>
-                                                <input id="DestinationState" name="DestinationState" type="text" class="form-control DestinationInput" placeholder="State" value="<?= $Order->DestinationState; ?>">
+                                                <input id="DestinationState" name="DestinationState" type="text" class="form-control DestinationInput" placeholder="State" value="<?= $Order->DestinationState; ?>" minlength="1" maxlength="30" required>
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4">
@@ -429,7 +429,7 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-mobile"></i> Phone #1<b class="text-danger">*</b></label>
-                                                <input id="DestinationPhone1" name="DestinationPhone1" type="text" class="form-control DestinationInput phone" placeholder="(555) 555-5555" value="<?= $CustomerDestination->Phone1; ?>">
+                                                <input id="DestinationPhone1" name="DestinationPhone1" type="text" class="form-control DestinationInput phone" placeholder="(555) 555-5555" value="<?= $CustomerDestination->Phone1; ?>" minlength="4" maxlength="16" required>
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4">
@@ -449,7 +449,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label class="mb-1"><i class="fa fa-sticky-note"></i> Note</label>
-                                        <textarea id="DestinationNote" name="DestinationNote" class="form-control DestinationInput" placeholder="Opcional information" rows="3"><?= $Order->DestinationNote; ?></textarea>
+                                        <textarea id="DestinationNote" name="DestinationNote" class="form-control DestinationInput" placeholder="Optional information" maxlength="300" rows="3"><?= $Order->DestinationNote; ?></textarea>
                                     </div>
                                     <!-- end row -->
                                 </div>
@@ -473,12 +473,12 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label class="mb-1"><b>Pick up date</b><b class="text-danger">*</b></label>
-                                            <input id="PickUpDate" name="PickUpDate" type="date" class="form-control" value="<?= $Order->PickUpDate; ?>">
+                                            <input id="PickUpDate" name="PickUpDate" type="text" class="form-control inputDate" value="<?= $Order->PickUpDate; ?>" placeholder="mm/dd/yyyy" minlength="8" required>
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-6">
                                             <label class="mb-1"><b>Delivery date</b><b class="text-danger">*</b></label>
-                                            <input id="DeliveryDate" name="DeliveryDate" type="date" class="form-control" value="<?= $Order->DeliveryDate; ?>">
+                                            <input id="DeliveryDate" name="DeliveryDate" type="text" class="form-control inputDate" value="<?= $Order->DeliveryDate; ?>" placeholder="mm/dd/yyyy" minlength="8" required>
                                         </div>
                                         <!-- end row -->
                                     </div>
@@ -493,12 +493,12 @@
 
                                         <div class="col-md-6">
                                             <label class="mb-1"><b>Order date (Today)</b></label>
-                                            <input id="PickUpOrderDateDate" name="OrderDate" type="date" class="form-control" value="<?= $Order->OrderDate; ?>" readonly>
+                                            <input id="PickUpOrderDateDate" name="OrderDate" type="text" class="form-control" value="<?= $Order->OrderDate; ?>" readonly>
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-6">
                                             <label class="mb-1"><b>Order status</b><b class="text-danger">*</b></label>
-                                            <select style="width: 100%;" id="OrderStatusID" name="OrderStatusID" class="form-control">
+                                            <select id="OrderStatusID" name="OrderStatusID" class="form-control">
                                                 <?php foreach ($OrderStatusList  as $key => $value) : ?>
                                                     <option value="<?= $value['Id']; ?>" <?php if ($value['Id'] == $Order->OrderStatusID) : ?> selected="selected" <?php endif; ?>><?= $value['Status']; ?></option>
                                                 <?php endforeach; ?>
@@ -527,29 +527,29 @@
                                                         <div class="row registroVehiculo" id="templateVehiculo" style="padding-bottom:20px !important" hidden>
 
                                                             <div class="col-sm-2">
-                                                                <label class="mb-1"><b>Brand</b><b class="text-danger">*</b></label>
-                                                                <select style="width: 90%;" name="Brand" onchange="GetModelsByBrand(this)" class="select2 form-control mb-3 custom-select BrandVehicle vehicleList">
+                                                                <label class="mb-1 text-danger"><b>Brand</b></label>
+                                                                <select name="Brand" onchange="GetModelsByBrand(this)" class="select2 form-control mb-3 custom-select BrandVehicle vehicleList">
                                                                     <option value="">Select brand</option>
                                                                 </select>
                                                             </div>
 
-                                                            <div class="col-sm-3">
-                                                                <label class="mb-1"><b>Model</b><b class="text-danger">*</b></label>
-                                                                <select style="width: 90%;" name="Model" class="select2 form-control mb-3 custom-select ModelVehicle vehicleList">
+                                                            <div class="col-sm-2">
+                                                                <label class="mb-1 text-danger"><b>Model</b></label>
+                                                                <select name="Model" class="select2 form-control mb-3 custom-select ModelVehicle vehicleList">
                                                                     <option value="">Select model</option>
                                                                 </select>
                                                             </div>
 
                                                             <!--end col-->
                                                             <div class="col-sm-1">
-                                                                <label class="mb-1"><b>Year</b><b class="text-danger">*</b></label>
-                                                                <input type="number" min="1900"  maxlength="5" name="Year" class="form-control YearVehicle vehicleList" placeholder="">
+                                                                <label class="mb-1 text-danger"><b>Year</b></label>
+                                                                <input type="text" name="Year" minlength="4" maxlength="5" class="form-control YearVehicle vehicleList" placeholder="">
                                                             </div>
 
                                                             <!-- end row -->
                                                             <div class="col-sm-1">
-                                                                <label class="mb-1"><b>Color</b><b class="text-danger">*</b></label>
-                                                                <select style="width: 100%;" name="Color" class="form-control ColorVehicle vehicleList">
+                                                                <label class="mb-1 text-danger"><b>Color</b></label>
+                                                                <select name="Color" class="form-control ColorVehicle vehicleList">
                                                                     <option value="">Colors</option>
                                                                     <option value="White"> White</option>
                                                                     <option value="Black"> Black</option>
@@ -566,19 +566,17 @@
                                                             </div>
 
                                                             <div class="col-sm-1">
-                                                                <label class="mb-1"><b>Carrier</b><b class="text-danger">*</b></label>
-                                                                <select style="width: 100%;" name="CarrierType" class="form-control CarrierTypeVehicle vehicleList">
+                                                                <label class="mb-1 text-danger"><b>Carrier</b></label>
+                                                                <select name="CarrierType" class="form-control CarrierTypeVehicle vehicleList">
                                                                     <option value="">Carriers</option>
                                                                     <option value="Open">Open</option>
                                                                     <option value="Enclosed">Enclosed</option>
                                                                 </select>
                                                             </div>
 
-
-
                                                             <div class="col-sm-1">
-                                                                <label class="mb-1"><b>Condition</b><b class="text-danger">*</b></label>
-                                                                <select style="width: 100%;" name="ConditionVehicle" class="form-control ConditionVehicle vehicleList">
+                                                                <label class="mb-1 text-danger"><b>Condition</b></label>
+                                                                <select name="ConditionVehicle" class="form-control ConditionVehicle vehicleList">
                                                                     <option value="">Conditions</option>
                                                                     <option value="Running">Running</option>
                                                                     <option value="Non-running">Non-running</option>
@@ -589,7 +587,7 @@
                                                             <div class="col-sm-3">
                                                                 <label class="mb-1"><b>Vin</b></label>
                                                                 <div class="input-group">
-                                                                    <input type="text" name="Vin" class="form-control VinVehicle vehicleList" style="text-transform:uppercase">
+                                                                    <input type="text" name="Vin" class="form-control VinVehicle vehicleList" style="text-transform:uppercase" maxlength="20">
                                                                     <button type="button" title="Delete vehicle" onclick="EliminarVehiculo(this)" class="btn btn-outline-danger"> <span class="far fa-trash-alt me-1"></span> </button>
                                                                 </div>
                                                             </div>
@@ -634,12 +632,12 @@
                                 <input type="text" id="PaymentID" name="PaymentID" value="<?= $Payment->Id; ?>" hidden />
                                 <div class="col-md-6">
                                     <label class="mb-1"> Card holder name<b class="text-danger">*</b></label>
-                                    <input type="text" class="form-control" name="CardHolderName" id="CardHolderName" style="text-transform:uppercase" value="<?= trim($Payment->CardHolderName); ?>">
+                                    <input type="text" class="form-control" name="CardHolderName" id="CardHolderName" style="text-transform:uppercase" value="<?= trim($Payment->CardHolderName); ?>" maxlength="60" minlength="2" required>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label class="mb-1">Reference</label>
-                                    <input id="Reference" name="Reference" type="text" class="form-control" placeholder="0000000" value="<?= $Payment->Reference; ?>">
+                                    <input id="Reference" name="Reference" type="text" class="form-control" placeholder="0000000" value="<?= $Payment->Reference; ?>" maxlength="50">
                                 </div>
 
                                 <!-- end row -->
@@ -653,11 +651,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label class="mb-1"><b>Total</b><b class="text-danger">*</b></label>
-                                    <input type="text" class="form-control inputNumber" name="Total" id="Total" placeholder="$0000" value="<?= $Order->Total; ?>">
+                                    <input type="text" class="form-control inputNumber" name="Total" id="Total" placeholder="$0000" value="<?= $Order->Total; ?>" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="mb-1"><b>Deposit</b><b class="text-danger">*</b></label>
-                                    <input id="Deposit" name="Deposit" type="text" class="form-control inputNumber" placeholder="$0000" value="<?= $Order->Deposit; ?>">
+                                    <input id="Deposit" name="Deposit" type="text" class="form-control inputNumber" placeholder="$0000" value="<?= $Order->Deposit; ?>" required>
                                 </div>
                                 <!-- end row -->
                             </div>
@@ -675,17 +673,17 @@
                                     <div class="row">
                                         <div class="col-md-5">
                                             <label class="mb-1"><i class="fa fa-credit-card"></i> Credit card number<b class="text-danger">*</b></label>
-                                            <input id="CreditCard" name="CreditCard" type="text" class="form-control" placeholder="#### #### #### ####" value="<?= $Payment->CreditCard; ?>">
+                                            <input id="CreditCard" name="CreditCard" type="text" class="form-control" placeholder="#### #### #### ####" value="<?= $Payment->CreditCard; ?>" minlength="8" required>
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-3">
                                             <label class="mb-1">Expiration date<b class="text-danger">*</b></label>
-                                            <input id="ExpDate" name="ExpDate" type="text" class="form-control" placeholder="00/00" value="<?= $Payment->ExpDate; ?>">
+                                            <input id="ExpDate" name="ExpDate" type="text" class="form-control" placeholder="00/00" value="<?= $Payment->ExpDate; ?>" minlength="5" required>
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-4">
                                             <label class="mb-1">CVV<b class="text-danger">*</b></label>
-                                            <input id="Cvv" name="Cvv" type="text" class="form-control" placeholder="" value="<?= $Payment->Cvv; ?>">
+                                            <input id="Cvv" name="Cvv" type="text" class="form-control" placeholder="000" value="<?= $Payment->Cvv; ?>" maxlength="5" minlength="3" required>
                                         </div>
                                         <!-- end row -->
                                     </div>
@@ -698,7 +696,7 @@
                                         <div class="col-md-12">
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Billing address<b class="text-danger">*</b></label>
                                             <input style="display:none;" />
-                                            <input id="BillingAddress" name="BillingAddress" type="text" class="form-control" placeholder="Ex. 12141 Pembroke Rd...." autocomplete="disabled" value="<?= $Payment->BillingAddress; ?>">
+                                            <input id="BillingAddress" name="BillingAddress" type="text" class="form-control" placeholder="Ex. 12141 Pembroke Rd...." autocomplete="disabled" value="<?= $Payment->BillingAddress; ?>" maxlength="200" required>
                                         </div>
                                     </div>
                                 </div>
@@ -709,17 +707,17 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
-                                            <input id="BillingCity" name="BillingCity" type="text" class="form-control BillingInput" placeholder="City" value="<?= $Payment->BillingCity; ?>">
+                                            <input id="BillingCity" name="BillingCity" type="text" class="form-control BillingInput" placeholder="City" value="<?= $Payment->BillingCity; ?>" maxlength="80">
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-4">
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> State<b class="text-danger">*</b></label>
-                                            <input id="BillingState" name="BillingState" type="text" class="form-control BillingInput" placeholder="State" value="<?= $Payment->BillingState; ?>">
+                                            <input id="BillingState" name="BillingState" type="text" class="form-control BillingInput" placeholder="State" value="<?= $Payment->BillingState; ?>" maxlength="25">
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-4">
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Zip Code</label>
-                                            <input id="BillingZipCode" name="BillingZipCode" type="text" class="form-control BillingInput" placeholder="00000" value="<?= $Payment->BillingZipCode; ?>">
+                                            <input id="BillingZipCode" name="BillingZipCode" type="text" class="form-control BillingInput" placeholder="00000" value="<?= $Payment->BillingZipCode; ?>" maxlength="10">
                                         </div>
                                         <!-- end row -->
                                     </div>
@@ -731,17 +729,17 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label class="mb-1"><i class="fa fa-mobile"></i> Phone number #1<b class="text-danger">*</b></label>
-                                            <input id="Tel1" name="Tel1" type="text" class="form-control phone" placeholder="(555) 555-5555" value="<?= $Payment->Tel1; ?>">
+                                            <input id="Tel1" name="Tel1" type="text" class="form-control phone" placeholder="(555) 555-5555" value="<?= $Payment->Tel1; ?>" maxlength="15">
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-4">
                                             <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone number #2</label>
-                                            <input id="Tel2" name="Tel2" type="text" class="form-control phone" placeholder="(555) 555-5555" value="<?= $Payment->Tel2; ?>">
+                                            <input id="Tel2" name="Tel2" type="text" class="form-control phone" placeholder="(555) 555-5555" value="<?= $Payment->Tel2; ?>" maxlength="15">
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-4">
                                             <label class="mb-1"><i class="fa fa-envelope"></i> Email</label>
-                                            <input id="PaymentEmail" name="PaymentEmail" type="email" class="form-control" placeholder="us@domain.com" value="<?= $Payment->PaymentEmail; ?>">
+                                            <input id="PaymentEmail" name="PaymentEmail" type="email" class="form-control" placeholder="us@domain.com" value="<?= $Payment->PaymentEmail; ?>" maxlength="50">
                                         </div>
                                         <!-- end row -->
                                     </div>
@@ -754,7 +752,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label class="mb-1"><i class="fa fa-sticky-note"></i> Payment note</label>
-                                    <textarea id="PaymentNote" name="PaymentNote" class="form-control" placeholder="Opcional information" rows="5"><?= $Payment->PaymentNote; ?></textarea>
+                                    <textarea id="PaymentNote" name="PaymentNote" class="form-control" placeholder="Opcional information" maxlength="200 rows=" 5"><?= $Payment->PaymentNote; ?></textarea>
                                 </div>
                                 <!-- end row -->
                             </div>
@@ -788,33 +786,34 @@
 
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <center><h6 style="padding-top: 8px;"><b>Order ID: </b><span class="OrderIDForm"><?= $Order->Id ?></span> <b> | Order date: </b><span class="OrderDateForm">0000-00-00</span><b> | Pick up date: </b><span class="PickUpDateForm">0000-00-00</span><b> | Delivery date: </b><span class="DeliveryDateForm">0000-00-00</span></h6></center>
+                                            <center>
+                                                <h6 style="padding-top: 8px;"><b>Order ID: </b><span class="OrderIDForm"><?= $Order->Id ?></span> <b> | Order date: </b><span class="OrderDateForm">00/00/0000</span><b> | Pick up date: </b><span class="PickUpDateForm">00/00/0000</span><b> | Delivery date: </b><span class="DeliveryDateForm">00/00/0000</span></h6>
+                                            </center>
                                             <hr>
                                         </div>
                                     </div>
 
                                     <div class="container">
-                                            <div class="row">
-                                                <div class="col">
-                                                        <h6 class="mb-0"><b>Origin: </b><span class="OriginNameForm"></span></h6>
-                                                        <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="OriginPhone1Form"></span><span class="OriginPhone2Form"></span></h6>
-                                                        <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="OriginAddressForm"></span></h6>
-                                                       
-                                                </div>
-                                            
-                                                <div class="col">
-                                                        <h6 class="mb-0"><b>Destination: </b><span class="DestinationNameForm"></span></h6>
-                                                        <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="DestinationPhone1Form"></span> <span class="DestinationPhone2Form"></span></h6>
-                                                        <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="DestinationAddressForm"></span></h6>
-                                                </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h6 class="mb-0"><b>Origin: </b><span class="OriginNameForm"></span></h6>
+                                                <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="OriginPhone1Form"></span><span class="OriginPhone2Form"></span></h6>
+                                                <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="OriginAddressForm"></span></h6>
+
                                             </div>
-                                     </div>
-                                  
+
+                                            <div class="col">
+                                                <h6 class="mb-0"><b>Destination: </b><span class="DestinationNameForm"></span></h6>
+                                                <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="DestinationPhone1Form"></span> <span class="DestinationPhone2Form"></span></h6>
+                                                <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="DestinationAddressForm"></span></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <!--end card-body-->
                                 <div class="card-body">
 
-                                    <!--end row-->
                                     <div class="row">
 
                                         <div class="col-lg-12">
@@ -842,8 +841,6 @@
                                                             <td class="border-0 font-14 text-dark"><b></b>
                                                             </td>
                                                         </tr>
-                                                        <!--end tr-->
-                                                        <!--end tr-->
 
                                                         <tr class="bg-secondary text-white">
                                                             <th colspan="2" class="border-0"></th>
@@ -908,7 +905,7 @@
                                                             </td>
 
                                                             <td style="border-style: none;">
-                                                                <h5 class="mt-0 mb-1 font-14"><b>CVV</b></h5>
+                                                                <h5 class="mt-0 mb-1 font-14"><b>Cvv</b></h5>
                                                                 <p class="mb-0 text-muted CVVForm"></p>
                                                             </td>
                                                             <td style="border-style: none;">
@@ -974,7 +971,7 @@
                             <div class="row">
                                 <label class="mb-1">Company name<b class="text-danger">*</b></label>
                                 <div class="input-group">
-                                    <select style="width: 92%;" id="IdCompanyService" name="IdCompanyService" class="select2 form-control mb-3 custom-select" onchange="onchangeCompanyServices()">
+                                    <select id="IdCompanyService" name="IdCompanyService" class="select2 form-control mb-3 custom-select" style="width: 92%;" onchange="onchangeCompanyServices()">
                                         <option value="" selected>Select a truker company</option>
                                         <?php foreach ($Companies  as $key => $value) : ?>
                                             <option value="<?= $value['Id']; ?>" <?php if ($value['Id'] == $Order->IdCompanyService) : ?> selected="selected" <?php endif; ?>><?= $value['CompanyName']; ?></option>
@@ -1041,7 +1038,7 @@
                                 <div class="row">
                                     <label class="mb-1">Driver name<b class="text-danger">*</b></label>
                                     <div class="input-group">
-                                        <select style="width: 93%;" id="IdDriver" name="IdDriver" class="select2 form-control mb-3 custom-select" onchange="onchangeDriver()">
+                                        <select id="IdDriver" name="IdDriver" class="select2 form-control mb-3 custom-select" style="width: 92%;" onchange="onchangeDriver()">
                                             <option value="" selected>Select a driver</option>
                                             <?php foreach ($DriverList  as $key => $value) : ?>
                                                 <option value="<?= $value['Id']; ?>" <?php if ($value['Id'] == $Order->IdDriver) : ?> selected="selected" <?php endif; ?>><?= $value['Driver']; ?></option>
@@ -1133,7 +1130,7 @@
                     <div class="row">
                         <div class="col-lg-12" id="zonaPrint">
                             <div class="card">
-                            <div class="card-body">
+                                <div class="card-body">
                                     <img src="assets/images/logopdf1.png" alt="Logo" id="imgLogoPDF" class="rounded float-start" width="30%">
 
                                     <div class="rounded float-end">
@@ -1152,28 +1149,30 @@
 
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <center><h6 style="padding-top: 8px;"><b>Order ID: </b><span class="OrderIDForm"><?= $Order->Id ?></span> <b> | Order date: </b><span class="OrderDateForm">0000-00-00</span><b> | Pick up date: </b><span class="PickUpDateForm">0000-00-00</span><b> | Delivery date: </b><span class="DeliveryDateForm">0000-00-00</span></h6></center>
+                                            <center>
+                                                <h6 style="padding-top: 8px;"><b>Order ID: </b><span class="OrderIDForm"><?= $Order->Id ?></span> <b> | Order date: </b><span class="OrderDateForm">00/00/0000</span><b> | Pick up date: </b><span class="PickUpDateForm">00/00/0000</span><b> | Delivery date: </b><span class="DeliveryDateForm">00/00/0000</span></h6>
+                                            </center>
                                             <hr>
                                         </div>
                                     </div>
 
                                     <div class="container">
-                                            <div class="row">
-                                                <div class="col">
-                                                        <h6 class="mb-0"><b>Origin: </b><span class="OriginNameForm"></span></h6>
-                                                        <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="OriginPhone1Form"></span><span class="OriginPhone2Form"></span></h6>
-                                                        <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="OriginAddressForm"></span></h6>
-                                                       
-                                                </div>
-                                            
-                                                <div class="col">
-                                                        <h6 class="mb-0"><b>Destination: </b><span class="DestinationNameForm"></span></h6>
-                                                        <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="DestinationPhone1Form"></span> <span class="DestinationPhone2Form"></span></h6>
-                                                        <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="DestinationAddressForm"></span></h6>
-                                                </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h6 class="mb-0"><b>Origin: </b><span class="OriginNameForm"></span></h6>
+                                                <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="OriginPhone1Form"></span><span class="OriginPhone2Form"></span></h6>
+                                                <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="OriginAddressForm"></span></h6>
+
                                             </div>
-                                     </div>
-                                  
+
+                                            <div class="col">
+                                                <h6 class="mb-0"><b>Destination: </b><span class="DestinationNameForm"></span></h6>
+                                                <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="DestinationPhone1Form"></span> <span class="DestinationPhone2Form"></span></h6>
+                                                <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="DestinationAddressForm"></span></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <!--end card-body-->
                                 <div class="card-body">
@@ -1369,7 +1368,9 @@
 
     $(document).ready(function($) {
 
-        $('.phone, #DriverPhone1, #DriverPhone2').mask('(000) 000-0000');
+        $('.phone').mask("(000) 000-0000", {
+            placeholder: "(000) 000-0000"
+        });
         $("#Cvv").mask('0000');
         $("#CreditCard").mask("0000 0000 0000 0000");
         $('.inputNumber').keyup(function() {
@@ -1383,8 +1384,15 @@
                 reverse: true
             });
         });
+        $('.inputDate').mask("00/00/0000", {
+            placeholder: "MM/DD/YYYY"
+        });
+
+        $("body").addClass("enlarge-menu");
+        $(".steps, .actions").addClass("d-print-none");
 
         $('#ExpDate').mask("AB/CD", {
+            placeholder: "MM/YY",
             translation: {
                 A: {
                     pattern: /[0-9]/
@@ -1421,30 +1429,83 @@
 
         $("#DeliveryDate").change(function() {
 
-            const PickUpOrderDateDate = new Date($("#PickUpOrderDateDate").val());
-            const DeliveryDate = new Date($("#DeliveryDate").val());
+            let PickUpOrderDateDate = new Date($("#PickUpOrderDateDate").val());
+            let DeliveryDate = new Date($("#DeliveryDate").val());
+            let MonthDeliveryDate = $("#DeliveryDate").val().substr(0, 2);
 
-            if (+DeliveryDate < +PickUpOrderDateDate) {
+            let PickUpDate = new Date($("#PickUpDate").val());
+            let MonthPickUpDate = $("#PickUpDate").val().substr(0, 2);
 
-                $(".toast-error").html("(!) The delivery date cannot be less than today");
+            if (MonthDeliveryDate > 12) {
+                $(".toast-error").html("(!) invalid format [Delivery date]");
                 var myAlert2 = document.getElementById('toastError');
                 var bsAlert2 = new bootstrap.Toast(myAlert2);
                 bsAlert2.show();
             }
 
+            if (MonthPickUpDate > 12) {
+                $(".toast-error").html("(!) invalid format [PickUp date]");
+                var myAlert2 = document.getElementById('toastError');
+                var bsAlert2 = new bootstrap.Toast(myAlert2);
+                bsAlert2.show();
+            }
+
+            if (+DeliveryDate < +PickUpOrderDateDate) {
+
+                $(".toast-error").html("(!) The delivery date cannot be less than Today");
+                var myAlert2 = document.getElementById('toastError');
+                var bsAlert2 = new bootstrap.Toast(myAlert2);
+                bsAlert2.show();
+            }
+
+            if (+DeliveryDate < +PickUpDate) {
+
+                $(".toast-error").html("(!) The delivery date cannot be less than Pick Up date");
+                var myAlert2 = document.getElementById('toastError');
+                var bsAlert2 = new bootstrap.Toast(myAlert2);
+                bsAlert2.show();
+            }
+
+
         });
 
         $("#PickUpDate").change(function() {
 
-            const PickUpDate = new Date($("#PickUpDate").val());
-            const PickUpOrderDateDate = new Date($("#PickUpOrderDateDate").val());
+            let PickUpOrderDateDate = new Date($("#PickUpOrderDateDate").val());
+            let DeliveryDate = new Date($("#DeliveryDate").val());
+            let MonthDeliveryDate = $("#DeliveryDate").val().substr(0, 2);
 
-            if (+PickUpDate < +PickUpOrderDateDate) {
+            let PickUpDate = new Date($("#PickUpDate").val());
+            let MonthPickUpDate = $("#PickUpDate").val().substr(0, 2);
 
-                $(".toast-error").html("(!) The pick-up date cannot be less than today");
-                var myAlert1 = document.getElementById('toastError');
-                var bsAlert1 = new bootstrap.Toast(myAlert1);
-                bsAlert1.show();
+            if (MonthDeliveryDate > 12) {
+                $(".toast-error").html("(!) invalid format [Delivery date]");
+                var myAlert2 = document.getElementById('toastError');
+                var bsAlert2 = new bootstrap.Toast(myAlert2);
+                bsAlert2.show();
+            }
+
+            if (MonthPickUpDate > 12) {
+                $(".toast-error").html("(!) invalid format [PickUp date]");
+                var myAlert2 = document.getElementById('toastError');
+                var bsAlert2 = new bootstrap.Toast(myAlert2);
+                bsAlert2.show();
+            }
+
+            if (+DeliveryDate < +PickUpOrderDateDate) {
+
+                $(".toast-error").html("(!) The delivery date cannot be less than Today");
+                var myAlert2 = document.getElementById('toastError');
+                var bsAlert2 = new bootstrap.Toast(myAlert2);
+                bsAlert2.show();
+            }
+
+            if (+DeliveryDate < +PickUpDate) {
+
+                $(".toast-error").html("(!) The delivery date cannot be less than Pick Up date");
+                var myAlert2 = document.getElementById('toastError');
+                var bsAlert2 = new bootstrap.Toast(myAlert2);
+                bsAlert2.show();
             }
 
         });
@@ -1519,33 +1580,74 @@
 
                 case 2:
                     $("#ManualUpdateButton").show();
-                    const PickUpOrderDateDate = new Date($("#PickUpOrderDateDate").val());
-                    const DeliveryDate = new Date($("#DeliveryDate").val());
-                    const PickUpDate = new Date($("#PickUpDate").val());
-                    let continueCase = false;
 
-                    if (($("#PickUpDate").val() != "") && (+PickUpDate >= +PickUpOrderDateDate)) {
-                        continueCase = true;
-                    } else {
+                    let continueCase = true;
 
-                        $(".toast-error").html("(!) The pick-up date cannot be less than today or empty [Step 2]");
+                    let PickUpOrderDateDate = new Date($("#PickUpOrderDateDate").val());
+                    let DeliveryDate = new Date($("#DeliveryDate").val());
+                    let MonthDeliveryDate = $("#DeliveryDate").val().substr(0, 2);
+
+                    let PickUpDate = new Date($("#PickUpDate").val());
+                    let MonthPickUpDate = $("#PickUpDate").val().substr(0, 2);
+
+                    if ($("#DeliveryDate").val() == "" || $("#PickUpDate").val() == "") {
+                        $(".toast-error").html("(!) PickUpDate or DeliveryDate empty");
                         var myAlert2 = document.getElementById('toastError');
                         var bsAlert2 = new bootstrap.Toast(myAlert2);
                         bsAlert2.show();
                         continueCase = false;
-                        return false;
                     }
 
-                    if (($("#DeliveryDate").val() != "") && (+DeliveryDate >= +PickUpOrderDateDate)) {
-                        continueCase = true;
-                    } else {
-
-                        $(".toast-error").html("(!) The delivery date cannot be less than today or empty [Step 2]");
-                        var myAlert1 = document.getElementById('toastError');
-                        var bsAlert1 = new bootstrap.Toast(myAlert1);
-                        bsAlert1.show();
+                    if (MonthDeliveryDate > 12) {
+                        $(".toast-error").html("(!) invalid format [Delivery date]");
+                        var myAlert2 = document.getElementById('toastError');
+                        var bsAlert2 = new bootstrap.Toast(myAlert2);
+                        bsAlert2.show();
                         continueCase = false;
-                        return false;
+                    }
+
+                    if (MonthPickUpDate > 12) {
+                        $(".toast-error").html("(!) invalid format [PickUp date]");
+                        var myAlert2 = document.getElementById('toastError');
+                        var bsAlert2 = new bootstrap.Toast(myAlert2);
+                        bsAlert2.show();
+                        continueCase = false;
+                    }
+
+                    if (+DeliveryDate < +PickUpOrderDateDate) {
+
+                        $(".toast-error").html("(!) The delivery date cannot be less than Today");
+                        var myAlert2 = document.getElementById('toastError');
+                        var bsAlert2 = new bootstrap.Toast(myAlert2);
+                        bsAlert2.show();
+                        continueCase = false;
+                    }
+
+                    if (+PickUpDate < +PickUpOrderDateDate) {
+
+                        $(".toast-error").html("(!) The PickUpDate cannot be less than Today");
+                        var myAlert2 = document.getElementById('toastError');
+                        var bsAlert2 = new bootstrap.Toast(myAlert2);
+                        bsAlert2.show();
+                        continueCase = false;
+                    }
+
+                    if (+DeliveryDate < +PickUpDate) {
+
+                        $(".toast-error").html("(!) The delivery date cannot be less than Pick Up date");
+                        var myAlert2 = document.getElementById('toastError');
+                        var bsAlert2 = new bootstrap.Toast(myAlert2);
+                        bsAlert2.show();
+                        continueCase = false;
+                    }
+
+                    if (+PickUpDate > +DeliveryDate) {
+
+                        $(".toast-error").html("(!) The PickUp Date cannot be greater than Delivery Date");
+                        var myAlert2 = document.getElementById('toastError');
+                        var bsAlert2 = new bootstrap.Toast(myAlert2);
+                        bsAlert2.show();
+                        continueCase = false;
                     }
 
                     if (continueCase == true) {
@@ -1555,12 +1657,12 @@
                     }
 
                     break;
-                case 3:
 
+                case 3:
                     $("#ManualUpdateButton").show();
                     let continueCase3 = true;
 
-                    if ($("#CardHolderName").val() != "" && $("#ExpDate").val() != "" && $("#CreditCard").val() != "" && $("#Cvv").val() != "" && $("#BillingAddress").val() != "" && $("#BillingCity").val() != "" && $("#BillingState").val() != "" && $("#Tel1").val() != "" && $("#Total").val() != "" && $("#Deposit").val() != "") {
+                    if ($("#CardHolderName").val() != "" && $("#ExpDate").val() != "" && $("#CreditCard").val() != "" && $("#Cvv").val() != "" && $("#BillingAddress").val() != "" && $("#BillingCity").val() != "" && $("#BillingState").val() != "" && $("#Tel1").val() != "" && $("#Total").val() != "0" && $("#Deposit").val() != "0") {
 
                         let ExpDate = $("#ExpDate").val();
                         let month = ExpDate.substr(0, 2);
@@ -1569,7 +1671,10 @@
 
                         ExpDate = month + '/' + day + '/' + year;
                         let ExpDateConverted = new Date(ExpDate);
+                        //ExpDateConverted = ExpDateConverted.toLocaleDateString("en-US");
+
                         let OrderDate = new Date($("#PickUpOrderDateDate").val());
+                        OrderDate = OrderDate.toLocaleDateString("en-US");
 
                         if ($("#ExpDate").val().length != 5) {
 
@@ -1581,7 +1686,6 @@
                             return false;
 
                         }
-
 
                         if (ConvertNumber($("#Deposit").val()) > ConvertNumber($("#Total").val())) {
 
@@ -1622,68 +1726,69 @@
                         return true;
                     }
 
-                    case 4:
+                    break;
+                case 4:
 
-                        $("#ManualUpdateButton").show();
-                        if (SumNumber($("#Cod").val(), $("#Deposit").val()) > ConvertNumber($("#Total").val())) {
+                    $("#ManualUpdateButton").show();
+                    if (SumNumber($("#Cod").val(), $("#Deposit").val()) > ConvertNumber($("#Total").val())) {
 
-                            $(".toast-error").html("(!) Cod + Deposit isn't equal to Total [Step 4,5]");
-                            var myAlert = document.getElementById('toastError');
-                            var bsAlert = new bootstrap.Toast(myAlert);
-                            bsAlert.show();
+                        $(".toast-error").html("(!) Cod + Deposit isn't equal to Total [Step 4,5]");
+                        var myAlert = document.getElementById('toastError');
+                        var bsAlert = new bootstrap.Toast(myAlert);
+                        bsAlert.show();
 
-                            return false;
+                        return false;
 
-                        } else if (ConvertNumber($("#Deposit").val()) < 1) {
+                    } else if (ConvertNumber($("#Deposit").val()) < 1) {
 
-                            $(".toast-error").html("(!) Check the Deposit value [Step 3]");
-                            var myAlert = document.getElementById('toastError');
-                            var bsAlert = new bootstrap.Toast(myAlert);
-                            bsAlert.show();
+                        $(".toast-error").html("(!) Check the Deposit value [Step 3]");
+                        var myAlert = document.getElementById('toastError');
+                        var bsAlert = new bootstrap.Toast(myAlert);
+                        bsAlert.show();
 
-                            return false;
+                        return false;
 
-                        } else {
+                    } else {
 
-                            $("#TotalOrder").val($("#Total").val());
-                            $("#DepositOrder").val($("#Deposit").val());
+                        $("#TotalOrder").val($("#Total").val());
+                        $("#DepositOrder").val($("#Deposit").val());
 
-                            return true;
-                        }
-
-                        break;
-
-                    case 5:
-
-                        $("#ManualUpdateButton").hide();
-                        if ($("#Cod").val() == "") {
-
-                            $(".toast-error").html("(*) Check COD Field [Step 5]");
-                            var myAlert = document.getElementById('toastError');
-                            var bsAlert = new bootstrap.Toast(myAlert);
-                            bsAlert.show();
-
-                        } else if ($("#IdCompanyService").val() != "" && $("#CompanyAddress").val() != "" && $("#CompanyCity").val() != "" && $("#CompanyState").val() != "" && $("#CompanyPhone1").val() != "" && $("#DriverPhone1").val() != "" && $("#IdDriver").val() != "") {
-
-                            loadInfoPDF1();
-                            loadInfoPDF2();
-                            return true;
-
-                        } else {
-
-                            $(".toast-error").html("(*) Check fields required [Step 5]");
-                            var myAlert = document.getElementById('toastError');
-                            var bsAlert = new bootstrap.Toast(myAlert);
-                            bsAlert.show();
-
-                            return false
-                        }
-
-                        break;
-
-                    default:
                         return true;
-                        break;
+                    }
+
+                    break;
+
+                case 5:
+
+                    $("#ManualUpdateButton").hide();
+                    if ($("#Cod").val() == "") {
+
+                        $(".toast-error").html("(*) Check COD Field [Step 5]");
+                        var myAlert = document.getElementById('toastError');
+                        var bsAlert = new bootstrap.Toast(myAlert);
+                        bsAlert.show();
+
+                    } else if ($("#IdCompanyService").val() != "" && $("#CompanyAddress").val() != "" && $("#CompanyCity").val() != "" && $("#CompanyState").val() != "" && $("#CompanyPhone1").val() != "" && $("#DriverPhone1").val() != "" && $("#IdDriver").val() != "") {
+
+                        loadInfoPDF1();
+                        loadInfoPDF2();
+                        return true;
+
+                    } else {
+
+                        $(".toast-error").html("(*) Check fields required [Step 5]");
+                        var myAlert = document.getElementById('toastError');
+                        var bsAlert = new bootstrap.Toast(myAlert);
+                        bsAlert.show();
+
+                        return false
+                    }
+
+                    break;
+
+                default:
+                    return true;
+                    break;
             }
 
         },
@@ -1720,7 +1825,9 @@
         var clonado = $('#templateVehiculo').clone().val('');
         clonado.removeAttr('hidden');
         clonado.appendTo("#contentVehicle");
-        $(clonado).find(".select2").select2();
+        $(clonado).find(".select2").select2({
+            width: '100%'
+        });
 
     }
 
@@ -1733,8 +1840,9 @@
     //Input Search Select2
     $(document).ready(function() {
 
-
-        $('.select2').select2();
+        $('.select2').select2({
+            width: '92%'
+        });
 
         $(".originInput, .DestinationInput").change(function() {
             $(this).css("border-color", "#A6A6A6");
@@ -1765,7 +1873,10 @@
     $("#SearchVehicles").click(function() {
         GetListVehicles();
     });
-
+    //Destination Customer
+    $("#SearchDestinationCustomer, #SearchCustomerName").click(function() {
+        GetListCustomer();
+    });
 
     function GetListVehicles() {
 
@@ -1802,11 +1913,10 @@
             $('.BrandVehicle').append(optionDefault);
             $('.BrandVehicle').val("").trigger('change');
 
-            $('.ModelVehicle').val("").trigger('change');
             var optionDefault2 = new Option("Select model", "", true, true);
             $('.ModelVehicle').append(optionDefault2);
-
-            $(".toast-success").html("System ready");
+            $('.ModelVehicle').val("").trigger('change');
+            $(".toast-success").html("Wait 5 seconds...");
             var myAlert = document.getElementById('toastSuccess');
             var bsAlert = new bootstrap.Toast(myAlert);
             bsAlert.show();
@@ -1814,12 +1924,6 @@
         });
 
     }
-
-    //Destination Customer
-    $("#SearchDestinationCustomer, #SearchCustomerName").click(function() {
-        GetListCustomer();
-    });
-
 
     function GetListCustomer() {
         var IdCustomerOriginTemp = $("#IdCustomerOrigin").val();
@@ -1856,7 +1960,6 @@
 
                 $('#IdCustomerOrigin').val(IdCustomerOriginTemp).trigger('change');
                 $("#IdCustomerDestination").val(IdCustomerDestinationTemp).trigger("change");
-
             } else {
 
                 $(".toast-error").html("(x) Error to load customer list");
@@ -1946,7 +2049,7 @@
         $(".BillingAddressForm").html($("#BillingAddress").val() != "" ? $("#BillingAddress").val() : "<span class='text-danger'>Check billing address</span>");
         $(".BillingCityForm").html($("#BillingCity").val() != "" ? $("#BillingCity").val() : "<span class='text-danger'>Check billing city</span>");
         $(".BillingStateForm").html($("#BillingState").val() != "" ? $("#BillingState").val() : "<span class='text-danger'>Check billing state</span>");
-        $(".BillingZipCodeForm").html($("#BillingZipCode").val() != "" ? $("#BillingZipCode").val() : "<span class='text-danger'>Check billing zipcode</span>");
+        $(".BillingZipCodeForm").html($("#BillingZipCode").val() != "" ? $("#BillingZipCode").val() : "");
 
         var OriginNote = "";
         var DestinationNote = "";
@@ -2435,7 +2538,7 @@
         $(clonado).find(".ConditionVehicle ").val(ConditionVehicle);
         $(clonado).find(".ColorVehicle").val(Color);
         $(clonado).find(".VinVehicle").val(Vin);
-        $(clonado).find(".select2").select2();
+        $(clonado).find(".select2").select2({width:'100%'});
 
     }
 

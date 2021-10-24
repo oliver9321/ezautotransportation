@@ -24,9 +24,7 @@ class OrdersController
     //Vista Index
     public function Index(){
 
-        if($_SESSION['UserOnline']->Profile == "admin") {
-
-          
+        if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
 
             $rsOrders1              = $this->model->getCountOrdersPending();
             $CountOrdersPending     = $rsOrders1['CountOrders'];
@@ -47,7 +45,7 @@ class OrdersController
             GetRouteView(null, "footer");
 
         }else{
-            header('Location:index.php?c=login&a=index');
+            header('Location:permision.php');
         }
     }
 
@@ -55,7 +53,7 @@ class OrdersController
 
         if(count($_SESSION) > 0){
 
-         if(isset($_SESSION['UserOnline']) && $_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager"){
+            if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
                 
                     $this->orderStatus    = new OrderStatus();
                     $this->customer       = new Customers();
@@ -72,11 +70,11 @@ class OrdersController
                 GetRouteView(null, "footer");
 
         }else{
-            header('Location:index.php?c=login&a=index');
+            header('Location:permision.php');
             }
             
         }else{
-             header('Location:index.php?c=login&a=index');   
+             header('Location:permision.php');   
         }
 
     }
@@ -87,7 +85,7 @@ class OrdersController
   
         $OrderArray = "";
 
-        if($_SESSION['UserOnline']->Profile == "admin") {
+        if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
         
         if(isset($_REQUEST['Id'])){
 
@@ -123,7 +121,7 @@ class OrdersController
 
 
         }else{
-            header('Location:index.php?c=login&a=index');
+            header('Location:permision.php');
         }
     }
 
@@ -144,7 +142,7 @@ class OrdersController
 
         $OrderArray = "";
 
-        if($_SESSION['UserOnline']->Profile == "admin") {
+        if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
         
         if(isset($_REQUEST['Id'])){
 
@@ -180,7 +178,7 @@ class OrdersController
 
 
         }else{
-            header('Location:index.php?c=login&a=index');
+            header('Location:permision.php');
         }
     }
 

@@ -14,26 +14,26 @@ class VehiclesController
     //Vista Index
     public function Index(){
 
-        if($_SESSION['UserOnline']->Profile == "admin") {
+        if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
 
         GetRouteView(null, "header");
         require_once 'View/vehicles/index.php';
         GetRouteView(null, "footer");
 
         }else{
-            header('Location:index.php?c=login&a=index');
+            header('Location:permision.php');
         }
     }
 
     //Vista
     public function View(){
 
-        if($_SESSION['UserOnline']->Profile == "admin") {
+        if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
 
          echo json_encode($this->model->View(), true);
 
         }else{
-            header('Location:index.php?c=login&a=index');
+            header('Location:permision.php');
         }
 
     }
@@ -41,7 +41,7 @@ class VehiclesController
     //Vista Editar
     public function Edit(){
 
-        if($_SESSION['UserOnline']->Profile == "admin") {
+        if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
 
           $Vehicle = new Vehicles();
 
@@ -54,7 +54,7 @@ class VehiclesController
        GetRouteView(null, "footer");
 
         }else{
-            header('Location:index.php?c=login&a=index');
+            header('Location:permision.php');
         }
     }
 
@@ -71,7 +71,6 @@ class VehiclesController
             $Vehicles->Brand   = $_REQUEST['Brand'];
             $Vehicles->Model   = $_REQUEST['Model'];
            
-
             //Campos genericos
             $Vehicles->DateCreation            = date('Y-m-d H:i:s');
             $Vehicles->UserIdCreation          = $_SESSION['UserOnline']->Id;

@@ -73,7 +73,7 @@ class Orders {
     {
         try
         {
-                $stm = $this->pdo->prepare("SELECT Id, CustomerOrigin, CustomerDestination, PickUpDate, DeliveryDate, OriginCity, DestinationCity FROM vw_orders where IsActive = 1 AND Status ='Pending'");
+                $stm = $this->pdo->prepare("SELECT Id, CustomerOrigin, CustomerDestination, OrderDate, PickUpDate, DeliveryDate, OriginCity, DestinationCity FROM vw_orders where IsActive = 1 AND Status ='Pending'");
                 $stm->execute();
 
                 $row = $stm->fetchAll();
@@ -171,6 +171,7 @@ class Orders {
                 $payments->CreditCard       = $this->decryptIt(trim($payments->CreditCard), KEY);
                 $payments->ExpDate          = $this->decryptIt(trim($payments->ExpDate), KEY);
                 $payments->Cvv              = $this->decryptIt(trim($payments->Cvv), KEY);
+
                 $OrderData['payments']      = $payments;
 
                 $OrderData['CustomerOrigin']      = $stm4->fetch(PDO::FETCH_OBJ);
