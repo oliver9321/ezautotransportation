@@ -191,12 +191,12 @@
 }
 
 .left-sidenav-menu li.mm-active>a {
-    color: #303e67;
+    color: white;
     border-radius: 4px
 }
 
 .left-sidenav-menu li.mm-active>a i {
-    color: #303e67
+    color: white
 }
 
 .left-sidenav-menu li.mm-active .nav-item.active a.nav-link.active {
