@@ -64,19 +64,12 @@
                     <div class="col-lg-12">
                         <div class="card-body">
 
-                                      <div class="col-md-12" >
+                        <div class="col-md-12" >
                                             <label class="mb-1"><b>Order ID</b></label>
                                             <input type="text" id="Id" readonly class="form-control">
+                                            <span class="text-muted">The amount greater than 0 will be paid.</span>
                                         </div><br>
                                                     
-                                    <div class="col-md-12" >
-                                            <label class="mb-1"><b>Mark as paid</b><b class="text-danger">*</b></label>
-                                            <select style="width: 100%;" id="FieldSelected" name="FieldSelected" class="form-control">
-                                                <option selected value="">Select an option</option>
-                                                <option value="ExtraTruckerFee">Extra Trucker Fee</option>
-                                                <option value="TruckerOwesUS">Trucker Owes US</option>
-                                            </select>
-                                        </div>
                                  </div>
                     </div>
                     <!--end col-->

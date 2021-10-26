@@ -17,8 +17,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info">
-                <h6 class="modal-title m-0" id="ModalNewCustomerLabel"> <i class="fas fa-user-plus me-2"></i> New
-                    customer</h6>
+                <h6 class="modal-title m-0" id="ModalNewCustomerLabel"> <i class="fas fa-user-plus me-2"></i> New customer</h6>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!--end modal-header-->
@@ -38,13 +37,13 @@
                             <div class="mb-1">
                                 <label class="form-label text-danger" for="Phone1NewCustomer">*Phone #1</label>
                                 <div class="input-group"> <span class="input-group-text"><i class="fa fa-mobile"></i></span>
-                                    <input type="tel" class="form-control phone" id="Phone1NewCustomer" name="Phone1NewCustomer" placeholder="(555) 555-5555">
+                                    <input type="text" class="form-control phone" id="Phone1NewCustomer" name="Phone1NewCustomer" placeholder="(555) 555-5555">
                                 </div>
                             </div>
                             <div class="mb-1">
                                 <label class="form-label" for="Phone2NewCustomer">Phone #2</label>
                                 <div class="input-group"> <span class="input-group-text"><i class="las la-phone"></i></span>
-                                    <input type="tel" class="form-control phone" id="Phone2NewCustomer" name="Phone2NewCustomer" placeholder="(555) 555-5555">
+                                    <input type="text" class="form-control phone" id="Phone2NewCustomer" name="Phone2NewCustomer" placeholder="(555) 555-5555">
                                 </div>
                             </div>
                             <div class="mb-1">
@@ -1566,7 +1565,6 @@
 
                 case 2:
 
-                   Wizard
                     $("#ManualUpdateButton").show();
 
                     let continueCase = true;
