@@ -308,7 +308,7 @@ function UpdateStatusOrder(){
 
     if($("#Id").val() != '' && $("#OrderStatusID").val() != ''){
 
-    if($("#OrderStatusID").val() == 4 && $("#formCancelledNote").val() ==""){
+    if($("#OrderStatusID").val() == 4 && $("#CancelledNote").val() ==""){
 
            $(".toast-error").html("Cancelled note is required");
            var myAlert = document.getElementById('toastError');

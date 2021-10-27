@@ -59,6 +59,15 @@ class dashboardController{
                 $rsSumTrukerOwesUs   = $this->ordersModel->getSumTrukerOwesUs();
                 $SumTrukerOwesUs     = $rsSumTrukerOwesUs['TrukerOwesUs'];
 
+
+                
+
+                $rsSumLossToday = $this->ordersModel->getSumLossToday();
+                $SumLossToday    = $rsSumLossToday['ExtraTrukerFee'];
+
+                $rsSumGetSumLoss   = $this->ordersModel->getSumLoss();
+                $SumLossMonth     = $rsSumGetSumLoss['ExtraTrukerFee'];
+
                 GetRouteView(null, "header");
                 require_once 'View/dashboard/index.php';
                 require_once 'View/footer.php';

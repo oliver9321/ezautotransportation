@@ -37,6 +37,8 @@ class Orders {
     public $UserIdLastModification;
     public $IsActive;
     public $CancelledNote;
+    public $CustomerOrigin;
+    public $CustomerDestination;
 
     public function __CONSTRUCT()
     {
@@ -51,7 +53,7 @@ class Orders {
     {
         try
         {
-                $stm = $this->pdo->prepare("SELECT Id, IdPayment, Status, CustomerOrigin, CustomerOriginPhone1, CustomerDestination, CustomerDestinationPhone1, OrderDate, PickUpDate, DeliveryDate, OriginCity, DestinationCity, Deposit, CompanyServices, CompanyPhone1, DriverName, DriverPhone1, OriginNote, DestinationNote, CancelledNote FROM vw_orders where IsActive = 1");
+                $stm = $this->pdo->prepare("SELECT Id, IdPayment, Status, CustomerOrigin, CustomerOrigin, CustomerOriginPhone1, CustomerDestination, CustomerDestinationPhone1, OrderDate, PickUpDate, DeliveryDate, OriginCity, DestinationCity, Deposit, CompanyServices, CompanyPhone1, DriverName, DriverPhone1, OriginNote, DestinationNote, CancelledNote FROM vw_orders where IsActive = 1");
                 $stm->execute();
 
                 $row = $stm->fetchAll();
@@ -191,6 +193,59 @@ class Orders {
         }
     }
   
+    public function Edit2($id)
+    {
+        try
+        {
+            $OrderData = array();
+            $stm = $this->pdo->prepare("SELECT *  FROM vw_orders WHERE Id = ?");
+            $stm->execute(array($id));
+            $Order = $stm->fetch(PDO::FETCH_OBJ);
+
+            if($Order){
+
+                $stm2 = $this->pdo->prepare("SELECT *  FROM tbl_order_details WHERE IdOrder = ?");
+                $stm2->execute(array($id));
+    
+                $IdPayment = $Order->IdPayment;
+                $stm3 = $this->pdo->prepare("SELECT *  FROM tbl_payments WHERE Id = ?");
+                $stm3->execute(array($IdPayment));
+
+                $IdCompanyService = $Order->IdCompanyService;
+                $stm6 = $this->pdo->prepare("SELECT *  FROM tbl_company_services WHERE Id = ?");
+                $stm6->execute(array($IdCompanyService));
+
+                $IdDriver = $Order->IdDriver;
+                $stm7 = $this->pdo->prepare("SELECT *  FROM tbl_drivers WHERE Id = ?");
+                $stm7->execute(array($IdDriver));
+               
+                $OrderData['order']               = $Order;
+                $OrderData['order_details']       = $stm2->fetchAll(PDO::FETCH_ASSOC);
+               
+                $payments                  = $stm3->fetch(PDO::FETCH_OBJ);
+                
+                $Order->CardHolderName   = $this->decryptIt(trim($Order->CardHolderName), KEY);
+                $Order->CreditCard       = $this->decryptIt(trim($Order->CreditCard), KEY);
+                $Order->ExpDate          = $this->decryptIt(trim($Order->ExpDate), KEY);
+                $Order->Cvv              = $this->decryptIt(trim($Order->Cvv), KEY);
+
+
+                
+                $OrderData['payments']      = $payments;
+                $OrderData['CompanyService']      = $stm6->fetch(PDO::FETCH_OBJ);
+                $OrderData['Driver']              = $stm7->fetch(PDO::FETCH_OBJ);
+
+                return $OrderData;
+
+            }else{
+                return $OrderData;
+            }
+          
+        } catch (Exception $e)
+        {
+            die($e->getMessage());
+        }
+    }
     public function Update($data)
     {   
         
@@ -424,6 +479,23 @@ $result = $this->pdo->prepare($sql)->execute(
         $stm2->execute();
         return $stm2->fetch();
     }
+
+    public function getSumLoss(){
+
+        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM(coalesce(ExtraTrukerFee,0)),2,'en_US'),0) as ExtraTrukerFee FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4 AND MONTH(DateCreation) = MONTH(curdate())");
+        $stm2->execute();
+        return $stm2->fetch();
+    }
+
+    
+    public function getSumLossToday(){
+
+        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM(coalesce(ExtraTrukerFee,0)),2,'en_US'),0) as ExtraTrukerFee FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4 AND DATE(DateCreation) = curdate()");
+        $stm2->execute();
+        return $stm2->fetch();
+    }
+
+
 
     public function GetStatusOrderById($data){
 

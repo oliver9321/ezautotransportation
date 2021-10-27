@@ -23,11 +23,7 @@
                                 <div class="col-md-12">
                                     <label class="mb-1"><i class="fa fa-user"></i> Origin customer name<b class="text-danger">*</b></label>
                                     <div class="input-group">
-                                        <select readonly style="width: 100%;" id="IdCustomerOrigin" name="IdCustomerOrigin" class="select2 form-control mb-3 custom-select originInput">
-                                            <?php foreach ($CustomerList  as $key => $value) : ?>
-                                                <option value="<?= $value['Id']; ?>" <?php if ($value['Id'] == $Order->IdCustomerOrigin) : ?> selected="selected" <?php endif; ?>><?= $value['Customer']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
+                                        <input type="text" id="IdCustomerOrigin" name="IdCustomerOrigin"  class="form-control" value="<?= $Order->CustomerOrigin?>" readonly>
                                     </div>
                                 </div>
                             </div><!-- end row -->
@@ -41,11 +37,7 @@
                                 <div class="col-md-12">
                                     <label class="mb-1"><i class="fa fa-user"></i> Destination customer name<b class="text-danger">*</b></label>
                                     <div class="input-group">
-                                        <select style="width: 100%;" id="IdCustomerDestination" name="IdCustomerDestination" class="select2 form-control mb-3 custom-select DestinationInput" readonly>
-                                            <?php foreach ($CustomerList  as $key => $value) : ?>
-                                                <option value="<?= $value['Id']; ?>" <?php if ($value['Id'] == $Order->IdCustomerDestination) : ?> selected="selected" <?php endif; ?>><?= $value['Customer']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
+                                        <input type="text" id="IdCustomerDestination" name="IdCustomerDestination"   class="form-control" value="<?= $Order->CustomerDestination?>" readonly>
                                     </div>
                                 </div>
                                 <br>
@@ -96,20 +88,20 @@
                                             <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-mobile"></i> Phone
                                                     #1<b class="text-danger">*</b></label>
-                                                <input id="OriginPhone1" name="OriginPhone1" type="text" class="form-control originInput phone" placeholder="(555) 555-5555" readonly value="<?= $CustomerOrigin->Phone1; ?>">
+                                                <input id="OriginPhone1" name="OriginPhone1" type="text" class="form-control originInput phone" placeholder="(555) 555-5555" readonly value="<?= $Order->CustomerOriginPhone1; ?>">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone
                                                     #2</label>
                                                 <input style="display:none;" />
-                                                <input autocomplete="off" id="OriginPhone2" name="OriginPhone2" type="text" class="form-control originInput phone" placeholder="(555) 555-5555" readonly value="<?= $CustomerOrigin->Phone2; ?>">
+                                                <input autocomplete="off" id="OriginPhone2" name="OriginPhone2" type="text" class="form-control originInput phone" placeholder="(555) 555-5555" readonly value="<?= $Order->CustomerOriginPhone2; ?>">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-envelope"></i> Email</label>
                                                 <input style="display:none;" />
-                                                <input autocomplete="off" id="OriginEmail" name="OriginEmail" type="email" class="form-control originInput" placeholder="cus@domain.com" readonly value="<?= $CustomerOrigin->Email; ?>">
+                                                <input autocomplete="off" id="OriginEmail" name="OriginEmail" type="email" class="form-control originInput" placeholder="cus@domain.com" readonly value="<?= $Order->CustomerOriginEmail; ?>">
                                             </div>
                                             <!-- end row -->
                                         </div>
@@ -163,18 +155,18 @@
                                             <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-mobile"></i> Phone
                                                     #1<b class="text-danger">*</b></label>
-                                                <input id="DestinationPhone1" name="DestinationPhone1" type="text" class="form-control DestinationInput phone" placeholder="(555) 555-5555" readonly value="<?= $CustomerDestination->Phone1; ?>">
+                                                <input id="DestinationPhone1" name="DestinationPhone1" type="text" class="form-control DestinationInput phone" placeholder="(555) 555-5555" readonly value="<?= $Order->CustomerDestinationPhone1; ?>">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone
                                                     #2</label>
-                                                <input id="DestinationPhone2" name="DestinationPhone2" type="text" class="form-control DestinationInput phone" placeholder="(555) 555-5555" readonly value="<?= $CustomerDestination->Phone2; ?>">
+                                                <input id="DestinationPhone2" name="DestinationPhone2" type="text" class="form-control DestinationInput phone" placeholder="(555) 555-5555" readonly value="<?= $Order->CustomerDestinationPhone2; ?>">
                                             </div>
                                             <!-- end row -->
                                             <div class="col-md-4">
                                                 <label class="mb-1"><i class="fa fa-envelope"></i> Email</label>
-                                                <input id="DestinationEmail" name="DestinationEmail" type="email" class="form-control DestinationInput" placeholder="cus@domain.com" readonly value="<?= $CustomerDestination->Email; ?>">
+                                                <input id="DestinationEmail" name="DestinationEmail" type="email" class="form-control DestinationInput" placeholder="cus@domain.com" readonly value="<?= $Order->CustomerDestinationEmail; ?>">
                                             </div>
                                             <!-- end row -->
                                         </div>
@@ -340,27 +332,27 @@
                                 
                                 <div class="col-md-6">
                                     <label class="mb-1"> Card holder name<b class="text-danger">*</b></label>
-                                    <input type="text" class="form-control" name="CardHolderName" id="CardHolderName" style="text-transform:uppercase" readonly value="<?= trim($Payment->CardHolderName); ?>">
+                                    <input type="text" class="form-control" name="CardHolderName" id="CardHolderName" style="text-transform:uppercase" readonly value="<?= trim($Order->CardHolderName); ?>">
                                 </div>
 
                                 <div class="col-md-6">
                                     <label class="mb-1">Reference</label>
-                                    <input id="Reference" name="Reference" type="text" class="form-control" placeholder="0000000" readonly value="<?= $Payment->Reference; ?>">
+                                    <input id="Reference" name="Reference" type="text" class="form-control" placeholder="0000000" readonly value="<?= $Order->Reference; ?>">
                                 </div>
 
                                         <div class="col-md-5 inputpadding">
                                             <label class="mb-1"><i class="fa fa-credit-card"></i> Credit card number<b class="text-danger">*</b></label>
-                                            <input id="CreditCard" name="CreditCard" type="text" class="form-control" placeholder="#### #### #### ####" readonly value="<?= $Payment->CreditCard; ?>">
+                                            <input id="CreditCard" name="CreditCard" type="text" class="form-control" placeholder="#### #### #### ####" readonly value="<?= $Order->CreditCard; ?>">
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-3 inputpadding">
                                             <label class="mb-1">Expiration date<b class="text-danger">*</b></label>
-                                            <input id="ExpDate" name="ExpDate" type="text" class="form-control" placeholder="00/00" readonly value="<?= trim($Payment->ExpDate); ?>">
+                                            <input id="ExpDate" name="ExpDate" type="text" class="form-control" placeholder="00/00" readonly value="<?= trim($Order->ExpDate); ?>">
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-4 inputpadding">
                                             <label class="mb-1">CVV<b class="text-danger">*</b></label>
-                                            <input id="Cvv" name="Cvv" type="text" class="form-control" placeholder="" readonly value="<?= $Payment->Cvv; ?>">
+                                            <input id="Cvv" name="Cvv" type="text" class="form-control" placeholder="" readonly value="<?= $Order->Cvv; ?>">
                                         </div>
 
                                         <div class="col-md-12 inputpadding">
@@ -370,32 +362,32 @@
 
                                         <div class="col-md-4 inputpadding">
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
-                                            <input id="BillingCity" name="BillingCity" type="text" class="form-control BillingInput" placeholder="City" readonly value="<?= $Payment->BillingCity; ?>">
+                                            <input id="BillingCity" name="BillingCity" type="text" class="form-control BillingInput" placeholder="City" readonly value="<?= $Order->BillingCity; ?>">
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-4 inputpadding">
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> State<b class="text-danger">*</b></label>
-                                            <input id="BillingState" name="BillingState" type="text" class="form-control BillingInput" placeholder="State" readonly value="<?= $Payment->BillingState; ?>">
+                                            <input id="BillingState" name="BillingState" type="text" class="form-control BillingInput" placeholder="State" readonly value="<?= $Order->BillingState; ?>">
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-4 inputpadding">
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Zip Code</label>
-                                            <input id="BillingZipCode" name="BillingZipCode" type="text" class="form-control BillingInput" placeholder="00000" readonly value="<?= $Payment->BillingZipCode; ?>">
+                                            <input id="BillingZipCode" name="BillingZipCode" type="text" class="form-control BillingInput" placeholder="00000" readonly value="<?= $Order->BillingZipCode; ?>">
                                         </div>
 
                                         <div class="col-md-4 inputpadding">
                                             <label class="mb-1"><i class="fa fa-mobile"></i> Phone number #1<b class="text-danger">*</b></label>
-                                            <input id="Tel1" name="Tel1" type="text" class="form-control phone" placeholder="(555) 555-5555" readonly value="<?= $Payment->Tel1; ?>">
+                                            <input id="Tel1" name="Tel1" type="text" class="form-control phone" placeholder="(555) 555-5555" readonly value="<?= $Order->Tel1; ?>">
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-4 inputpadding">
                                             <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone number #2</label>
-                                            <input id="Tel2" name="Tel2" type="text" class="form-control phone" placeholder="(555) 555-5555" readonly value="<?= $Payment->Tel2; ?>">
+                                            <input id="Tel2" name="Tel2" type="text" class="form-control phone" placeholder="(555) 555-5555" readonly value="<?= $Order->Tel2; ?>">
                                         </div>
                                         <!-- end row -->
                                         <div class="col-md-4 inputpadding">
                                             <label class="mb-1"><i class="fa fa-envelope"></i> Email</label>
-                                            <input id="PaymentEmail" name="PaymentEmail" type="email" class="form-control" placeholder="us@domain.com" readonly value="<?= $Payment->PaymentEmail; ?>">
+                                            <input id="PaymentEmail" name="PaymentEmail" type="email" class="form-control" placeholder="us@domain.com" readonly value="<?= $Order->PaymentEmail; ?>">
                                         </div>
 
                             </div>
@@ -648,9 +640,6 @@
 
         $("#LoadingButton").show();
         //Colocarel ID de la orden para hacer el update
-
-        $('#IdCustomerOrigin').select2().trigger('change');
-        $('#IdCustomerDestination').select2().trigger('change');
         $('#IdCompanyService').select2().trigger('change');
         $('#IdDriver').select2().trigger('change');
 

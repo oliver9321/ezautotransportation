@@ -1268,8 +1268,6 @@ $("#form-horizontal").steps({
 
                     if($("#ExpDate").val().length == 5){
 
-                        console.log(ExpDateConverted);
-                        console.log(OrderDate);
                         if (+ExpDateConverted <= +OrderDate) {
 
                             $(".toast-error").html("(!) ExpDate of credit card less than today");
@@ -1309,6 +1307,7 @@ $("#form-horizontal").steps({
             onInit: function() {},
             labels: { cancel: "Cancel", current: "current step:", pagination: "Pagination", finish: "Save order", next: "Next Step", previous: "Previous Step", loading: "Loading ..." },         
             onFinishing: function(event, currentIndex) {
+                $("#form-horizontal .actions a[href='#finish']").hide();
                 saveOrder();
                 $("#BtnPrintOrder").show();
                 return true;

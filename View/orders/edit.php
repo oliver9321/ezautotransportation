@@ -1070,7 +1070,7 @@
 
                                         <div class="col-md-3">
                                             <label class="mb-1"><i class="fa fa-money-bill"></i><b class="text-success"> Earnings</b></label>
-                                            <input id="Earnings" name="Earnings" type="text" class="form-control inputNumber" placeholder="$0000" readonly value="<?= $Order->Earnings ?>">
+                                            <input id="Earnings" name="Earnings" type="text" class="form-control inputNumber" placeholder="$0000"  value="<?= $Order->Earnings ?>" readonly>
                                         </div>
 
                                     </div><br>
@@ -1079,24 +1079,24 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label class="mb-1"><i class="fa fa-lock text-secondary"></i> Cod</label>
-                                            <input id="Cod" name="Cod" type="text" class="form-control inputNumber" placeholder="$0000" readonly value="<?= $Order->Cod ?>">
+                                            <input id="Cod" name="Cod" type="text" class="form-control inputNumber" placeholder="$0000" readonly value="<?= $Order->Cod ?>" readonly>
                                         </div>
 
                                         <div class="col-md-6">
                                             <label class="mb-1"><i class="fa fa-lock text-secondary"></i> Truker rate</label>
-                                            <input id="TrukerRate" name="TrukerRate" type="text" class="form-control inputNumber" placeholder="$0000" readonly value="<?= $Order->TrukerRate ?>">
+                                            <input id="TrukerRate" name="TrukerRate" type="text" class="form-control inputNumber" placeholder="$0000"  value="<?= $Order->TrukerRate ?>" readonly>
                                         </div>
                                     </div>
 
                                     <div class="row inputpadding">
                                         <div class="col-md-6">
                                             <label class="mb-1"><i class="fa fa-dollar-sign"></i><b class="text-dark"> Extra truker Fee</b></label>
-                                            <input id="ExtraTrukerFee" name="ExtraTrukerFee" type="text" class="form-control inputNumber" placeholder="$0000" value="<?= $Order->ExtraTrukerFee ?>">
+                                            <input id="ExtraTrukerFee" name="ExtraTrukerFee" type="text" class="form-control inputNumber" placeholder="$0000" value="<?= $Order->ExtraTrukerFee ?>" >
                                         </div>
 
                                         <div class="col-md-6">
                                             <label class="mb-1"><i class="fa fa-truck"></i> <b class="text-danger">Truker owes us</b></label>
-                                            <input id="TrukerOwesUs" name="TrukerOwesUs" type="text" class="form-control inputNumber" placeholder="$0000" value="<?= $Order->TrukerOwesUs ?>">
+                                            <input id="TrukerOwesUs" name="TrukerOwesUs" type="text" class="form-control inputNumber" placeholder="$0000" value="<?= $Order->TrukerOwesUs ?>" >
                                         </div>
                                     </div>
 
@@ -1349,25 +1349,21 @@
 <script type="text/javascript">
     $("#LoadingButton").hide();
     $("#ButtonExit").hide();
-
+    GetListVehicles();
     $(document).ready(function($) {
 
         $('.phone').mask("(000) 000-0000", {
             placeholder: "(000) 000-0000"
         });
+
         $("#Cvv").mask('0000');
         $("#CreditCard").mask("0000 0000 0000 0000");
-        $('.inputNumber').keyup(function() {
-            $('.inputNumber').mask("#,##0.00", {
-                reverse: true
-            });
+
+        $('.inputNumber').on("keyup keypress blur change",function() {
+            $('.inputNumber').mask("#,##0.00", { reverse: true });
         });
 
-        $('.inputNumber').click(function() {
-            $('.inputNumber').mask("#,##0.00", {
-                reverse: true
-            });
-        });
+
         $('.inputDate').mask("00/00/0000", {
             placeholder: "MM/DD/YYYY"
         });
@@ -1434,6 +1430,7 @@
                 bsAlert2.show();
             }
 
+     
             if (+DeliveryDate < +PickUpOrderDateDate) {
 
                 $(".toast-error").html("(!) The delivery date cannot be less than Today");
@@ -1492,6 +1489,24 @@
                 bsAlert2.show();
             }
 
+            let DayDeliveryDate = $("#DeliveryDate").val().substr(3, 2);
+            let DayPickUpDate = $("#PickUpDate").val().substr(3, 2);
+            
+            if (DayPickUpDate > 31) {
+                $(".toast-error").html("(!) Invalid format [PickUp date]");
+                var myAlert2 = document.getElementById('toastError');
+                var bsAlert2 = new bootstrap.Toast(myAlert2);
+                bsAlert2.show();
+            }
+
+            if (DayDeliveryDate > 31) {
+                $(".toast-error").html("(!) Invalid format [Delivery date]");
+                var myAlert2 = document.getElementById('toastError');
+                var bsAlert2 = new bootstrap.Toast(myAlert2);
+                bsAlert2.show();
+            }
+
+
         });
     });
 
@@ -1528,7 +1543,7 @@
                         $(htmlSelect).append(optionBucle);
                     });
 
-                    $(htmlSelect).val("").trigger('change');
+                  //  $(htmlSelect).val("").trigger('change');
                     $("#LoadingButton").hide();
                 }
 
@@ -1636,6 +1651,25 @@
                         continueCase = false;
                     }
 
+                    let DayDeliveryDate = $("#DeliveryDate").val().substr(3, 2);
+                    let DayPickUpDate = $("#PickUpDate").val().substr(3, 2);
+                    
+                    if (DayPickUpDate > 31) {
+                        $(".toast-error").html("(!) Invalid format [PickUp date]");
+                        var myAlert2 = document.getElementById('toastError');
+                        var bsAlert2 = new bootstrap.Toast(myAlert2);
+                        bsAlert2.show();
+                        continueCase = false;
+                    }
+
+                    if (DayDeliveryDate > 31) {
+                        $(".toast-error").html("(!) Invalid format [Delivery date]");
+                        var myAlert2 = document.getElementById('toastError');
+                        var bsAlert2 = new bootstrap.Toast(myAlert2);
+                        bsAlert2.show();
+                        continueCase = false;
+                    }
+
                     if (continueCase == true) {
                         return true;
                     } else {
@@ -1660,7 +1694,7 @@
                         //ExpDateConverted = ExpDateConverted.toLocaleDateString("en-US");
 
                         let OrderDate = new Date($("#PickUpOrderDateDate").val());
-                        OrderDate = OrderDate.toLocaleDateString("en-US");
+                      //  OrderDate = OrderDate.toLocaleDateString("en-US");
 
                         if ($("#ExpDate").val().length != 5) {
 
@@ -1682,7 +1716,9 @@
                             continueCase3 = false;
                             return false;
 
-                        } else if ($("#ExpDate").val().length == 5) {
+                        }
+                        
+                        if ($("#ExpDate").val().length == 5) {
 
                             if (+ExpDateConverted <= +OrderDate) {
 
@@ -1717,7 +1753,10 @@
 
                     $("#ManualUpdateButton").show();
                     if (SumNumber($("#Cod").val(), $("#Deposit").val()) > ConvertNumber($("#Total").val())) {
+                        $('.inputNumber').unmask().mask("#,##0.00", { reverse: true });
 
+
+                        //$('#Earnings,#Cod,#TrukerRate,#ExtraTrukerFee,#TrukerOwesUs').mask('000.000.000.000.000,00', {reverse: true});
                         $(".toast-error").html("(!) Cod + Deposit isn't equal to Total [Step 4,5]");
                         var myAlert = document.getElementById('toastError');
                         var bsAlert = new bootstrap.Toast(myAlert);
@@ -1798,7 +1837,7 @@
 
     //Execute select2 functions 
     //GetListCustomer();
-    GetListVehicles();
+   
 
     function AddVehicleList() {
 
@@ -1827,7 +1866,7 @@
     $(document).ready(function() {
 
         $('.select2').select2({
-            width: '92%'
+            width: '90%'
         });
 
         $(".originInput, .DestinationInput").change(function() {
@@ -1849,12 +1888,31 @@
 
         });
 
+      
+        updateAmountsTruckerDrivers();
 
         var $input = $('<li><button id="ManualUpdateButton" type="button" onclick="saveAndUpdateOrder()" class="btn btn-warning">Update</button></li>');
         $input.appendTo($('ul[aria-label=Pagination]'));
 
 
     });
+
+    function updateAmountsTruckerDrivers(){
+
+             $("#TotalOrder").val($("#Total").val());
+            $("#DepositOrder").val($("#Deposit").val());
+
+            var Earning1 = RestNumber($("#Deposit").val(), $("#ExtraTrukerFee").val());
+            $("#Earnings").val(SumNumber(Earning1, $("#TrukerOwesUs").val()));
+
+            $("#Cod").val(RestNumber($("#Total").val(), $("#Deposit").val()));
+
+            var sum1 = SumNumber($("#ExtraTrukerFee").val(), $("#Cod").val());
+            $("#TrukerRate").val(RestNumber(sum1, $("#TrukerOwesUs").val()));
+
+         
+            
+        }
 
     $("#SearchVehicles").click(function() {
         GetListVehicles();
@@ -1871,6 +1929,7 @@
             url: "index.php?c=vehicles&a=GetListVehicles",
             beforeSend: function() {
                 $("#LoadingButton").show();
+                $(".toast-success").html("Wait 5 seconds...");
             }
         }).then(function(response) {
 
@@ -1894,7 +1953,7 @@
                 });
 
             }
-
+           
             var optionDefault = new Option("Select brand", "", true, true);
             $('.BrandVehicle').append(optionDefault);
             $('.BrandVehicle').val("").trigger('change');
@@ -1902,7 +1961,7 @@
             var optionDefault2 = new Option("Select model", "", true, true);
             $('.ModelVehicle').append(optionDefault2);
             $('.ModelVehicle').val("").trigger('change');
-            $(".toast-success").html("Wait 5 seconds...");
+           
             var myAlert = document.getElementById('toastSuccess');
             var bsAlert = new bootstrap.Toast(myAlert);
             bsAlert.show();
@@ -2585,6 +2644,6 @@
     $(document).ready(function($) {
         setTimeout(() => {
             LoadEditFields();
-        }, 2500);
+        }, 2000);
     });
 </script>
