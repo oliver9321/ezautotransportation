@@ -1241,7 +1241,7 @@ $("#form-horizontal").steps({
                        //ExpDateConverted = ExpDateConverted.toLocaleDateString("en-US");
 
                        let OrderDate = new Date($("#PickUpOrderDateDate").val());
-                       OrderDate = OrderDate.toLocaleDateString("en-US");
+                      // OrderDate = OrderDate.toLocaleDateString("en-US");
 
                        if($("#ExpDate").val().length != 5){
                        
@@ -1255,7 +1255,6 @@ $("#form-horizontal").steps({
                        }
 
 
-
                     if(ConvertNumber($("#Deposit").val()) > ConvertNumber($("#Total").val())){
 
                         $(".toast-error").html("(!) the deposit is greater than the total [Step 3]");
@@ -1265,8 +1264,12 @@ $("#form-horizontal").steps({
                         continueCase3 = false;
                         return false;
 
-                    }else if($("#ExpDate").val().length == 5){
+                    }
 
+                    if($("#ExpDate").val().length == 5){
+
+                        console.log(ExpDateConverted);
+                        console.log(OrderDate);
                         if (+ExpDateConverted <= +OrderDate) {
 
                             $(".toast-error").html("(!) ExpDate of credit card less than today");
