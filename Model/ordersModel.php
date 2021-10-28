@@ -207,10 +207,6 @@ class Orders {
                 $stm2 = $this->pdo->prepare("SELECT *  FROM tbl_order_details WHERE IdOrder = ?");
                 $stm2->execute(array($id));
     
-                $IdPayment = $Order->IdPayment;
-                $stm3 = $this->pdo->prepare("SELECT *  FROM tbl_payments WHERE Id = ?");
-                $stm3->execute(array($IdPayment));
-
                 $IdCompanyService = $Order->IdCompanyService;
                 $stm6 = $this->pdo->prepare("SELECT *  FROM tbl_company_services WHERE Id = ?");
                 $stm6->execute(array($IdCompanyService));
@@ -221,17 +217,12 @@ class Orders {
                
                 $OrderData['order']               = $Order;
                 $OrderData['order_details']       = $stm2->fetchAll(PDO::FETCH_ASSOC);
-               
-                $payments                  = $stm3->fetch(PDO::FETCH_OBJ);
-                
+          
                 $Order->CardHolderName   = $this->decryptIt(trim($Order->CardHolderName), KEY);
                 $Order->CreditCard       = $this->decryptIt(trim($Order->CreditCard), KEY);
                 $Order->ExpDate          = $this->decryptIt(trim($Order->ExpDate), KEY);
                 $Order->Cvv              = $this->decryptIt(trim($Order->Cvv), KEY);
 
-
-                
-                $OrderData['payments']      = $payments;
                 $OrderData['CompanyService']      = $stm6->fetch(PDO::FETCH_OBJ);
                 $OrderData['Driver']              = $stm7->fetch(PDO::FETCH_OBJ);
 

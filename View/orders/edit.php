@@ -113,7 +113,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info">
-                <h6 class="modal-title m-0" id="ModalNewCompanyServiceLabel"> <i class="fa fa-truck me-2"></i> New Truker Company</h6>
+                <h6 class="modal-title m-0" id="ModalNewCompanyServiceLabel"> <i class="fa fa-truck me-2"></i> New Trucker Company</h6>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!--end modal-header-->
@@ -782,6 +782,7 @@
                                             <div class="col">
                                                 <h6 class="mb-0"><b>Origin: </b><span class="OriginNameForm"></span></h6>
                                                 <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="OriginPhone1Form"></span><span class="OriginPhone2Form"></span></h6>
+                                                <h6 class="mb-0"><b><i class="fa fa-envelope"></i> </b><span class="OriginEmailForm"></span></h6>
                                                 <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="OriginAddressForm"></span></h6>
 
                                             </div>
@@ -789,6 +790,7 @@
                                             <div class="col">
                                                 <h6 class="mb-0"><b>Destination: </b><span class="DestinationNameForm"></span></h6>
                                                 <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="DestinationPhone1Form"></span> <span class="DestinationPhone2Form"></span></h6>
+                                                <h6 class="mb-0"><b><i class="fa fa-envelope"></i> </b><span class="DestinationEmailForm"></span></h6>
                                                 <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="DestinationAddressForm"></span></h6>
                                             </div>
                                         </div>
@@ -946,17 +948,17 @@
 
 
                 <!--end fieldset-->
-                <h3>Truker and drivers</h3>
+                <h3>Trucker and drivers</h3>
                 <fieldset>
                     <div class="row">
                         <div class="col-md-6">
-                            <span class="text-dark"><b><i data-feather="truck"></i> Truker company</b></span>
+                            <span class="text-dark"><b><i data-feather="truck"></i> Trucker company</b></span>
                             <hr>
                             <div class="row">
                                 <label class="mb-1">Company name<b class="text-danger">*</b></label>
                                 <div class="input-group">
                                     <select id="IdCompanyService" name="IdCompanyService" class="select2 form-control mb-3 custom-select" style="width: 92%;" onchange="onchangeCompanyServices()">
-                                        <option value="" selected>Select a truker company</option>
+                                        <option value="" selected>Select a trucker company</option>
                                         <?php foreach ($Companies  as $key => $value) : ?>
                                             <option value="<?= $value['Id']; ?>" <?php if ($value['Id'] == $Order->IdCompanyService) : ?> selected="selected" <?php endif; ?>><?= $value['CompanyName']; ?></option>
                                         <?php endforeach; ?>
@@ -1052,7 +1054,7 @@
 
                         <!--end col-->
                         <div class="col-md-6">
-                            <span class="text-dark"><b><i data-feather="dollar-sign"></i>Truker Payment</b></span>
+                            <span class="text-dark"><b><i data-feather="dollar-sign"></i>Trucker Payment</b></span>
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
@@ -1083,19 +1085,19 @@
                                         </div>
 
                                         <div class="col-md-6">
-                                            <label class="mb-1"><i class="fa fa-lock text-secondary"></i> Truker rate</label>
+                                            <label class="mb-1"><i class="fa fa-lock text-secondary"></i> Trucker rate</label>
                                             <input id="TrukerRate" name="TrukerRate" type="text" class="form-control inputNumber" placeholder="$0000"  value="<?= $Order->TrukerRate ?>" readonly>
                                         </div>
                                     </div>
 
                                     <div class="row inputpadding">
                                         <div class="col-md-6">
-                                            <label class="mb-1"><i class="fa fa-dollar-sign"></i><b class="text-dark"> Extra truker Fee</b></label>
+                                            <label class="mb-1"><i class="fa fa-dollar-sign"></i><b class="text-dark"> Extra trucker Fee</b></label>
                                             <input id="ExtraTrukerFee" name="ExtraTrukerFee" type="text" class="form-control inputNumber" placeholder="$0000" value="<?= $Order->ExtraTrukerFee ?>" >
                                         </div>
 
                                         <div class="col-md-6">
-                                            <label class="mb-1"><i class="fa fa-truck"></i> <b class="text-danger">Truker owes us</b></label>
+                                            <label class="mb-1"><i class="fa fa-truck"></i> <b class="text-danger">Trucker owes us</b></label>
                                             <input id="TrukerOwesUs" name="TrukerOwesUs" type="text" class="form-control inputNumber" placeholder="$0000" value="<?= $Order->TrukerOwesUs ?>" >
                                         </div>
                                     </div>
@@ -1145,6 +1147,7 @@
                                             <div class="col">
                                                 <h6 class="mb-0"><b>Origin: </b><span class="OriginNameForm"></span></h6>
                                                 <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="OriginPhone1Form"></span><span class="OriginPhone2Form"></span></h6>
+                                                <h6 class="mb-0"><b><i class="fa fa-envelope"></i> </b><span class="OriginEmailForm"></span></h6>
                                                 <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="OriginAddressForm"></span></h6>
 
                                             </div>
@@ -1152,6 +1155,7 @@
                                             <div class="col">
                                                 <h6 class="mb-0"><b>Destination: </b><span class="DestinationNameForm"></span></h6>
                                                 <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="DestinationPhone1Form"></span> <span class="DestinationPhone2Form"></span></h6>
+                                                <h6 class="mb-0"><b><i class="fa fa-envelope"></i> </b><span class="DestinationEmailForm"></span></h6>
                                                 <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="DestinationAddressForm"></span></h6>
                                             </div>
                                         </div>
@@ -1193,28 +1197,28 @@
                                                         <tr class="bg-light text-secondary" id="TrukerFeeFormTR">
                                                             <th colspan="2" class="border-0"></th>
                                                             <th colspan="2" class="border-0"></th>
-                                                            <td class="border-0 font-14" style="text-align:right !important"><b>Extra Truker Fee</b></td>
+                                                            <td class="border-0 font-14" style="text-align:right !important"><b>Extra Trucker Fee</b></td>
                                                             <td class="border-0 font-14"><b id="TrukerFeeForm">$00.00</b></td>
                                                         </tr>
 
                                                         <tr class="bg-soft-danger text-secondary" id="TrukerOwesUsFormTR">
                                                             <th colspan="2" class="border-0"></th>
                                                             <th colspan="2" class="border-0"></th>
-                                                            <td class="border-0 font-14" style="text-align:right !important"><b>Truker Owes Us</b></td>
+                                                            <td class="border-0 font-14" style="text-align:right !important"><b>Trucker Owes Us</b></td>
                                                             <td class="border-0 font-14"><b id="TrukerOwesUsForm">$00.00</b></td>
                                                         </tr>
 
                                                         <tr class="bg-secondary text-white">
                                                             <th colspan="2" class="border-0"></th>
                                                             <th colspan="2" class="border-0"></th>
-                                                            <td class="border-0 font-14" style="text-align:right !important"><b>Truker COD</b></td>
+                                                            <td class="border-0 font-14" style="text-align:right !important"><b>Trucker COD</b></td>
                                                             <td class="border-0 font-14"><b id="TrukerCODForm">$00.00</b></td>
                                                         </tr>
 
                                                         <tr class="bg-black text-white">
                                                             <th colspan="2" class="border-0"></th>
                                                             <th colspan="2" class="border-0"></th>
-                                                            <td class="border-0 font-14" style="text-align:right !important"><b>Total Rate</b></td>
+                                                            <td class="border-0 font-14" style="text-align:right !important"><b>Trucker Rate</b></td>
                                                             <td class="border-0 font-14"><b id="TrukerRateForm">$00.00</b></td>
                                                         </tr>
                                                     </tfoot>
@@ -1236,13 +1240,13 @@
                                                 <table class="table mb-0" border="0" cellspacing="0">
                                                     <thead>
                                                         <tr>
-                                                            <th style="border-style: none;"><b><i class="fa fa-truck"></i> Truker information</b></th>
+                                                            <th style="border-style: none;"><b><i class="fa fa-truck"></i> Trucker information</b></th>
                                                         <tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
                                                             <td style="border-style: none;">
-                                                                <h6 class="mt-0 mb-1 font-14"><b>Truker company</b></h6>
+                                                                <h6 class="mt-0 mb-1 font-14"><b>Trucker company</b></h6>
                                                                 <p class="mb-0 text-muted IdCompanyServiceForm"></p>
                                                             </td>
 
@@ -2051,6 +2055,9 @@
         $(".DestinationPhone1Form").html($("#DestinationPhone1").val() != "" ? $("#DestinationPhone1").val() : "<span class='text-danger'>Check destination phone1</span>");
         $(".DestinationPhone2Form").html($("#DestinationPhone2").val() != "" ? " / " + $("#DestinationPhone2").val() : "");
 
+        $(".OriginEmailForm").html($("#OriginEmail").val() != "" ? $("#OriginEmail").val() : "");
+        $(".DestinationEmailForm").html($("#DestinationEmail").val() != "" ? $("#DestinationEmail").val() : "");
+     
         //Vehicles Step info
 
         var Vin, Brand, Model, ConditionVehicle, CarrierType, Color, Year, Vin = "";
@@ -2298,7 +2305,7 @@
 
                 $('#IdCompanyService').empty();
 
-                var optionDefault = new Option("Select truker company", "", true, true);
+                var optionDefault = new Option("Select trucker company", "", true, true);
                 $('#IdCompanyService').append(optionDefault);
 
                 data.forEach(element => {
@@ -2306,7 +2313,7 @@
                     $('#IdCompanyService').append(optionBucle); //.trigger('change');
                 });
 
-                $(".toast-success").html("Truker list ready");
+                $(".toast-success").html("Trucker list ready");
                 var myAlert = document.getElementById('toastSuccess');
                 var bsAlert = new bootstrap.Toast(myAlert);
                 bsAlert.show();
@@ -2315,7 +2322,7 @@
 
             } else {
 
-                $(".toast-error").html("(x) Error to load Truker list");
+                $(".toast-error").html("(x) Error to load Trucker list");
                 var myAlert = document.getElementById('toastError');
                 var bsAlert = new bootstrap.Toast(myAlert);
                 bsAlert.show();

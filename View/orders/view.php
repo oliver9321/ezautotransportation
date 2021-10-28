@@ -421,19 +421,19 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label class="mb-1"><i class="fa fa-lock text-secondary"></i> Truker rate</label>
+                                    <label class="mb-1"><i class="fa fa-lock text-secondary"></i> Trucker rate</label>
                                     <input id="TrukerRate" name="TrukerRate" type="number" class="form-control" placeholder="$0000" value="<?= $Order->TrukerRate ?>" readonly>
                                 </div>
                             </div>
 
                             <div class="row inputpadding">
                                 <div class="col-md-6">
-                                    <label class="mb-1"><i class="fa fa-dollar-sign"></i><b class="text-warning"> Extra truker Fee</b></label>
+                                    <label class="mb-1"><i class="fa fa-dollar-sign"></i><b class="text-warning"> Extra trucker Fee</b></label>
                                     <input id="ExtraTrukerFee" name="ExtraTrukerFee" type="number" class="form-control" placeholder="$0000" value="<?= $Order->ExtraTrukerFee ?>" readonly>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label class="mb-1"><i class="fa fa-truck"></i> <b class="text-danger">Truker owes us</b></label>
+                                    <label class="mb-1"><i class="fa fa-truck"></i> <b class="text-danger">Trucker owes us</b></label>
                                     <input id="TrukerOwesUs" name="TrukerOwesUs" type="number" class="form-control" placeholder="$0000" value="<?= $Order->TrukerOwesUs ?>" readonly>
                                 </div>
                             </div>
@@ -460,7 +460,7 @@
                                 <label class="mb-1">Company name</label>
                                 <div class="input-group">
                                     <select style="width: 100%;" id="IdCompanyService" name="IdCompanyService" class="select2 form-control mb-3 custom-select" readonly>
-                                        <option value="" selected>Select a truker company</option>
+                                        <option value="" selected>Select a trucker company</option>
                                         <?php foreach ($Companies  as $key => $value) : ?>
                                             <option value="<?= $value['Id']; ?>" <?php if ($value['Id'] == $Order->IdCompanyService) : ?> selected="selected" <?php endif; ?>><?= $value['CompanyName']; ?></option>
                                         <?php endforeach; ?>

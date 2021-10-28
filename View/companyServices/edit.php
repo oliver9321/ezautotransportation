@@ -9,10 +9,10 @@
                         <div class="page-title-box">
                             <div class="row">
                                 <div class="col">
-                                    <h4 class="page-title">Truker Company</h4>
+                                    <h4 class="page-title">Trucker Company</h4>
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="?c=Dashboard&a=Index">Dashboard</a></li>
-                                        <li class="breadcrumb-item "><a href="?c=companyServices&a=Index">Truker Company list</a></li>
+                                        <li class="breadcrumb-item "><a href="?c=companyServices&a=Index">Trucker Company list</a></li>
                                         <li class="breadcrumb-item active"><a href="#"><b>Management</b></a></li>
                                     </ol>
                                 </div>
@@ -35,7 +35,7 @@
                     <div class="col-sm-8 offset-sm-2">
                         <div class="card">
                             <div class="card-header bg-dark">
-                                <h4 class="card-title text-white">Truker Company</h4>
+                                <h4 class="card-title text-white">Trucker Company</h4>
                                 <p class="text-muted mb-0">Management</p>
                             </div>
                    

@@ -78,8 +78,8 @@
                                     <th class="text-center"><b>Delivery Date</b></th>
                                     <th class="text-center"><b>Origin City</b></th>
                                     <th class="text-center"><b>Destination City</b></th>
-                                    <th class="text-center"><b>Truker Company</b></th>
-                                    <th class="text-center"><b>Truker Phone</b></th>
+                                    <th class="text-center"><b>Trucker Company</b></th>
+                                    <th class="text-center"><b>Trucker Phone</b></th>
                                     <th class="text-center"><b>Driver</b></th>
                                     <th class="text-center"><b>Driver Phone</b></th>
                                     <th class="text-center"><b>Origin Note</b></th>
@@ -101,8 +101,8 @@
                                     <th class="text-center">Delivery Date</th>
                                     <th class="text-center">Origin City</th>
                                     <th class="text-center">Destination City</th>
-                                    <th class="text-center"><b>Truker Company</b></th>
-                                    <th class="text-center"><b>Truker Phone</b></th>
+                                    <th class="text-center"><b>Trucker Company</b></th>
+                                    <th class="text-center"><b>Trucker Phone</b></th>
                                     <th class="text-center"><b>Driver</b></th>
                                     <th class="text-center"><b>Driver Phone</b></th>
                                     <th class="text-center"><b>Origin Note</b></th>

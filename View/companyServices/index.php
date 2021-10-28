@@ -1,11 +1,11 @@
 <br>
-<a href="?c=companyServices&a=Edit" class="btn btn-info">New truker company <i class="fa fa-plus" aria-hidden="true"></i></a>
+<a href="?c=companyServices&a=Edit" class="btn btn-info">New trucker company <i class="fa fa-plus" aria-hidden="true"></i></a>
 <hr>
 <div class="row">
    <div class="col-12">
       <div class="card">
           <div class="card-header bg-dark">
-              <h4 class="card-title text-white">TRUKER COMPANY LISTS</h4>
+              <h4 class="card-title text-white">TRUCKER COMPANY LISTS</h4>
                <p class="text-muted mb-0">Report</p>
             </div><!--end card-header-->
             

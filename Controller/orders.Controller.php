@@ -182,50 +182,7 @@ class OrdersController
         }
     }
 
-       //Vista Editar
-       public function Edit2(){
-
-        $OrderArray = "";
-
-        if($_SESSION['UserOnline']->Profile == "admin") {
-        
-        if(isset($_REQUEST['Id'])){
-
-            $this->orderStatus    = new OrderStatus();
-            $this->customer       = new Customers();
-            $this->companies      = new CompanyServices();
-            $this->drivers        = new Drivers();
-            
-            $OrderStatusList  =  $this->orderStatus->GetListOrderStatus();
-            $CustomerList     =  $this->customer->GetListCustomers();
-            $Companies        =  $this->companies->GetListCompanyServices();
-            $DriverList       =  $this->drivers->GetListDrivers();
-
-            $OrderArray           = $this->model->Edit($_REQUEST['Id']);
-
-            $Order                = $OrderArray['order'];
-            $CustomerOrigin       = $OrderArray['CustomerOrigin']; // OLIVER
-            $CustomerDestination  = $OrderArray['CustomerDestination'];
-            $CompanyService       = $OrderArray['CompanyService'];
-            $Payment              = $OrderArray['payments'];
-            $Driver               = $OrderArray['Driver'];
-            $OrderDetail          = $OrderArray['order_details'];
-            $OrderDetail          = json_encode($OrderDetail,true);
-            
-            GetRouteView(null, "header");
-            require_once 'View/orders/edit.php';
-            GetRouteView(null, "footer");
-            
-        
-        }else{
-            header('Location:index.php?c=dashboard&a=index');
-        }
-
-
-        }else{
-            header('Location:permision.php');
-        }
-    }
+    
 
     public function SaveOrder(){
 

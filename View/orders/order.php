@@ -109,7 +109,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info">
-            <h6 class="modal-title m-0" id="ModalNewCompanyServiceLabel"> <i class="fa fa-truck me-2"></i> New Truker Company</h6>
+            <h6 class="modal-title m-0" id="ModalNewCompanyServiceLabel"> <i class="fa fa-truck me-2"></i> New Trucker Company</h6>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!--end modal-header-->
@@ -763,13 +763,14 @@
                                                 <div class="col">
                                                         <h6 class="mb-0"><b>Origin: </b><span class="OriginNameForm"></span></h6>
                                                         <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="OriginPhone1Form"></span><span class="OriginPhone2Form"></span></h6>
+                                                        <h6 class="mb-0"><b><i class="fa fa-envelope"></i> </b><span class="OriginEmailForm"></span></h6>
                                                         <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="OriginAddressForm"></span></h6>
-                                                       
                                                 </div>
                                             
                                                 <div class="col">
                                                         <h6 class="mb-0"><b>Destination: </b><span class="DestinationNameForm"></span></h6>
                                                         <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="DestinationPhone1Form"></span> <span class="DestinationPhone2Form"></span></h6>
+                                                        <h6 class="mb-0"><b><i class="fa fa-envelope"></i> </b><span class="DestinationEmailForm"></span></h6>
                                                         <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="DestinationAddressForm"></span></h6>
                                                 </div>
                                             </div>
@@ -1490,6 +1491,10 @@ function loadInfoPDF1(){
    
     $(".DestinationPhone1Form").html($("#DestinationPhone1").val() != "" ? $("#DestinationPhone1").val() :  "<span class='text-danger'>Check destination phone1</span>");
     $(".DestinationPhone2Form").html($("#DestinationPhone2").val() != "" ? " / " + $("#DestinationPhone2").val() : "");
+
+    
+    $(".OriginEmailForm").html($("#OriginEmail").val() != "" ? $("#OriginEmail").val() : "");
+    $(".DestinationEmailForm").html($("#DestinationEmail").val() != "" ? $("#DestinationEmail").val() : "");
 
     //Vehicles Step info
 
