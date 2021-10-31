@@ -371,6 +371,11 @@ class OrdersController
                             $Orders->Cod                      = str_replace(',','',$params['Cod']);
                             $Orders->TrukerRate               = str_replace(',','',$params['TrukerRate']);
                             $Orders->CancelledNote           = "";
+                            $Orders->PaymentStatus           = "N/A";
+                            if($Orders->ExtraTrukerFee > 0 || $Orders->TrukerOwesUs > 0){
+                                $Orders->PaymentStatus = "Pending"; 
+                            }
+
                             $Orders->IdCompanyService        = $params['IdCompanyService'];
                             $Orders->IdDriver                = $params['IdDriver'];
                             $Orders->IsActive                = 1;
@@ -575,8 +580,7 @@ class OrdersController
             $result = "";
 
                 $Orders->Id = $_POST['Id'];
-                $Orders->ExtraTrukerFee  = 0;
-                $Orders->TrukerOwesUs = 0;
+                $Orders->PaymentStatus = 'Paid';
                 $result = $Orders->PayExtraTruckerFeeAndTrukerOwesUs($Orders);
 
             echo json_encode($result, true);

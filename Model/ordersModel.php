@@ -39,6 +39,7 @@ class Orders {
     public $CancelledNote;
     public $CustomerOrigin;
     public $CustomerDestination;
+    public $PaymentStatus;
 
     public function __CONSTRUCT()
     {
@@ -53,7 +54,7 @@ class Orders {
     {
         try
         {
-                $stm = $this->pdo->prepare("SELECT Id, IdPayment, Status, CustomerOrigin, CustomerOrigin, CustomerOriginPhone1, CustomerDestination, CustomerDestinationPhone1, OrderDate, PickUpDate, DeliveryDate, OriginCity, DestinationCity, Deposit, CompanyServices, CompanyPhone1, DriverName, DriverPhone1, OriginNote, DestinationNote, CancelledNote FROM vw_orders where IsActive = 1");
+                $stm = $this->pdo->prepare("SELECT Id, IdPayment, Status, CustomerOrigin, CustomerOrigin, CustomerOriginPhone1, CustomerDestination, CustomerDestinationPhone1, OrderDate, PickUpDate, DeliveryDate, OriginCity, DestinationCity, Deposit, CompanyServices, CompanyPhone1, DriverName, DriverPhone1, OriginNote, DestinationNote, CancelledNote, PaymentStatus, DateCreation FROM vw_orders where IsActive = 1");
                 $stm->execute();
 
                 $row = $stm->fetchAll();
@@ -120,7 +121,7 @@ class Orders {
     {
         try
         {
-            $stm = $this->pdo->prepare("SELECT *  FROM tbl_orders WHERE Id = ?");
+            $stm = $this->pdo->prepare("SELECT *  FROM tbl_orders WHERE Id = ? AND IsActive = 1");
             $stm->execute(array($id));
 
             return $stm->fetch(PDO::FETCH_OBJ);
@@ -272,7 +273,8 @@ class Orders {
 						LastModificationDate = ?,
 						UserIdLastModification = ?,
 						IsActive = ?,
-                        CancelledNote = ?
+                        CancelledNote = ?,
+                        PaymentStatus= ?
 				    WHERE Id = ?";
 
 $result = $this->pdo->prepare($sql)->execute(
@@ -307,6 +309,7 @@ $result = $this->pdo->prepare($sql)->execute(
                         (int)$_SESSION['UserOnline']->Id,
                         (int)$data->IsActive,
                         $data->CancelledNote,
+                        $data->PaymentStatus,
                         intval($data->Id)
                     )
                 );
@@ -378,14 +381,6 @@ $result = $this->pdo->prepare($sql)->execute(
                
                 return $this->pdo->lastInsertId();
 
-                        // $data->ExtraTrukerFee,
-                       // $data->TrukerOwesUs,
-                       // $data->Earnings,
-                       // $data->Cod,
-                       // $data->TrukerRate,
-                        // $data->IdCompanyService,
-                       //$data->IdDriver,
-
         } catch (Exception $e)
         {
             die("insert order:".$e->getMessage());
@@ -394,35 +389,35 @@ $result = $this->pdo->prepare($sql)->execute(
 
     public function getCountOrders(){
 
-        $stm2 = $this->pdo->prepare("SELECT COUNT(*) as CountOrders FROM tbl_orders WHERE IsActive = 1");
+        $stm2 = $this->pdo->prepare("SELECT COUNT(*) as CountOrders FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4"); //Distinta de cancelado
         $stm2->execute();
         return $stm2->fetch();
     }
 
     public function getCountOrdersPending(){
 
-        $stm2 = $this->pdo->prepare("SELECT COUNT(*) as CountOrders FROM vw_orders WHERE IsActive = 1 and Status = 'Pending'");
+        $stm2 = $this->pdo->prepare("SELECT COUNT(*) as CountOrders FROM tbl_orders WHERE IsActive = 1 and OrderStatusID = 1"); //Pending
         $stm2->execute();
         return $stm2->fetch();
     }
 
     public function getCountOrdersCancelled(){
 
-        $stm2 = $this->pdo->prepare("SELECT COUNT(*) as CountOrders FROM vw_orders WHERE IsActive = 1 and Status = 'Cancelled'");
+        $stm2 = $this->pdo->prepare("SELECT COUNT(*) as CountOrders FROM tbl_orders WHERE IsActive = 1 and OrderStatusID = 4"); // canceled
         $stm2->execute();
         return $stm2->fetch();
     }
 
     public function getCountOrdersDelivered(){
 
-        $stm2 = $this->pdo->prepare("SELECT COUNT(*) as CountOrders FROM vw_orders WHERE IsActive = 1 and Status = 'Delivered'");
+        $stm2 = $this->pdo->prepare("SELECT COUNT(*) as CountOrders FROM tbl_orders WHERE IsActive = 1 and OrderStatusID = 3"); //Delivered
         $stm2->execute();
         return $stm2->fetch();
     }
 
     public function getCountOrdersPickedUp(){
 
-        $stm2 = $this->pdo->prepare("SELECT COUNT(*) as CountOrders FROM vw_orders WHERE IsActive = 1 and Status = 'Picked up'");
+        $stm2 = $this->pdo->prepare("SELECT COUNT(*) as CountOrders FROM tbl_orders WHERE IsActive = 1 and OrderStatusID = 2"); //PickUp
         $stm2->execute();
         return $stm2->fetch();
     }
@@ -500,13 +495,13 @@ $result = $this->pdo->prepare($sql)->execute(
         try{
             if($data->OrderStatusID == 4){
 
-                $sql = "UPDATE tbl_orders SET OrderStatusID  = ?, CancelledNote = ?, TrukerOwesUs = 0, Deposit = 0, ExtraTrukerFee = 0, Earnings = 0 , Cod = 0, Total = 0, TrukerRate = 0 WHERE Id = ?";
+                $sql = "UPDATE tbl_orders SET OrderStatusID  = ?, CancelledNote = ?, TrukerOwesUs = 0, Deposit = 0, ExtraTrukerFee = 0, Earnings = 0 , Cod = 0, Total = 0, TrukerRate = 0, PaymentStatus = 'N/A' WHERE Id = ? AND IsActive = 1";
                 return $this->pdo->prepare($sql)->execute(array($data->OrderStatusID,$data->CancelledNote, $data->Id));
 
             }else{
 
-                $sql = "UPDATE tbl_orders SET OrderStatusID  = ? , CancelledNote = ? WHERE Id = ?";
-                return $this->pdo->prepare($sql)->execute(array($data->OrderStatusID,$data->CancelledNote, $data->Id ));
+                $sql = "UPDATE tbl_orders SET OrderStatusID  = ? WHERE Id = ? AND IsActive = 1";
+                return $this->pdo->prepare($sql)->execute(array($data->OrderStatusID, $data->Id ));
             }
             
 
@@ -519,8 +514,8 @@ $result = $this->pdo->prepare($sql)->execute(
  public function PayExtraTruckerFeeAndTrukerOwesUs($data){
     
     try{
-        $sql = "UPDATE tbl_orders SET ExtraTrukerFee  = ?, TrukerOwesUs = ? WHERE Id = ?";
-        return $this->pdo->prepare($sql)->execute(array($data->ExtraTrukerFee, $data->TrukerOwesUs, $data->Id));
+        $sql = "UPDATE tbl_orders SET PaymentStatus  = ? WHERE Id = ? AND IsActive = 1";
+        return $this->pdo->prepare($sql)->execute(array($data->PaymentStatus, $data->Id));
     } catch (Exception $e){
         die("PayExtraTruckerFee: ".$e->getMessage());
     }

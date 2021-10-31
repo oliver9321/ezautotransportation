@@ -10,21 +10,20 @@
             <div class="card-body">  
             <table id="PaymentsList" width="100%" class="table table-bordered table-hover">
                     <thead>
-                        <tr class="bg-light"><th class="text-center">Options</th>
+                        <tr class="bg-light">
+                            <th class="text-center">Options</th>
                              <th><b>Payment ID</b></th>
                              <th><b>Order ID</b></th>  
                              <th><b>Order Status</b></th>
-                             <th class="text-warning"><b>Extra trucker fee?</b</th>  
-                            <th class="text-danger"><b>Trucker owes us?</b></th>                            
                             <th><b>Customer</b></th>
                             <th><b>Company</b></th>                           
                             <th><b>Driver</b></th>
                             <th><b>Order date</th>  
                             <th class="sum"><b>Total</b></th>  
                             <th class="sum"><b>Deposit</b></th>  
+                            <th class="sum text-success"><b>Earnings</b></th> 
                             <th class="sum text-warning"><b>Extra trucker fee</b</th>  
                             <th class="sum text-danger"><b>Trucker owes us</b></th>  
-                            <th class="sum text-success"><b>Earnings</b></th>  
                         </tr>
                      </thead>
                      <tbody></tbody>
@@ -37,14 +36,12 @@
                             <th></th>
                             <th></th>                           
                             <th></th>
-                            <th></th>                           
+                            <th class="font-weight-bold"><b>Sum:</b></th>                           
                             <th></th>
-                            <th class=" font-weight-bold"><b>Total:</b></th>
-                            <th class=""></th>  
-                            <th class=""></th>  
+                            <th></th>  
+                            <th class="text-success font-weight-bold"></th>
                             <th class="text-warning font-weight-bold"></th>  
                             <th class="text-danger font-weight-bold"></th>  
-                            <th class="text-success font-weight-bold"></th>  
                         </tr>
                     </tfoot>
                    </table>
@@ -67,7 +64,6 @@
                         <div class="col-md-12" >
                                             <label class="mb-1"><b>Order ID</b></label>
                                             <input type="text" id="Id" readonly class="form-control">
-                                            <span class="text-muted">The amount greater than 0 will be paid.</span>
                                         </div><br>
                                                     
                                  </div>
@@ -135,17 +131,15 @@ $(document).ready(function() {
             {data: "PaymentID"},
             {data: "OrderID"},
             {data:"Status"},
-            {data: "Debemos"},
-            {data: "NosDeben"},
             {data: "Name"},
             {data: "CompanyName"},
             {data: "DriverName"},
             {data: "OrderDate"},
             {data: "Total"},
             {data: "Deposit"},
+            {data: "Earnings"},
             {data: "ExtraTrukerFee"},
-            {data: "TrukerOwesUs"},
-            {data: "Earnings"}
+            {data: "TrukerOwesUs"}
         ],"columnDefs": [
             {
             "targets":0,
@@ -156,6 +150,7 @@ $(document).ready(function() {
                 "targets": 3,
                 "render": function (data, type, row) {
 
+                  
                     switch (data) {
 
                             case 'Pending':
@@ -180,16 +175,75 @@ $(document).ready(function() {
                     }
 
                     return data;
+
                 }}, {
-                "targets": 4,
+                "targets": 11,
                 "render": function (data, type, row) {
-                    return (data == "Pending" ?  '<center><span class="badge badge-soft-danger px-2">'+data+'</span></center>'  : '<center><span class="badge badge-soft-dark px-2">'+data+'</span></center>')
+
+                    let status = 'N/A';
+                    if(data.includes('Pending')){
+                        status = 'Pending'
+                    }else if(data.includes('Paid')){
+                        status = 'Paid'
+                    }
+
+                    let valueRow = data.substring(0,data.indexOf('-')); 
+
+                    switch (status) {
+
+                            case 'Pending':
+                                data = '<center>'+valueRow+ '<span class="badge badge-soft-danger px-2"> '+status+'</span></center>'
+                            break;
+
+                            case 'Paid':
+                                data = '<center>'+valueRow+ '<span class="badge badge-soft-success px-2">' +status+'</span></center>'
+                            break;
+
+                            case 'N/A':
+                                data = '<center>'+valueRow+ '<span class="badge badge-soft-secondary px-2"> '+status+'</span></center>'
+                            break;
+
+                            default:
+                                data = '<center>'+valueRow+ '<span class="badge badge-soft-secondary px-2"> '+status+'</span></center>'
+                            break;
+
+                            }
+
+                            return data;
          
                 }},{
-                "targets": 5,
+                "targets": 12,
                 "render": function (data, type, row) {
-                    return (data == "Pending" ?  '<center><span class="badge badge-soft-danger px-2">'+data+'</span></center>'  : '<center><span class="badge badge-soft-dark px-2">'+data+'</span></center>')
-         
+                    let status = 'N/A';
+                    if(data.includes('Pending')){
+                        status = 'Pending'
+                    }else if(data.includes('Paid')){
+                        status = 'Paid'
+                    }
+
+                    let valueRow = data.substring(0,data.indexOf('-')); 
+
+                    switch (status) {
+
+                            case 'Pending':
+                                data = '<center>'+valueRow+ '<span class="badge badge-soft-danger px-2"> '+status+'</span></center>'
+                            break;
+
+                            case 'Paid':
+                                data = '<center>'+valueRow+ '<span class="badge badge-soft-success px-2">' +status+'</span></center>'
+                            break;
+
+                            case 'N/A':
+                                data = '<center>'+valueRow+ '<span class="badge badge-soft-secondary px-2"> '+status+'</span></center>'
+                            break;
+
+                            default:
+                                data = '<center>'+valueRow+ '<span class="badge badge-soft-secondary px-2"> '+status+'</span></center>'
+                            break;
+
+                            }
+
+                            return data;
                 }} ]
     });
 
@@ -212,7 +266,7 @@ function PayOrder(){
 
         if(response == 'true' || response == true){
             
-            $(".toast-success").html("Paid order !");
+            $(".toast-success").html("The order has been paid");
             var myAlert = document.getElementById('toastSuccess');
             var bsAlert = new bootstrap.Toast(myAlert);
             bsAlert.show();

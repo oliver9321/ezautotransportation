@@ -480,7 +480,7 @@
                                         <!-- end row -->
                                         <div class="col-md-6">
                                             <label class="mb-1"><b>Order status</b><b class="text-danger">*</b></label>
-                                            <select id="OrderStatusID" name="OrderStatusID" class="form-control">
+                                            <select id="OrderStatusID" name="OrderStatusID" class="form-control" readonly>
                                                 <?php foreach ($OrderStatusList  as $key => $value) : ?>
                                                     <option value="<?= $value['Id']; ?>" <?php if ($value['Id'] == $Order->OrderStatusID) : ?> selected="selected" <?php endif; ?>><?= $value['Status']; ?></option>
                                                 <?php endforeach; ?>
