@@ -251,7 +251,7 @@
             <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal" data-bs-target="#ModalNewDriver"><i class="fa fa-bus me-2"></i>New driver</button>
             <button type="button" class="btn btn-soft-danger btn-sm" onclick="$('input, textarea, select').val('');">Clear all fields</button>
             <button type="button" id="LoadingButton" class="btn btn-soft-light btn-sm">
-                <div class="spinner-border spinner-border-sm text-danger" role="status"></div>
+                <div class="spinner-border spinner-border-sm text-dark" role="status"></div>
             </button>
         </div>
         <!--end card-header-->
@@ -735,7 +735,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label class="mb-1"><i class="fa fa-sticky-note"></i> Payment note</label>
-                                    <textarea id="PaymentNote" name="PaymentNote" class="form-control" placeholder="Opcional information" maxlength="200 rows=" 5"><?= $Payment->PaymentNote; ?></textarea>
+                                    <textarea id="PaymentNote" name="PaymentNote" class="form-control" placeholder="Opcional information" maxlength="200" rows="5"><?= $Payment->PaymentNote; ?></textarea>
                                 </div>
                                 <!-- end row -->
                             </div>
@@ -1072,7 +1072,7 @@
 
                                         <div class="col-md-3">
                                             <label class="mb-1"><i class="fa fa-money-bill"></i><b class="text-success"> Earnings</b></label>
-                                            <input id="Earnings" name="Earnings" type="text" class="form-control inputNumber" placeholder="$0000"  value="<?= $Order->Earnings ?>" readonly>
+                                            <input id="Earnings" name="Earnings" type="text" class="form-control inputNumber" placeholder="$0000"  value="<?= $Order->Earnings ?>">
                                         </div>
 
                                     </div><br>
@@ -1351,6 +1351,7 @@
 <script src="assets/js/ordersEdit.js"></script>
 <script src="assets/js/jquery.mask.js"></script>
 <script type="text/javascript">
+
     $("#LoadingButton").hide();
     $("#ButtonExit").hide();
     GetListVehicles();
@@ -1363,7 +1364,7 @@
         $("#Cvv").mask('0000');
         $("#CreditCard").mask("0000 0000 0000 0000");
 
-        $('.inputNumber').on("keyup keypress blur change",function() {
+        $('.inputNumber').on("keypress blur change",function() {
             $('.inputNumber').mask("#,##0.00", { reverse: true });
         });
 
@@ -1371,6 +1372,7 @@
         $('.inputDate').mask("00/00/0000", {
             placeholder: "MM/DD/YYYY"
         });
+
 
         $("body").addClass("enlarge-menu");
         $(".steps, .actions").addClass("d-print-none");
@@ -1884,6 +1886,7 @@
 
             var Earning1 = RestNumber($("#Deposit").val(), $("#ExtraTrukerFee").val());
             $("#Earnings").val(SumNumber(Earning1, $("#TrukerOwesUs").val()));
+            $("#Earnings").toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 
             $("#Cod").val(RestNumber($("#Total").val(), $("#Deposit").val()));
 
@@ -1908,14 +1911,13 @@
 
             var Earning1 = RestNumber($("#Deposit").val(), $("#ExtraTrukerFee").val());
             $("#Earnings").val(SumNumber(Earning1, $("#TrukerOwesUs").val()));
+            $("#Earnings").toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 
             $("#Cod").val(RestNumber($("#Total").val(), $("#Deposit").val()));
 
             var sum1 = SumNumber($("#ExtraTrukerFee").val(), $("#Cod").val());
             $("#TrukerRate").val(RestNumber(sum1, $("#TrukerOwesUs").val()));
 
-         
-            
         }
 
     $("#SearchVehicles").click(function() {
@@ -2611,7 +2613,7 @@
             x2 = parseFloat(number2.toString().replace(',', ''));
         }
 
-        return x1 + x2;
+        return (x1 + x2).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
     }
 
     function ConvertNumber(number1) {
@@ -2643,7 +2645,7 @@
             x2 = parseFloat(number2.toString().replace(',', ''));
         }
 
-        return x1 - x2;
+        return (x1 - x2).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 
     }
 
