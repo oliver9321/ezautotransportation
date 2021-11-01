@@ -251,7 +251,7 @@
             <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal" data-bs-target="#ModalNewDriver"><i class="fa fa-bus me-2"></i>New driver</button>
             <button type="button" class="btn btn-soft-danger btn-sm" onclick="$('input, textarea, select').val('');">Clear all fields</button>
             <button type="button" id="LoadingButton" class="btn btn-soft-light btn-sm">
-                <div class="spinner-border spinner-border-sm text-dark" role="status"></div>
+                <div class="spinner-border spinner-border-sm text-info" role="status"></div>
             </button>
         </div>
         <!--end card-header-->
@@ -309,7 +309,7 @@
                                     <div class="col-md-12">
                                         <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Origin address<b class="text-danger">*</b></label>
                                         <input style="display:none;" />
-                                        <input id="OriginAddress" name="OriginAddress" type="text" class="form-control originInput" placeholder="Ex. 12141 Pembroke Rd,..." value="<?= $Order->OriginAddress; ?>">
+                                        <input id="OriginAddress" name="OriginAddress" type="text" class="form-control originInput" placeholder="Ex. 12141 Pembroke Rd,..." value="<?= $Order->OriginAddress; ?>" maxlength="200" minlength="10">
                                     </div>
                                     <!-- end row -->
                                 </div>
@@ -480,7 +480,7 @@
                                         <!-- end row -->
                                         <div class="col-md-6">
                                             <label class="mb-1"><b>Order status</b><b class="text-danger">*</b></label>
-                                            <select id="OrderStatusID" name="OrderStatusID" class="form-control" readonly>
+                                            <select id="OrderStatusID" name="OrderStatusID" class="form-control">
                                                 <?php foreach ($OrderStatusList  as $key => $value) : ?>
                                                     <option value="<?= $value['Id']; ?>" <?php if ($value['Id'] == $Order->OrderStatusID) : ?> selected="selected" <?php endif; ?>><?= $value['Status']; ?></option>
                                                 <?php endforeach; ?>
@@ -506,80 +506,175 @@
                                                 <div class="form-group row d-flex align-items-end">
                                                     <div class="row">
 
-                                                        <div class="row registroVehiculo" id="templateVehiculo" style="padding-bottom:20px !important" hidden>
+                                                    
+                                                    <div class="row registroVehiculo" id="templateVehiculo" style="padding-bottom:20px !important" hidden>
 
-                                                            <div class="col-sm-2">
-                                                                <label class="mb-1 text-danger"><b>Brand</b></label>
-                                                                <select name="Brand" onchange="GetModelsByBrand(this)" class="select2 form-control mb-3 custom-select BrandVehicle vehicleList">
-                                                                    <option value="">Select brand</option>
-                                                                </select>
-                                                            </div>
+                                                        <div class="col-sm-2">
+                                                            <label class="mb-1 text-danger"><b>Brand</b></label>
+                                                            <select  name="Brand" onchange="GetModelsByBrand(this)" class="select2 form-control mb-3 custom-select BrandVehicle vehicleList">
+                                                                <option value="">Select brand</option>
+                                                                <?php foreach ($BrandsList as $key => $value) : ?>
+                                                                            <option value="<?= $value['Brand']; ?>"><?= $value['Brand']; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>
 
-                                                            <div class="col-sm-2">
-                                                                <label class="mb-1 text-danger"><b>Model</b></label>
-                                                                <select name="Model" class="select2 form-control mb-3 custom-select ModelVehicle vehicleList">
-                                                                    <option value="">Select model</option>
-                                                                </select>
-                                                            </div>
-
-                                                            <!--end col-->
-                                                            <div class="col-sm-1">
-                                                                <label class="mb-1 text-danger"><b>Year</b></label>
-                                                                <input type="text" name="Year" minlength="4" maxlength="5" class="form-control YearVehicle vehicleList" placeholder="">
-                                                            </div>
-
-                                                            <!-- end row -->
-                                                            <div class="col-sm-1">
-                                                                <label class="mb-1 text-danger"><b>Color</b></label>
-                                                                <select name="Color" class="form-control ColorVehicle vehicleList">
-                                                                    <option value="">Colors</option>
-                                                                    <option value="White"> White</option>
-                                                                    <option value="Black"> Black</option>
-                                                                    <option value="Gray"> Gray</option>
-                                                                    <option value="Silver"> Silver</option>
-                                                                    <option value="Blue"> Blue</option>
-                                                                    <option value="Red"> Red</option>
-                                                                    <option value="Brown/Beige"> Brown/Beige</option>
-                                                                    <option value="Yellow/Gold"> Yellow/Gold</option>
-                                                                    <option value="Green"> Green</option>
-                                                                    <option value="Other"> Other</option>
-
-                                                                </select>
-                                                            </div>
-
-                                                            <div class="col-sm-1">
-                                                                <label class="mb-1 text-danger"><b>Carrier</b></label>
-                                                                <select name="CarrierType" class="form-control CarrierTypeVehicle vehicleList">
-                                                                    <option value="">Carriers</option>
-                                                                    <option value="Open">Open</option>
-                                                                    <option value="Enclosed">Enclosed</option>
-                                                                </select>
-                                                            </div>
-
-                                                            <div class="col-sm-1">
-                                                                <label class="mb-1 text-danger"><b>Condition</b></label>
-                                                                <select name="ConditionVehicle" class="form-control ConditionVehicle vehicleList">
-                                                                    <option value="">Conditions</option>
-                                                                    <option value="Running">Running</option>
-                                                                    <option value="Non-running">Non-running</option>
-                                                                </select>
-                                                            </div>
-
-
-                                                            <div class="col-sm-3">
-                                                                <label class="mb-1"><b>Vin</b></label>
-                                                                <div class="input-group">
-                                                                    <input type="text" name="Vin" class="form-control VinVehicle vehicleList" style="text-transform:uppercase" maxlength="20">
-                                                                    <button type="button" title="Delete vehicle" onclick="EliminarVehiculo(this)" class="btn btn-outline-danger"> <span class="far fa-trash-alt me-1"></span> </button>
-                                                                </div>
-                                                            </div>
+                                                        <div class="col-sm-2">
+                                                            <label class="mb-1 text-danger"><b>Model</b></label>
+                                                            <select  name="Model" class="select2 form-control mb-3 custom-select ModelVehicle vehicleList">
+                                                                <option value="">Select model</option>
+                                                                <?php foreach ($ModelsList as $key => $value) : ?>
+                                                                            <option value="<?= $value['Model']; ?>"><?= $value['Model']; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                        </div>
 
                                                             <!--end col-->
+                                                         <div class="col-sm-1">
+                                                            <label class="mb-1 text-danger"><b>Year</b></label>
+                                                            <input type="text"  name="Year"  minlength="4" maxlength="5" class="form-control YearVehicle vehicleList" placeholder="">
+                                                        </div>
+
+                                                              <!-- end row -->
+                                                         <div class="col-sm-1">
+                                                            <label class="mb-1 text-danger"><b>Color</b></label>
+                                                            <select  name="Color" class="form-control ColorVehicle vehicleList">
+                                                            <option value="">Colors</option>
+                                                                <option value="White"> White</option>
+                                                                <option value="Black"> Black</option>
+                                                                <option value="Gray"> Gray</option>
+                                                                <option value="Silver"> Silver</option>
+                                                                <option value="Blue"> Blue</option>
+                                                                <option value="Red"> Red</option>
+                                                                <option value="Brown/Beige"> Brown/Beige</option>
+                                                                <option value="Yellow/Gold"> Yellow/Gold</option>
+                                                                <option value="Green"> Green</option>
+                                                                <option value="Other"> Other</option>
+
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="col-sm-1" >
+                                                            <label class="mb-1 text-danger"><b>Carrier</b></label>
+                                                            <select  name="CarrierType" class="form-control CarrierTypeVehicle vehicleList">
+                                                            <option value="">Carriers</option>
+                                                                <option value="Open">Open</option>
+                                                                <option value="Enclosed">Enclosed</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="col-sm-1" >
+                                                            <label class="mb-1 text-danger"><b>Condition</b></label>
+                                                            <select  name="ConditionVehicle" class="form-control ConditionVehicle vehicleList">
+                                                                <option value="">Conditions</option>
+                                                                <option value="Running">Running</option>
+                                                                <option value="Non-running">Non-running</option>
+                                                            </select>
+                                                        </div>
+
+
+                                                        <div class="col-sm-3">
+                                                        <label class="mb-1"><b>Vin</b></label>
+                                                            <div class="input-group">
+                                                                <input type="text" name="Vin" class="form-control VinVehicle vehicleList" style="text-transform:uppercase" maxlength="20">
+                                                                <button type="button" title="Delete vehicle" onclick="EliminarVehiculo(this)"  class="btn btn-outline-danger"> <span class="far fa-trash-alt me-1"></span> </button>
+                                                            </div>
+                                                        </div>
+
+                                                        <!--end col-->
 
                                                         </div>
 
                                                         <!--- HASTA AQUI-->
-                                                        <div class="col-md-12" id="contentVehicle" style="overflow-y: auto; height:210px"></div>
+                                                        <div class="col-md-12" id="contentVehicle" style="overflow-y: auto; height:210px">
+
+                                                                <?php foreach($OrderDetail2 as $key1=>$value): 
+                                                                    $BrandSelected = $value['Brand'];
+                                                                    $ModelSelected = $value['Model'];
+                                                                    $YearSelected = $value['Year'];
+                                                                    $ColorSelected = $value['Color'];
+                                                                    $CarrierTypeSelected = $value['CarrierType'];
+                                                                    $ConditionVehicleSelected = $value['ConditionVehicle'];
+                                                                    $VinSelected = $value['Vin'];
+                                                                ?>
+
+                                                            <div class="row registroVehiculo" id="templateVehiculo" style="padding-bottom:20px !important">
+                                                                      
+                                                                <div class="col-sm-2">
+                                                                    <label class="mb-1 text-danger"><b>Brand</b></label>
+                                                                    <select name="Brand" class="select2 form-control mb-3 custom-select BrandVehicle vehicleList" onchange="GetModelsByBrand(this)">
+                                                                    <option value="">Select Brand</option>
+                                                                        <?php foreach ($BrandsList as $key => $value) : ?>
+                                                                            <option value="<?= $value['Brand']; ?>" <?php if ($value['Brand'] == $BrandSelected) : ?> selected="selected" <?php endif; ?>><?= $value['Brand']; ?></option>
+                                                                        <?php endforeach; ?>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="col-sm-2">
+                                                                    <label class="mb-1 text-danger"><b>Model</b></label>
+                                                                    <select name="Model" class="select2 form-control mb-3 custom-select ModelVehicle vehicleList">
+                                                                    <option value="">Select Model</option>
+                                                                        <?php foreach ($ModelsList  as $key => $value) : ?>
+                                                                            <option value="<?= $value['Model']; ?>" <?php if ($value['Model'] == $ModelSelected) : ?> selected="selected" <?php endif; ?>><?= $value['Model']; ?></option>
+                                                                        <?php endforeach; ?>
+                                                                    </select>
+                                                                </div>
+
+                                                                <!--end col-->
+                                                                <div class="col-sm-1">
+                                                                    <label class="mb-1 text-danger"><b>Year</b></label>
+                                                                    <input type="text" name="Year" minlength="4" maxlength="5" class="form-control YearVehicle vehicleList"  value="<?=$YearSelected?>">
+                                                                </div>
+
+                                                                <!-- end row -->
+                                                                <div class="col-sm-1">
+                                                                    <label class="mb-1 text-danger"><b>Color</b></label>
+                                                                    <select name="Color" class="select2 form-control mb-3 custom-select ColorVehicle vehicleList">
+                                                                    <option value="">Select</option>
+                                                                        <?php foreach ($ColorsList as $key => $value) : ?>
+                                                                            <option value="<?=$key; ?>" <?php if ($value== $ColorSelected) : ?> selected="selected" <?php endif; ?>><?= $value; ?></option>
+                                                                        <?php endforeach; ?>
+                                                                    </select>
+
+                                                                </div>
+
+                                                                <div class="col-sm-1">
+                                                                    <label class="mb-1 text-danger"><b>Carrier</b></label>
+                                                                    <select name="CarrierType" class="form-control CarrierTypeVehicle vehicleList">
+                                                                        <option value="">Select</option>
+                                                                        <?php foreach ($CarrierList as $key => $value) : ?>
+                                                                            <option value="<?=$key; ?>" <?php if ($value== $CarrierTypeSelected) : ?> selected="selected" <?php endif; ?>><?= $value; ?></option>
+                                                                        <?php endforeach; ?>
+                                                                    </select>
+                                                                    </select>
+                                                                </div>
+                                                                
+                                                                <div class="col-sm-1">
+                                                                    <label class="mb-1 text-danger"><b>Condition</b></label>
+                                                                    <select name="ConditionVehicle" class="form-control ConditionVehicle vehicleList">
+                                                                        <option value="">Select</option>
+                                                                        <?php foreach ($ConditionList as $key => $value) : ?>
+                                                                            <option value="<?=$key; ?>" <?php if ($value== $ConditionVehicleSelected) : ?> selected="selected" <?php endif; ?>><?= $value; ?></option>
+                                                                        <?php endforeach; ?>
+                                                                    </select>
+                                                                </div>
+
+
+                                                                <div class="col-sm-3">
+                                                                    <label class="mb-1"><b>Vin</b></label>
+                                                                    <div class="input-group">
+                                                                        <input type="text" name="Vin" class="form-control VinVehicle vehicleList" style="text-transform:uppercase" maxlength="20" value="<?= $VinSelected?>">
+                                                                        <button type="button" title="Delete vehicle" onclick="EliminarVehiculo(this)" class="btn btn-outline-danger"> <span class="far fa-trash-alt me-1"></span> </button>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!--end col-->
+
+                                                            </div>
+
+                                                            <?php endforeach; ?>
+
+                                                        </div>
                                                         <hr>
                                                         <p class="text-secondary"><i class="fa fa-trash text-danger"></i>
                                                             Don't delete the first row.</p>
@@ -604,7 +699,7 @@
                 </fieldset>
                 <!--end fieldset-->
 
-          
+
                 <h3>Payment</h3>
                 <fieldset>
 
@@ -743,7 +838,7 @@
 
                     </div>
                 </fieldset>
-              
+
 
                 <h3>Confirm order</h3>
                 <fieldset>
@@ -1072,7 +1167,7 @@
 
                                         <div class="col-md-3">
                                             <label class="mb-1"><i class="fa fa-money-bill"></i><b class="text-success"> Earnings</b></label>
-                                            <input id="Earnings" name="Earnings" type="text" class="form-control inputNumber" placeholder="$0000"  value="<?= $Order->Earnings ?>">
+                                            <input id="Earnings" name="Earnings" type="text" class="form-control inputNumber" placeholder="$0000" value="<?= $Order->Earnings ?>">
                                         </div>
 
                                     </div><br>
@@ -1086,19 +1181,19 @@
 
                                         <div class="col-md-6">
                                             <label class="mb-1"><i class="fa fa-lock text-secondary"></i> Trucker rate</label>
-                                            <input id="TrukerRate" name="TrukerRate" type="text" class="form-control inputNumber" placeholder="$0000"  value="<?= $Order->TrukerRate ?>" readonly>
+                                            <input id="TrukerRate" name="TrukerRate" type="text" class="form-control inputNumber" placeholder="$0000" value="<?= $Order->TrukerRate ?>" readonly>
                                         </div>
                                     </div>
 
                                     <div class="row inputpadding">
                                         <div class="col-md-6">
                                             <label class="mb-1"><i class="fa fa-dollar-sign"></i><b class="text-dark"> Extra trucker Fee</b></label>
-                                            <input id="ExtraTrukerFee" name="ExtraTrukerFee" type="text" class="form-control inputNumber" placeholder="$0000" value="<?= $Order->ExtraTrukerFee ?>" >
+                                            <input id="ExtraTrukerFee" name="ExtraTrukerFee" type="text" class="form-control inputNumber" placeholder="$0000" value="<?= $Order->ExtraTrukerFee ?>">
                                         </div>
 
                                         <div class="col-md-6">
                                             <label class="mb-1"><i class="fa fa-truck"></i> <b class="text-danger">Trucker owes us</b></label>
-                                            <input id="TrukerOwesUs" name="TrukerOwesUs" type="text" class="form-control inputNumber" placeholder="$0000" value="<?= $Order->TrukerOwesUs ?>" >
+                                            <input id="TrukerOwesUs" name="TrukerOwesUs" type="text" class="form-control inputNumber" placeholder="$0000" value="<?= $Order->TrukerOwesUs ?>">
                                         </div>
                                     </div>
 
@@ -1351,10 +1446,9 @@
 <script src="assets/js/ordersEdit.js"></script>
 <script src="assets/js/jquery.mask.js"></script>
 <script type="text/javascript">
-
     $("#LoadingButton").hide();
     $("#ButtonExit").hide();
-    GetListVehicles();
+    // GetListVehicles();
     $(document).ready(function($) {
 
         $('.phone').mask("(000) 000-0000", {
@@ -1364,8 +1458,10 @@
         $("#Cvv").mask('0000');
         $("#CreditCard").mask("0000 0000 0000 0000");
 
-        $('.inputNumber').on("keypress blur change",function() {
-            $('.inputNumber').mask("#,##0.00", { reverse: true });
+        $('.inputNumber').on("keypress blur change", function() {
+            $('.inputNumber').mask("#,##0.00", {
+                reverse: true
+            });
         });
 
 
@@ -1436,7 +1532,7 @@
                 bsAlert2.show();
             }
 
-     
+
             if (+DeliveryDate < +PickUpOrderDateDate) {
 
                 $(".toast-error").html("(!) The delivery date cannot be less than Today");
@@ -1497,7 +1593,7 @@
 
             let DayDeliveryDate = $("#DeliveryDate").val().substr(3, 2);
             let DayPickUpDate = $("#PickUpDate").val().substr(3, 2);
-            
+
             if (DayPickUpDate > 31) {
                 $(".toast-error").html("(!) Invalid format [PickUp date]");
                 var myAlert2 = document.getElementById('toastError');
@@ -1549,7 +1645,7 @@
                         $(htmlSelect).append(optionBucle);
                     });
 
-                  //  $(htmlSelect).val("").trigger('change');
+                    //  $(htmlSelect).val("").trigger('change');
                     $("#LoadingButton").hide();
                 }
 
@@ -1558,7 +1654,7 @@
         }
     }
 
- $("#form-horizontal").steps({
+    $("#form-horizontal").steps({
         saveState: true,
         autoFocus: true,
         headerTag: "h3",
@@ -1589,6 +1685,40 @@
                     $("#ManualUpdateButton").show();
 
                     let continueCase = true;
+                    let vehicleEmpty = false;
+
+                    var Vin1, Brand1, Model1, ConditionVehicle1, CarrierType1, Color1, Year1, Vin1 = "";
+
+                        $(".registroVehiculo:visible").each(function() {
+
+                            Brand1 = $(this).find("select[name='Brand']").val();
+                            Model1 = $(this).find("select[name='Model']").val();
+                            Color1 = $(this).find("select[name='Color']").val();
+                            Year1 = $(this).find("input[name='Year']").val();
+                            ConditionVehicle1 = $(this).find("select[name='ConditionVehicle']").val();
+                            CarrierType1 = $(this).find("select[name='CarrierType']").val();
+
+                            if (Brand1 != "" && Model1 != "" && Color1 != "" && ConditionVehicle1 != "" && Year1 != "" && CarrierType1 != "") {
+
+                            } else {
+                                vehicleEmpty = true;
+                                return;
+                            }
+
+                        });
+
+                
+
+                    if (vehicleEmpty) {
+
+                        $(".toast-error").html("(!) Check vehicle list. Field required empty");
+                        var myAlert2 = document.getElementById('toastError');
+                        var bsAlert2 = new bootstrap.Toast(myAlert2);
+                        bsAlert2.show();
+                        continueCase = false;
+                    } else {
+                        let continueCase = true;
+                    }
 
                     let PickUpOrderDateDate = new Date($("#PickUpOrderDateDate").val());
                     let DeliveryDate = new Date($("#DeliveryDate").val());
@@ -1659,7 +1789,7 @@
 
                     let DayDeliveryDate = $("#DeliveryDate").val().substr(3, 2);
                     let DayPickUpDate = $("#PickUpDate").val().substr(3, 2);
-                    
+
                     if (DayPickUpDate > 31) {
                         $(".toast-error").html("(!) Invalid format [PickUp date]");
                         var myAlert2 = document.getElementById('toastError');
@@ -1700,7 +1830,7 @@
                         //ExpDateConverted = ExpDateConverted.toLocaleDateString("en-US");
 
                         let OrderDate = new Date($("#PickUpOrderDateDate").val());
-                      //  OrderDate = OrderDate.toLocaleDateString("en-US");
+                        //  OrderDate = OrderDate.toLocaleDateString("en-US");
 
                         if ($("#ExpDate").val().length != 5) {
 
@@ -1723,7 +1853,7 @@
                             return false;
 
                         }
-                        
+
                         if ($("#ExpDate").val().length == 5) {
 
                             if (+ExpDateConverted <= +OrderDate) {
@@ -1759,7 +1889,9 @@
 
                     $("#ManualUpdateButton").show();
                     if (SumNumber($("#Cod").val(), $("#Deposit").val()) > ConvertNumber($("#Total").val())) {
-                        $('.inputNumber').unmask().mask("#,##0.00", { reverse: true });
+                        $('.inputNumber').unmask().mask("#,##0.00", {
+                            reverse: true
+                        });
 
 
                         //$('#Earnings,#Cod,#TrukerRate,#ExtraTrukerFee,#TrukerOwesUs').mask('000.000.000.000.000,00', {reverse: true});
@@ -1843,7 +1975,7 @@
 
     //Execute select2 functions 
     //GetListCustomer();
-   
+
 
     function AddVehicleList() {
 
@@ -1886,7 +2018,7 @@
 
             var Earning1 = RestNumber($("#Deposit").val(), $("#ExtraTrukerFee").val());
             $("#Earnings").val(SumNumber(Earning1, $("#TrukerOwesUs").val()));
-            $("#Earnings").toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+           // $("#Earnings").toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 
             $("#Cod").val(RestNumber($("#Total").val(), $("#Deposit").val()));
 
@@ -1895,7 +2027,7 @@
 
         });
 
-      
+
         updateAmountsTruckerDrivers();
 
         var $input = $('<li><button id="ManualUpdateButton" type="button" onclick="saveAndUpdateOrder()" class="btn btn-warning">Update</button></li>');
@@ -1904,21 +2036,19 @@
 
     });
 
-    function updateAmountsTruckerDrivers(){
+    function updateAmountsTruckerDrivers() {
 
-             $("#TotalOrder").val($("#Total").val());
-            $("#DepositOrder").val($("#Deposit").val());
+        $("#TotalOrder").val($("#Total").val());
+        $("#DepositOrder").val($("#Deposit").val());
 
-            var Earning1 = RestNumber($("#Deposit").val(), $("#ExtraTrukerFee").val());
-            $("#Earnings").val(SumNumber(Earning1, $("#TrukerOwesUs").val()));
-            $("#Earnings").toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        var Earning1 = RestNumber($("#Deposit").val(), $("#ExtraTrukerFee").val());
+        $("#Earnings").val(SumNumber(Earning1, $("#TrukerOwesUs").val()));
+        $("#Cod").val(RestNumber($("#Total").val(), $("#Deposit").val()));
 
-            $("#Cod").val(RestNumber($("#Total").val(), $("#Deposit").val()));
+        var sum1 = SumNumber($("#ExtraTrukerFee").val(), $("#Cod").val());
+        $("#TrukerRate").val(RestNumber(sum1, $("#TrukerOwesUs").val()));
 
-            var sum1 = SumNumber($("#ExtraTrukerFee").val(), $("#Cod").val());
-            $("#TrukerRate").val(RestNumber(sum1, $("#TrukerOwesUs").val()));
-
-        }
+    }
 
     $("#SearchVehicles").click(function() {
         GetListVehicles();
@@ -1959,15 +2089,15 @@
                 });
 
             }
-           
+
             var optionDefault = new Option("Select brand", "", true, true);
             $('.BrandVehicle').append(optionDefault);
-            $('.BrandVehicle').val("").trigger('change');
+            //$('.BrandVehicle').val("").trigger('change');
 
             var optionDefault2 = new Option("Select model", "", true, true);
             $('.ModelVehicle').append(optionDefault2);
-            $('.ModelVehicle').val("").trigger('change');
-           
+            // $('.ModelVehicle').val("").trigger('change');
+            $(".toast-success").html("Wait 5 seconds...");
             var myAlert = document.getElementById('toastSuccess');
             var bsAlert = new bootstrap.Toast(myAlert);
             bsAlert.show();
@@ -2059,7 +2189,7 @@
 
         $(".OriginEmailForm").html($("#OriginEmail").val() != "" ? $("#OriginEmail").val() : "");
         $(".DestinationEmailForm").html($("#DestinationEmail").val() != "" ? $("#DestinationEmail").val() : "");
-     
+
         //Vehicles Step info
 
         var Vin, Brand, Model, ConditionVehicle, CarrierType, Color, Year, Vin = "";
@@ -2075,7 +2205,7 @@
             ConditionVehicle = $(this).find("select[name='ConditionVehicle']").val();
             CarrierType = $(this).find("select[name='CarrierType']").val();
 
-            if (Brand != "") {
+            if (Brand != "" && Model != "") {
 
                 markup += "<tr>" +
                     "<td><h5 class='mt-0 mb-1 font-14'>" + Brand + "</h5><p class='mb-0 text-muted'>Vin " + Vin + "</p></td>" +
@@ -2170,7 +2300,8 @@
             ConditionVehicle = $(this).find("select[name='ConditionVehicle']").val();
             CarrierType = $(this).find("select[name='CarrierType']").val();
 
-            if (Brand != "") {
+
+            if (Brand != "" && Model != "") {
                 vehiclesArray.push({
                     'Brand': Brand,
                     'Model': Model,
@@ -2183,7 +2314,8 @@
             }
         });
 
-        if ($("#Id").val() != "") {
+
+        if ($("#Id").val() != "" && vehiclesArray.length > 0) {
 
             $.ajax({
                 type: 'POST',
@@ -2196,9 +2328,9 @@
                     $("#LoadingButton").show();
                 },
                 success: function(data) {
-
+                  
                     if (data) {
-
+                     
                         var response = JSON.parse(data);
 
                         if (response.Error == false) {
@@ -2229,7 +2361,7 @@
             });
 
         } else {
-            $(".toast-error").html("(!) OrderID not found");
+            $(".toast-error").html("(!) OrderID not found or Vehicle List is empty");
             var myAlert = document.getElementById('toastError');
             var bsAlert = new bootstrap.Toast(myAlert);
             bsAlert.show();
@@ -2351,20 +2483,6 @@
         $('#IdCustomerDestination').select2().trigger('change');
         $('#IdCompanyService').select2().trigger('change');
         $('#IdDriver').select2().trigger('change');
-
-        //Vehicles Step
-        <?php
-        $js_array = json_encode($OrderDetail);
-        echo "var vehicleJSON = JSON.parse(" . $js_array . ");";
-        ?>
-
-        if (vehicleJSON.length > 0) {
-
-            vehicleJSON.forEach(element => {
-                EditVehicleList(element.Brand, element.Model, element.Year, element.Color, element.ConditionVehicle, element.CarrierType, element.Vin);
-            });
-        }
-
         $("#LoadingButton").hide();
 
     }
@@ -2568,7 +2686,7 @@
     }
 
 
-    function EditVehicleList(Brand, Model, Year, Color, ConditionVehicle, CarrierType, Vin) {
+   /* function EditVehicleList(Brand, Model, Year, Color, ConditionVehicle, CarrierType, Vin) {
         //#contentVehicle"
         $("#templateVehiculo").find(".select2").each(function(index) {
             if ($(this).data('select2')) {
@@ -2592,10 +2710,12 @@
         $(clonado).find(".ConditionVehicle ").val(ConditionVehicle);
         $(clonado).find(".ColorVehicle").val(Color);
         $(clonado).find(".VinVehicle").val(Vin);
-        $(clonado).find(".select2").select2({width:'100%'});
+        $(clonado).find(".select2").select2({
+            width: '100%'
+        });
 
     }
-
+*/
 
     function SumNumber(number1, number2) {
 

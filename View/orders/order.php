@@ -242,7 +242,7 @@
             <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal" data-bs-target="#ModalNewCompanyService"><i class="fa fa-truck me-2"></i>New company</button>
             <button type="button" class="btn btn-sm btn-soft-info" data-bs-toggle="modal" data-bs-target="#ModalNewDriver"><i class="fa fa-bus me-2"></i>New driver</button>
             <button type="button" class="btn btn-soft-danger btn-sm" onclick="$('input, textarea, select').val('');">Clear all fields</button>
-             <button type="button" id="LoadingButton" class="btn btn-soft-light btn-sm"><div class="spinner-border spinner-border-sm text-danger" role="status"></div></button>
+             <button type="button" id="LoadingButton" class="btn btn-soft-light btn-sm"><div class="spinner-border spinner-border-sm text-info" role="status"></div></button>
         </div>
         <!--end card-header-->
         <div class="card-body">
@@ -960,12 +960,11 @@ $(document).ready(function($){
     $('.phone').mask("(000) 000-0000", {placeholder: "(000) 000-0000"});
     $("#Cvv").mask('0000');
     $("#CreditCard").mask("0000 0000 0000 0000");
-    $('.inputNumber').keyup(function(){
-        $('.inputNumber'). mask("#,##0.00", {reverse: true});
-    });
-    $('.inputNumber').click(function(){
-        $('.inputNumber'). mask("#,##0.00", {reverse: true});
-    });
+
+    $('.inputNumber').on("keypress blur change",function() {
+            $('.inputNumber').mask("#,##0.00", { reverse: true });
+        });
+
 
     $('.inputDate').mask("00/00/0000", {placeholder: "MM/DD/YYYY"});
 
@@ -1043,7 +1042,7 @@ $(document).ready(function($){
 
         let PickUpOrderDateDate = new Date($("#PickUpOrderDateDate").val());
         let DeliveryDate        = new Date($("#DeliveryDate").val());
-        let MonthDeliveryDate = $("#DeliveryDate").val().substr(0,2);
+        let MonthDeliveryDate   = $("#DeliveryDate").val().substr(0,2);
 
         let PickUpDate = new Date($("#PickUpDate").val());
         let MonthPickUpDate = $("#PickUpDate").val().substr(0,2);
@@ -1078,6 +1077,22 @@ $(document).ready(function($){
             bsAlert2.show();
        }
 
+             let DayDeliveryDate = $("#DeliveryDate").val().substr(3, 2);
+            let DayPickUpDate = $("#PickUpDate").val().substr(3, 2);
+            
+            if (DayPickUpDate > 31) {
+                $(".toast-error").html("(!) Invalid format [PickUp date]");
+                var myAlert2 = document.getElementById('toastError');
+                var bsAlert2 = new bootstrap.Toast(myAlert2);
+                bsAlert2.show();
+            }
+
+            if (DayDeliveryDate > 31) {
+                $(".toast-error").html("(!) Invalid format [Delivery date]");
+                var myAlert2 = document.getElementById('toastError');
+                var bsAlert2 = new bootstrap.Toast(myAlert2);
+                bsAlert2.show();
+            }
         }); 
 });
 
@@ -1150,6 +1165,43 @@ $("#form-horizontal").steps({
                     $("#ManualUpdateButton").show();
 
                         let continueCase = true;
+                        let vehicleEmpty = false;
+
+                        var Vin1, Brand1, Model1, ConditionVehicle1, CarrierType1, Color1, Year1, Vin1 = "";
+
+                        if($(".registroVehiculo").is(":visible")){
+
+                            $(".registroVehiculo:visible").each(function(){
+
+                                Brand1       = $(this).find("select[name='Brand']").val();
+                                Model1              = $(this).find("select[name='Model']").val();
+                                Color1              = $(this).find("select[name='Color']").val();
+                                Year1               = $(this).find("input[name='Year']").val();
+                                ConditionVehicle1   = $(this).find("select[name='ConditionVehicle']").val();
+                                CarrierType1 = $(this).find("select[name='CarrierType']").val();
+
+                                if(Brand1 != "" && Model1 != "" && Color1 != "" && ConditionVehicle1 != "" && Year1 != "" && CarrierType1 != ""){
+                                }else{
+                                    vehicleEmpty = true;
+                                    return;
+                                }
+
+                                });
+
+                        }else{
+                            vehicleEmpty = true;
+                        }
+                        
+                            if(vehicleEmpty){
+                               
+                                  $(".toast-error").html("(!) Check vehicle list. Field required empty");
+                                    var myAlert2 = document.getElementById('toastError');
+                                    var bsAlert2 = new bootstrap.Toast(myAlert2);
+                                    bsAlert2.show();
+                                    continueCase = false;
+                             }else{
+                                let continueCase = true;
+                             }
 
                         let PickUpOrderDateDate = new Date($("#PickUpOrderDateDate").val());
                         let DeliveryDate        = new Date($("#DeliveryDate").val());
@@ -1217,6 +1269,25 @@ $("#form-horizontal").steps({
                             bsAlert2.show();
                             continueCase = false;
                          }
+                         let DayDeliveryDate = $("#DeliveryDate").val().substr(3, 2);
+                        let DayPickUpDate = $("#PickUpDate").val().substr(3, 2);
+                    
+                    if (DayPickUpDate > 31) {
+                        $(".toast-error").html("(!) Invalid format [PickUp date]");
+                        var myAlert2 = document.getElementById('toastError');
+                        var bsAlert2 = new bootstrap.Toast(myAlert2);
+                        bsAlert2.show();
+                        continueCase = false;
+                    }
+
+                    if (DayDeliveryDate > 31) {
+                        $(".toast-error").html("(!) Invalid format [Delivery date]");
+                        var myAlert2 = document.getElementById('toastError');
+                        var bsAlert2 = new bootstrap.Toast(myAlert2);
+                        bsAlert2.show();
+                        continueCase = false;
+                    }
+
 
                     if(continueCase == true){
                         return true;
@@ -1511,7 +1582,7 @@ function loadInfoPDF1(){
        ConditionVehicle   = $(this).find("select[name='ConditionVehicle']").val();
        CarrierType = $(this).find("select[name='CarrierType']").val();
 
-       if(Brand != ""){
+       if(Brand != "" && Model != ""){
 
         markup += "<tr>"
                      +"<td><h5 class='mt-0 mb-1 font-14'>"+Brand+"</h5><p class='mb-0 text-muted'>Vin "+Vin+"</p></td>"
@@ -1726,7 +1797,7 @@ var x1, x2 = 0;
         x2 = parseFloat(number2.toString().replace(',',''));
     }
 
-    return x1 + x2;
+    return (x1 + x2).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }
 
 function ConvertNumber(number1){
@@ -1758,7 +1829,7 @@ if(!number2 || number2 == undefined || number2 == "" || number2.length == 0){
     x2 = parseFloat(number2.toString().replace(',',''));
 }
 
-return x1- x2;
+return (x1 - x2).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 
 }
 

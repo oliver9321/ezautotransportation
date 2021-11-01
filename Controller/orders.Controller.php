@@ -12,6 +12,7 @@ require_once 'Model/orderStatusModel.php';
 require_once 'Model/customersModel.php';
 require_once 'Model/companyServicesModel.php';
 require_once 'Model/driversModel.php';
+require_once 'Model/vehiclesModel.php';
 
 class OrdersController
 {
@@ -150,11 +151,38 @@ class OrdersController
             $this->customer       = new Customers();
             $this->companies      = new CompanyServices();
             $this->drivers        = new Drivers();
+            $this->vehicles       = new Vehicles();
+
+            $ColorsList = array(
+                "White"=>"White",
+                "Black"=>"Black",
+                "Gray"=>"Gray",
+                "Silver"=>"Silver",
+                "Blue"=>"Blue",
+                "Red"=>"Red",
+                "Brown/Beige"=>"Brown/Beige",
+                "Yellow/Gold"=>"Yellow/Gold",
+                "Green"=>"Green",
+                "Other"=>"Other"
+            );
+
+            $CarrierList = array(
+                "Open"=>"Open",
+                "Enclosed"=>"Enclosed"
+            );
+
+            $ConditionList = array(
+                "Running"=>"Running",
+                "Non-running"=>"Non-running"
+            );
             
             $OrderStatusList  =  $this->orderStatus->GetListOrderStatus();
             $CustomerList     =  $this->customer->GetListCustomers();
             $Companies        =  $this->companies->GetListCompanyServices();
             $DriverList       =  $this->drivers->GetListDrivers();
+
+            $BrandsList        = $this->vehicles->GetListBrands();
+            $ModelsList        = $this->vehicles->GetListModels();
 
             $OrderArray           = $this->model->Edit($_REQUEST['Id']);
 
@@ -164,8 +192,7 @@ class OrdersController
             $CompanyService       = $OrderArray['CompanyService'];
             $Payment              = $OrderArray['payments'];
             $Driver               = $OrderArray['Driver'];
-            $OrderDetail          = $OrderArray['order_details'];
-            $OrderDetail          = json_encode($OrderDetail,true);
+            $OrderDetail2          = $this->model->GetOrderDetailsByOrderId($_REQUEST['Id']);
             
             GetRouteView(null, "header");
             require_once 'View/orders/edit.php';
@@ -324,6 +351,7 @@ class OrdersController
 
     public function UpdateOrder(){
 
+      
         if(isset($_POST['order']) && isset($_POST['vehicles'])){
 
             parse_str($_POST['order'], $params);
@@ -473,6 +501,10 @@ class OrdersController
                 echo json_encode($responseOrder, true);
             }
 
+            }else{
+                $responseOrder['Error'] = true;
+                $responseOrder['Message'] = "Step [0] - Error to process the order";
+                echo json_encode($responseOrder, true);
             }
     }
 

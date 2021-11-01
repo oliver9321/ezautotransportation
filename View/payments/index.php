@@ -192,19 +192,19 @@ $(document).ready(function() {
                     switch (status) {
 
                             case 'Pending':
-                                data = '<center>'+valueRow+ '<span class="badge badge-soft-danger px-2"> '+status+'</span></center>'
+                                data = '<center>'+valueRow+ '<span class="badge badge-soft-danger px-2">'+status+'</span></center>'
                             break;
 
                             case 'Paid':
-                                data = '<center>'+valueRow+ '<span class="badge badge-soft-success px-2">' +status+'</span></center>'
+                                data = '<center>'+valueRow+ '<span class="badge badge-soft-success px-2">'+status+'</span></center>'
                             break;
 
                             case 'N/A':
-                                data = '<center>'+valueRow+ '<span class="badge badge-soft-secondary px-2"> '+status+'</span></center>'
+                                data = '<center>'+valueRow+ '<span class="badge badge-soft-secondary px-2">'+status+'</span></center>'
                             break;
 
                             default:
-                                data = '<center>'+valueRow+ '<span class="badge badge-soft-secondary px-2"> '+status+'</span></center>'
+                                data = '<center>'+valueRow+ '<span class="badge badge-soft-secondary px-2">'+status+'</span></center>'
                             break;
 
                             }

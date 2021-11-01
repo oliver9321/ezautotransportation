@@ -193,6 +193,14 @@ class Orders {
             die($e->getMessage());
         }
     }
+
+    public function GetOrderDetailsByOrderId($OrderId){
+
+        $stm2 = $this->pdo->prepare("SELECT *  FROM tbl_order_details WHERE IdOrder = ?");
+        $stm2->execute(array($OrderId));
+        return $stm2->fetchAll(PDO::FETCH_ASSOC);
+
+    }
   
     public function Edit2($id)
     {
