@@ -565,7 +565,8 @@
 
                                                         </div>
 
-                                                    <!--- HASTA AQUI-->
+                                                 
+                                                        <!--- HASTA AQUI-->
                                                         <div class="col-md-12" id="contentVehicle" style="overflow-y: auto; height:210px"></div>
                                                         <hr>
                                                         <p class="text-secondary"><i class="fa fa-trash text-danger"></i>
