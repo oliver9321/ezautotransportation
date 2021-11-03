@@ -1457,6 +1457,7 @@
 
         $("#Cvv").mask('0000');
         $("#CreditCard").mask("0000 0000 0000 0000");
+        $('.inputNumber').mask("#,##0.00", { reverse: true });
 
         $('.inputNumber').on("keypress blur change", function() {
             $('.inputNumber').mask("#,##0.00", {
