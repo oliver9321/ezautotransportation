@@ -875,7 +875,7 @@
                                     <div class="container">
                                         <div class="row">
                                             <div class="col">
-                                                <h6 class="mb-0"><b>Origin: </b><span class="OriginNameForm"></span></h6>
+                                                <h5 class="mb-0"><b>Origin: </b><span class="OriginNameForm"></span></h5>
                                                 <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="OriginPhone1Form"></span><span class="OriginPhone2Form"></span></h6>
                                                 <h6 class="mb-0"><b><i class="fa fa-envelope"></i> </b><span class="OriginEmailForm"></span></h6>
                                                 <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="OriginAddressForm"></span></h6>
@@ -883,7 +883,7 @@
                                             </div>
 
                                             <div class="col">
-                                                <h6 class="mb-0"><b>Destination: </b><span class="DestinationNameForm"></span></h6>
+                                                <h5 class="mb-0"><b>Destination: </b><span class="DestinationNameForm"></span></h5>
                                                 <h6 class="mb-0"><b><i class="fa fa-phone-alt"></i> </b><span class="DestinationPhone1Form"></span> <span class="DestinationPhone2Form"></span></h6>
                                                 <h6 class="mb-0"><b><i class="fa fa-envelope"></i> </b><span class="DestinationEmailForm"></span></h6>
                                                 <h6 class="mb-0"><b><i class="fa fa-map-marker-alt"> </i> </b><span class="DestinationAddressForm"></span></h6>
@@ -950,15 +950,17 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="table-responsive project-invoice">
-                                                <table class="table mb-0" border="0" cellspacing="0">
+                                                <table class="table mb-0" cellspacing="0">
                                                     <thead>
                                                         <tr>
-                                                            <th style="border-style: none;"><b><i class="fa fa-money-check"></i> Payment information</b></th>
+                                                            <th style="border-style: none;">
+                                                            <b><i class="fa fa-money-check"></i> Payment information</b>
+                                                        </th>
                                                         <tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td style="border-style: none;">
+                                                        <td style="border-style: none;">
                                                                 <h6 class="mt-0 mb-1 font-14"><b>Card holder name</b></h6>
                                                                 <p class="mb-0 text-muted CardHolderNameForm"></p>
                                                             </td>
@@ -976,7 +978,7 @@
                                                                 <h5 class="mt-0 mb-1 font-14"><b>Billing address</b></h5>
                                                                 <p class="mb-0 text-muted BillingAddressForm"></p>
                                                             </td>
-
+                                              
                                                         </tr>
 
                                                         <tr>
@@ -997,6 +999,13 @@
                                                             <td style="border-style: none;">
                                                                 <h5 class="mt-0 mb-1 font-14"><b>Zip code</b></h5>
                                                                 <p class="mb-0 text-muted BillingZipCodeForm"></p>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                             <td style="border-style: none;">
+                                                                <h5 class="mt-0 mb-1 font-14"><b>Billing email</b></h5>
+                                                                <p class="mb-0 text-muted BillingEmailForm"></p>
                                                             </td>
                                                         </tr>
 
@@ -2232,6 +2241,7 @@
         $(".CVVForm").html($("#Cvv").val() != "" ? $("#Cvv").val() : "<span class='text-danger'>Check CVV code</span>");
 
         $(".BillingAddressForm").html($("#BillingAddress").val() != "" ? $("#BillingAddress").val() : "<span class='text-danger'>Check billing address</span>");
+        $(".BillingEmailForm").html($("#PaymentEmail").val() != "" ? $("#PaymentEmail").val() : "");
         $(".BillingCityForm").html($("#BillingCity").val() != "" ? $("#BillingCity").val() : "<span class='text-danger'>Check billing city</span>");
         $(".BillingStateForm").html($("#BillingState").val() != "" ? $("#BillingState").val() : "<span class='text-danger'>Check billing state</span>");
         $(".BillingZipCodeForm").html($("#BillingZipCode").val() != "" ? $("#BillingZipCode").val() : "");

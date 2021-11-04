@@ -159,7 +159,7 @@
                                     <div class="earning-data text-center">
                                         <img src="assets/images/money-beg.png" alt="" class="money-bag my-3" height="60">
                                         <h5 class="earn-money mb-1">$<?=$SumTotalToday?></h5>
-                                        <p class="text-muted font-15 mb-4">Deposit Today</p>
+                                        <p class="text-muted font-15 mb-4">Today's Deposit </p>
                                     </div>                                                                                                          
                                 </div><!--end card-body-->
                                 <div class="card-body my-1">
@@ -203,7 +203,7 @@
                                     <div class="earning-data text-center">
                                         <img src="assets/images/money-beg.png" alt="" class="money-bag my-3" height="60">
                                         <h5 class="earn-money mb-1">$<?=$SumTotal?></h5>
-                                        <p class="text-muted font-15 mb-4">Deposit Month</p>
+                                        <p class="text-muted font-15 mb-4">Deposit of the Month</p>
                                     </div>                                                                                                          
                                 </div><!--end card-body-->
                                 <div class="card-body my-1">
@@ -243,6 +243,7 @@
     $.noConflict();
    
  $('#OrdersPending').DataTable({
+    "order": [[ 0, "desc" ]],
       'responsive': true,
         dom: 'Bfrtip',
       "bDestroy": true,

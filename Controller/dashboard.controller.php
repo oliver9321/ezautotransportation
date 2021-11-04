@@ -52,15 +52,11 @@ class dashboardController{
                 $rsSumTotal = $this->ordersModel->getSumTotal();
                 $SumTotal   = $rsSumTotal['Total'];
 
-               
                 $rsSumTrukerOwesUsToday = $this->ordersModel->getSumTrukerOwesUsToday();
                 $SumTrukerOwesUsToday    = $rsSumTrukerOwesUsToday['TrukerOwesUs'];
 
                 $rsSumTrukerOwesUs   = $this->ordersModel->getSumTrukerOwesUs();
                 $SumTrukerOwesUs     = $rsSumTrukerOwesUs['TrukerOwesUs'];
-
-
-                
 
                 $rsSumLossToday = $this->ordersModel->getSumLossToday();
                 $SumLossToday    = $rsSumLossToday['ExtraTrukerFee'];

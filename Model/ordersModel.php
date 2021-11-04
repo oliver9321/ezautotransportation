@@ -313,7 +313,7 @@ $result = $this->pdo->prepare($sql)->execute(
                         $data->Earnings,
                         $data->Cod,
                         $data->TrukerRate,
-                        date("Y-m-d H:i:s") ,
+                        date("Y-m-d H:i:s"),
                         (int)$_SESSION['UserOnline']->Id,
                         (int)$data->IsActive,
                         $data->CancelledNote,
@@ -432,63 +432,62 @@ $result = $this->pdo->prepare($sql)->execute(
 
     
     public function getSumEarnings(){
-
-        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM(coalesce(Earnings,0)),2,'en_US'),0) as Earnings FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4 AND MONTH(DateCreation) = MONTH(curdate())");
-        $stm2->execute();
+        $datetime = date('m');
+        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM(coalesce(Earnings,0)),2,'en_US'),0) as Earnings FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4 AND MONTH(DateCreation) = ?");
+        $stm2->execute(array($datetime));
         return $stm2->fetch();
     }
 
     public function getSumEarningsToday(){
         // 4-> Canceled
-        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM(coalesce(Earnings,0)),2,'en_US'),0) as Earnings FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4  AND DATE(DateCreation) = curdate()");
-        $stm2->execute();
+        $datetime = date('Y-m-d');
+        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM(coalesce(Earnings,0)),2,'en_US'),0) as Earnings FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4  AND DATE(DateCreation) = ?");
+        $stm2->execute(array($datetime));
         return $stm2->fetch();
     }
 
-
     public function getSumTotalToday(){
-
-        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM((coalesce(Deposit ,0) + coalesce(TrukerOwesUs ,0))),2,'en_US'),0) as Total FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4 AND DATE(DateCreation) = curdate()");
-        $stm2->execute();
+        $datetime = date('Y-m-d');
+        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM(coalesce(Deposit ,0)),2,'en_US'),0) as Total FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4 AND DATE(DateCreation) = ?");
+        $stm2->execute(array($datetime));
         return $stm2->fetch();
     }
 
     public function getSumTotal(){
-
-        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM((coalesce(Deposit ,0) + coalesce(TrukerOwesUs ,0))),2,'en_US'),0)  as Total FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4 AND MONTH(DateCreation) = MONTH(curdate());");
-        $stm2->execute();
+        $datetime = date('m');
+        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM(coalesce(Deposit ,0)),2,'en_US'),0)  as Total FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4 AND MONTH(DateCreation) = ?");
+        $stm2->execute(array($datetime));
         return $stm2->fetch();
     }
 
     public function getSumTrukerOwesUsToday(){
-
-        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM(coalesce(TrukerOwesUs,0)),2,'en_US'),0) as TrukerOwesUs FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4 AND DATE(DateCreation) = curdate()");
-        $stm2->execute();
+        $datetime = date('Y-m-d');
+        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM(coalesce(TrukerOwesUs,0)),2,'en_US'),0) as TrukerOwesUs FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4 AND DATE(DateCreation) = ?");
+        $stm2->execute(array($datetime));
         return $stm2->fetch();
     }
 
     public function getSumTrukerOwesUs(){
-
-        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM(coalesce(TrukerOwesUs,0)),2,'en_US'),0) as TrukerOwesUs FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4 AND MONTH(DateCreation) = MONTH(curdate())");
-        $stm2->execute();
+        $datetime = date('m');
+        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM(coalesce(TrukerOwesUs,0)),2,'en_US'),0) as TrukerOwesUs FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4 AND MONTH(DateCreation) = ?");
+        $stm2->execute(array($datetime));
         return $stm2->fetch();
     }
 
     public function getSumLoss(){
-
-        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM(coalesce(ExtraTrukerFee,0)),2,'en_US'),0) as ExtraTrukerFee FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4 AND MONTH(DateCreation) = MONTH(curdate())");
-        $stm2->execute();
+        $datetime = date('m');
+        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM(coalesce(ExtraTrukerFee,0)),2,'en_US'),0) as ExtraTrukerFee FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4 AND MONTH(DateCreation) = ?");
+        $stm2->execute(array($datetime));
         return $stm2->fetch();
     }
 
     
     public function getSumLossToday(){
-
-        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM(coalesce(ExtraTrukerFee,0)),2,'en_US'),0) as ExtraTrukerFee FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4 AND DATE(DateCreation) = curdate()");
-        $stm2->execute();
+        $datetime = date('Y-m-d');
+        $stm2 = $this->pdo->prepare("SELECT IFNULL(FORMAT(SUM(coalesce(ExtraTrukerFee,0)),2,'en_US'),0) as ExtraTrukerFee FROM tbl_orders WHERE IsActive = 1 AND OrderStatusID != 4 AND DATE(DateCreation) = ?");
+        $stm2->execute(array($datetime));
         return $stm2->fetch();
     }
-
 
 
     public function GetStatusOrderById($data){

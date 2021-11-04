@@ -517,7 +517,7 @@
                                                          <div class="col-sm-1">
                                                             <label class="mb-1 text-danger"><b>Color</b></label>
                                                             <select  name="Color" class="form-control ColorVehicle vehicleList">
-                                                            <option value="">Colors</option>
+                                                            <option value=""></option>
                                                                 <option value="White"> White</option>
                                                                 <option value="Black"> Black</option>
                                                                 <option value="Gray"> Gray</option>
@@ -535,7 +535,7 @@
                                                         <div class="col-sm-1" >
                                                             <label class="mb-1 text-danger"><b>Carrier</b></label>
                                                             <select  name="CarrierType" class="form-control CarrierTypeVehicle vehicleList">
-                                                            <option value="">Carriers</option>
+                                                            <option value=""></option>
                                                                 <option value="Open">Open</option>
                                                                 <option value="Enclosed">Enclosed</option>
                                                             </select>
@@ -546,7 +546,7 @@
                                                         <div class="col-sm-1" >
                                                             <label class="mb-1 text-danger"><b>Condition</b></label>
                                                             <select  name="ConditionVehicle" class="form-control ConditionVehicle vehicleList">
-                                                                <option value="">Conditions</option>
+                                                                <option value=""></option>
                                                                 <option value="Running">Running</option>
                                                                 <option value="Non-running">Non-running</option>
                                                             </select>
