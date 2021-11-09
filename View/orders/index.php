@@ -192,6 +192,7 @@ $(document).ready(function() {
  
    
 datatable = $('#OrderList').DataTable({
+    "order": [[ 0, "desc" ]],
     initComplete: function () {
             // Apply the search
             this.api().columns().every( function () {

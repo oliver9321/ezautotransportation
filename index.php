@@ -1,4 +1,5 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 session_start();
 require_once 'Config/Database.php';
 $controller = 'login';
@@ -12,7 +13,7 @@ if(!isset($_REQUEST['c']))
         $controller = new $controller;
         $controller->Index();
     }else{
-        echo "VERIFIQUE QUE ESTEN CREADO LOS SIGUIENTES ARCHIVOS: </br><br>CONTROLADOR:Controller/".$controller.".controller.php<br>MODELO:Model/".$controller."Model.php<br>VISTA: View/".$controller."/index";
+        echo "Check the next files: </br><br>CONTROLADOR:Controller/".$controller.".controller.php<br>Model: Model/".$controller."Model.php<br>View: View/".$controller."/index";
     }
 
 }

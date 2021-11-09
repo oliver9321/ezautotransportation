@@ -6,8 +6,10 @@ header("Access-Control-Allow-Methods: POST");
 
 require_once 'Config/Core.php'; 
 require_once 'Model/ordersModel.php'; 
+require_once 'Model/quoteModel.php'; 
 require_once 'Model/paymentsModel.php'; 
 require_once 'Model/orderDetailsModel.php'; 
+require_once 'Model/quoteDetailsModel.php'; 
 require_once 'Model/orderStatusModel.php';
 require_once 'Model/customersModel.php';
 require_once 'Model/companyServicesModel.php';
@@ -345,6 +347,102 @@ class OrdersController
                 $responseOrder['Message'] = "Step [0.1] - Error validation order. Vehicle list empty or order info not completed";
                 echo json_encode($responseOrder, true);
             }
+
+            }
+    }
+
+    public function saveQuote(){
+
+        if(isset($_POST['quote']) && isset($_POST['vehicles'])){
+
+            parse_str($_POST['quote'], $params);
+            $vehicles      = $_POST['vehicles'];
+            $responseOrder = array("Error" => false, "Message"=>"", "QuoteId"=>"");
+
+                if(count($params) > 0 && count($vehicles) > 0){
+             
+                        $Quote = new Quotes();
+                        $QuoteId = "";
+    
+                        $Quote->PickUpLocation           = $params['PickUpLocation'];
+                        $Quote->OriginCity               = $params['OriginCity1'];
+                        $Quote->OriginState              = $params['OriginState2'];
+                        $Quote->OriginZipCode            = $params['ZipCode'];
+                        $Quote->DeliveryLocation         = $params['DeliveryLocation'];
+                        $Quote->DestinyCity              = $params['DestinyCity'];
+                        $Quote->DestinyState             = $params['DestinyState'];
+                        $Quote->DestinyZipCode           = $params['ZipCode2'];
+                        $Quote->TypeVehicle              = $params['TypeVehicle'];
+                        $Quote->Comments                 = $params['comments'];
+                        $Quote->ShippingDate             = $params['ShippingDate'];
+                        $Quote->FirstName                = $params['FirstName'];
+                        $Quote->LastName                 = $params['LastName'];
+                        $Quote->Phone                    = $params['Phone'];
+                        $Quote->Email                    = $params['Email'];
+                        $Quote->IsActive                 = 1;
+                        $QuoteId = $Quote->Create($Quote);
+        
+                        if($QuoteId){
+        
+                            foreach ($vehicles as $key => $value) {
+        
+                                if($value['Brand'] != ''){
+    
+                                    $QuoteDetails = new QuoteDetails();
+                                    $QuoteDetailsID = "";
+    
+                                    $QuoteDetails->QuoteId           = $QuoteId;
+                                    $QuoteDetails->Brand             = $value['Brand'];
+                                    $QuoteDetails->Model             = $value['Model'];
+                                    $QuoteDetails->Year              = $value['Year'];
+                                    $QuoteDetails->ConditionVehicle  = $value['ConditionVehicle'];
+                                    $QuoteDetails->CarrierType       = $value['CarrierType'];
+                                    $QuoteDetails->StatusVehicle     = $value['StatusVehicle'];
+                                    $QuoteDetails->IsActive          = 1;
+                                    $QuoteDetailsID                  = $QuoteDetails->Create($QuoteDetails);
+                                   
+                                    if($QuoteDetailsID){
+                                        $responseOrder['Error'] = false;
+                                    }else{
+                                        $responseOrder['Error'] = true;
+                                        $responseOrder['Message'] = "Step [3] - Error quote details. Please check vehicle list";
+                                        echo json_encode($responseOrder, true);
+                                    }
+        
+                                }
+                            
+                            }
+    
+                            if($responseOrder['Error'] == false){
+    
+                                $responseOrder['QuoteId'] = $QuoteId;
+                                $responseOrder['Message'] = "We will be in contact with you in 24h";
+                                echo json_encode($responseOrder, true);
+    
+                            }else{
+    
+                                if($QuoteId){
+                                    $responseOrder['QuoteId'] = $QuoteId;
+                                    $responseOrder['Message'] = "The quote #".$QuoteId." was created. but please check all fields";
+                                    echo json_encode($responseOrder, true);
+                                }
+                               
+                            }
+        
+                        }else{
+                            $responseOrder['Error'] = true;
+                            $responseOrder['Message'] = "Step [2] - Error in quote. Please check required fields";
+                            echo json_encode($responseOrder, true);
+                        }
+        
+                    
+            }else{
+                $responseOrder['Error'] = true;
+                $responseOrder['Message'] = "Step [0.2] - Error validation order. Vehicle list empty or order info not completed";
+                echo json_encode($responseOrder, true);
+            }
+           
+          
 
             }
     }
