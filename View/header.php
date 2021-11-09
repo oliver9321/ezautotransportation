@@ -67,6 +67,11 @@
 
                 <?php if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") { ?>
 
+                    <li>
+                    <a href="index.php?c=Quotes&a=Index"><i class="fa fa-file-alt align-self-center menu-icon"></i><span>Quotes List</span></a>
+                </li>
+
+
                 <li>
                     <a href="javascript: void(0);"><i class="fa fa-users align-self-center menu-icon"></i><span>Customers</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
@@ -164,27 +169,28 @@
             <nav class="navbar-custom">
                 <ul class="list-unstyled topbar-nav float-end mb-0">
 
-                  <!--  <li class="dropdown notification-list">
+                <?php if(isset($countPendingQuotes)){?>
+                   <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                             <i data-feather="bell" class="align-self-center topbar-icon"></i>
-                            <span class="badge bg-danger rounded-pill noti-icon-badge">1</span>
+                            <span class="badge bg-danger rounded-pill noti-icon-badge"><?= isset($countPendingQuotes)  ? $countPendingQuotes : '' ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-lg pt-0">
 
                             <h6 class="dropdown-item-text font-15 m-0 py-3 border-bottom d-flex justify-content-between align-items-center">
-                                Notifications <span class="badge bg-primary rounded-pill">1</span>
+                                Notifications <span class="badge bg-primary rounded-pill"></span>
                             </h6>
                             <div class="notification-menu" data-simplebar>
                               
-                                <a href="#" class="dropdown-item py-3">
-                                    <small class="float-end text-muted ps-2">2 min ago</small>
+                                <a href="index.php?c=quotes&a=index" class="dropdown-item py-3">
+                                   <!-- <small class="float-end text-muted ps-2">2 min ago</small>-->
                                     <div class="media">
-                                        <div class="avatar-md bg-soft-primary">
+                                        <div class="avatar-md bg-soft-danger">
                                             <i data-feather="info" class="align-self-center icon-xs"></i>
                                         </div>
                                         <div class="media-body align-self-center ms-2 text-truncate">
-                                            <h6 class="my-0 fw-normal text-dark">Your order is placed</h6>
-                                            <small class="text-muted mb-0">Dummy text of the printing and industry.</small>
+                                            <h6 class="my-0 fw-normal text-dark">Your have (<?= isset($countPendingQuotes)  ? $countPendingQuotes : '' ?>) quote's pending</h6>
+                                            <!--<small class="text-muted mb-0">Dummy text of the printing and industry.</small>-->
                                         </div>
                                     
                                     </div>
@@ -193,11 +199,12 @@
                            
                             </div>
                       
-                            <a href="javascript:void(0);" class="dropdown-item text-center text-primary">
+                            <!--<a href="javascript:void(0);" class="dropdown-item text-center text-primary">
                                     View all <i class="fi-arrow-right"></i>
-                                </a>
+                                </a>-->
                         </div>
-                    </li>-->
+                    </li>
+                  <?php  }  ?>
 
                     <li class="dropdown">
                         <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">

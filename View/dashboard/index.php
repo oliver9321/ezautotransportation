@@ -145,6 +145,26 @@
                             </div><!--end card--> 
                         </div><!--end col-->
                         <div class="col-lg-3">
+
+                        <div class="col-md-11">
+                                <a href="index.php?c=Quotes&a=Index">
+                                    <div class="card report-card bg-dark">
+                                        <div class="card-body">
+                                            <div class="row d-flex justify-content-center">
+                                                <div class="col">  
+                                                    <p class="text-white mb-0 fw-semibold">Quotes</p>                                         
+                                                    <h3 class="m-0 text-white"><?= isset($countPendingQuotes)  ? $countPendingQuotes : 0 ?></h3>
+                                                </div>
+                                                <div class="col-auto align-self-center">
+                                                    <div class="report-main-icon bg-dark-alt">
+                                                        <i data-feather="file" class="align-self-center text-muted icon-sm"></i>  
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                        </div><!--end card-body--> 
+                                        </a>
+                                    </div><!--end card--> <br>
+
                             <div class="card"> 
                             <div class="row align-items-center">
                                         <div class="col-auto"> 

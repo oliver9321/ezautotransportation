@@ -6,7 +6,7 @@ header("Access-Control-Allow-Methods: POST");
 
 require_once 'Config/Core.php'; 
 require_once 'Model/ordersModel.php'; 
-require_once 'Model/quoteModel.php'; 
+require_once 'Model/quotesModel.php'; 
 require_once 'Model/paymentsModel.php'; 
 require_once 'Model/orderDetailsModel.php'; 
 require_once 'Model/quoteDetailsModel.php'; 

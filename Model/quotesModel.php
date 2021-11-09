@@ -24,6 +24,7 @@ class Quotes {
     public $IsActive;
     public $Answer;
     public $Comments;
+    public $Status;
     public $DateCreation;
     public $UserIDLastModification;
 
@@ -58,9 +59,13 @@ class Quotes {
         }
     }
 
+    public function getCountQuotesPending(){
+        $stm2 = $this->pdo->prepare("SELECT COUNT(Id) CountQuotesPending FROM tbl_quotes WHERE IsActive = 1 AND Status = 'Pending'");
+        $stm2->execute();
+        return $stm2->fetch();
+    }
 
-
-    public function Update($data)
+   /* public function Update($data)
     {   
         
         try
@@ -82,6 +87,7 @@ class Quotes {
                         Email  = ?,
                         Answer  = ?,
                         Comments  = ?,
+                        Status = ?,
                         LastModificationDate  = ?,
                         UserIDLastModification  = ?,
                         IsActive  = ?
@@ -105,6 +111,7 @@ $result = $this->pdo->prepare($sql)->execute(
                         $data->Email,
                         $data->Answer,
                         $data->Comments,
+                        $data->Status,
                         date("Y-m-d H:i:s"),
                         (int)$_SESSION['UserOnline']->Id,
                         (int)$data->IsActive,
@@ -118,7 +125,7 @@ $result = $this->pdo->prepare($sql)->execute(
         {
             die("Update quote: ".$e->getMessage());
         }
-    }
+    }*/
 
     public function Create (Quotes $data)
     {
@@ -176,5 +183,7 @@ $result = $this->pdo->prepare($sql)->execute(
             die("insert quote:".$e->getMessage());
         }
     }
+
+  
 
 }

@@ -6,6 +6,7 @@ require_once 'Model/driversModel.php';
 require_once 'Model/ordersModel.php'; 
 require_once 'Model/paymentsModel.php'; 
 require_once 'Model/customersModel.php'; 
+require_once 'Model/quotesModel.php'; 
 
 class dashboardController{
 
@@ -13,7 +14,7 @@ class dashboardController{
     private $driversModel;
     private $ordersModel;
     private $customersModel;
-
+    private $quoteModel;
  
     public function __CONSTRUCT(){
 
@@ -64,7 +65,12 @@ class dashboardController{
                 $rsSumGetSumLoss   = $this->ordersModel->getSumLoss();
                 $SumLossMonth     = $rsSumGetSumLoss['ExtraTrukerFee'];
 
-                GetRouteView(null, "header");
+                $this->quoteModel = new Quotes();
+                $rsCountQuotes = $this->quoteModel->getCountQuotesPending();
+               $countPendingQuotes = $rsCountQuotes['CountQuotesPending'];
+
+               // GetRouteView(null, "header");
+                require_once 'View/header.php';
                 require_once 'View/dashboard/index.php';
                 require_once 'View/footer.php';
 
