@@ -108,7 +108,7 @@ class OrdersController
           // $CustomerOrigin       = $OrderArray['CustomerOrigin']; // OLIVER
             //$CustomerDestination  = $OrderArray['CustomerDestination'];
             $CompanyService       = $OrderArray['CompanyService'];
-            $Payment              = $OrderArray['payments'];
+            //$Payment              = $OrderArray['payments'];
 
             $OrderDetail          = $OrderArray['order_details'];
             $OrderDetail          = json_encode($OrderDetail,true);
@@ -358,6 +358,7 @@ class OrdersController
             parse_str($_POST['quote'], $params);
             $vehicles      = $_POST['vehicles'];
             $responseOrder = array("Error" => false, "Message"=>"", "QuoteId"=>"");
+            $VehiclesEmail = "<tr>";
 
                 if(count($params) > 0 && count($vehicles) > 0){
              
@@ -383,7 +384,7 @@ class OrdersController
                         $QuoteId = $Quote->Create($Quote);
         
                         if($QuoteId){
-        
+                            
                             foreach ($vehicles as $key => $value) {
         
                                 if($value['Brand'] != ''){
@@ -400,6 +401,8 @@ class OrdersController
                                     $QuoteDetails->StatusVehicle     = $value['StatusVehicle'];
                                     $QuoteDetails->IsActive          = 1;
                                     $QuoteDetailsID                  = $QuoteDetails->Create($QuoteDetails);
+
+                                    $VehiclesEmail.="<td>".$QuoteDetails->Brand."</td><td>".$QuoteDetails->Model."</td><td>".$QuoteDetails->Year."</td><td>".$QuoteDetails->ConditionVehicle."</td><td>".$QuoteDetails->CarrierType."</td><td>".$QuoteDetails->StatusVehicle."</td>";
                                    
                                     if($QuoteDetailsID){
                                         $responseOrder['Error'] = false;
@@ -412,13 +415,16 @@ class OrdersController
                                 }
                             
                             }
+                            $VehiclesEmail = "</tr>";
     
                             if($responseOrder['Error'] == false){
     
                                 $responseOrder['QuoteId'] = $QuoteId;
-                                $responseOrder['Message'] = "We will be in contact with you in 24h";
+                                $responseOrder['Message'] = "We will be in contact with you soon";
+                                $customerName = $Quote->FirstName.' '.$Quote->LastName;
+                                $this->SendEmail($customerName,$QuoteId,$Quote->Email,$VehiclesEmail);
                                 echo json_encode($responseOrder, true);
-    
+                              
                             }else{
     
                                 if($QuoteId){
@@ -445,6 +451,34 @@ class OrdersController
           
 
             }
+    }
+
+    public function SendEmail($customerName,$QuoteId,$CustomerEmail,$VehiclesEmail){
+        
+        $emailto   = 'sales@ezautotransportationusa.com';
+        $emailfrom = $CustomerEmail != '' ? $CustomerEmail:'info@ezautotransportationusa.com';
+        $fromname  = 'EZ AUTO TRANSPORTATION - '.strtoupper($customerName);
+        $subject   = 'Quote #'.$QuoteId.' - '.$customerName;
+        $messagebody = "
+            <html>
+                <body>
+                    <h4>A new quote has been created.</h4>
+                </body>
+            </html>
+            ";
+
+        $headers = 
+            'Return-Path: ' . $emailfrom . "\r\n" . 
+            'From: ' . $fromname . ' <' . $emailfrom . '>' . "\r\n" . 
+            'X-Priority: 3' . "\r\n" . 
+            'X-Mailer: PHP ' . phpversion() .  "\r\n" . 
+            'Reply-To: ' . $fromname . ' <' . $emailfrom . '>' . "\r\n" .
+            'MIME-Version: 1.0' . "\r\n" . 
+            'Content-Transfer-Encoding: 8bit' . "\r\n" . 
+            'Content-type:text/html;charset=UTF-8' . "\r\n";
+        $params = '-f ' . $emailfrom;
+        return mail($emailto, $subject, $messagebody, $headers, $params);
+
     }
 
     public function UpdateOrder(){

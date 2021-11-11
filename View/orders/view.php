@@ -357,7 +357,7 @@
 
                                         <div class="col-md-12 inputpadding">
                                             <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Billing address<b class="text-danger">*</b></label>
-                                            <input id="BillingAddress" name="BillingAddress" type="text" class="form-control" placeholder="Ex. 12141 Pembroke Rd...." autocomplete="disabled" readonly value="<?= $Payment->BillingAddress; ?>">
+                                            <input id="BillingAddress" name="BillingAddress" type="text" class="form-control" placeholder="Ex. 12141 Pembroke Rd...." autocomplete="disabled" readonly value="<?= $Order->BillingAddress; ?>">
                                         </div>
 
                                         <div class="col-md-4 inputpadding">
@@ -440,7 +440,7 @@
 
                             <div class="col-md-12 inputpadding">
                                     <label class="mb-1"><i class="fa fa-sticky-note"></i> Payment note</label>
-                                    <textarea id="PaymentNote" name="PaymentNote" class="form-control" placeholder="Opcional information" rows="4" readonly><?= $Payment->PaymentNote; ?></textarea>
+                                    <textarea id="PaymentNote" name="PaymentNote" class="form-control" placeholder="Opcional information" rows="4" readonly><?= $Order->PaymentNote; ?></textarea>
                                 </div>
 
                         </div>
@@ -472,24 +472,24 @@
                             <div class="row inputpadding">
                                 <div class="col-md-12">
                                     <label class="mb-1">Company address</label>
-                                    <input id="CompanyAddress" name="CompanyAddress" type="text" class="form-control" placeholder="Input the company's address" readonly value="<?= $CompanyService->CompanyAddress; ?>">
+                                    <input id="CompanyAddress" name="CompanyAddress" type="text" class="form-control" placeholder="Input the company's address" readonly value="<?= $Order->CompanyAddress; ?>">
                                 </div>
                             </div>
 
                             <div class="row inputpadding">
                                 <div class="col-md-4">
                                     <label class="mb-1"><i class="fa fa-map-marker-alt"></i> City<b class="text-danger">*</b></label>
-                                    <input id="CompanyCity" name="CompanyCity" type="text" class="form-control CompanyInput" placeholder="City" readonly value="<?= $CompanyService->CompanyCity; ?>">
+                                    <input id="CompanyCity" name="CompanyCity" type="text" class="form-control CompanyInput" placeholder="City" readonly value="<?= $Order->CompanyCity; ?>">
                                 </div>
                                 <!-- end row -->
                                 <div class="col-md-4">
                                     <label class="mb-1"><i class="fa fa-map-marker-alt"></i> State<b class="text-danger">*</b></label>
-                                    <input id="CompanyState" name="CompanyState" type="text" class="form-control CompanyInput" placeholder="State" readonly value="<?= $CompanyService->CompanyState; ?>">
+                                    <input id="CompanyState" name="CompanyState" type="text" class="form-control CompanyInput" placeholder="State" readonly value="<?= $Order->CompanyState; ?>">
                                 </div>
                                 <!-- end row -->
                                 <div class="col-md-4">
                                     <label class="mb-1"><i class="fa fa-map-marker-alt"></i> Zip Code</label>
-                                    <input id="CompanyZipCode" name="CompanyZipCode" type="text" class="form-control CompanyInput" placeholder="00000" readonly value="<?= $CompanyService->CompanyZipCode; ?>">
+                                    <input id="CompanyZipCode" name="CompanyZipCode" type="text" class="form-control CompanyInput" placeholder="00000" readonly value="<?= $Order->CompanyZipCode; ?>">
                                 </div>
                                 <!-- end row -->
                             </div>
@@ -498,18 +498,18 @@
 
                                 <div class="col-md-4">
                                     <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone #1</label>
-                                    <input id="CompanyPhone1" name="CompanyPhone1" type="text" class="form-control" placeholder="+1 (555) 555-5555" readonly value="<?= $CompanyService->CompanyPhone1; ?>">
+                                    <input id="CompanyPhone1" name="CompanyPhone1" type="text" class="form-control" placeholder="+1 (555) 555-5555" readonly value="<?= $Order->CompanyPhone1; ?>">
                                 </div>
 
 
                                 <div class="col-md-4">
                                     <label class="mb-1"><i class="fa fa-phone-alt"></i> Phone #2</label>
-                                    <input id="CompanyPhone2" name="CompanyPhone2" type="text" class="form-control" placeholder="+1 (555) 555-5555" readonly value="<?= $CompanyService->CompanyPhone2; ?>">
+                                    <input id="CompanyPhone2" name="CompanyPhone2" type="text" class="form-control" placeholder="+1 (555) 555-5555" readonly value="<?= $Order->CompanyPhone2; ?>">
                                 </div>
 
                                 <div class="col-md-4">
                                     <label class="mb-1"><i class="fa fa-envelope"></i> Email</label>
-                                    <input id="CompanyEmail" name="CompanyEmail" type="email" class="form-control" placeholder="ez@domain.com" readonly value="<?= $CompanyService->CompanyEmail; ?>">
+                                    <input id="CompanyEmail" name="CompanyEmail" type="email" class="form-control" placeholder="ez@domain.com" readonly value="<?= $Order->CompanyEmail; ?>">
                                 </div>
                             </div>
                                         
