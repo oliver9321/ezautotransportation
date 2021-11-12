@@ -13,16 +13,14 @@
                     <thead>
                         <tr class="bg-light">
                             <th>#</th>
-                            <th>PickUp Location</th>
-                            <th>Origin City</th>
-                            <th>Origin State</th>
-                            <th>Delivery Location</th>
-                            <th>Destination City</th>
-                            <th>Destination State</th>
-                            <th>Type Vehicle</th>
-                            <th>Shipping Date</th>
                             <th>First Name</th>
                             <th>Last Name</th>
+                            <th>Origin Address</th>
+                            <th>Origin City</th>
+                            <th>Destination Address</th>
+                            <th>Destination City</th>
+                            <th>Type Vehicle</th>
+                            <th>Shipping Date</th>
                             <th>Phone</th>
                             <th>Email</th>
                             <th>Answer</th>
@@ -103,16 +101,14 @@ $(document).ready(function() {
             },
         columns:[
             {data: "Id"},
-            {data: "PickUpLocation"},
-            {data: "OriginCity"},
-            {data: "OriginState"},
-            {data: "DeliveryLocation"},
-            {data: "DestinyCity"},
-            {data: "DestinyState"},
-            {data: "TypeVehicle"},
-            {data: "ShippingDate"},
             {data: "FirstName"},
             {data: "LastName"},
+            {data: "PickUpLocation"},
+            {data: "OriginCity"},
+            {data: "DeliveryLocation"},
+            {data: "DestinyCity"},
+            {data: "TypeVehicle"},
+            {data: "ShippingDate"},
             {data: "Phone"},
             {data: "Email"},
             {data: "Answer"},
@@ -125,7 +121,7 @@ $(document).ready(function() {
                 console.log(data);
                 return '<center><a class="btn btn-primary" title="View quote" href="index.php?c=Quotes&a=View&Id='+data+'"> <i class="ti-file"></i></a> <button class="btn btn-info" onclick="ChangeStatus('+data+')"  title="Change status"> <i class="ti-loop"></i></button></center>';
             }}, {
-                "targets": 16,
+                "targets": 14,
                 "data": "IsActive",
                 "render": function (data) {
                     return (data) == 1 ? '<center><button type="button" class="btn btn-success"> <i class="ti-check"></i> </button></center>': '<center><button type="button" class="btn btn-sm btn-danger btn-circle waves-effect waves-light"> <i class="ti-close"></i> </button></center>';

@@ -342,7 +342,7 @@ class OrdersController
             parse_str($_POST['quote'], $params);
             $vehicles      = $_POST['vehicles'];
             $responseOrder = array("Error" => false, "Message"=>"", "QuoteId"=>"");
-            $VehiclesEmail = "<tr>";
+            $VehiclesEmail = "<table><tr><th>Brand</th><th>Model</th><th>Year</th><th>Condition</th><th>Carrier</th><th>Status</th></tr>";
 
                 if(count($params) > 0 && count($vehicles) > 0){
              
@@ -386,9 +386,9 @@ class OrdersController
                                     $QuoteDetails->IsActive          = 1;
                                     $QuoteDetailsID                  = $QuoteDetails->Create($QuoteDetails);
 
-                                    $VehiclesEmail.="<td>".$QuoteDetails->Brand."</td><td>".$QuoteDetails->Model."</td><td>".$QuoteDetails->Year."</td><td>".$QuoteDetails->ConditionVehicle."</td><td>".$QuoteDetails->CarrierType."</td><td>".$QuoteDetails->StatusVehicle."</td>";
-                                   
+
                                     if($QuoteDetailsID){
+                                        $VehiclesEmail.="<tr><td>".$QuoteDetails->Brand."</td><td>".$QuoteDetails->Model."</td><td>".$QuoteDetails->Year."</td><td>".$QuoteDetails->ConditionVehicle."</td><td>".$QuoteDetails->CarrierType."</td><td>".$QuoteDetails->StatusVehicle."</td></tr>";
                                         $responseOrder['Error'] = false;
                                     }else{
                                         $responseOrder['Error'] = true;
@@ -399,7 +399,7 @@ class OrdersController
                                 }
                             
                             }
-                            $VehiclesEmail = "</tr>";
+                            $VehiclesEmail = "</table>";
     
                             if($responseOrder['Error'] == false){
     
@@ -446,7 +446,8 @@ class OrdersController
         $messagebody = "
             <html>
                 <body>
-                    <h4>A new quote has been created.</h4>
+                    <h4>A new quote has been created.</h4><hr>
+                    ".$VehiclesEmail."
                 </body>
             </html>
             ";
