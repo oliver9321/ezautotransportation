@@ -12,6 +12,7 @@ class QuotesController
 
     //Vista Index
     public function Index(){
+        if(isset($_SESSION)){
 
         if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
 
@@ -22,9 +23,14 @@ class QuotesController
         }else{
             header('Location:permision.php');
         }
+    }else{
+        header('Location:permision.php');
+    }
     }
 
         public function View(){
+
+            if(isset($_SESSION)){
   
             $QuoteArray = "";
     
@@ -47,6 +53,10 @@ class QuotesController
             }else{
                 header('Location:permision.php');
             }
+
+        }else{
+            header('Location:permision.php');
+        }
         }
 
         public function View2(){
