@@ -253,7 +253,7 @@ datatable = $('#OrderList').DataTable({
                     botonEditar = '<a class="btn btn-warning btn-sm" href="index.php?c=Orders&a=Edit&Id='+data+'" title="Edit order"> <i class="ti-pencil"></i></a>';
                 }
 
-                return '<center><a class="btn btn-primary btn-sm" title="View order" href="index.php?c=Orders&a=View&Id='+data+'"> <i class="ti-file"></i></a>'+botonEditar+' <button class="btn btn-info btn-sm" onclick="ChangeStatus('+data+')"  title="Change status"> <i class="ti-loop"></i></button>'+botonPayment+'</center>';
+                return '<center><a class="btn btn-primary btn-sm" title="View order" href="index.php?c=Orders&a=View&Id='+data+'"> <i class="ti-file"></i></a> '+botonEditar+' <button class="btn btn-info btn-sm" onclick="ChangeStatus('+data+')"  title="Change status"> <i class="ti-loop"></i></button> '+botonPayment+' </center>';
             }}, {
                 "targets": 2,
                 "render": function (data, type, row) {

@@ -24,20 +24,45 @@ class QuotesController
         }
     }
 
-    public function View(){
+        public function View(){
+  
+            $QuoteArray = "";
+    
+            if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
+            
+            if(isset($_REQUEST['Id'])){
+    
+                $QuoteArray           = $this->model->Edit2($_REQUEST['Id']);
+                $Quote                = $QuoteArray['quote'];
+                $QuoteDetail          = $QuoteArray['quote_details'];
 
-        if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
-
-         echo json_encode($this->model->View(), true);
-
-        }else{
-            header('Location:permision.php');
+                GetRouteView(null, "header");
+                require_once 'View/quotes/view.php';
+                GetRouteView(null, "footer");
+            
+            }else{
+                header('Location:index.php?c=dashboard&a=index');
+            }
+    
+            }else{
+                header('Location:permision.php');
+            }
         }
 
-    }
+        public function View2(){
+
+            if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
+    
+             echo json_encode($this->model->View(), true);
+    
+            }else{
+                header('Location:permision.php');
+            }
+    
+        }
 
     //Vista Editar
-  /*  public function Edit(){
+  /* public function Edit(){
 
         if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
 

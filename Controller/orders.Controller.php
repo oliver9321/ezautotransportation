@@ -29,20 +29,6 @@ class OrdersController
 
         if($_SESSION['UserOnline']->Profile == "admin" || $_SESSION['UserOnline']->Profile == "manager") {
 
-            $rsOrders1              = $this->model->getCountOrdersPending();
-            $CountOrdersPending     = $rsOrders1['CountOrders'];
-
-            $rsOrders2             = $this->model->getCountOrdersDelivered();
-            $CountOrdersDelivered    = $rsOrders2['CountOrders'];
-
-            $rsOrders3              = $this->model->getCountOrdersCancelled();
-            $CountOrdersCanceled    = $rsOrders3['CountOrders'];
-
-            $rsOrders4              = $this->model->getCountOrdersPickedUp();
-            $CountOrdersPickedUp    = $rsOrders4['CountOrders'];
-            $this->orderStatus      = new OrderStatus();
-            $OrderStatusList        =  $this->orderStatus->GetListOrderStatus();
-
             GetRouteView(null, "header");
             require_once 'View/orders/index.php';
             GetRouteView(null, "footer");
@@ -210,8 +196,6 @@ class OrdersController
             header('Location:permision.php');
         }
     }
-
-    
 
     public function SaveOrder(){
 

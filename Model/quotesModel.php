@@ -127,6 +127,35 @@ $result = $this->pdo->prepare($sql)->execute(
         }
     }*/
 
+    public function Edit2($id)
+    {
+        try
+        {
+            $QuoteData = array();
+            $stm = $this->pdo->prepare("SELECT *  FROM tbl_quotes WHERE Id = ?");
+            $stm->execute(array($id));
+            $Quote = $stm->fetch(PDO::FETCH_OBJ);
+
+            if($Quote){
+
+                $stm2 = $this->pdo->prepare("SELECT *  FROM tbl_quote_details WHERE QuoteId = ?");
+                $stm2->execute(array($id));
+               
+                $QuoteData['quote']               = $Quote;
+                $QuoteData['quote_details']       = $stm2->fetchAll(PDO::FETCH_ASSOC);
+
+                return $QuoteData;
+
+            }else{
+                return $QuoteData;
+            }
+          
+        } catch (Exception $e)
+        {
+            die($e->getMessage());
+        }
+    }
+
     public function Create (Quotes $data)
     {
      

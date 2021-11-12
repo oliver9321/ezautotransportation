@@ -226,8 +226,9 @@
                     </li>
                     <li class="creat-btn">
                         <div class="nav-link">
-                            <a class="btn btn-sm btn-soft-primary" href="index.php?c=Orders&a=order"><i class="fas fa-plus me-2"></i>New order</a>
-                            <a class="btn btn-sm btn-soft-success" href="index.php?c=Orders&a=index"><i class="fas fa-list me-2"></i>Order list</a>
+                            <a class="btn btn-sm btn-outline-dark" href="index.php?c=Orders&a=order"><i class="fas fa-plus me-2"></i>NEW ORDER</a>
+                            <a class="btn btn-sm btn-outline-primary" href="index.php?c=Orders&a=index"><i class="fas fa-list me-2"></i>ORDER LIST</a>
+                            <a class="btn btn-sm btn-outline-info" href="index.php?c=Quotes&a=index"><i class="fas fa-list me-2"></i>QUOTE LIST</a>
                             <!--<button type="button" class="btn btn-sm btn-soft-primary" data-bs-toggle="modal" data-bs-target="#ModalNewOrder"></button>-->
                         </div>
                     </li>

@@ -246,6 +246,7 @@ class Orders {
             die($e->getMessage());
         }
     }
+    
     public function Update($data)
     {   
         
