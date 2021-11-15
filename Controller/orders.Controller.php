@@ -357,7 +357,7 @@ class OrdersController
             parse_str($_POST['quote'], $params);
             $vehicles      = $_POST['vehicles'];
             $responseOrder = array("Error" => false, "Message"=>"", "QuoteId"=>"");
-            $VehiclesEmail = "<table border='1'  align='center' cellpadding='5' cellspacing='0' class='contentMainTable2' ><thead class='thead-dark'><tr><th>Brand</th><th>Model</th><th>Year</th><th>Condition</th><th>Carrier</th><th>Status</th></tr></thead><tbody>";
+            $VehiclesEmail = "<table border='1'  align='center' cellpadding='5' cellspacing='0' class='contentMainTable2' width='100%'><thead class='thead-dark'><tr><th>Brand</th><th>Model</th><th>Year</th><th>Condition</th><th>Carrier</th><th>Status</th></tr></thead><tbody>";
 
                 if(count($params) > 0 && count($vehicles) > 0){
              
@@ -464,16 +464,15 @@ class OrdersController
 
 $HTML_EMAIL = '<!DOCTYPE html
 PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="EN">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="EN" style=" margin: 0px;padding: 0px;-webkit-font-smoothing: antialiased;text-size-adjust: none;width: 100% !important;background: "F9F9FF"; font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif; word-break: break-word;">
 
 <head>
 <style type="text/css">
     @media screen {
         @font-face {
-            font-family: "Lato";
+            font-family: "Calibri";
             font-style: normal;
             font-weight: 400;
-            src: local("Lato Regular"), local("Lato-Regular"), url(https://fonts.gstatic.com/s/lato/v11/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) format("woff");
         }
 
         body,
@@ -637,9 +636,9 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
                                 <center> <span class="isDesktop">
                                         <h1>Quote #'.$Quote->Id.'</h1>
                                     </span></center>
-                                <div class="greyLine"></div>
+                                <hr>
                                 <center>
-                                    <h3 style="padding-top: 1.5%;"><b>Customer: </b>'.$customer.' | <b>Shipping Date:</b> '.$Quote->ShippingDate.' | <b>Phone:</b> '.$Quote->Phone.' | <b>Email:</b> '.$Quote->Email.'</h3>
+                                    <h3 style="padding-top: 1.5%;">Type Quote: <b>'.$Quote->TypeVehicle.' </b>| Customer: <b>'.$customer.' </b>| Shipping Date:<b> '.$Quote->ShippingDate.' </b>| Phone:<b> '.$Quote->Phone.' </b>| Email:<b> '.$Quote->Email.'</b></h3>
                                 </center>
 
                                 <table border="0" cellpadding="20" cellspacing="0" width="100%" id="content">
@@ -665,12 +664,11 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD
                                             </td>
                                         </tr>
                                     </tbody>
-
-                                    '.$VehiclesEmail.'
-                                    <div class="greyLine"></div><br>
                                 </table>
+                                <hr><br>
+                                '.$VehiclesEmail.'
 
-                                <div class="greyLine"></div><br>
+                               <br>
                              <!-- <center> <a target="_blank" href="'.$url.'"><button class="blueButton">See quote</button></a>
                                 </center>-->
                             </td>
